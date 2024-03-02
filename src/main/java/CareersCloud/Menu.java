@@ -12,16 +12,16 @@ import java.util.Set;
 
 
 public class Menu {
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver = new ChromeDriver ();
 
     @BeforeTest
     public void setup() throws InterruptedException {
 
         // Entering the url
 
-        driver.get("https://careerscloud.in/");
-        driver.manage().window().maximize();
-        Thread.sleep(3000);
+        driver.get ("https://careerscloud.in/");
+        driver.manage ().window ().maximize ();
+        Thread.sleep (3000);
     }
 
     @Test
@@ -29,20 +29,20 @@ public class Menu {
 
         // Clicking Login With Google Button
 
-        WebElement clickingLoginWithGoogleButton = driver.findElement(By.xpath("//span[text()='Log in with Google']"));
-        clickingLoginWithGoogleButton.click();
+        WebElement clickingLoginWithGoogleButton = driver.findElement (By.xpath ("//span[text()='Log in with Google']"));
+        clickingLoginWithGoogleButton.click ();
     }
 
     @Test
-    public void windowsHandeling(){
+    public void windowsHandeling() {
 
         // Windows Handeling
 
-        Set<String> windows = driver.getWindowHandles();
-        Iterator<String> iterator = windows.iterator();
-        String parent = iterator.next();
-        String child = iterator.next();
-        driver.switchTo().window(child);
+        Set<String> windows = driver.getWindowHandles ();
+        Iterator<String> iterator = windows.iterator ();
+        String parent = iterator.next ();
+        String child = iterator.next ();
+        driver.switchTo ().window (child);
 
     }
 
