@@ -10,7 +10,9 @@ import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
 
+import static javax.xml.crypto.dsig.Transform.XPATH;
 import static org.openqa.selenium.By.*;
+
 
 public class Login_page {
     public static void main(String[] args) throws InterruptedException {
@@ -25,7 +27,7 @@ public class Login_page {
 
         // Waiting for element visible
 
-        Thread.sleep (3000);
+        Thread.sleep (5000);
 
         // Clicking the login button
 
@@ -1411,7 +1413,7 @@ public class Login_page {
 
         // clicking Preference Button
 
-        Thread.sleep (5000);
+        Thread.sleep (7000);
         clickingPreferenceButton = driver.findElement (xpath ("//*[@name=\"selectedPreference\"]"));
         clickingPreferenceButton.click ();
 
@@ -3326,6 +3328,322 @@ public class Login_page {
         Thread.sleep (2000);
         againclickingBackArrow = driver.findElement (xpath ("//*[@class=\"anticon anticon-arrow-left back-icon\"]"));
         againclickingBackArrow.click ();
+
+        // Clicking The paused Sub Tab In Quiz
+
+        Thread.sleep (2000);
+        WebElement clickingPausedTab = driver.findElement (xpath ("//*[text()='Paused']"));
+        clickingPausedTab.click ();
+
+       // Clicking The ThreeDots in The MyCourse > Quizzes > Paussed > Quiz
+
+        Thread.sleep (3000);
+        Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
+        Threedots.click ();
+
+        // Clicking The Save My Notes
+
+        Thread.sleep (3000);
+        WebElement clickingSaveMyNotes = driver.findElement (xpath ("//*[text()='Save to My Notes']"));
+        clickingSaveMyNotes.click ();
+        System.out.println ("Sucessfully Save My Notes Clicked ");
+
+        // Again Click the three dots in the Quiz Tab
+
+        Thread.sleep (3000);
+        Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
+        Threedots.click ();
+
+
+        // Clicking The Remove My Notes
+
+        Thread.sleep (3000);
+        WebElement Remove_My_Notes = driver.findElement (xpath ("//span[text()='Remove My  Notes']"));
+        Remove_My_Notes.click ();
+        System.out.println ("Sucessfully remove My Notes Clicked ");
+
+        // Again Click the three dots in the Quiz Tab
+
+        Thread.sleep (3000);
+        Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
+        Threedots.click ();
+
+        /* Clicking the share icon in Quiz Tab */
+
+        Thread.sleep (3000);
+        Share_icon = driver.findElement (xpath ("//span[text()='Share']"));
+        Share_icon.click ();
+
+        //click the copy link in the share popup
+
+        Thread.sleep (3000);
+        Copy_link = driver.findElement (xpath ("//span[text()='COPY LINK']"));
+        Copy_link.click ();
+
+        //Clicking the cancel button in the in share popup
+
+        waitforCancelButtonclick = new WebDriverWait (driver, Duration.ofSeconds (30));
+        Cancel_button = driver.findElement (xpath ("//span[text()='Cancel']"));
+        Cancel_button.click ();
+
+        // Again Click the three dots in the Quiz Tab
+
+        Thread.sleep (3000);
+        Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
+        Threedots.click ();
+        //clicking the report icon
+
+        Thread.sleep (1000);
+        Report_icon = driver.findElement (xpath ("//span[text()='Report']"));
+        Report_icon.click ();
+
+        //Click the wrong information radio button
+
+        Thread.sleep (1000);
+        Wrong_information_radio_button = driver.findElement (xpath ("//span[text()='Wrong Information']"));
+        Wrong_information_radio_button.click ();
+
+        //Entering the text inside the report text field
+
+        Enter_the_report = driver.findElement (name ("reportDescription"));
+        Enter_the_report.sendKeys ("Checking The text was Entering In The Report Text Field");
+
+        // Click the report button
+
+        Thread.sleep (3000);
+        /*WebElement Report_button = driver.findElement (xpath ("//span[text()='REPORT']"));
+        Report_button.click ();*/
+
+        // Clicking The Cancel Button
+
+        Cancel_button = driver.findElement (xpath ("//span[text()='CANCEL']"));
+        Cancel_button.click ();
+
+        // Clicking The BreadCrumbs inside the course
+
+        WebElement clickingBreadCrumbs = driver.findElement (xpath ("//span[text()='Course']"));
+        clickingBreadCrumbs.click ();
+
+        // Scrolling The analysis page Forward
+
+        Thread.sleep (3000);
+        jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+        // Clicking The Last Course Card In the My Course
+
+        Thread.sleep (3000);
+        WebElement clickingLastCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[9]"));
+        clickingLastCourseCard.click ();
+
+        // Clicking The Quizzes In The Course
+
+        Thread.sleep (2000);
+        clickingQuizzes = driver.findElement (xpath ("//div[text()='Quizzes']"));
+        clickingQuizzes.click ();
+
+        // Clicking The paused Sub Tab In Quiz
+
+        Thread.sleep (2000);
+        clickingPausedTab = driver.findElement (xpath ("//*[text()='Paused']"));
+        clickingPausedTab.click ();
+
+        // Scrolling The analysis page Forward
+
+        Thread.sleep (3000);
+        jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+        // Clicking The Unattempted Tab
+
+        Thread.sleep (2000);
+        WebElement clickingUnattemptab = driver.findElement (xpath ("//span[text()='Unattempted']"));
+        clickingUnattemptab.click ();
+
+        // Clicking the quiz in the unattempted tab
+
+        WebElement clickingStartQuiz = driver.findElement (xpath ("//*[text()= ' Start Quiz ']"));
+        clickingStartQuiz.click ();
+
+        //Windows Handeling
+
+        windows = driver.getWindowHandles ();
+        it = windows.iterator ();
+        parent = it.next ();
+        child = it.next ();
+        driver.switchTo ().window (child);
+
+        // Clicking the close icon in the quiz instruction
+        Thread.sleep (3000);
+        WebElement Close_icon = driver.findElement (xpath ("//*[@class=\"ant-modal-close-x\"]"));
+        Close_icon.click ();
+
+        //Windows mazimize
+
+        WebDriverWait waitForWindowsMaximize = new WebDriverWait (driver,Duration.ofSeconds (30));
+        driver.manage ().window ().maximize ();
+
+        //Clicking the Instruction Button
+
+
+        WebElement clickingTheInstructionIcon = driver.findElement (xpath ("//*[@alt=\"quiz_info\"]"));
+        clickingTheInstructionIcon.click ();
+
+        // Again Clicking the close icon in the quiz instruction
+
+        Thread.sleep (3000);
+        WebElement againClose_icon = driver.findElement (xpath ("//*[@class=\"ant-modal-close-x\"]"));
+        againClose_icon.click ();
+
+        // Clicking The FullScreen Button
+
+        clickingTheFullScreenButton = driver.findElement (className ("anticon-expand"));
+        clickingTheFullScreenButton.click ();
+
+        // Clicking the BookMark-icon
+
+        /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        WebElement bookMarkicon = driver.findElement(className ("bookmark-icon"));
+        bookMarkicon.click ();*/
+
+        // Clicking the First Option
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheOption_A = driver.findElement (xpath ("//div[text()='A']"));
+        clickingTheOption_A.click ();
+
+        //Clicking The Save & Next Button
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheSaveAndNextbutton = driver.findElement (xpath ("//div[text()='Save & Next']"));
+        clickingTheSaveAndNextbutton.click ();
+
+        // Clicking the Second Option
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheOption_B = driver.findElement (xpath ("//div[text()='B']"));
+        clickingTheOption_B.click ();
+
+        //Again Clicking The Save & Next Button
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheSaveAndNextbutton = driver.findElement (xpath ("//div[text()='Save & Next']"));
+        clickingTheSaveAndNextbutton.click ();
+
+        // Clicking the Third Option
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheOption_C = driver.findElement (xpath ("//div[text()='C']"));
+        clickingTheOption_C.click ();
+
+        //Again Clicking The Save & Next Button
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheSaveAndNextbutton = driver.findElement (xpath ("//div[text()='Save & Next']"));
+        clickingTheSaveAndNextbutton.click ();
+
+        // Clicking the Fourth Option
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheOption_D = driver.findElement (xpath ("//div[text()='D']"));
+        clickingTheOption_D.click ();
+
+        //Again Clicking The Save & Next Button
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheSaveAndNextbutton = driver.findElement (xpath ("//div[text()='Save & Next']"));
+        clickingTheSaveAndNextbutton.click ();
+
+        // Clicking the Fifth Option
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheOption_E = driver.findElement (xpath ("//div[text()='E']"));
+        clickingTheOption_E.click ();
+
+        // Clicking The Number on the right side Count Status
+
+        clickingTheNumber6OnTheRigntSide = driver.findElement (xpath ("//Span[text()='6']"));
+        clickingTheNumber6OnTheRigntSide.click ();
+
+        // Clicking the First Option
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheOption_A = driver.findElement (xpath ("//div[text()='A']"));
+        clickingTheOption_A.click ();
+
+        // Clicking The Number on the right side Count Status
+
+        clickingTheNumber7OnTheRightSide = driver.findElement (xpath ("//Span[text()='7']"));
+        clickingTheNumber7OnTheRightSide.click ();
+
+        // Clicking the Second Option
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheOption_B = driver.findElement (xpath ("//div[text()='B']"));
+        clickingTheOption_B.click ();
+
+        // Clicking The Number on the right side Count Status
+
+        clickingTheNumber8OnTheRightSide = driver.findElement (xpath ("//Span[text()='8']"));
+        clickingTheNumber8OnTheRightSide.click ();
+
+        // Clicking the Third Option
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingTheOption_C = driver.findElement (xpath ("//div[text()='C']"));
+        clickingTheOption_C.click ();
+
+        // Clicking The Previous Button
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        clickingThePreviousButton = driver.findElement (xpath ("//div[text()='Previous']"));
+        clickingThePreviousButton.click ();
+
+        // Clicking The Pause Button
+
+        Thread.sleep (3000);
+        WebElement clickingThePauseButton = driver.findElement (xpath ("//*[@class=\"pause-icon\"]"));
+        clickingThePauseButton.click ();
+
+        // Clicking The Cancel Button In The Pause popup
+
+        /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        WebElement clickingCancelButtonInPopup = driver.findElement (xpath ("//span[text()='Cancel']"));
+        clickingCancelButtonInPopup.click ();*/
+
+        // Clicking The Leave button In the Pause Popup
+
+        Thread.sleep (3000);
+        WebElement clickingLeaveButtonInPopup = driver.findElement (xpath ("//span[text()=\" Leave \"]"));
+        clickingLeaveButtonInPopup.click ();
+
+        // Changing The Child Windows To Parent Window
+
+        driver.switchTo ().window (parent);
+
+        // Clicking The Paused tab to atten the resume quiz
+
+        WebElement clickingPausedtab = driver.findElement (xpath ("//*[text() ='Paused']"));
+        clickingPausedtab.click ();
+
+        // Clicking the Resume quiz
+
+        Thread.sleep (3000);
+        WebElement clickingResumeQuiz = driver.findElement (xpath ("//*[text() = ' Resume ']"));
+        clickingResumeQuiz.click ();
+
+        //Windows Handeling
+
+        windows = driver.getWindowHandles ();
+        it = windows.iterator ();
+        parent = it.next ();
+        child = it.next ();
+        driver.switchTo ().window (child);
+
+
+
+
+
 
 
 
