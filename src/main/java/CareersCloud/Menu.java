@@ -3,7 +3,6 @@ package CareersCloud;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -29,47 +28,34 @@ public class Menu {
 
     @Test
     public void loginWithGoogleButton() {
-
-        // Clicking Login With Google Button
-
-        WebElement clickingLoginWithGoogleButton = driver.findElement (xpath ("//span[text()='Log in with Google']"));
-        clickingLoginWithGoogleButton.click ();
+        // Clicking the "Login With Google" button
+        WebElement loginWithGoogleButton = driver.findElement(xpath("//span[text()='Log in with Google']"));
+        loginWithGoogleButton.click();
     }
 
     @Test
-    public void windowsHandeling() {
+    public void windowsHandling() {
 
-        // Windows Handeling
+        // Window Handling
 
-        Set<String> windows = driver.getWindowHandles ();
-        Iterator<String> iterator = windows.iterator ();
-        String parent = iterator.next ();
-        String child = iterator.next ();
-        driver.switchTo ().window (child);
+        Set<String> windows = driver.getWindowHandles();
+        Iterator<String> iterator = windows.iterator();
+        String parent = iterator.next();
+        String child = iterator.next();
+        driver.switchTo().window(child);
     }
 
-    @AfterTest
-
+    @Test
     public void enteringMailId() {
-
-        //Entering the mailId
-
-        WebElement Entering_mailId = driver.findElement (id ("identifierId"));
-        Entering_mailId.sendKeys ("harishpsy122@gmail.com");
-
-        //Clicking the next button
-
-        WebElement Nextbutton = driver.findElement (xpath ("//span[text()='Next']"));
-        Nextbutton.click ();
-
+        // Entering the email ID
+        WebElement enteringMailId = driver.findElement(id("identifierId"));
+        enteringMailId.sendKeys("harishpsy12@gmail.com");
     }
-    @Test
-
-    public void clickingNextButton () {
-
 
 
     }
 
-}
+
+
+
 
