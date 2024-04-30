@@ -102,6 +102,7 @@ public class CourseEbooks {
         clickingViewButton.click ();
 
         WebElement clickingUnlikeButton = null;
+
         if (clickingUnlikeButton.getText ().contains ("Likes")) {
 
             // ClickingTheLikesButton
