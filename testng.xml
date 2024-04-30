@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true"
-          name="C:/Users/Lenovo Desktop 03/IdeaProjects/CareersCloud/src/main/java/CareersCloud/Menu.java">
+          name="C:/Users/Lenovo Desktop 03/IdeaProjects/MainPages/src/main/java/MainPages/Menu.java">
         <classes>
-            <class name="CareersCloud.Menu">
+            <class name="MainPages.Menu">
                 <methods>
                     <include name="setup"/>
                 </methods>

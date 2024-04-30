@@ -1,4 +1,4 @@
-package CareersCloud;
+package MainPages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,10 +31,6 @@ public class Menu {
         // Clicking the "Login With Google" button
         WebElement loginWithGoogleButton = driver.findElement(xpath("//span[text()='Log in with Google']"));
         loginWithGoogleButton.click();
-    }
-
-    @Test
-    public void windowsHandling() {
 
         // Window Handling
 
@@ -46,6 +42,7 @@ public class Menu {
     }
 
     @Test
+
     public void enteringMailId() {
         // Entering the email ID
         WebElement enteringMailId = driver.findElement(id("identifierId"));
