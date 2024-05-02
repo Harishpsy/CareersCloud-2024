@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
 import static org.openqa.selenium.By.name;
 import static org.openqa.selenium.By.xpath;
@@ -101,44 +103,63 @@ public class CourseEbooks {
         WebElement clickingViewButton = driver.findElement (xpath ("//*[text()='VIEW >']"));
         clickingViewButton.click ();
 
-        WebElement clickingUnlikeButton = null;
+//        WebElement clickinglikeButton = driver.findElement (xpath ("//span[text()='Likes']"));
+//
+//        if (clickinglikeButton.getText ().contains ("Likes"))
+//        {
+//          // ClickingTheLikesButton
+//            Thread.sleep (3000);
+//            clickinglikeButton.click ();
+//            System.out.println ("Liked");
+//        }
+//        else
+//        {
+//          // Clicking UnLike Button
+//
+//            Thread.sleep (3000);
+//            WebElement clickingunLikeButton = driver.findElement (xpath ("//*[@class=\"unlike\"]"));
+//            clickingunLikeButton.click ();
+//            System.out.println ("Un-Liked");
+//        }
 
-        if (clickingUnlikeButton.getText ().contains ("Likes")) {
+        WebElement likeButton = driver.findElement (xpath ("//span[text()='Likes']"));
+        WebElement unlikeButton = driver.findElement (xpath ("//*[@class='unlike']"));
 
-            // ClickingTheLikesButton
-
-            clickingUnlikeButton = driver.findElement (xpath ("//span[text()='Likes']"));
-            clickingUnlikeButton.click ();
+        Thread.sleep (3000);
+        if (likeButton.getText ().contains ("Likes")) {
+            likeButton = driver.findElement (xpath ("//span[text()='Likes']"));
+            likeButton.click ();
+            System.out.println ("Liked");
         } else {
-            // Clicking UnLike Button
-
-            Thread.sleep (3000);
-            WebElement clickingunLikeButton = driver.findElement (xpath ("//*[@class=\"unlike\"]"));
-            clickingunLikeButton.click ();
-
+            unlikeButton = driver.findElement (xpath ("//*[@class='unlike']"));
+            unlikeButton.click ();
+            System.out.println ("Unliked");
         }
 
-//        // Clicking The View Button In The Ebook
-//
-//        WebElement clickingViewButtonInEbook = driver.findElement (xpath ("//span[text()='View']"));
-//        clickingViewButtonInEbook.click ();
-//
-//        //Windows Handeling child to parent
-//
-//        Thread.sleep (3000);
-//        Set<String> windows = driver.getWindowHandles ();
-//        Iterator<String> it = windows.iterator ();
-//        String parent = it.next ();
-//        String child = it.next ();
-//        driver.switchTo ().window (child);
-//        driver.close ();
-//        driver.switchTo ().window (parent);
-//
-//        // Clicking Back Button in the Ebook Page
-//
-//        driver.switchTo ().window (parent);
-//        WebElement clickingBackButton = driver.findElement (xpath ("//span[text()='Back']"));
-//        clickingBackButton.click ();
+
+        // Clicking The View Button In The Ebook
+
+        WebElement clickingViewButtonInEbook = driver.findElement (xpath ("//span[text()='View']"));
+        clickingViewButtonInEbook.click ();
+
+        //Windows Handeling child to parent
+
+        Thread.sleep (3000);
+        Set<String> windows = driver.getWindowHandles ();
+        Iterator<String> it = windows.iterator ();
+        String parent = it.next ();
+        String child = it.next ();
+        driver.switchTo ().window (child);
+        driver.close ();
+        driver.switchTo ().window (parent);
+
+        // Clicking Back Button in the Ebook Page
+
+        Thread.sleep (3000);
+        driver.switchTo ().window (parent);
+        WebElement clickingBackButton = driver.findElement (xpath ("//span[text()='Back']"));
+        clickingBackButton.click ();
+
 
 
     }

@@ -1,6 +1,6 @@
 package MainPages;
 
-import MyCourse.CourseEbooks;
+import MyCourse.CourseArticle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -143,8 +143,13 @@ public class Login_page {
 
         // Calling Course Ebooks
 
-        CourseEbooks Ebooks = new CourseEbooks (driver);
-        Ebooks.Ebooks ();
+//        CourseEbooks Ebooks = new CourseEbooks (driver);
+//        Ebooks.Ebooks ();
+
+        // Calling Course Article
+
+        CourseArticle Article = new CourseArticle (driver);
+        Article.Article ();
 
 
     }

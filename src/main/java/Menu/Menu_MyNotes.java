@@ -741,13 +741,13 @@ public class Menu_MyNotes {
         WebElement clickingArticle = driver.findElement (xpath ("//*[@class=\"my-notest article-feed-image\"]"));
         clickingArticle.click ();
 
-        // Scrolling The analysis page Forward
+        // Scrolling The Article page Forward
 
         Thread.sleep (3000);
         jse = (JavascriptExecutor) driver;
         jse.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
 
-        // Scrolling The analysis page Backward
+        // Scrolling The Article  page Backward
 
         Thread.sleep (3000);
         jse = (JavascriptExecutor) driver;
