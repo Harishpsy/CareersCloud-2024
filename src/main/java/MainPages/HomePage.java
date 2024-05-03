@@ -1,12 +1,15 @@
 package MainPages;
 
+import PageObjectModule.Homepageobject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.Iterator;
 import java.util.Set;
 
+import static PageObjectModule.Homepageobject.*;
 import static org.openqa.selenium.By.xpath;
 
 public class HomePage {
@@ -21,36 +24,33 @@ public class HomePage {
 
         // Writing For Home Feed
 
+        PageFactory.initElements (driver, Homepageobject.class);
+
         // clicking Preference Button
 
         Thread.sleep (7000);
-        WebElement clickingPreferenceButton = driver.findElement (xpath ("//*[@name=\"selectedPreference\"]"));
         clickingPreferenceButton.click ();
 
         // Clicking The Railway Button
 
-        WebElement clickingRailwayButton = driver.findElement (xpath ("//div[text()='Railway']"));
         clickingRailwayButton.click ();
 
         // clicking Preference Button
 
-        clickingPreferenceButton = driver.findElement (xpath ("//*[@name=\"selectedPreference\"]"));
         clickingPreferenceButton.click ();
 
         // Clicking The Bank&Insurance Button
 
         Thread.sleep (2000);
-        WebElement clickingBankandInsuranceButton = driver.findElement (xpath ("//div[text()='Bank & Insurance']"));
         clickingBankandInsuranceButton.click ();
 
         // clicking Preference Button
         Thread.sleep (2000);
-        clickingPreferenceButton = driver.findElement (xpath ("//*[@name=\"selectedPreference\"]"));
         clickingPreferenceButton.click ();
 
         // Clicking The Add Preference
+
         Thread.sleep (2000);
-        WebElement clickingAddPreferencebutton = driver.findElement (xpath ("//a[text()=' Add Preference']"));
         clickingAddPreferencebutton.click ();
 
         //Scrolling Down Function
@@ -61,25 +61,21 @@ public class HomePage {
         // clicking UPSC Button
 
         Thread.sleep (2000);
-        WebElement clickingUPSCButton = driver.findElement (xpath ("//div[text()='UPSC']"));
         clickingUPSCButton.click ();
 
         // Clicking Save Preference
 
         Thread.sleep (2000);
-        WebElement clickingsavePreference = driver.findElement (xpath ("//span[text()='Save Preference']"));
         clickingsavePreference.click ();
 
         // clicking Preference Button
 
         Thread.sleep (7000);
-        clickingPreferenceButton = driver.findElement (xpath ("//*[@name=\"selectedPreference\"]"));
         clickingPreferenceButton.click ();
 
         // Clicking The Add Preference
 
         Thread.sleep (3000);
-        clickingAddPreferencebutton = driver.findElement (xpath ("//a[text()=' Add Preference']"));
         clickingAddPreferencebutton.click ();
 
         //Scrolling Down Function
@@ -90,12 +86,10 @@ public class HomePage {
         // clicking UPSC Button
 
         Thread.sleep (3000);
-        clickingUPSCButton = driver.findElement (xpath ("//div[text()='UPSC']"));
         clickingUPSCButton.click ();
 
         // Clicking Save Preference
 
-        clickingsavePreference = driver.findElement (xpath ("//span[text()='Save Preference']"));
         clickingsavePreference.click ();
 
 
@@ -119,77 +113,64 @@ public class HomePage {
         //  Clicking The Right arrow in the Home feed
 
         Thread.sleep (3000);
-        WebElement clickingRightArrow = driver.findElement (xpath ("//span[@class=\"anticon anticon-right action-icon\"]"));
         clickingRightArrow.click ();
 
         // Clicking The banners in the home feed
 
         Thread.sleep (3000);
-        WebElement clickingBannerInHomeFeed = driver.findElement (xpath ("//*[@src=\"https://assets.careerscloud.in/banner/images/94cbaa46bc54ec537cc339f5199b390e.webp\"]"));
         clickingBannerInHomeFeed.click ();
 
         // Clicking the course BreadCrumbs for coming back
 
         Thread.sleep (3000);
-        WebElement clickingCourseInBreadCrumbs = driver.findElement (xpath ("//span[text()='Course']"));
         clickingCourseInBreadCrumbs.click ();
 
         //  Clicking The Right arrow in the Home feed
 
         Thread.sleep (3000);
-        clickingRightArrow = driver.findElement (xpath ("//span[@class=\"anticon anticon-right action-icon\"]"));
         clickingRightArrow.click ();
 
         //  Clicking The Right arrow in the Home feed
 
         Thread.sleep (3000);
-        clickingRightArrow = driver.findElement (xpath ("//span[@class=\"anticon anticon-right action-icon\"]"));
         clickingRightArrow.click ();
 
         // Clicking The banners in the home feed
 
-        clickingBannerInHomeFeed = driver.findElement (xpath ("//*[@src=\"https://assets.careerscloud.in/banner/images/2901af2b7017b7d126b7c7493c0a2b8d.webp\"]"));
-        clickingBannerInHomeFeed.click ();
+        clickingBannerInHomeFeed1.click ();
 
         // Clicking the course BreadCrumbs for coming back
 
         Thread.sleep (3000);
-        clickingCourseInBreadCrumbs = driver.findElement (xpath ("//span[text()='Course']"));
         clickingCourseInBreadCrumbs.click ();
 
         //  Clicking The Right arrow in the Home feed
 
         Thread.sleep (3000);
-        clickingRightArrow = driver.findElement (xpath ("//span[@class=\"anticon anticon-right action-icon\"]"));
         clickingRightArrow.click ();
 
         //  Clicking The Right arrow in the Home feed
 
         Thread.sleep (3000);
-        clickingRightArrow = driver.findElement (xpath ("//span[@class=\"anticon anticon-right action-icon\"]"));
         clickingRightArrow.click ();
 
         //  Clicking The Right arrow in the Home feed
 
         Thread.sleep (3000);
-        clickingRightArrow = driver.findElement (xpath ("//span[@class=\"anticon anticon-right action-icon\"]"));
         clickingRightArrow.click ();
 
         // Clicking The banners in the home feed
 
-        clickingBannerInHomeFeed = driver.findElement (xpath ("//*[@src=\"https://assets.careerscloud.in/banner/images/b26df9a2c61c98268b1ab9e34cb9fbdb.webp\"]"));
-        clickingBannerInHomeFeed.click ();
+        clickingBannerInHomeFeed2.click ();
 
         // Clicking The Close icon In The Course Banner Modal
 
         Thread.sleep (3000);
-        WebElement clickingCloseIcon = driver.findElement (xpath ("//*[@class=\"ant-modal-close-x\"]"));
         clickingCloseIcon.click ();
 
         // Clcking The Google Play Button
 
         Thread.sleep (3000);
-        WebElement clickingGoooglePlayButton = driver.findElement (xpath ("//span[text()='Google Play']"));
         clickingGoooglePlayButton.click ();
 
         //Windows Handeling child to parent and parent to child
@@ -236,7 +217,6 @@ public class HomePage {
         // Clicking The Aboutus In The Footer Section
 
         Thread.sleep (3000);
-        WebElement clickingAboutUs = driver.findElement (xpath ("//a[text()='About Us']"));
         clickingAboutUs.click ();
 
         // Clicking The Authors In The Footer Section
@@ -273,7 +253,6 @@ public class HomePage {
         // Clicking The FAQ Button In The Footer Section
 
         Thread.sleep (3000);
-        WebElement clickingFAQButton = driver.findElement (xpath ("//a[text()='FAQs']"));
         clickingFAQButton.click ();
 
         // Clicking The Terms And Condition Button In The Footer Section
@@ -290,7 +269,6 @@ public class HomePage {
         // Clicking The Terms And Condition Button In The Footer Section
 
         Thread.sleep (3000);
-        WebElement clickingPrivacyPolicyButton = driver.findElement (xpath ("//a[text()='Privacy Policy']"));
         clickingPrivacyPolicyButton.click ();
 
         //Scrolling Down Function
@@ -301,7 +279,6 @@ public class HomePage {
         // Clicking The Careers Button In The Footer Section
 
         Thread.sleep (1000);
-        WebElement clickingCareersButton = driver.findElement (xpath ("//a[text()='Careers']"));
         clickingCareersButton.click ();
 
         //Scrolling Down Function
@@ -312,7 +289,6 @@ public class HomePage {
         // Clicking The sitemap Button In The Footer Section
 
         Thread.sleep (1000);
-        WebElement clickingsitemapButton = driver.findElement (xpath ("//a[text()='Sitemap']"));
         clickingsitemapButton.click ();
     }
 }

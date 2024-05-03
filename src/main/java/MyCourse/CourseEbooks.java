@@ -102,39 +102,29 @@ public class CourseEbooks {
         driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (30));
         WebElement clickingViewButton = driver.findElement (xpath ("//*[text()='VIEW >']"));
         clickingViewButton.click ();
-
-//        WebElement clickinglikeButton = driver.findElement (xpath ("//span[text()='Likes']"));
 //
-//        if (clickinglikeButton.getText ().contains ("Likes"))
-//        {
-//          // ClickingTheLikesButton
-//            Thread.sleep (3000);
-//            clickinglikeButton.click ();
-//            System.out.println ("Liked");
-//        }
-//        else
-//        {
-//          // Clicking UnLike Button
+//        WebElement clickingLikeButton = driver.findElement(xpath("//*[@class=\"like\"]"));
+//        WebElement clickingunlikeButton = driver.findElement(xpath("//*[@class=\"unlike\"]"));
 //
-//            Thread.sleep (3000);
-//            WebElement clickingunLikeButton = driver.findElement (xpath ("//*[@class=\"unlike\"]"));
-//            clickingunLikeButton.click ();
-//            System.out.println ("Un-Liked");
+//        if (clickingLikeButton.getText().contains("like")) {
+//
+//            // Clicking Like Button
+//            clickingLikeButton.click();
+//            System.out.println("Liked");
+//
 //        }
-
-        WebElement likeButton = driver.findElement (xpath ("//span[text()='Likes']"));
-        WebElement unlikeButton = driver.findElement (xpath ("//*[@class='unlike']"));
-
-        Thread.sleep (3000);
-        if (likeButton.getText ().contains ("Likes")) {
-            likeButton = driver.findElement (xpath ("//span[text()='Likes']"));
-            likeButton.click ();
-            System.out.println ("Liked");
-        } else {
-            unlikeButton = driver.findElement (xpath ("//*[@class='unlike']"));
-            unlikeButton.click ();
-            System.out.println ("Unliked");
-        }
+//
+//        else if (clickingLikeButton.getText().contains("unlike")){
+//
+//            // Clicking Unlike Button
+//            clickingunlikeButton.click();
+//            System.out.println("Un-Liked");
+//
+//        }
+//        else {
+//            System.out.println("Both is not presented");
+//
+//        }
 
 
         // Clicking The View Button In The Ebook

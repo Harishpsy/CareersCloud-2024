@@ -1,10 +1,12 @@
 package Menu;
 
+import PageObjectModule.Mypurchasepageobject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-import static org.openqa.selenium.By.xpath;
+import static PageObjectModule.Mypurchasepageobject.clickingHomeButton;
+import static PageObjectModule.Mypurchasepageobject.clickingMyPurchase;
 
 public class Menu_MyPurchase {
     WebDriver driver;
@@ -14,10 +16,12 @@ public class Menu_MyPurchase {
     }
 
     public void MyPurchase() throws InterruptedException {
+
+        PageFactory.initElements (driver, Mypurchasepageobject.class);
+
         // Clicking The My Purchase
 
         Thread.sleep (5000);
-        WebElement clickingMyPurchase = driver.findElement (xpath ("//*[@id=\"8\"]"));
         clickingMyPurchase.click ();
         System.out.println ("SucessFully Clicked MyPurchase");
 
@@ -33,7 +37,6 @@ public class Menu_MyPurchase {
 
         // Clicking The Home Button
 
-        WebElement clickingHomeButton = driver.findElement (xpath ("//a[text()='Home']"));
         clickingHomeButton.click ();
     }
 

@@ -1,13 +1,14 @@
 package Menu;
 
+import PageObjectModule.Mycoinpageobject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.Iterator;
 import java.util.Set;
 
-import static org.openqa.selenium.By.xpath;
+import static PageObjectModule.Mycoinpageobject.*;
 
 public class Menu_MyCoins {
 
@@ -19,23 +20,21 @@ public class Menu_MyCoins {
 
     public void MyCoins() throws InterruptedException {
 
+        PageFactory.initElements (driver, Mycoinpageobject.class);
 
         // Clicking The My Coin
 
         Thread.sleep (3000);
-        WebElement clickingMycoin = driver.findElement (xpath ("//*[@id=\"4\"]"));
         clickingMycoin.click ();
 
         // Clicking Coin Earning Arrow
 
         Thread.sleep (3000);
-        WebElement clickingCoinEarningText = driver.findElement (xpath ("//div[text()='Coin Earning']"));
         clickingCoinEarningText.click ();
 
         // Clicking The close Button
 
         Thread.sleep (3000);
-        WebElement clickingCloseIcon = driver.findElement (xpath ("//*[@class=\"ant-modal-close-x\"]"));
         clickingCloseIcon.click ();
 
         // Scrolling backward
@@ -50,8 +49,6 @@ public class Menu_MyCoins {
         jse.executeScript ("window.scrollTo( document.body.scrollHeight, 0)");
 
         // clicking The Google Play Button
-
-        WebElement clickingGooglePlayButton = driver.findElement (xpath ("//span[text()='Google Play']"));
         clickingGooglePlayButton.click ();
 
         //Windows Handeling child to parent

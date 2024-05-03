@@ -1,9 +1,11 @@
 package Menu;
 
+import PageObjectModule.InviteFriendspageobject;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-import static org.openqa.selenium.By.xpath;
+import static PageObjectModule.InviteFriendspageobject.clickingHomeButton;
+import static PageObjectModule.InviteFriendspageobject.clickingInviteFriends;
 
 public class Menu_InviteFriends {
 
@@ -14,16 +16,18 @@ public class Menu_InviteFriends {
     }
 
     public void InviteFriends() throws InterruptedException {
+
+        PageFactory.initElements (driver, InviteFriendspageobject.class);
+
         // Clicking The Invite Friends
 
         Thread.sleep (3000);
-        WebElement clickingInviteFriends = driver.findElement (xpath ("//*[@id=\"6\"]"));
         clickingInviteFriends.click ();
         System.out.println ("This feature is still under developing process");
 
         // Clicking The Home Button
+
         Thread.sleep (5000);
-        WebElement clickingHomeButton = driver.findElement (xpath ("//a[text()='Home']"));
         clickingHomeButton.click ();
 
     }

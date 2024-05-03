@@ -14,7 +14,6 @@ public class Menu_RateApp {
 
     public Menu_RateApp(WebDriver driver) {
         this.driver = driver;
-
     }
 
     public void RateApp() throws InterruptedException {
