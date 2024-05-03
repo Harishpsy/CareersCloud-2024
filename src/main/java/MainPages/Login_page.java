@@ -1,6 +1,7 @@
 package MainPages;
 
-import MyCourse.CourseArticle;
+import Menu.*;
+import MyCourse.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -76,75 +77,77 @@ public class Login_page {
         //Changing the focus to the parent window
         driver.switchTo ().window (parent);
 
+        // Calling Home Page
+
+        HomePage clickingHomePage = new HomePage (driver);
+        clickingHomePage.clickingHomePage ();
+
         // CALLING MY NOTES
 
-//        Menu_MyNotes Mynotes = new Menu_MyNotes (driver);
-//        Mynotes.MyNotes ();
+        Menu_MyNotes Mynotes = new Menu_MyNotes (driver);
+        Mynotes.MyNotes ();
 
         //CALLING MY QUESTIONS
 
-//        Menu_MyQuestions MyQuestions = new Menu_MyQuestions (driver);
-//        MyQuestions.Myquestion ();
+        Menu_MyQuestions MyQuestions = new Menu_MyQuestions (driver);
+        MyQuestions.Myquestion ();
 
 //      CALLING MY EBOOKS
 
-//        Menu_MyEbooks MyEbooks = new Menu_MyEbooks (driver);
-//        MyEbooks.MyEbooks ();
+        Menu_MyEbooks MyEbooks = new Menu_MyEbooks (driver);
+        MyEbooks.MyEbooks ();
 
         // CALLING MY COINS
 
-//        Menu_MyCoins MyCoins = new Menu_MyCoins (driver);
-//        MyCoins.MyCoins ();
+        Menu_MyCoins MyCoins = new Menu_MyCoins (driver);
+        MyCoins.MyCoins ();
 
         // CALLING MY POINTS
 
-//        Menu_MyPoints MyPoints = new Menu_MyPoints (driver);
-//        MyPoints.MyPoints ();
+        Menu_MyPoints MyPoints = new Menu_MyPoints (driver);
+        MyPoints.MyPoints ();
 
         //Calling InviteFriends
 
-//     Menu_InviteFriends InviteFriends = new Menu_InviteFriends (driver);
-//     InviteFriends.InviteFriends ();
+        Menu_InviteFriends InviteFriends = new Menu_InviteFriends (driver);
+        InviteFriends.InviteFriends ();
 
         // Calling Rate App
 
-//     Menu_RateApp RateApp = new Menu_RateApp (driver);
-//     RateApp.RateApp ();
+        Menu_RateApp RateApp = new Menu_RateApp (driver);
+        RateApp.RateApp ();
 
         // Calling The My Purchase
 
-//     Menu_MyPurchase MyPurchase = new Menu_MyPurchase (driver);
-//     MyPurchase.MyPurchase ();
+        Menu_MyPurchase MyPurchase = new Menu_MyPurchase (driver);
+        MyPurchase.MyPurchase ();
 
         // Calling The Hireus
 
-//     Menu_Hireus Hireus = new Menu_Hireus (driver);
-//     Hireus.Hireus ();
+        Menu_Hireus Hireus = new Menu_Hireus (driver);
+        Hireus.Hireus ();
 
-        // Calling Home Page
 
-//       HomePage clickingHomePage = new HomePage (driver);
-//       clickingHomePage.clickingHomePage ();
 
         // Calling My Course Filters
 
-//        MyCourse_Filters Filter = new MyCourse_Filters (driver);
-//        Filter.Filter ();
+        MyCourse_Filters Filter = new MyCourse_Filters (driver);
+        Filter.Filter ();
 
         //Calling CoursePath
 
-//        CoursePath path = new CoursePath (driver);
-//        path.Path ();
+        CoursePath path = new CoursePath (driver);
+        path.Path ();
 
         // Calling Course Quizzes
 
-//        CourseQuizzes Quizzes = new CourseQuizzes (driver);
-//        Quizzes.Quizzes ();
+        CourseQuizzes Quizzes = new CourseQuizzes (driver);
+        Quizzes.Quizzes ();
 
         // Calling Course Ebooks
 
-//        CourseEbooks Ebooks = new CourseEbooks (driver);
-//        Ebooks.Ebooks ();
+        CourseEbooks Ebooks = new CourseEbooks (driver);
+        Ebooks.Ebooks ();
 
         // Calling Course Article
 
