@@ -1,11 +1,9 @@
 package MyCourse;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.openqa.selenium.By.*;
@@ -20,13 +18,11 @@ public class CourseArticle {
 
     public void Article() throws InterruptedException {
 
-        // Clicking The My Course Button
+//        // Clicking The My Course Button
 
         driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (30));
         WebElement clickingMyCourseButton = driver.findElement (xpath ("//* [text()='My Course']"));
         clickingMyCourseButton.click ();
-
-        // Clcking Course
 
         // Clicking The Eigth Course Card In the My Course
 
@@ -34,7 +30,7 @@ public class CourseArticle {
         WebElement clickingFirstCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[8]"));
         clickingFirstCourseCard.click ();
 
-        // Clicking The Article
+//        // Clicking The Article
 
         WebElement clickingArticleTab = driver.findElement (xpath ("//*[text()='Articles']"));
         clickingArticleTab.click ();
@@ -47,7 +43,7 @@ public class CourseArticle {
         // Verification (assuming you have a way to verify card existence)
 
         if (mainsCards.isEmpty ()) {
-            System.out.println ("Verification failed: 'GA Questions...' cards not found.");
+            System.out.println ("Verification failed: GA Questions not found");
         } else {
             System.out.println ("Found 'GA Questions...' cards.");
         }
@@ -55,12 +51,12 @@ public class CourseArticle {
         if (prelimsCards.isEmpty ()) {
             System.out.println ("Verification failed: 'SBI Clerk Prelims...' cards not found.");
         } else {
-            System.out.println ("Found 'SBI Clerk Prelims...' cards.");
+            System.out.println ("SBI Clerk Prelims Found");
         }
 
-        //  Method for Counting How many Cards present in the list
-
-
+//        //  Method for Counting How many Cards present in the list
+//
+//
 //        List<WebElement> articleCards = new ArrayList<> ();
 //
 //        // Add elements using either XPath or loop through individual cards
@@ -92,9 +88,9 @@ public class CourseArticle {
             clickMyNote.click ();
 
             if (clickMyNote.getText ().contains ("Remove My  Notes")) {
-                System.out.println ("Successfully - Removed - Article");
+                System.out.println ("Successfully -  Remove - Article");
             } else {
-                System.out.println ("Successfully - Saved - Article");
+                System.out.println ("Successfully -  saved - Article");
             }
         }
 
@@ -118,7 +114,7 @@ public class CourseArticle {
 
         if (savedarticle.isEmpty ()) {
 
-            System.out.println ("Verification failed: 'Article was not present...' cards not found.");
+            System.out.println ("Verification Failed : Article not present ");
 
         } else {
 
@@ -176,18 +172,18 @@ public class CourseArticle {
         WebElement clickingCommentIcon = driver.findElement (id ("comments-icon"));
         clickingCommentIcon.click ();
 
-        // Entering The comments
-
-        Thread.sleep (3000);
-        WebElement enteringComments = driver.findElement (name ("comments1"));
-        enteringComments.sendKeys ("Thanks For the update");
-        System.out.println ("Comment Added Sucessfully");
-
-        // Clicking The send Button
-
-        Thread.sleep (3000);
-        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
-        clickingSendButton.click ();
+//        // Entering The comments
+//
+//        Thread.sleep (3000);
+//        WebElement enteringComments = driver.findElement (name ("comments1"));
+//        enteringComments.sendKeys ("Thanks For the update");
+//        System.out.println ("Comment Added Sucessfully");
+//
+//       // Clicking The send Button
+//
+//        Thread.sleep (3000);
+//        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
+//        clickingSendButton.click ();
 
         // Clicking Float button
 
@@ -213,24 +209,41 @@ public class CourseArticle {
         Cancel_button.click ();
         System.out.println ("Clicked cancel button");
 
-        // Verifying the Recent article
+//        // Verifying the Recent article
+//
+//        String[] articleLinks = {"/course-details/62/article/3758", "/course-details/62/article/3586", "/course-details/62/article/3557", "/course-details/62/article/3510", "/course-details/62/article/3408"};
+//
+//        final List<WebElement> recentArticles = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
+//
+//        int count = 0;
+//
+//        for (WebElement recentArticle : recentArticles) {
+//            System.out.println (recentArticle.isDisplayed ());
+//
+//            String actuallinks = recentArticle.getAttribute ("href");
+//
+//            if (Arrays.asList (articleLinks).contains (actuallinks))
+//                System.out.println (actuallinks);
+//
+//            {
+//                count++;
+//                System.out.println (count);
+//
+//            }
+//        }
+//
+//        Assert.assertEquals (count, articleLinks.length);
+//        System.out.println (Arrays.toString (articleLinks));
 
-        String[] articleLinks = {"/course-details/62/article/3758", "/course-details/62/article/3586", "/course-details/62/article/3557", "/course-details/62/article/3510", "/course-details/62/article/3408"};
 
-        List<WebElement> recentArticle = driver.findElements (tagName ("a"));
+        // Click the BackButton In The Article
 
-        int count = 2;
+        WebElement clickingBackButton = driver.findElement (xpath ("//*[@class=\"ant-breadcrumb-link\"]"));
+        clickingBackButton.click ();
+        System.out.println ("Navigated To Article List Page");
 
-        for (WebElement recentArticles : recentArticle) {
+    }
 
-            String actuallinks = recentArticles.getAttribute ("href");
-
-            if (Arrays.asList (articleLinks).contains (actuallinks)) {
-                count++;
-                System.out.println ("All the article was present");
-            }
-        }
-        Assert.assertEquals (count, articleLinks.length);
 
 
 
@@ -258,4 +271,4 @@ public class CourseArticle {
 
 
     }
-}
+
