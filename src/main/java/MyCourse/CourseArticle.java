@@ -2,11 +2,14 @@ package MyCourse;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.openqa.selenium.By.*;
+import static org.openqa.selenium.By.id;
+import static org.openqa.selenium.By.xpath;
 
 public class CourseArticle {
     WebDriver driver;
@@ -145,7 +148,7 @@ public class CourseArticle {
         Thread.sleep (3000);
         clickingArticleTab = driver.findElement (xpath ("//*[text()='Articles']"));
         clickingArticleTab.click ();
-
+//
         // Clicking the view Article
 
         Thread.sleep (3000);
@@ -209,31 +212,27 @@ public class CourseArticle {
         Cancel_button.click ();
         System.out.println ("Clicked cancel button");
 
-//        // Verifying the Recent article
-//
-//        String[] articleLinks = {"/course-details/62/article/3758", "/course-details/62/article/3586", "/course-details/62/article/3557", "/course-details/62/article/3510", "/course-details/62/article/3408"};
-//
-//        final List<WebElement> recentArticles = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
-//
-//        int count = 0;
-//
-//        for (WebElement recentArticle : recentArticles) {
-//            System.out.println (recentArticle.isDisplayed ());
-//
-//            String actuallinks = recentArticle.getAttribute ("href");
-//
-//            if (Arrays.asList (articleLinks).contains (actuallinks))
-//                System.out.println (actuallinks);
-//
-//            {
-//                count++;
-//                System.out.println (count);
-//
-//            }
-//        }
-//
-//        Assert.assertEquals (count, articleLinks.length);
-//        System.out.println (Arrays.toString (articleLinks));
+        // Verifying the Recent article in the webpage
+
+        String[] articleLinks = {"https://careerscloud.in/course-details/62/article/3758", "https://careerscloud.in/course-details/62/article/3586", "https://careerscloud.in/course-details/62/article/3557", "https://careerscloud.in/course-details/62/article/3510", "https://careerscloud.in/course-details/62/article/3408"};
+
+        List<WebElement> recentArticle = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
+
+        int count = 0;
+
+        for (WebElement articles : recentArticle) {
+
+            String actualLink = articles.getAttribute ("href");
+
+
+            if (Arrays.asList (articleLinks).contains (actualLink)) {
+                count++;
+                System.out.println ("Found " + count + " matching articles");
+            }
+        }
+
+        Assert.assertEquals (count, articleLinks.length);
+        System.out.println (Arrays.toString (articleLinks));
 
 
         // Click the BackButton In The Article

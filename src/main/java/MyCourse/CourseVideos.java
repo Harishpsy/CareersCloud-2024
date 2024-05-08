@@ -119,12 +119,12 @@ public class CourseVideos {
         clickingCaptionButton.click ();
         System.out.println ("SucessFully Clicked Caption (ON) button");
 
-        // Clicking the Full screen Button
-
-        Thread.sleep (3000);
-        WebElement clickingFullScreenButton = driver.findElement (xpath ("//*[@aria-label=\"Full screen keyboard shortcut f\"]"));
-        clickingFullScreenButton.click ();
-        System.out.println ("SucessFully Clicked The Full Screen Button");
+//        // Clicking the Full screen Button
+//
+//        Thread.sleep (3000);
+//        WebElement clickingFullScreenButton = driver.findElement (xpath ("//*[@aria-label=\"Full screen keyboard shortcut f\"]"));
+//        clickingFullScreenButton.click ();
+//        System.out.println ("SucessFully Clicked The Full Screen Button");
 
         // Clicking the YouTube Logo It will navigate to YouTube or new windows
 
