@@ -16,7 +16,7 @@ import static PageObjectModule.Loginpageobject.*;
 
 
 public class Login_page {
-    static WebDriver driver = new ChromeDriver ();
+    public static WebDriver driver = new ChromeDriver ();
 
 
     public static void main(String[] args) throws InterruptedException {
