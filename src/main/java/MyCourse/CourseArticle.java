@@ -1,5 +1,6 @@
 package MyCourse;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -38,13 +39,36 @@ public class CourseArticle {
         WebElement clickingArticleTab = driver.findElement (xpath ("//*[text()='Articles']"));
         clickingArticleTab.click ();
 
+        // Scrolling the page down
+
+        Thread.sleep (3000);
+        JavascriptExecutor scrollpage = (JavascriptExecutor) driver;
+        scrollpage.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+
+        // Again Scrolling the page down
+
+        Thread.sleep (3000);
+        scrollpage = (JavascriptExecutor) driver;
+        scrollpage.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+
+        // Scrolling the page Up
+        JavascriptExecutor scrollpageup = (JavascriptExecutor) driver;
+        scrollpageup.executeScript ("window.scrollTo(0,0)");
 
         // Verifying The List Of cards was getting duplicating or not
 
         String[] ArticleCards = {"https://assets.careerscloud.in/course/article/images/c2113c87210d2718aa625f9197817216.webp", "https://assets.careerscloud.in/course/article/images/57f0d0c460019c05a8f66e6a9b3476d0.webp", "https://assets.careerscloud.in/course/article/images/fcb6c606cdafa519a1890771f57edf4a.webp", "https://assets.careerscloud.in/course/article/images/5e04b7cd2e3ea898c0b2edc7841c1328.webp"
                 , "https://assets.careerscloud.in/course/article/images/ec428c6a121667134eb7cbacf3f67351.webp", "https://assets.careerscloud.in/course/article/images/69109f10b2cdaccc9216126292b8dfc8.webp",
                 "https://assets.careerscloud.in/course/article/images/208645246de3c6b62587a5889727bc2c.webp", "https://assets.careerscloud.in/course/article/images/db144ac76bb53fcc90d528a249058a81.webp", "https://assets.careerscloud.in/course/article/images/45edfb09904144471d389f54c6981130.webp", "https://assets.careerscloud.in/course/article/images/6f8fdf6e275c0b45a38b8311a1046f1e.webp",
-                "https://assets.careerscloud.in/course/article/images/8f0ddd398a23ff67aaaf7901ff57178e.webp", "https://assets.careerscloud.in/course/article/images/81d1c8d42093f4ce19865393244be820.webp", "https://assets.careerscloud.in/course/article/images/2605d1cb4009d6b46b67e43ad9a14716.webp", "https://assets.careerscloud.in/course/article/images/9a2c5d7a0de5558f4a188fc2de80ff67.webp", "https://assets.careerscloud.in/course/article/images/a03f53d18b2a19db6670f5f8b6e82e98.webp"};
+                "https://assets.careerscloud.in/course/article/images/8f0ddd398a23ff67aaaf7901ff57178e.webp", "https://assets.careerscloud.in/course/article/images/81d1c8d42093f4ce19865393244be820.webp", "https://assets.careerscloud.in/course/article/images/2605d1cb4009d6b46b67e43ad9a14716.webp", "https://assets.careerscloud.in/course/article/images/9a2c5d7a0de5558f4a188fc2de80ff67.webp", "https://assets.careerscloud.in/course/article/images/a03f53d18b2a19db6670f5f8b6e82e98.webp",
+                "https://assets.careerscloud.in/course/article/images/a06b2e3280a30d220fd4a980b609d2e5.webp", "https://assets.careerscloud.in/course/article/images/0f9a885a59c4a53681eb105292bdb363.webp", "https://assets.careerscloud.in/course/article/images/004c5ade5b2a7abe38d0ec44ceccb84d.webp", "https://assets.careerscloud.in/course/article/images/6f6bfbf577c47f2316e4165ee6835cc6.webp", "https://assets.careerscloud.in/course/article/images/a7eb552df57b919497e393719a12c008.webp", "https://assets.careerscloud.in/course/article/images/75ec2c4316f41d5f84d1d6c96d081351.webp"
+                , "https://assets.careerscloud.in/course/article/images/78268628278d369c26a41dd436f34a0d.webp", "https://assets.careerscloud.in/course/article/images/72156b53494b9dfcfb078716d9ab5e3f.webp", "https://assets.careerscloud.in/course/article/images/366cffd43f6b57f04155ff8930915e28.webp", "https://assets.careerscloud.in/course/article/images/ba32bf2b87841c62ee246be7dea7a15b.webp"
+                , "https://assets.careerscloud.in/course/article/images/f5408475fe1ce28d3e2642ba22b54cf8.webp",
+                "https://assets.careerscloud.in/course/article/images/72b58e715eed7a3f53d2097bb8b5aa60.webp",
+                "https://assets.careerscloud.in/course/article/images/60fd1bdd78f50382f6f356d083d8576a.webp",
+                "https://assets.careerscloud.in/course/article/images/2ec8bbd7f0becbc4caf5ad74dafe21d8.webp",
+                "https://assets.careerscloud.in/course/article/images/4545ffbebb564275db8bd767cac9a4f7.webp"
+        };
 
         List<WebElement> ArticleCard = driver.findElements (xpath ("//*[@class=\"image1\"]"));
 
@@ -54,9 +78,9 @@ public class CourseArticle {
 
             String Actualcard = Card.getAttribute ("src");
 
-            //To cross verify I have write the sop statement below
+            //To cross verify I have written the sop statement below
 
-            //    System.out.println (Actualcard);
+            System.out.println (Actualcard);
 
             if (Arrays.asList (ArticleCards).contains (Actualcard)) {
                 cardscount++;
@@ -64,7 +88,6 @@ public class CourseArticle {
             }
         }
         Assert.assertEquals (cardscount, ArticleCards.length);
-
 
         // Clicking the three Dots in the CourseCard
 
@@ -157,19 +180,19 @@ public class CourseArticle {
 
         WebElement clickingCommentIcon = driver.findElement (id ("comments-icon"));
         clickingCommentIcon.click ();
-
-        // Entering The comments
-
-        Thread.sleep (3000);
-        WebElement enteringComments = driver.findElement (name ("comments1"));
-        enteringComments.sendKeys ("Thanks For the update");
-        System.out.println ("Comment Added Sucessfully");
-
-        // Clicking The send Button
-
-        Thread.sleep (3000);
-        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
-        clickingSendButton.click ();
+//
+//        // Entering The comments
+//
+//        Thread.sleep (3000);
+//        WebElement enteringComments = driver.findElement (name ("comments1"));
+//        enteringComments.sendKeys ("Thanks For the update");
+//        System.out.println ("Comment Added Sucessfully");
+//
+//        // Clicking The send Button
+//
+//        Thread.sleep (3000);
+//        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
+//        clickingSendButton.click ();
 
         // Clicking Float button
 
@@ -207,14 +230,18 @@ public class CourseArticle {
 
             String actualLink = articles.getAttribute ("href");
 
+            // WE Can Write the sop for cross verify
+
+            System.out.println (actualLink);
+
             if (Arrays.asList (articleLinks).contains (actualLink)) {
                 count++;
-                System.out.println ("Found " + count + " matching articles");
+                System.out.println ("Found " + count + actualLink);
             }
         }
 
         Assert.assertEquals (count, articleLinks.length);
-        System.out.println (Arrays.toString (articleLinks));
+//        System.out.println (Arrays.toString (articleLinks));
 
 
         // Click the BackButton In The Article
