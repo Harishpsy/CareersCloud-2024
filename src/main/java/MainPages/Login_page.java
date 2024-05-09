@@ -1,6 +1,6 @@
 package MainPages;
 
-import MyCourse.CourseArticle;
+import MyCourse.CourseVideos;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -146,12 +146,12 @@ public class Login_page {
 
         // Calling Course Article
 
-        CourseArticle Article = new CourseArticle (driver);
-        Article.Article ();
+//        CourseArticle Article = new CourseArticle (driver);
+//        Article.Article ();
 
-//        // Calling Videos
-//        CourseVideos videos = new CourseVideos (driver);
-//        videos.videos ();
+        // Calling Videos
+        CourseVideos videos = new CourseVideos (driver);
+        videos.videos ();
 //
 //        // Calling Course Details
 //

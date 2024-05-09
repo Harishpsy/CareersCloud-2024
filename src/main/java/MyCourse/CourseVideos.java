@@ -1,15 +1,20 @@
 package MyCourse;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
-import static org.openqa.selenium.By.xpath;
+import static org.openqa.selenium.By.*;
+
 
 public class CourseVideos {
     WebDriver driver;
@@ -41,11 +46,10 @@ public class CourseVideos {
 
         // Clicking The View Button
 
-        WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (40));
-        WebElement clickingViewButton = wait.until (ExpectedConditions.elementToBeClickable (xpath ("//*[text()='VIEW >']")));
+        WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (30));
+        WebElement clickingViewButton = wait.until (ExpectedConditions.elementToBeClickable (xpath ("//*[@class=\"video-card-inner-content\"]")));
         wait.until (ExpectedConditions.visibilityOf (clickingViewButton));
         clickingViewButton.click ();
-        System.out.println ("Sucessfully Video playing");
 
         // Clicking the like and unlike button
 
@@ -119,15 +123,24 @@ public class CourseVideos {
         clickingCaptionButton.click ();
         System.out.println ("SucessFully Clicked Caption (ON) button");
 
-//        // Clicking the Full screen Button
-//
-//        Thread.sleep (3000);
-//        WebElement clickingFullScreenButton = driver.findElement (xpath ("//*[@aria-label=\"Full screen keyboard shortcut f\"]"));
-//        clickingFullScreenButton.click ();
-//        System.out.println ("SucessFully Clicked The Full Screen Button");
+        // Clicking the Full screen Button
+
+        Thread.sleep (3000);
+        WebElement clickingFullScreenButton = driver.findElement (xpath ("//*[@title=\"Full screen (f)\"]"));
+        clickingFullScreenButton.click ();
+        System.out.println ("SucessFully Clicked The Full Screen Button");
+
+        // Clicking the Exit The Full screen Button
+
+        Thread.sleep (3000);
+        WebElement clickingExitFullScreenButton = driver.findElement (xpath ("//*[@title=\"Exit full screen (f)\"]"));
+        clickingExitFullScreenButton.click ();
+        System.out.println ("SucessFully Clicked The Exit Full Screen Button");
+
 
         // Clicking the YouTube Logo It will navigate to YouTube or new windows
 
+        Thread.sleep (3000);
         WebElement clickingYouTubeLogo = driver.findElement (xpath ("//*[@title=\"Watch on YouTube\"]"));
         clickingYouTubeLogo.click ();
         System.out.println ("SucessFully Clicked The YouTube Logo ");
@@ -148,6 +161,89 @@ public class CourseVideos {
 
         driver.switchTo ().window (parent);
 
+        // Checking the recent Viedeos are present
+
+        String[] viedosLinks = {"https://careerscloud.in/course-details/6/video/2154", "https://careerscloud.in/course-details/6/video/2158"
+                , "https://careerscloud.in/course-details/6/video/2162", "https://careerscloud.in/course-details/6/video/2160",
+                "https://careerscloud.in/course-details/6/video/2155",};
+
+        List<WebElement> recentViedos = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
+
+        System.out.println (Arrays.toString (viedosLinks));
+
+        int viedocounts = 0;
+
+        for (WebElement videos : recentViedos) {
+
+            String actualviedolinks = videos.getAttribute ("href");
+
+            if (Arrays.asList (viedosLinks).contains (actualviedolinks)) {
+
+                viedocounts++;
+                System.out.println ("Found::" + viedocounts + "==" + actualviedolinks);
+
+            }
+        }
+        Assert.assertEquals (viedocounts, viedosLinks.length);
+
+        // Clicking The Back Arrow in Viedo page
+
+        Thread.sleep (3000);
+        WebElement clickingBackArrow = driver.findElement (xpath ("//*[@class=\"ant-breadcrumb-link\"]"));
+        clickingBackArrow.click ();
+        System.out.println ("--------------------------------");
+        System.out.println ("Sucessfully Clicking Back Arrow");
+
+        // Scrolling the page down
+
+        Thread.sleep (3000);
+        JavascriptExecutor scrollpage = (JavascriptExecutor) driver;
+        scrollpage.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+
+        // Again Scrolling the page down
+
+        Thread.sleep (3000);
+        scrollpage = (JavascriptExecutor) driver;
+        scrollpage.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+
+        // Scrolling the page Up
+        JavascriptExecutor scrollpageup = (JavascriptExecutor) driver;
+        scrollpageup.executeScript ("window.scrollTo(0,0)");
+
+        // Verifying the videoscard
+
+        String[] videoscard = {"https://www.youtube.com/embed/hCG1fxWsiIs", "https://www.youtube.com/embed/66dm-vf3Yew", "https://www.youtube.com/embed/2YF_wwrUFBU",
+                "https://www.youtube.com/embed/tzWTqG6AjgA", "https://www.youtube.com/embed/BVxZTcXCQ1w", "https://www.youtube.com/embed/I6jckmkU90w", "https://www.youtube.com/embed/nXFDs9-d98k",
+                "https://www.youtube.com/embed/0w6kk-NvtaM"
+                , "https://www.youtube.com/embed/Eqt0azCKCmY", "https://www.youtube.com/embed/MrScTfvFVDk", "https://www.youtube.com/embed/yX5tOeyGMpE", "https://www.youtube.com/embed/B4x0o3Xxh0I"
+                , "https://www.youtube.com/embed/aZlCCjH224I", "https://www.youtube.com/embed/TmLHK6yZ_1U", "https://www.youtube.com/embed/7HoLC0bouZM", "https://www.youtube.com/embed/l_U14N2OZ3Y",
+                "https://www.youtube.com/embed/yQyqSFvhV6E", "https://www.youtube.com/embed/sSisSX7mRTs", "https://www.youtube.com/embed/j9gCpOpSd5c",
+                "https://www.youtube.com/embed/uD8COFsPXI4", "https://www.youtube.com/embed/ksytSb7-QKI", "https://www.youtube.com/embed/5kDFVNrB_uE",
+                "https://www.youtube.com/embed/Mh1v2nPnXEw", "https://www.youtube.com/embed/xgSncNI1uMU", "https://www.youtube.com/embed/e4TWEFT-eR0",
+                "https://www.youtube.com/embed/iBxsIZ2jyog", "https://www.youtube.com/embed/x94bd9BOZhA", "https://www.youtube.com/embed/3Edf_H2aKD8",
+                "https://www.youtube.com/embed/7mB3UecOb-Y", "https://www.youtube.com/embed/K0WSAIwQC6o"};
+
+        List<WebElement> cards = driver.findElements (xpath ("//*[@class=\"video-iframe\"]"));
+
+        int viedoCardscounts = 0;
+
+        for (WebElement Cards : cards) {
+
+            String actualviedocards = Cards.getAttribute ("src");
+
+            System.out.println ("------------------------------------------------------");
+            System.out.println (actualviedocards);
+
+
+            if (Arrays.asList (videoscard).contains (actualviedocards)) {
+
+                viedoCardscounts++;
+
+                System.out.println ("Found:" + viedoCardscounts + "--->" + actualviedocards);
+
+            }
+        }
+        Assert.assertEquals (viedoCardscounts, videoscard.length);
 
     }
 }
