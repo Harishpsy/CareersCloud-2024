@@ -9,7 +9,8 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.openqa.selenium.By.*;
+import static org.openqa.selenium.By.id;
+import static org.openqa.selenium.By.xpath;
 
 
 public class CourseArticle {
@@ -252,31 +253,5 @@ public class CourseArticle {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+}
 
