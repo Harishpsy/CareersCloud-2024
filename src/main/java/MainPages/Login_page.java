@@ -1,6 +1,6 @@
 package MainPages;
 
-import MyCourse.CourseVideos;
+import MyCourse.CourseDetails;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
@@ -19,7 +20,7 @@ public class Login_page {
     public static WebDriver driver = new ChromeDriver ();
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, AWTException {
         // Setup for browser launch
 
         // Entering the url
@@ -149,14 +150,15 @@ public class Login_page {
 //        CourseArticle Article = new CourseArticle (driver);
 //        Article.Article ();
 
-        // Calling Videos
-        CourseVideos videos = new CourseVideos (driver);
-        videos.videos ();
-//
-//        // Calling Course Details
-//
-//        CourseDetails Details = new CourseDetails (driver);
-//        Details.Details ();
+//        // Calling Videos
+//        CourseVideos videos = new CourseVideos (driver);
+//        videos.videos ();
+
+
+        // Calling Course Details
+
+        CourseDetails Details = new CourseDetails (driver);
+        Details.Details ();
 
 
     }
