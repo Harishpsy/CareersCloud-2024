@@ -158,30 +158,33 @@ public class CourseVideos {
 
         driver.switchTo ().window (parent);
 
-        // Checking the recent Viedeos are present
+        // Another Method for verifying Duplicate In The Wep page Using HashSet
 
-        String[] viedosLinks = {"https://careerscloud.in/course-details/6/video/2154", "https://careerscloud.in/course-details/6/video/2158"
-                , "https://careerscloud.in/course-details/6/video/2162", "https://careerscloud.in/course-details/6/video/2160",
-                "https://careerscloud.in/course-details/6/video/2155",};
+        String[] videosLinks = {"https://careerscloud.in/course-details/6/video/2154", "https://careerscloud.in/course-details/6/video/2158",
+                "https://careerscloud.in/course-details/6/video/2162", "https://careerscloud.in/course-details/6/video/2160",
+                "https://careerscloud.in/course-details/6/video/2155"};
 
-        List<WebElement> recentViedos = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
+        Set<String> uniqueLinks = new HashSet<> ();
+        int duplicateCount = 0;
+        int actuallinkcount = 0;
 
-        System.out.println (Arrays.toString (viedosLinks));
+        List<WebElement> recentVideos = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
 
-        int viedocounts = 0;
+        for (WebElement video : recentVideos) {
+            String actualVideoLink = video.getAttribute ("href");
+            System.out.println ("--------------------------------");
+            actuallinkcount++;
+            System.out.println ("Found :" + actuallinkcount + "-->" + actualVideoLink);
 
-        for (WebElement videos : recentViedos) {
-
-            String actualviedolinks = videos.getAttribute ("href");
-
-            if (Arrays.asList (viedosLinks).contains (actualviedolinks)) {
-
-                viedocounts++;
-                System.out.println ("Found::" + viedocounts + "==" + actualviedolinks);
-
+            if (Arrays.asList (videosLinks).contains (actualVideoLink)) {
+                if (!uniqueLinks.add (actualVideoLink)) {
+                    duplicateCount++;
+                    System.out.println ("Found Duplicate: " + actualVideoLink);
+                }
             }
         }
-        Assert.assertEquals (viedocounts, viedosLinks.length);
+
+        Assert.assertEquals (duplicateCount, 0, "Found duplicates in the list of recent video links");
 
         // Clicking The Back Arrow in Viedo page
 
@@ -207,74 +210,37 @@ public class CourseVideos {
         JavascriptExecutor scrollpageup = (JavascriptExecutor) driver;
         scrollpageup.executeScript ("window.scrollTo(0,0)");
 
-//        // Verifying the videoscard
-//
-//        String[] videoscard = {"https://www.youtube.com/embed/hCG1fxWsiIs", "https://www.youtube.com/embed/66dm-vf3Yew", "https://www.youtube.com/embed/2YF_wwrUFBU",
-//                "https://www.youtube.com/embed/tzWTqG6AjgA", "https://www.youtube.com/embed/BVxZTcXCQ1w", "https://www.youtube.com/embed/I6jckmkU90w", "https://www.youtube.com/embed/nXFDs9-d98k",
-//                "https://www.youtube.com/embed/0w6kk-NvtaM"
-//                , "https://www.youtube.com/embed/Eqt0azCKCmY", "https://www.youtube.com/embed/MrScTfvFVDk", "https://www.youtube.com/embed/yX5tOeyGMpE", "https://www.youtube.com/embed/B4x0o3Xxh0I"
-//                , "https://www.youtube.com/embed/aZlCCjH224I", "https://www.youtube.com/embed/TmLHK6yZ_1U", "https://www.youtube.com/embed/7HoLC0bouZM", "https://www.youtube.com/embed/l_U14N2OZ3Y",
-//                "https://www.youtube.com/embed/yQyqSFvhV6E", "https://www.youtube.com/embed/sSisSX7mRTs", "https://www.youtube.com/embed/j9gCpOpSd5c",
-//                "https://www.youtube.com/embed/uD8COFsPXI4", "https://www.youtube.com/embed/ksytSb7-QKI", "https://www.youtube.com/embed/5kDFVNrB_uE",
-//                "https://www.youtube.com/embed/Mh1v2nPnXEw", "https://www.youtube.com/embed/xgSncNI1uMU", "https://www.youtube.com/embed/e4TWEFT-eR0",
-//                "https://www.youtube.com/embed/iBxsIZ2jyog", "https://www.youtube.com/embed/x94bd9BOZhA", "https://www.youtube.com/embed/3Edf_H2aKD8",
-//                "https://www.youtube.com/embed/7mB3UecOb-Y", "https://www.youtube.com/embed/K0WSAIwQC6o"};
-//
-//        List<WebElement> cards = driver.findElements (xpath ("//*[@class=\"video-iframe\"]"));
-//
-//        int viedoCardscounts = 0;
-//
-//        for (WebElement Cards : cards) {
-//
-//            String actualviedocards = Cards.getAttribute ("src");
-//
-//            System.out.println ("------------------------------------------------------");
-//            System.out.println (actualviedocards);
-//
-//
-//            if (Arrays.asList (videoscard).contains (actualviedocards)) {
-//
-//                viedoCardscounts++;
-//
-//                System.out.println ("Found:" + viedoCardscounts + "--->" + actualviedocards);
-//
-//            }
-//        }
-//        Assert.assertEquals (viedoCardscounts, videoscard.length);
+        // Verifying the videoscard
 
-        // Another method for finding the duplicate in the list page
-
-        String[] videoscard = new String[]{"https://www.youtube.com/embed/hCG1fxWsiIs", "https://www.youtube.com/embed/66dm-vf3Yew", "https://www.youtube.com/embed/2YF_wwrUFBU",
-                "https://www.youtube.com/embed/tzWTqG6AjgA", "https://www.youtube.com/embed/BVxZTcXCQ1w", "https://www.youtube.com/embed/I6jckmkU90w", "https://www.youtube.com/embed/nXFDs9-d98k",
-                "https://www.youtube.com/embed/0w6kk-NvtaM", "https://www.youtube.com/embed/Eqt0azCKCmY", "https://www.youtube.com/embed/MrScTfvFVDk", "https://www.youtube.com/embed/yX5tOeyGMpE", "https://www.youtube.com/embed/B4x0o3Xxh0I",
-                "https://www.youtube.com/embed/aZlCCjH224I", "https://www.youtube.com/embed/TmLHK6yZ_1U", "https://www.youtube.com/embed/7HoLC0bouZM", "https://www.youtube.com/embed/l_U14N2OZ3Y",
-                "https://www.youtube.com/embed/yQyqSFvhV6E", "https://www.youtube.com/embed/sSisSX7mRTs", "https://www.youtube.com/embed/j9gCpOpSd5c",
-                "https://www.youtube.com/embed/uD8COFsPXI4", "https://www.youtube.com/embed/ksytSb7-QKI", "https://www.youtube.com/embed/5kDFVNrB_uE",
-                "https://www.youtube.com/embed/Mh1v2nPnXEw", "https://www.youtube.com/embed/xgSncNI1uMU", "https://www.youtube.com/embed/e4TWEFT-eR0",
-                "https://www.youtube.com/embed/iBxsIZ2jyog", "https://www.youtube.com/embed/x94bd9BOZhA", "https://www.youtube.com/embed/3Edf_H2aKD8",
-                "https://www.youtube.com/embed/7mB3UecOb-Y", "https://careerscloud.in/course-details/6/video/2155", "https://www.youtube.com/embed/K0WSAIwQC6o"};
-
-        Set<String> uniqueURLs = new HashSet<> ();
-        int duplicateCount = 0;
-        int originalcount = 0;
+        String[] videoscard = {"https://www.youtube.com/embed/WesnnBbVMNs", "https://www.youtube.com/embed/I6jckmkU90w", "https://www.youtube.com/embed/66dm-vf3Yew", "https://www.youtube.com/embed/2YF_wwrUFBU"
+                , "https://www.youtube.com/embed/tzWTqG6AjgA", "https://www.youtube.com/embed/BVxZTcXCQ1w", "https://www.youtube.com/embed/hCG1fxWsiIs", "https://www.youtube.com/embed/nXFDs9-d98k"
+                , "https://www.youtube.com/embed/0w6kk-NvtaM", "https://www.youtube.com/embed/Eqt0azCKCmY", "https://www.youtube.com/embed/MrScTfvFVDk", "https://www.youtube.com/embed/yX5tOeyGMpE",
+                "https://www.youtube.com/embed/B4x0o3Xxh0I", "https://www.youtube.com/embed/aZlCCjH224I", "https://www.youtube.com/embed/TmLHK6yZ_1U", "https://www.youtube.com/embed/7HoLC0bouZM", "https://www.youtube.com/embed/5kDFVNrB_uE", "https://www.youtube.com/embed/l_U14N2OZ3Y"
+                , "https://www.youtube.com/embed/yQyqSFvhV6E", "https://www.youtube.com/embed/sSisSX7mRTs", "https://www.youtube.com/embed/j9gCpOpSd5c", "https://www.youtube.com/embed/uD8COFsPXI4",
+                "https://www.youtube.com/embed/ksytSb7-QKI", "https://www.youtube.com/embed/Mh1v2nPnXEw", "https://www.youtube.com/embed/xgSncNI1uMU", "https://www.youtube.com/embed/e4TWEFT-eR0"
+                , "https://www.youtube.com/embed/iBxsIZ2jyog", "https://www.youtube.com/embed/x94bd9BOZhA", "https://www.youtube.com/embed/3Edf_H2aKD8", "https://www.youtube.com/embed/7mB3UecOb-Y"};
 
         List<WebElement> cards = driver.findElements (xpath ("//*[@class=\"video-iframe\"]"));
 
+        Set<String> uniqueUrls = new HashSet<> ();
+        int uniqueCount = 0;
+
         for (WebElement card : cards) {
-            String actualVideoCard = card.getAttribute ("src");
+            String actualUrl = card.getAttribute ("src");
 
-            System.out.println ("------------------------------------------------------");
-            System.out.println ("OrginalUrl --> " + originalcount + actualVideoCard);
-
-            if (Arrays.asList (videoscard).contains (actualVideoCard)) {
-                if (!uniqueURLs.add (actualVideoCard)) {
-                    duplicateCount++;
-                    System.out.println ("Found Duplicate: " + actualVideoCard);
+            if (uniqueUrls.contains (actualUrl)) {
+                System.out.println ("Duplicate found --> " + actualUrl);
+            } else {
+                uniqueUrls.add (actualUrl);
+                if (Arrays.asList (videoscard).contains (actualUrl)) {
+                    uniqueCount++;
+                    System.out.println ("Found: " + uniqueCount + "-->" + actualUrl);
                 }
             }
         }
 
-        Assert.assertEquals (duplicateCount, 0, "Found duplicates in the list of video URLs");
-
+        System.out.println ("Total unique videos url found: " + uniqueCount);
+        Assert.assertEquals (uniqueCount, videoscard.length);
     }
+
 }
