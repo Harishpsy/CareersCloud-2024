@@ -1,6 +1,6 @@
 package MainPages;
 
-import MyCourse.CourseDetails;
+import MyCourse.CourseDoubts;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -155,10 +155,15 @@ public class Login_page {
 //        videos.videos ();
 
 
-        // Calling Course Details
+//        // Calling Course Details
+//
+//        CourseDetails Details = new CourseDetails (driver);
+//        Details.Details ();
 
-        CourseDetails Details = new CourseDetails (driver);
-        Details.Details ();
+        // Calling Doubts
+
+        CourseDoubts Doubt = new CourseDoubts (driver);
+        Doubt.Doubts ();
 
 
     }
