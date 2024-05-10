@@ -41,8 +41,10 @@ public class VerifyingTheDuplicatecards {
         }
         Assert.assertEquals (cardscount, ArticleCards.length);
 
-        // Method for finding duplicates
 
+        // Verifying the videoscard was getting duplicating using the unique videos Url
+
+        // This Method was working fine
 
         String[] videoscard = {"https://www.youtube.com/embed/WesnnBbVMNs", "https://www.youtube.com/embed/I6jckmkU90w", "https://www.youtube.com/embed/66dm-vf3Yew", "https://www.youtube.com/embed/2YF_wwrUFBU"
                 , "https://www.youtube.com/embed/tzWTqG6AjgA", "https://www.youtube.com/embed/BVxZTcXCQ1w", "https://www.youtube.com/embed/hCG1fxWsiIs", "https://www.youtube.com/embed/nXFDs9-d98k"
@@ -61,17 +63,17 @@ public class VerifyingTheDuplicatecards {
             String actualUrl = card.getAttribute ("src");
 
             if (uniqueUrls.contains (actualUrl)) {
-                System.out.println ("Duplicate found: " + actualUrl);
+                System.out.println ("Duplicate found --> " + actualUrl);
             } else {
                 uniqueUrls.add (actualUrl);
                 if (Arrays.asList (videoscard).contains (actualUrl)) {
                     uniqueCount++;
-                    System.out.println ("Found: " + actualUrl);
+                    System.out.println ("Found: " + uniqueCount + "-->" + actualUrl);
                 }
             }
         }
 
-        System.out.println ("Total unique videos found: " + uniqueCount);
+        System.out.println ("Total unique videos url found: " + uniqueCount);
         Assert.assertEquals (uniqueCount, videoscard.length);
     }
 }

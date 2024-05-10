@@ -160,31 +160,31 @@ public class CourseVideos {
 
         // Another Method for verifying Duplicate In The Wep page Using HashSet
 
-        String[] videosLinks = {"https://careerscloud.in/course-details/6/video/2154", "https://careerscloud.in/course-details/6/video/2158",
+        String[] videosLinks = {"https://careerscloud.in/course-details/6/video/2164", "https://careerscloud.in/course-details/6/video/2158",
                 "https://careerscloud.in/course-details/6/video/2162", "https://careerscloud.in/course-details/6/video/2160",
                 "https://careerscloud.in/course-details/6/video/2155"};
 
-        Set<String> uniqueLinks = new HashSet<> ();
-        int duplicateCount = 0;
-        int actuallinkcount = 0;
-
         List<WebElement> recentVideos = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
+        Set<String> uniqueurl = new HashSet<> ();
+        int uniquevideosurlcount = 0;
 
-        for (WebElement video : recentVideos) {
-            String actualVideoLink = video.getAttribute ("href");
-            System.out.println ("--------------------------------");
-            actuallinkcount++;
-            System.out.println ("Found :" + actuallinkcount + "-->" + actualVideoLink);
+        for (WebElement recentVideo : recentVideos) {
+            String actualUrls = recentVideo.getAttribute ("href");
 
-            if (Arrays.asList (videosLinks).contains (actualVideoLink)) {
-                if (!uniqueLinks.add (actualVideoLink)) {
-                    duplicateCount++;
-                    System.out.println ("Found Duplicate: " + actualVideoLink);
+            if (uniqueurl.contains (actualUrls)) {
+
+                System.out.println ("Duplicate found --> " + actualUrls);
+            } else {
+                uniqueurl.add (actualUrls);
+                if (Arrays.asList (videosLinks).contains (actualUrls)) {
+                    uniquevideosurlcount++;
+                    System.out.println ("Found: " + uniquevideosurlcount + "-->" + actualUrls);
                 }
             }
         }
+        System.out.println ("Total unique videos url found: " + uniquevideosurlcount);
+        Assert.assertEquals (uniquevideosurlcount, videosLinks.length);
 
-        Assert.assertEquals (duplicateCount, 0, "Found duplicates in the list of recent video links");
 
         // Clicking The Back Arrow in Viedo page
 
@@ -210,7 +210,7 @@ public class CourseVideos {
         JavascriptExecutor scrollpageup = (JavascriptExecutor) driver;
         scrollpageup.executeScript ("window.scrollTo(0,0)");
 
-        // Verifying the videoscard
+        // Verifying the videoscard was getting duplicating using the unique videos Url
 
         String[] videoscard = {"https://www.youtube.com/embed/WesnnBbVMNs", "https://www.youtube.com/embed/I6jckmkU90w", "https://www.youtube.com/embed/66dm-vf3Yew", "https://www.youtube.com/embed/2YF_wwrUFBU"
                 , "https://www.youtube.com/embed/tzWTqG6AjgA", "https://www.youtube.com/embed/BVxZTcXCQ1w", "https://www.youtube.com/embed/hCG1fxWsiIs", "https://www.youtube.com/embed/nXFDs9-d98k"

@@ -37,31 +37,34 @@ public class VerifyingRecentArticlePresent {
         System.out.println (Arrays.toString (articleLinks));
 
 
-        // Another Method for verifying Duplicate In The Wep page
+        // Another Method for verifying Duplicate In The Wep page Using HashSet
 
-        // Assuming 'driver' is an instance of WebDriver initialized earlier
+        // This method was working fine
 
-        String[] videosLinks = {"https://careerscloud.in/course-details/6/video/2154", "https://careerscloud.in/course-details/6/video/2158",
+        String[] videosLinks = {"https://careerscloud.in/course-details/6/video/2164", "https://careerscloud.in/course-details/6/video/2158",
                 "https://careerscloud.in/course-details/6/video/2162", "https://careerscloud.in/course-details/6/video/2160",
                 "https://careerscloud.in/course-details/6/video/2155"};
 
-        Set<String> uniqueLinks = new HashSet<> ();
-        int duplicateCount = 0;
-
         List<WebElement> recentVideos = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
+        Set<String> uniqueurl = new HashSet<> ();
+        int uniquevideosurlcount = 0;
 
-        for (WebElement video : recentVideos) {
-            String actualVideoLink = video.getAttribute ("href");
+        for (WebElement recentVideo : recentVideos) {
+            String actualUrls = recentVideo.getAttribute ("href");
 
-            if (Arrays.asList (videosLinks).contains (actualVideoLink)) {
-                if (!uniqueLinks.add (actualVideoLink)) {
-                    duplicateCount++;
-                    System.out.println ("Found Duplicate: " + actualVideoLink);
+            if (uniqueurl.contains (actualUrls)) {
+
+                System.out.println ("Duplicate found --> " + actualUrls);
+            } else {
+                uniqueurl.add (actualUrls);
+                if (Arrays.asList (videosLinks).contains (actualUrls)) {
+                    uniquevideosurlcount++;
+                    System.out.println ("Found: " + uniquevideosurlcount + "-->" + actualUrls);
                 }
             }
         }
-
-        Assert.assertEquals (duplicateCount, 0, "Found duplicates in the list of recent video links");
+        System.out.println ("Total unique videos url found: " + uniquevideosurlcount);
+        Assert.assertEquals (uniquevideosurlcount, videosLinks.length);
 
 
     }
