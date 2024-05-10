@@ -99,21 +99,78 @@ public class CourseDetails {
         clickingCloseicon.click ();
         System.out.println ("Sucessfully Clicked Cancel Icon");
 
-        // Clicking The Contact Icon
+//        // Clicking The Contact Icon
+//
+//        WebElement clickingContactIcon = driver.findElement (xpath ("(//*[@class=\"icon\"])[2]"));
+//        clickingContactIcon.click ();
+//
+//        // Clicking The close icon in the popup
+//
+//        Thread.sleep (3000);
+//        clickingCloseicon = driver.findElement (xpath ("//*[@class=\"ant-modal-close\"]"));
+//        clickingCloseicon.click ();
+//
+//        // Clicking The Contact Icon
+//
+//        WebElement clickingChatIcon = driver.findElement (xpath ("(//*[@class=\"icon\"])[3]"));
+//        clickingChatIcon.click ();
+//
+//        // Windows Handeling
+//
+//        Set<String> windows = driver.getWindowHandles ();
+//        Iterator<String> it = windows.iterator ();
+//        String parent = it.next ();
+//        String child = it.next ();
+//        driver.switchTo ().window (child);
+//
+//        // Maximixe The Windows
+//
+//        driver.manage ().window ().maximize ();
+//
+//        //
+//        driver.close ();
+//
+//        driver.switchTo ().window (parent);
+//
+//        // Clicking The Contact Icon
+//
+//        clickingChatIcon = driver.findElement (xpath ("(//*[@class=\"icon\"])[3]"));
+//        clickingChatIcon.click ();
+//
+//        // Windows Handeling
+//
+//        windows = driver.getWindowHandles ();
+//        it = windows.iterator ();
+//        parent = it.next ();
+//        child = it.next ();
+//        driver.switchTo ().window (child);
+//
+//        // Maximixe The Windows
+//
+//        driver.manage ().window ().maximize ();
+//
+//
+//        // Clicking the user profile in the whatsapp
+//
+//        Thread.sleep (60000);
+//        WebElement clickingProfile = driver.findElement (xpath ("(//*[@class=\"_ak72 _ak73 _ak75\"])[4]"));
+//        clickingProfile.click ();
+//        System.out.println ("Sucessfully Logined The Whatsapp");
+//
+//
+//        // Clicking the clicking send icon in the whatsapp
+//
+//        Thread.sleep (3000);
+//        WebElement clickingsendicon = driver.findElement (xpath ("//*[@data-icon=\"send\"]"));
+//        clickingsendicon.click ();
+//
+//        // Clicking the clicking send icon inside the whatsapp
+//
+//        Thread.sleep (3000);
+//        clickingsendicon = driver.findElement (xpath ("//*[@data-icon=\"send\"]"));
+//        clickingsendicon.click ();
+//
 
-        WebElement clickingContactIcon = driver.findElement (xpath ("(//*[@class=\"icon\"])[2]"));
-        clickingContactIcon.click ();
-
-        // Clicking The close icon in the popup
-
-        Thread.sleep (3000);
-        clickingCloseicon = driver.findElement (xpath ("//*[@class=\"ant-modal-close\"]"));
-        clickingCloseicon.click ();
-
-        // Clicking The Contact Icon
-
-        WebElement clickingChatIcon = driver.findElement (xpath ("(//*[@class=\"icon\"])[3]"));
-        clickingChatIcon.click ();
 
     }
 }
