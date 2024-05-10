@@ -1,4 +1,4 @@
-package Learning;
+package FeatureReference;
 
 import org.openqa.selenium.WebElement;
 
