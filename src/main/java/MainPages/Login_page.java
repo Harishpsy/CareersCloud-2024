@@ -1,6 +1,7 @@
 package MainPages;
 
-import MyCourse.CourseDoubts;
+import Doubts.AllDoubts;
+import Doubts.Doubts;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -160,10 +161,22 @@ public class Login_page {
 //        CourseDetails Details = new CourseDetails (driver);
 //        Details.Details ();
 
+//        // Calling Course Doubts
+//
+//        CourseDoubts Doubt = new CourseDoubts (driver);
+//        Doubt.Doubts ();
+
         // Calling Doubts
 
-        CourseDoubts Doubt = new CourseDoubts (driver);
-        Doubt.Doubts ();
+        Doubts doubt = new Doubts (driver);
+        doubt.doubts ();
+
+        // Calling Doubts > All Doubts
+
+        AllDoubts Doubts = new AllDoubts (driver);
+        Doubts.allDoubts ();
+
+
 
 
     }
