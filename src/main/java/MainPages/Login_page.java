@@ -74,6 +74,7 @@ public class Login_page {
         Continuebutton.click ();
 
         //Changing the focus to the parent window
+
         driver.switchTo ().window (parent);
 
 //        // Calling Home Page
@@ -175,8 +176,6 @@ public class Login_page {
 
         AllDoubts Doubts = new AllDoubts (driver);
         Doubts.allDoubts ();
-
-
 
 
     }
