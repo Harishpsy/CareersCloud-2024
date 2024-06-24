@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import static org.openqa.selenium.By.*;
@@ -450,16 +452,29 @@ public class AllDoubts {
         // Getting the text From The All Filter and Verifying
 
         Thread.sleep (5000);
-        WebElement printingTheAllFilter = driver.findElement (id ("doubt-sidebar-body"));
-        String Alltext = printingTheAllFilter.getText ();
-        System.out.println (Alltext);
+
+        WebElement printingTheAllFilter = driver.findElement (By.id ("doubt-sidebar-body"));
+        String allText = printingTheAllFilter.getText ();
+        System.out.println (allText);
+
+        List<WebElement> courseLists = driver.findElements (By.xpath ("//div[@class='courselist']"));
+
+        Set<String> uniqueCourse = new HashSet<> ();
+        int uniqueCourseCount = 0;
+
+        for (WebElement courseList : courseLists) {
+            String actualCourseList = courseList.getText ();
+
+            if (uniqueCourse.add (actualCourseList)) {
+                // Only do this if it is a unique course
+                if (allText.contains (actualCourseList)) {
+                    uniqueCourseCount++;
+                    System.out.println ("Found: " + uniqueCourseCount + "-->" + actualCourseList);
+                }
+            }
 
 
-
-
-
-
-
+        }
     }
 }
 
