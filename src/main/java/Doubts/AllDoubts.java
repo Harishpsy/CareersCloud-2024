@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
+import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
@@ -158,6 +160,7 @@ public class AllDoubts {
 
         // Clicking the Follow Icon
 
+        Thread.sleep (3000);
         WebElement followIcon = driver.findElement (By.xpath ("//*[@alt=\"followed\"]"));
         WebElement unfollowIcon = driver.findElement (By.xpath ("//*[@alt=\"followed\"]"));
 
@@ -300,7 +303,7 @@ public class AllDoubts {
                 Thread.sleep (3000);
                 JavascriptExecutor jse = (JavascriptExecutor) driver;
                 jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
-                System.out.println ("Successfully scroll The page " + (i + 19) + " time(s).");
+                System.out.println ("Successfully scroll The page " + (i + 1) + " time(s).");
             } catch (Exception scroll) {
                 System.out.println ("Failed to Scroll : " + scroll.getMessage ());
             }
@@ -311,6 +314,150 @@ public class AllDoubts {
         Thread.sleep (5000);
         WebElement clickingFloatButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-vertical-align-top\"]"));
         clickingFloatButton.click ();
+
+        // Clicking The Googleplay Button
+
+        Thread.sleep (5000);
+        WebElement clickingGooglePlayButton = driver.findElement (xpath ("//a[@href=\"https://play.google.com/store/apps/details?id=com.affairscloud\"]"));
+        clickingGooglePlayButton.click ();
+
+        // Windows Handeling
+
+        Thread.sleep (3000);
+        Set<String> windows = driver.getWindowHandles ();
+        Iterator<String> it = windows.iterator ();
+        String parent = it.next ();
+        String child = it.next ();
+        driver.switchTo ().window (child);
+
+        // Closing the current tab
+
+        Thread.sleep (5000);
+        driver.close ();
+
+        // Changing the current focus to Parent
+
+        driver.switchTo ().window (parent);
+
+        // Clicking The course In the OverFlow on The right Side
+
+        Thread.sleep (5000);
+        WebElement clickingCourseOnRightside = driver.findElement (xpath ("//*[@alt=\"cc69e8a3b3440463929f5f59e45f3175.webp\"]"));
+        clickingCourseOnRightside.click ();
+        System.out.println ("SuccessFully Navigated To the course");
+
+        // Clicking The Breadcrumbs to Navigate
+
+        Thread.sleep (5000);
+        WebElement clickingCourseBreadcrumbs = driver.findElement (xpath ("//*[text()=\"Course\"]"));
+        clickingCourseBreadcrumbs.click ();
+        System.out.println ("SuccessFully Navigated To the Doubts Page");
+
+        // Clicking The Search On the Left side Filter
+
+        Thread.sleep (5000);
+        clickingSearch = driver.findElement (xpath ("//*[@name=\"comments2\"]"));
+        clickingSearch.sendKeys ("Mock");
+
+        // Pressing The KeyBoard Action
+
+        robot = new Robot ();
+
+        // clicking The Enter Button
+
+        Thread.sleep (3000);
+        robot.keyPress (KeyEvent.VK_ENTER);
+
+        // Releasing The Enter Button
+
+        Thread.sleep (3000);
+        robot.keyRelease (KeyEvent.VK_ENTER);
+
+        // Set the number of times to perform the action
+
+        int numberOfTimesClickingBack = 4;
+
+        // Creating a Loop to performe this action multiple times
+
+        for (int i = 0; i < numberOfTimesClickingBack; i++) {
+
+            robot.keyPress (KeyEvent.VK_BACK_SPACE);
+
+            // Releasing the BackSpace
+
+            robot.keyRelease (KeyEvent.VK_BACK_SPACE);
+        }
+
+        // Pressing The Enter Button In The Keyboard
+
+        Thread.sleep (3000);
+        robot.keyPress (KeyEvent.VK_ENTER);
+
+        // Releassing The Enter Button In The Keyboard
+
+        robot.keyRelease (KeyEvent.VK_ENTER);
+        System.out.println ("SucessFully Released The Enter Button");
+
+        // Clicking The Course For Filter The Doubts
+
+        int clickingCoursetwotimes = 2;
+
+        for (int i = 0; i < clickingCoursetwotimes; i++) {
+
+            try {
+                Thread.sleep (5000);
+                WebElement clickingCourseForFilter = driver.findElement (xpath ("(//*[@class=\"doubt-left-sidebar-course-body\"])[2]"));
+                clickingCourseForFilter.click ();
+                System.out.println ("Course SuccessFully Clicked ");
+            } catch (Exception Clicking) {
+                System.out.println ("Course was Not Found");
+
+            }
+
+        }
+
+        // Clicking The Subject In the Doubt Filter
+
+        Thread.sleep (5000);
+        WebElement clickingSubject = driver.findElement (xpath ("//*[text() = 'Subjects']"));
+        clickingSubject.click ();
+
+        // Getting the text From The Filter and Verifying
+
+        Thread.sleep (3000);
+        WebElement printingTheSubjectFilter = driver.findElement (By.id ("doubt-sidebar-body"));
+        String subjectText = printingTheSubjectFilter.getText ();
+        System.out.println (subjectText);
+
+        // Clicking The Exams In The Doubt Filter
+
+        Thread.sleep (5000);
+        WebElement clickingExamFilter = driver.findElement (xpath ("//*[text() = 'Exams']"));
+        clickingExamFilter.click ();
+
+        // Getting the text From The Exam Filter and Verifying
+
+        Thread.sleep (5000);
+        WebElement printingTheExamFilter = driver.findElement (id ("doubt-sidebar-body"));
+        String examText = printingTheExamFilter.getText ();
+        System.out.println ("Exam Course Name --> " + examText);
+
+        // Clicking The All In The Doubt Filter
+
+        WebElement clickingAllFilter = driver.findElement (xpath ("//*[text() = 'All']"));
+        clickingAllFilter.click ();
+
+        // Getting the text From The All Filter and Verifying
+
+        Thread.sleep (5000);
+        WebElement printingTheAllFilter = driver.findElement (id ("doubt-sidebar-body"));
+        String Alltext = printingTheAllFilter.getText ();
+        System.out.println (Alltext);
+
+
+
+
+
 
 
     }
