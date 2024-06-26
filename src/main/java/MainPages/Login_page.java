@@ -26,7 +26,7 @@ public class Login_page {
 
         // Entering the url
 
-        driver.get ("https://careerscloud.in/");
+        driver.get ("https://careerscloud.in/home-feed");
         driver.manage ().window ().maximize ();
 
         // Waiting for element visible
@@ -58,7 +58,7 @@ public class Login_page {
 
         //Entering Password
 
-        WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (40)); // 40 seconds timeout
+        WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (40)); // 40seconds timeout
         // WebElement passwordField = wait.until (ExpectedConditions.elementToBeClickable (xpath ("//*[@name='Passwd']")));
         wait.until (ExpectedConditions.visibilityOf (passwordField));
         passwordField.sendKeys ("Harish@1998");
@@ -132,7 +132,7 @@ public class Login_page {
 //        MyCourse_Filters Filter = new MyCourse_Filters (driver);
 //        Filter.Filter ();
 
-//        //Calling CoursePath
+//        //Calling Course Path
 //
 //        CoursePath path = new CoursePath (driver);
 //        path.Path ();
