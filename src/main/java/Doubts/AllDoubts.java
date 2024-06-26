@@ -453,6 +453,39 @@ public class AllDoubts {
         System.out.println ("Exam Course--> " + examText);
         System.out.println ("-------------------------------------------------------");
 
+        // Verifying the Exam Filter by using the Assertion method
+
+        String[] ExamcourseNames = examText.split ("\n"); // Splitting text into course names
+
+        System.out.println ("SuccessFully Fetching The Course Names -->" + Arrays.toString (ExamcourseNames));
+
+        // Fetching the course list elements
+
+        List<WebElement> ExamcourseLists = driver.findElements (By.xpath ("//div[@class='doubt-left-sidebar-course-body']"));
+
+        Set<String> uniqueExamCourse = new HashSet<> ();
+
+        int uniqueExamCourseCount = 0;
+
+        // Iterating through course lists to find unique courses and count matches
+        for (WebElement ExamcourseList : ExamcourseLists) {
+            String actualExamCourseList = ExamcourseList.getText ().trim ();
+
+            if (uniqueExamCourse.contains (actualExamCourseList)) {
+                System.out.println ("Duplicate found --> " + actualExamCourseList);
+            } else {
+                uniqueExamCourse.add (actualExamCourseList);
+
+                if (Arrays.asList (ExamcourseNames).contains (actualExamCourseList)) {
+                    uniqueExamCourseCount++;
+                    System.out.println ("Found: " + uniqueExamCourseCount + " --> " + actualExamCourseList);
+                }
+            }
+        }
+
+        System.out.println ("Total unique CourseName found: " + uniqueExamCourseCount);
+        Assert.assertEquals (uniqueExamCourseCount, ExamcourseNames.length);
+
         // Clicking The All In The Doubt Filter
 
         WebElement clickingAllFilter = driver.findElement (xpath ("//*[text() = 'All']"));
