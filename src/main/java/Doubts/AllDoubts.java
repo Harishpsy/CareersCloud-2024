@@ -3,11 +3,15 @@ package Doubts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.*;
+import java.util.Set;
 
 import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
@@ -382,9 +386,11 @@ public class AllDoubts {
         for (int i = 0; i < numberOfTimesClickingBack; i++) {
 
             robot.keyPress (KeyEvent.VK_BACK_SPACE);
+            System.out.println (" keyPress for search the course ");
 
             // Releasing the BackSpace
 
+            System.out.println ("keyRelease for remove thr text ");
             robot.keyRelease (KeyEvent.VK_BACK_SPACE);
         }
 
@@ -424,10 +430,14 @@ public class AllDoubts {
 
         // Getting the text From The Filter and Verifying
 
+        int examcoursecount = 0;
         Thread.sleep (3000);
         WebElement printingTheSubjectFilter = driver.findElement (By.id ("doubt-sidebar-body"));
         String subjectText = printingTheSubjectFilter.getText ();
-        System.out.println (subjectText);
+        examcoursecount++;
+        System.out.println (subjectText + examcoursecount + " <------ Subject Course");
+        System.out.println ("-------------------------------------------------------");
+
 
         // Clicking The Exams In The Doubt Filter
 
@@ -440,24 +450,32 @@ public class AllDoubts {
         Thread.sleep (5000);
         WebElement printingTheExamFilter = driver.findElement (id ("doubt-sidebar-body"));
         String examText = printingTheExamFilter.getText ();
-        System.out.println ("Exam Course Name --> " + examText);
+        System.out.println ("Exam Course--> " + examText);
+        System.out.println ("-------------------------------------------------------");
 
         // Clicking The All In The Doubt Filter
 
         WebElement clickingAllFilter = driver.findElement (xpath ("//*[text() = 'All']"));
         clickingAllFilter.click ();
 
-        // Getting the text From The All Filter and Verifying
+        // Getting the text From The All Filter and Verifying there is any duplicate present
 
         Thread.sleep (5000);
 
+        // Fetching the text from the doubt-sidebar-body element
+
         WebElement printingTheAllFilter = driver.findElement (By.id ("doubt-sidebar-body"));
         String allText = printingTheAllFilter.getText ();
-        System.out.println (" All Course List In Filter ---> " + allText);
+        System.out.println (allText);
+        System.out.println ("-------------------------------------------------------");
 
-        String[] courseName = {allText};
+        // Verifying the All Filter by using the Assertion method
 
-        System.out.println ("Entered To Verify ");
+        String[] courseNames = allText.split ("\n"); // Splitting text into course names
+
+        System.out.println ("SuccessFully Fetching The Course Names -->" + Arrays.toString (courseNames));
+
+        // Fetching the course list elements
 
         List<WebElement> courseLists = driver.findElements (By.xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
@@ -465,27 +483,25 @@ public class AllDoubts {
 
         int uniqueCourseCount = 0;
 
-        System.out.println ("Entering Loop");
-
+        // Iterating through course lists to find unique courses and count matches
         for (WebElement courseList : courseLists) {
+            String actualAllCourseList = courseList.getText ().trim ();
 
-            String actualCourseList = courseList.getText ();
-
-            System.out.println ("Printing Course Name ---> " + actualCourseList);
-
-            if (uniqueCourse.contains (actualCourseList)) {
-                System.out.println ("Duplicate found --> " + actualCourseList);
+            if (uniqueCourse.contains (actualAllCourseList)) {
+                System.out.println ("Duplicate found --> " + actualAllCourseList);
             } else {
-                uniqueCourse.add (actualCourseList);
-                if (Arrays.asList (courseName).contains (actualCourseList)) {
+                uniqueCourse.add (actualAllCourseList);
+
+                if (Arrays.asList (courseNames).contains (actualAllCourseList)) {
                     uniqueCourseCount++;
-                    System.out.println ("Found: " + uniqueCourseCount + "-->" + actualCourseList);
+                    System.out.println ("Found: " + uniqueCourseCount + " --> " + actualAllCourseList);
                 }
             }
         }
-        System.out.println ("Total unique CourseName found: " + uniqueCourseCount);
-//            Assert.assertEquals (uniqueCourseCount, courseName.length);
-    }
 
+        System.out.println ("Total unique CourseName found: " + uniqueCourseCount);
+        Assert.assertEquals (uniqueCourseCount, courseNames.length);
+
+    }
 }
 
