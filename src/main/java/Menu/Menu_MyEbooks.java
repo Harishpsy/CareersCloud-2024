@@ -2,9 +2,11 @@ package Menu;
 
 import PageObjectModule.Myebookspageobject;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -20,7 +22,6 @@ public class Menu_MyEbooks {
     public Menu_MyEbooks(WebDriver driver) {
         this.driver = driver;
     }
-
     public void MyEbooks() throws InterruptedException {
 
         PageFactory.initElements (driver, Myebookspageobject.class);
@@ -30,157 +31,192 @@ public class Menu_MyEbooks {
         Thread.sleep (5000);
         clickingTheMyEbooks.click ();
 
-        // Click the three dots in the My Ebook
+        //Verifying there is content is present if not there navigate to next module
 
-        Thread.sleep (5000);
-        Threedots.click ();
+        //Check if "No Records Found." element is displayed
 
-        //Clicking the remove My ebook icon in dropdown
-//
-//        Thread.sleep (3000);
-//        Remove_My_ebook.click ();
+        WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (30));
 
-        // Again Click the three dots in the My Ebook
+        // Sleep for 3 seconds
 
         Thread.sleep (3000);
-        Threedots.click ();
+        try {
+            // Check if noRecordFound element is displayed and log the result
+            boolean noRecordFoundDisplayed = false;
+            boolean threedotsDisplayed = false;
 
-        /* Clicking the share icon in My Ebook */
+            try {
+                noRecordFoundDisplayed = noRecordFound.isDisplayed ();
+            } catch (NoSuchElementException e) {
+                System.out.println ("noRecordFound element not found.");
+            }
 
-        Thread.sleep (3000);
-        Share_icon.click ();
+            try {
+                threedotsDisplayed = Threedots.isDisplayed ();
+            } catch (NoSuchElementException e) {
+                System.out.println ("Threedots element not found.");
+            }
 
-        //click the copy link in the share popup
+            System.out.println ("noRecordFound displayed: " + noRecordFoundDisplayed);
+            System.out.println ("Threedots displayed: " + threedotsDisplayed);
 
-        Thread.sleep (3000);
-        Copy_link.click ();
+            // Proceed with if-else logic
+            if (noRecordFoundDisplayed) {
+                clickingMycoin.click ();
+                System.out.println ("No records found message is displayed, navigating to My Coin page.");
 
-        //Clicking the cancel button in the in share popup
+                // Handle the case when no records are found
 
-        WebDriverWait waitforCancelButtonclick = new WebDriverWait (driver, Duration.ofSeconds (30));
-        Cancelbutton.click ();
+            } else if (threedotsDisplayed) {
+                System.out.println ("Successfully entering if-else statement");
 
-        // Again Click the three dots in the My Ebook
+                // Click the three dots menu and perform actions
+                Thread.sleep (9000);
+                Threedots.click ();
+                System.out.println ("Successfully Clicked Three Dots ");
 
-        Thread.sleep (3000);
-        Threedots.click ();
+                // Example: Clicking the remove My ebook icon in dropdown
 
-        //clicking the report icon
+                Thread.sleep (3000);
+                Remove_My_ebook.click ();
 
-        Thread.sleep (1000);
-        Reporticon.click ();
+                // Click the three dots again
 
-        //Click the wrong information radio button
+                Thread.sleep (3000);
+                Threedots.click ();
 
-        Thread.sleep (1000);
-        Wronginformationradiobutton.click ();
+                // Click the share icon in My Ebook
 
-        //Entering the text inside the report text field
+                Thread.sleep (3000);
+                Share_icon.click ();
 
-        Enterthereport.sendKeys ("Checking The text was Entering In The Report Text Field");
+                // Click the copy link in the share popup
 
-        // Click the report button
+                Thread.sleep (3000);
+                Copy_link.click ();
 
-        Thread.sleep (3000);
-        // Reportbutton.click ();
+                // Click the cancel button in the share popup
 
-        // Clicking The Cancel Button
+                wait.until (ExpectedConditions.elementToBeClickable (Cancelbutton)).click ();
 
-        Cancelbutton.click ();
+                // Click the three dots again
 
-        //Clicking the Course name in My ebook Card
+                Thread.sleep (3000);
+                Threedots.click ();
 
-        Thread.sleep (3000);
-        ClickingCourseName.click ();
+                // Click the report icon
 
-        //Clicking the breadcrums to navigate backward to My ebook page
+                Thread.sleep (1000);
+                Reporticon.click ();
 
-        Thread.sleep (3000);
-        ClickingCoursebreadcrums.click ();
+                // Click the wrong information radio button
 
-        // Clicking the like button
+                Thread.sleep (1000);
+                Wronginformationradiobutton.click ();
 
-        Thread.sleep (3000);
-        Likebutton.click ();
+                // Enter text inside the report text field
 
-        // ClickingTheUnLikesButton
+                Enterthereport.sendKeys ("Checking The text was Entering In The Report Text Field");
 
-        clickingUnlikeButton.click ();
+                // Click the report button (currently commented out)
 
-        // Clicking The Ebook
+                // Thread.sleep(3000);
+                // Reportbutton.click();
 
-        WebElement clickingEbook = driver.findElement (xpath ("//*[@class=\"ebook-cover-image-container\"]"));
-        clickingEbook.click ();
+                // Click the cancel button
 
-//        // Clicking UnLike Button
-//
-//        Thread.sleep (3000);
-//        WebElement clickingLikeButton = driver.findElement (xpath ("//*[@class=\"unlike\"]"));
-//        clickingLikeButton.click ();
+                Thread.sleep (3000);
+                CANCELbutton.click ();
 
-        // Clicking Comment Icon
+                // Click the course name in My ebook Card
 
-        Thread.sleep (3000);
-        clickingCommentIcon.click ();
+                Thread.sleep (3000);
+                ClickingCourseName.click ();
 
-        //  Entering Comment In The TextField
+                // Click the breadcrumbs to navigate backward to My ebook page
 
-        Thread.sleep (3000);
-        WebElement enteringTheCommentInTextField = driver.findElement (xpath ("//*[@name=\"comments1\"]"));
-        enteringTheCommentInTextField.sendKeys ("Thanks For The Updates");
+                Thread.sleep (3000);
+                ClickingCoursebreadcrums.click ();
 
-//        // Clicking The Send Button In The Comment Text Field
-//
-//        Thread.sleep (2000);
-//        clickingSendButton.click ();
+                // Click the like button
 
-        // Clicking the share icon in My Notes
+                Thread.sleep (3000);
+                Likebutton.click ();
 
-        Thread.sleep (5000);
-        Share_icon.click ();
+                // Click the unlike button
 
-        //click the copy link in the share popup
+                Thread.sleep (3000);
+                clickingUnlikeButton.click ();
 
-        Thread.sleep (1000);
-        Copy_link.click ();
+                // Click the ebook
 
-        //Clicking the cancel button in the in share popup
+                WebElement clickingEbook = driver.findElement (xpath ("//*[@class='ebook-cover-image-container']"));
+                clickingEbook.click ();
 
-        waitforCancelButtonclick = new WebDriverWait (driver, Duration.ofSeconds (30));
-        Cancelbutton.click ();
+                // Click the comment icon
 
-        // Scroling BackWard The Ebook page
+                Thread.sleep (3000);
+                clickingCommentIcon.click ();
 
-        Thread.sleep (3000);
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(document.body.scrollHeight,0)");
+                // Enter comment in the text field
 
-        // Clicking The View Button In The Ebook
+                Thread.sleep (3000);
+                WebElement enteringTheCommentInTextField = driver.findElement (xpath ("//*[@name='comments1']"));
+                enteringTheCommentInTextField.sendKeys ("Thanks For The Updates");
 
-        clickingViewButtonInEbook.click ();
+                // Click the share icon in My Notes
 
-        //Windows Handeling child to parent
+                Thread.sleep (5000);
+                Share_icon.click ();
 
-        Thread.sleep (3000);
-        Set<String> windows = driver.getWindowHandles ();
-        Iterator<String> it = windows.iterator ();
-        String parent = it.next ();
-        String child = it.next ();
-        driver.switchTo ().window (child);
-        driver.close ();
-        driver.switchTo ().window (parent);
+                // Click the copy link in the share popup
 
-        // Clicking Back Button in the Ebook Page
+                Thread.sleep (5000);
+                Copy_link.click ();
 
-        driver.switchTo ().window (parent);
-        clickingBackButton.click ();
+                // Click the cancel button in the share popup
 
-        // Clicking The Home Button
+                wait.until (ExpectedConditions.elementToBeClickable (Cancelbutton)).click ();
 
-        Thread.sleep (2000);
-        clickingHomeButton.click ();
+                // Scroll backward on the Ebook page
+
+                Thread.sleep (3000);
+                JavascriptExecutor jse = (JavascriptExecutor) driver;
+                jse.executeScript ("window.scrollTo(document.body.scrollHeight,0)");
+
+                // Click the view button in the Ebook
+
+                clickingViewButtonInEbook.click ();
+
+                // Window handling: switching from child to parent
+
+                Thread.sleep (3000);
+                Set<String> windows = driver.getWindowHandles ();
+                Iterator<String> it = windows.iterator ();
+                String parent = it.next ();
+                String child = it.next ();
+                driver.switchTo ().window (child);
+                driver.close ();
+                driver.switchTo ().window (parent);
+
+                // Click the back button on the Ebook page
+
+                clickingBackButton.click ();
+
+                // Click the home button
+
+                Thread.sleep (2000);
+                clickingHomeButton.click ();
+                System.out.println ("Exiting if-else statement");
+
+            } else {
+                System.out.println ("Neither noRecordFound nor Threedots are displayed.");
+            }
+        } catch (Exception e) {
+            System.out.println ("An error occurred: " + e.getMessage ());
+            e.printStackTrace ();
+        }
     }
-
-
 }
+
 

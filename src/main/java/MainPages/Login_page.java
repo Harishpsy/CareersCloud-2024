@@ -1,7 +1,6 @@
 package MainPages;
 
-import Doubts.AllDoubts;
-import Doubts.Doubts;
+import Menu.*;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +17,9 @@ import static PageObjectModule.Loginpageobject.*;
 
 
 public class Login_page {
+
     public static WebDriver driver = new ChromeDriver ();
+//    public static WebDriver driver = new FirefoxDriver ();
 
 
     public static void main(String[] args) throws InterruptedException, AWTException {
@@ -92,10 +93,10 @@ public class Login_page {
 //        Menu_MyQuestions MyQuestions = new Menu_MyQuestions (driver);
 //        MyQuestions.Myquestion ();
 //
-//        // CALLING MY EBOOKS
-//
-//        Menu_MyEbooks MyEbooks = new Menu_MyEbooks (driver);
-//        MyEbooks.MyEbooks ();
+        // CALLING MY EBOOKS
+
+        Menu_MyEbooks MyEbooks = new Menu_MyEbooks (driver);
+        MyEbooks.MyEbooks ();
 //
 //        // CALLING MY COINS
 //
@@ -167,15 +168,15 @@ public class Login_page {
 //        CourseDoubts Doubt = new CourseDoubts (driver);
 //        Doubt.Doubts ();
 
-        // Calling Doubts
-
-        Doubts doubt = new Doubts (driver);
-        doubt.doubts ();
-
-        // Calling Doubts > All Doubts
-
-        AllDoubts Doubts = new AllDoubts (driver);
-        Doubts.allDoubts ();
+//        // Calling Doubts
+//
+//        Doubts doubt = new Doubts (driver);
+//        doubt.doubts ();
+//
+//        // Calling Doubts > All Doubts
+//
+//        AllDoubts Doubts = new AllDoubts (driver);
+//        Doubts.allDoubts ();
 
 
     }

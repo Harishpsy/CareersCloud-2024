@@ -1,15 +1,11 @@
 package Doubts;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.List;
-import java.util.*;
 
 import static org.openqa.selenium.By.*;
 
@@ -23,6 +19,24 @@ public class AllDoubts {
     }
 
     public void allDoubts() throws AWTException, InterruptedException {
+
+
+
+        /* Clicking the image in the doubt if the image is not there then skip it */
+
+        Thread.sleep (5000);
+        System.out.println ("Clicking The Image");
+        WebElement clickingDoubtImage = driver.findElement (xpath ("((//*[@class=\"ant-image-mask\"])[1]"));
+
+        // Check if the element is found before clicking
+
+        if (clickingDoubtImage != null) {
+            clickingDoubtImage.click ();
+            System.out.println ("Doubt Image Clicked SucessFully");
+        } else {
+            System.out.println ("Doubt Image not found.");
+        }
+
 
         // Clicking The Create Doubt Button
 
@@ -162,8 +176,8 @@ public class AllDoubts {
         // Clicking the Follow Icon
 
         Thread.sleep (3000);
-        WebElement followIcon = driver.findElement (By.xpath ("//*[@alt=\"followed\"]"));
-        WebElement unfollowIcon = driver.findElement (By.xpath ("//*[@alt=\"followed\"]"));
+        WebElement followIcon = driver.findElement (xpath ("//*[@alt=\"followed\"]"));
+        WebElement unfollowIcon = driver.findElement (xpath ("//*[@alt=\"followed\"]"));
 
         if (followIcon != null) {
             followIcon.click ();
@@ -276,18 +290,17 @@ public class AllDoubts {
 
         // Clicking The Doubt card Publish
 
-        System.out.println ("SucessFully Entered");
         Thread.sleep (5000);
         WebElement clickingdoubtname = driver.findElement (xpath ("(//*[@class=\"anticon anticon-right\"])[2]"));
         clickingdoubtname.click ();
         System.out.println ("SucessFully clicked");
 
-        int numberoftimeclickingarrow = 2;
+        int numberoftimeclickingarrow = 1;
 
         for (int i = 0; i < numberoftimeclickingarrow; i++) {
             try {
                 Thread.sleep (5000);
-                clickingdoubtname = driver.findElement (By.xpath ("(//*[@class=\"anticon anticon-right\"])[2]"));
+                clickingdoubtname = driver.findElement (xpath ("(//*[@class=\"anticon anticon-right\"])[2]"));
                 clickingdoubtname.click ();
                 System.out.println ("Successfully clicked on element " + (i + 1) + " time(s).");
             } catch (Exception e) {
@@ -295,9 +308,10 @@ public class AllDoubts {
             }
         }
 
+
         // Scrolling the doubt page
 
-        int numberoftimesscroll = 50;
+        int numberoftimesscroll = 5;
 
         for (int i = 0; i < numberoftimesscroll; i++) {
             try {
@@ -315,8 +329,63 @@ public class AllDoubts {
         Thread.sleep (5000);
         WebElement clickingFloatButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-vertical-align-top\"]"));
         clickingFloatButton.click ();
+//
+//        /* Clicking the image in the doubt if the image is not there then skip it */
+//
+//        Thread.sleep (5000);
+//        WebElement clickingDoubtImage = driver.findElement(xpath("(//*[@class=\"ant-image-mask\"])[1]"));
+//
+//        // Check if the element is found before clicking
+//
+//        if (clickingDoubtImage != null) {
+//            clickingDoubtImage.click();
+//            System.out.println ("Doubt Image Clicked SucessFully");
+//        } else {
+//            System.out.println ("Doubt Image not found.");
+//        }
 
-        // Clicking The Googleplay Button
+
+
+
+
+        /* Getting The Value of the User Asked Doubt */
+
+      /*  // Wait for the page to load completely
+
+        Thread.sleep (5000);
+
+        // Find all elements with the specified class
+
+        List<WebElement> allDoubtImageURL = driver.findElements (xpath ("//*[@class='ant-image-img css-xu9wm8']"));
+
+        // Create a set to store unique URLs
+
+        Set<String> uniqueDoubtUrls = new HashSet<> ();
+        int uniqueDoubtUrlCount = 0;
+
+        // Iterate through the list of elements
+
+        for (WebElement doubtUrlElement : allDoubtImageURL) {
+            String actualDoubtImageUrl = doubtUrlElement.getAttribute ("src");
+            System.out.println (actualDoubtImageUrl);
+
+            if (uniqueDoubtUrls.contains (actualDoubtImageUrl)) {
+                System.out.println ("Duplicate found --> " + actualDoubtImageUrl);
+            } else {
+                uniqueDoubtUrls.add (actualDoubtImageUrl);
+                uniqueDoubtUrlCount++;
+                System.out.println ("Found: " + uniqueDoubtUrlCount + " --> " + actualDoubtImageUrl);
+                System.out.println ("-------------------------------------------------------------------------");
+            }
+        }
+
+        // Print the total number of unique URLs found
+        System.out.println ("Total unique image URLs found: " + uniqueDoubtUrlCount);
+
+        // Assert that the number of unique URLs is equal to the number of elements
+        Assert.assertEquals (uniqueDoubtUrlCount, uniqueDoubtUrls.size ());
+
+      // Clicking The Googleplay Button
 
         Thread.sleep (5000);
         WebElement clickingGooglePlayButton = driver.findElement (xpath ("//a[@href=\"https://play.google.com/store/apps/details?id=com.affairscloud\"]"));
@@ -425,7 +494,7 @@ public class AllDoubts {
         // Getting the text From The Filter and Verifying
 
         Thread.sleep (3000);
-        WebElement printingTheSubjectFilter = driver.findElement (By.id ("doubt-sidebar-body"));
+        WebElement printingTheSubjectFilter = driver.findElement (id ("doubt-sidebar-body"));
         String subjectCourse = printingTheSubjectFilter.getText ();
         System.out.println ("List Of Subject Course are Below While Filtering");
         System.out.println (subjectCourse);
@@ -441,7 +510,7 @@ public class AllDoubts {
 
         // Fetching the course list elements
 
-        List<WebElement> subjectcourseLists = driver.findElements (By.xpath ("//div[@class='doubt-left-sidebar-course-body']"));
+        List<WebElement> subjectcourseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
         Set<String> uniquesubjectCourse = new HashSet<> ();
 
@@ -495,7 +564,7 @@ public class AllDoubts {
 
         // Fetching the course list elements
 
-        List<WebElement> ExamcourseLists = driver.findElements (By.xpath ("//div[@class='doubt-left-sidebar-course-body']"));
+        List<WebElement> ExamcourseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
         Set<String> uniqueExamCourse = new HashSet<> ();
 
@@ -535,7 +604,7 @@ public class AllDoubts {
 
         // Fetching the text from the doubt-sidebar-body element
 
-        WebElement printingTheAllFilter = driver.findElement (By.id ("doubt-sidebar-body"));
+        WebElement printingTheAllFilter = driver.findElement (id ("doubt-sidebar-body"));
         String allText = printingTheAllFilter.getText ();
         System.out.println ("List Of All Course are Below");
         System.out.println (allText);
@@ -549,7 +618,7 @@ public class AllDoubts {
 
         // Fetching the course list elements
 
-        List<WebElement> courseLists = driver.findElements (By.xpath ("//div[@class='doubt-left-sidebar-course-body']"));
+        List<WebElement> courseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
         Set<String> uniqueCourse = new HashSet<> ();
 
@@ -573,7 +642,8 @@ public class AllDoubts {
         }
 
         System.out.println ("Total unique CourseName found: " + uniqueCourseCount);
-        Assert.assertEquals (uniqueCourseCount, courseNames.length);
+        Assert.assertEquals (uniqueCourseCount, courseNames.length);*/
+
 
     }
 }

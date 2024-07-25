@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import static MainPages.Login_page.driver;
+import static org.openqa.selenium.By.xpath;
 
 public class VerifyingUsingGetTextMethod {
 
@@ -57,5 +58,41 @@ public class VerifyingUsingGetTextMethod {
 
         System.out.println ("Total unique CourseName found: " + uniqueCourseCount);
         Assert.assertEquals (uniqueCourseCount, courseNames.length);
+
+
+        // Another Method to find the duplicate values
+
+
+        // Find all elements with the specified class
+
+        List<WebElement> allDoubtImageURL = driver.findElements (xpath ("//*[@class='ant-image-img css-xu9wm8']"));
+
+        // Create a set to store unique URLs
+
+        Set<String> uniqueDoubtUrls = new HashSet<> ();
+        int uniqueDoubtUrlCount = 0;
+
+        // Iterate through the list of elements
+
+        for (WebElement doubtUrlElement : allDoubtImageURL) {
+            String actualDoubtImageUrl = doubtUrlElement.getAttribute ("src");
+            System.out.println (actualDoubtImageUrl);
+
+            if (uniqueDoubtUrls.contains (actualDoubtImageUrl)) {
+                System.out.println ("Duplicate found --> " + actualDoubtImageUrl);
+            } else {
+                uniqueDoubtUrls.add (actualDoubtImageUrl);
+                uniqueDoubtUrlCount++;
+                System.out.println ("Found: " + uniqueDoubtUrlCount + " --> " + actualDoubtImageUrl);
+                System.out.println ("-------------------------------------------------------------------------");
+            }
+        }
+
+        // Print the total number of unique URLs found
+        System.out.println ("Total unique image URLs found: " + uniqueDoubtUrlCount);
+
+        // Assert that the number of unique URLs is equal to the number of elements
+        Assert.assertEquals (uniqueDoubtUrlCount, uniqueDoubtUrls.size ());
+
     }
 }

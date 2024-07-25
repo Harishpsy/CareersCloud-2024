@@ -57,6 +57,9 @@ public class Myebookspageobject {
 
     // Clicking The Cancel Button
 
+    @FindBy(xpath = "//*[text()=\"CANCEL\"]")
+    public static WebElement CANCELbutton;
+
     //Clicking the Course name in My ebook Card
 
     @FindBy(xpath = "//*[@class=\"anticon anticon-right right-arrow-icon\"]")
@@ -116,4 +119,17 @@ public class Myebookspageobject {
 
     @FindBy(xpath = "//a[text()='Home']")
     public static WebElement clickingHomeButton;
+
+    // No record found in my ebooks
+
+    @FindBy(xpath = "//span[text()='No Records Found.']")
+    public static WebElement noRecordFound;
+
+
+    // Clicking My Coin
+
+    @FindBy(xpath = "//*[@id=\"4\"]")
+    public static WebElement clickingMycoin;
+
+
 }
