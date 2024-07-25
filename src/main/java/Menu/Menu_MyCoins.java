@@ -6,9 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import static PageObjectModule.Mycoinpageobject.*;
+import static PageObjectModule.Myebookspageobject.clickingHomeButton;
 
 public class Menu_MyCoins {
 
@@ -22,50 +24,89 @@ public class Menu_MyCoins {
 
         PageFactory.initElements (driver, Mycoinpageobject.class);
 
-        // Clicking The My Coin
+        // Clicking My Coin
+        try {
+            if (clickingMycoin.isSelected ()) {
+                Thread.sleep (5000);
+                clickingCoinEarningText.click ();
+                System.out.println ("SucessFully clicked the clickingCoinEarningText");
+                System.out.println ("SucessFully My coin is selected 1");
 
-        Thread.sleep (3000);
-        clickingMycoin.click ();
+            } else if (clickingMycoin.isDisplayed ()) {
+                System.out.println ("SucessFully My coin is displayed 2");
+                Thread.sleep (5000);
+                // Clicking My coin
+                clickingMycoin.click ();
 
-        // Clicking Coin Earning Arrow
+                if (clickingMycoin.isDisplayed ()) {
 
-        Thread.sleep (3000);
-        clickingCoinEarningText.click ();
+                    Thread.sleep (5000);
+                    clickingCoinEarningText.click ();
+                    System.out.println ("Sucessfully Clicked the coin earning page");
 
-        // Clicking The close Button
+                } else {
 
-        Thread.sleep (3000);
-        clickingCloseIcon.click ();
+                    System.out.println ("Error occured ");
+                }
 
-        // Scrolling backward
+            } else {
 
-        Thread.sleep (3000);
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+                System.out.println ("Both has been not excecuted");
 
-        //Scrolling forward
+            }
+            // Clicking The close Button
 
-        jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo( document.body.scrollHeight, 0)");
+            Thread.sleep (5000);
+            clickingCloseIcon.click ();
+            System.out.println ("SucessFully clicked the clickingCloseIcon");
 
-        // clicking The Google Play Button
-        clickingGooglePlayButton.click ();
+            // Scrolling backward
 
-        //Windows Handeling child to parent
+            Thread.sleep (5000);
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+            System.out.println ("SucessFully page scroll");
 
-        Set<String> windows = driver.getWindowHandles ();
-        Iterator<String> it = windows.iterator ();
-        String parent = it.next ();
-        String child = it.next ();
-        driver.switchTo ().window (child);
-        driver.close ();
-        Thread.sleep (3000);
-        driver.switchTo ().window (parent);
+            //Scrolling forward
 
-        //Scrolling forward
+            Thread.sleep (5000);
+            jse = (JavascriptExecutor) driver;
+            jse.executeScript ("window.scrollTo( document.body.scrollHeight, 0)");
+            System.out.println ("SucessFully page scroll");
 
-        jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo( document.body.scrollHeight, 0)");
+            // clicking The Google Play Button
+            Thread.sleep (5000);
+            clickingGooglePlayButton.click ();
+            System.out.println ("SucessFully clicked clickingGooglePlayButton");
 
+            //Windows Handeling child to parent
+
+            Thread.sleep (5000);
+            Set<String> windows = driver.getWindowHandles ();
+            Iterator<String> it = windows.iterator ();
+            String parent = it.next ();
+            String child = it.next ();
+            driver.switchTo ().window (child);
+            driver.close ();
+            Thread.sleep (3000);
+            driver.switchTo ().window (parent);
+
+            //Scrolling forward
+
+            Thread.sleep (5000);
+            jse = (JavascriptExecutor) driver;
+            jse.executeScript ("window.scrollTo( document.body.scrollHeight, 0)");
+            // Click the home button
+
+            Thread.sleep (2000);
+            clickingHomeButton.click ();
+            System.out.println ("Exiting if-else statement : Navigating To The Next Module");
+
+        } catch (NoSuchElementException e) {
+
+            System.out.println ("Error MSG : " + e.getMessage ());
+
+        }
     }
+
 }

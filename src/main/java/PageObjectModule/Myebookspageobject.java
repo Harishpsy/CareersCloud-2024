@@ -25,6 +25,11 @@ public class Myebookspageobject {
     @FindBy(xpath = "//span[text()='Share']")
     public static WebElement Share_icon;
 
+    // Clicking the share icon
+
+    @FindBy(xpath = "//*[@class=\"share\"]")
+    public static WebElement shareicon;
+
     //click the copy link in the share popup
 
     @FindBy(xpath = "//span[text()='COPY LINK']")
@@ -122,7 +127,7 @@ public class Myebookspageobject {
 
     // No record found in my ebooks
 
-    @FindBy(xpath = "//span[text()='No Records Found.']")
+    @FindBy(xpath = "//*[text()='No Records Found.']")
     public static WebElement noRecordFound;
 
 

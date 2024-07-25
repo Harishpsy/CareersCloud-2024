@@ -100,8 +100,8 @@ public class Login_page {
 //
 //        // CALLING MY COINS
 //
-//        Menu_MyCoins MyCoins = new Menu_MyCoins (driver);
-//        MyCoins.MyCoins ();
+        Menu_MyCoins MyCoins = new Menu_MyCoins (driver);
+        MyCoins.MyCoins ();
 //
 //        // CALLING MY POINTS
 //
