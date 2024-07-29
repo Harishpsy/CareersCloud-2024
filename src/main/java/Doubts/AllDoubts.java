@@ -3,9 +3,12 @@ package Doubts;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.*;
 
 import static org.openqa.selenium.By.*;
 
@@ -19,23 +22,6 @@ public class AllDoubts {
     }
 
     public void allDoubts() throws AWTException, InterruptedException {
-
-
-
-        /* Clicking the image in the doubt if the image is not there then skip it */
-
-        Thread.sleep (5000);
-        System.out.println ("Clicking The Image");
-        WebElement clickingDoubtImage = driver.findElement (xpath ("((//*[@class=\"ant-image-mask\"])[1]"));
-
-        // Check if the element is found before clicking
-
-        if (clickingDoubtImage != null) {
-            clickingDoubtImage.click ();
-            System.out.println ("Doubt Image Clicked SucessFully");
-        } else {
-            System.out.println ("Doubt Image not found.");
-        }
 
 
         // Clicking The Create Doubt Button
@@ -329,34 +315,72 @@ public class AllDoubts {
         Thread.sleep (5000);
         WebElement clickingFloatButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-vertical-align-top\"]"));
         clickingFloatButton.click ();
-//
-//        /* Clicking the image in the doubt if the image is not there then skip it */
-//
-//        Thread.sleep (5000);
-//        WebElement clickingDoubtImage = driver.findElement(xpath("(//*[@class=\"ant-image-mask\"])[1]"));
-//
-//        // Check if the element is found before clicking
-//
-//        if (clickingDoubtImage != null) {
-//            clickingDoubtImage.click();
-//            System.out.println ("Doubt Image Clicked SucessFully");
-//        } else {
-//            System.out.println ("Doubt Image not found.");
-//        }
 
+        /* Clicking the image in the doubt if the image is not there then skip it */
 
+        Thread.sleep (5000);
+        WebElement clickingDoubtImage = driver.findElement (xpath ("(//*[@class=\"ant-image-mask\"])[1]"));
 
+        // Check if the element is found before clicking
 
+        if (clickingDoubtImage != null) {
+            clickingDoubtImage.click ();
+            System.out.println ("Doubt Image Clicked SucessFully");
+        } else {
+            System.out.println ("Doubt Image not found.");
+        }
+
+        // Clicking The Flip Button in the Y axis
+
+        Thread.sleep (5000);
+        WebElement clickingFlipButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipY\"]"));
+        clickingFlipButton.click ();
+
+        // Clicking The Flip Button in the X axis
+
+        Thread.sleep (5000);
+        WebElement clickingFlipButtonXAxis = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipX\"]"));
+        clickingFlipButtonXAxis.click ();
+
+        // Clicking The Rotated Left Button In Doubt Image
+
+        Thread.sleep (5000);
+        WebElement clickingRotateLeftButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateLeft\"]"));
+        clickingRotateLeftButton.click ();
+
+        // Clicking The Rotated Right Button In Doubt Image
+
+        Thread.sleep (5000);
+        WebElement clickingRotateRightButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateRight\"]"));
+        clickingRotateRightButton.click ();
+
+        // Clicking The ZoomIn Button
+
+        Thread.sleep (5000);
+        WebElement clickingZoomInButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomIn\"]"));
+        clickingZoomInButton.click ();
+
+        // Click The Zoom Out Button
+
+        Thread.sleep (5000);
+        WebElement clickingZoomOutButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomOut\"]"));
+        clickingZoomOutButton.click ();
+
+        // Clicking The Cancel Button
+
+        Thread.sleep (3000);
+        WebElement clickingTheCancelButton = driver.findElement (xpath ("//button[@class=\"ant-image-preview-close\"]"));
+        clickingTheCancelButton.click ();
 
         /* Getting The Value of the User Asked Doubt */
 
-      /*  // Wait for the page to load completely
+        // Wait for the page to load completely
 
         Thread.sleep (5000);
 
         // Find all elements with the specified class
 
-        List<WebElement> allDoubtImageURL = driver.findElements (xpath ("//*[@class='ant-image-img css-xu9wm8']"));
+        java.util.List<WebElement> allDoubtImageURL = driver.findElements (xpath ("//*[@class='ant-image-img css-xu9wm8']"));
 
         // Create a set to store unique URLs
 
@@ -491,6 +515,7 @@ public class AllDoubts {
         WebElement clickingSubject = driver.findElement (xpath ("//*[text() = 'Subjects']"));
         clickingSubject.click ();
 
+
         // Getting the text From The Filter and Verifying
 
         Thread.sleep (3000);
@@ -510,7 +535,7 @@ public class AllDoubts {
 
         // Fetching the course list elements
 
-        List<WebElement> subjectcourseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
+        java.util.List<WebElement> subjectcourseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
         Set<String> uniquesubjectCourse = new HashSet<> ();
 
@@ -618,7 +643,7 @@ public class AllDoubts {
 
         // Fetching the course list elements
 
-        List<WebElement> courseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
+        java.util.List<WebElement> courseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
         Set<String> uniqueCourse = new HashSet<> ();
 
@@ -642,7 +667,7 @@ public class AllDoubts {
         }
 
         System.out.println ("Total unique CourseName found: " + uniqueCourseCount);
-        Assert.assertEquals (uniqueCourseCount, courseNames.length);*/
+        Assert.assertEquals (uniqueCourseCount, courseNames.length);
 
 
     }
