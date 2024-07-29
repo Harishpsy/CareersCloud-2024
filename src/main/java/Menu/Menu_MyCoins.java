@@ -27,18 +27,21 @@ public class Menu_MyCoins {
         // Clicking My Coin
         try {
             if (clickingMycoin.isSelected ()) {
+
+                System.out.println ("SucessFully My coin is selected 1");
                 Thread.sleep (5000);
                 clickingCoinEarningText.click ();
-                System.out.println ("SucessFully clicked the clickingCoinEarningText");
-                System.out.println ("SucessFully My coin is selected 1");
+                System.out.println ("SucessFully clicked the clickingCoinEarningText 1 ");
+
 
             } else if (clickingMycoin.isDisplayed ()) {
                 System.out.println ("SucessFully My coin is displayed 2");
                 Thread.sleep (5000);
-                // Clicking My coin
                 clickingMycoin.click ();
 
-                if (clickingMycoin.isDisplayed ()) {
+                // Clicking My coin
+
+                if (clickingMycoin.isEnabled ()) {
 
                     Thread.sleep (5000);
                     clickingCoinEarningText.click ();
@@ -100,7 +103,7 @@ public class Menu_MyCoins {
 
             Thread.sleep (2000);
             clickingHomeButton.click ();
-            System.out.println ("Exiting if-else statement : Navigating To The Next Module");
+            System.out.println ("Exiting if-else statement From The My Coin : Navigating To The Next Module");
 
         } catch (NoSuchElementException e) {
 

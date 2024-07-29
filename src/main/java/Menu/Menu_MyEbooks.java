@@ -40,8 +40,10 @@ public class Menu_MyEbooks {
         // Sleep for 3 seconds
 
         Thread.sleep (3000);
+
         try {
             // Check if noRecordFound element is displayed and log the result
+
             boolean noRecordFoundDisplayed = false;
             boolean threedotsDisplayed = false;
 
@@ -82,37 +84,40 @@ public class Menu_MyEbooks {
                 Thread.sleep (3000);
                 Remove_My_ebook.click ();
 
+                Thread.sleep (5000);
+
                 // Check if noRecordFound element is displayed and log the result
 
                 System.out.println ("Successfully entering if-else statement1111");
 
+                boolean noRecordFoundDisplayedAfterRemove = false;
+                boolean threedotsDisplayedAfterRemove = false;
 
                 try {
-                    noRecordFoundDisplayed = noRecordFound.isDisplayed ();
+                    noRecordFoundDisplayedAfterRemove = noRecordFound.isDisplayed ();
                 } catch (NoSuchElementException e) {
                     System.out.println ("noRecordFound element not found.");
                 }
 
                 try {
-                    threedotsDisplayed = Threedots.isDisplayed ();
+                    threedotsDisplayedAfterRemove = Threedots.isDisplayed ();
                 } catch (NoSuchElementException e) {
                     System.out.println ("Threedots element not found.");
                 }
 
-                if (noRecordFoundDisplayed) {
+                if (noRecordFoundDisplayedAfterRemove) {
 
                     // Clicking My coins
                     Thread.sleep (5000);
                     clickingMycoin.click ();
                     System.out.println ("No records found message is displayed, navigating to My Coin page.");
 
-                } else if (threedotsDisplayed) {
+                } else if (threedotsDisplayedAfterRemove) {
 
                     // Click the three dots again
 
                     Thread.sleep (5000);
                     Threedots.click ();
-
 
                     // Click the share icon in My Ebook
 
@@ -231,12 +236,6 @@ public class Menu_MyEbooks {
                     // Click the back button on the Ebook page
 
                     clickingBackButton.click ();
-
-                    // Click the home button
-
-                    Thread.sleep (2000);
-                    clickingHomeButton.click ();
-                    System.out.println ("Exiting if-else statement : Navigating To The Next Module");
 
 
                 } else {
