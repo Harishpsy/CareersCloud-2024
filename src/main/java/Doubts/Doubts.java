@@ -16,10 +16,10 @@ public class Doubts {
     public void doubts() throws InterruptedException {
 
         Thread.sleep (5000);
-        WebElement clickingDoubtsButton = driver.findElement (By.xpath ("//a[text()='Doubts']"));
+        WebElement clickingDoubtsButton = driver.findElement (By.xpath ("//*[text()='Doubts']"));
         clickingDoubtsButton.click ();
+        System.out.println ("SuccessFully Clicked The Doubts Button");
 
     }
-
 
 }
