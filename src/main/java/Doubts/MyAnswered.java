@@ -60,25 +60,35 @@ public class MyAnswered {
                 System.out.println ("Dropdown trigger element displayed: " + isThreeDotsTriggerDisplayed);
 
                 // Conditional logic for clicking elements
+
                 if (isNoDoubtFoundDisplayed) {
                     Thread.sleep (5000); // Assuming you handle InterruptedException elsewhere
                     WebElement followedButton = driver.findElement (By.xpath ("//*[text()='Followed']"));
                     followedButton.click ();
                     System.out.println ("Successfully clicked the 'Followed' button");
+
                 } else if (isThreeDotsTriggerDisplayed) {
+
                     Thread.sleep (5000);
                     WebElement threeDotsTrigger = driver.findElement (By.xpath ("(//*[@class='ant-dropdown-trigger'])[16]"));
                     threeDotsTrigger.click ();
                     System.out.println ("Successfully clicked the 'ThreeDots' trigger");
+
                 } else {
+
                     System.out.println ("Neither 'Followed' button nor 'ThreeDots' trigger was found to click");
+
                 }
             } catch (InterruptedException e) {
+
                 System.out.println ("An error occurred: " + e.getMessage ());
+
             }
 
         } catch (Exception e) {
+
             System.out.println ("An unexpected error occurred: " + e.getMessage ());
+
         }
     }
 
