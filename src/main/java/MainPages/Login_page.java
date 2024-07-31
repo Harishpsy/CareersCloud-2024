@@ -1,7 +1,7 @@
 package MainPages;
 
-import Doubts.Doubts;
-import Doubts.MyAnswered;
+import Doubts.*;
+
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -184,6 +184,14 @@ public class Login_page {
 
         MyAnswered answered = new MyAnswered (driver);
         answered.myAnswered ();
+
+//        // Clicking My Followed
+//
+//        Myfollowed myfollowed = new Myfollowed (driver);
+//        myfollowed.myFollow ();
+
+
+
 
 
     }
