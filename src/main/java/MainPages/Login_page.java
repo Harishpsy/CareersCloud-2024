@@ -1,6 +1,6 @@
 package MainPages;
 
-import Menu.*;
+import Doubts.*;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -93,15 +93,15 @@ public class Login_page {
 //        Menu_MyQuestions MyQuestions = new Menu_MyQuestions (driver);
 //        MyQuestions.Myquestion ();
 //
-        // CALLING MY EBOOKS
-
-        Menu_MyEbooks MyEbooks = new Menu_MyEbooks (driver);
-        MyEbooks.MyEbooks ();
+//        // CALLING MY EBOOKS
+//
+//        Menu_MyEbooks MyEbooks = new Menu_MyEbooks (driver);
+//        MyEbooks.MyEbooks ();
 //
 //        // CALLING MY COINS
 //
-        Menu_MyCoins MyCoins = new Menu_MyCoins (driver);
-        MyCoins.MyCoins ();
+//        Menu_MyCoins MyCoins = new Menu_MyCoins (driver);
+//        MyCoins.MyCoins ();
 //
 //        // CALLING MY POINTS
 //
@@ -168,16 +168,25 @@ public class Login_page {
 //        CourseDoubts Doubt = new CourseDoubts (driver);
 //        Doubt.Doubts ();
 
-//        // Calling Doubts
-//
-//        Doubts doubt = new Doubts (driver);
-//        doubt.doubts ();
-//
+        // Calling Doubts
+
+        Doubts doubt = new Doubts (driver);
+        doubt.doubts ();
+
 //        // Calling Doubts > All Doubts
 //
 //        AllDoubts Doubts = new AllDoubts (driver);
 //        Doubts.allDoubts ();
 
+        // Clicking My Answered
+
+        MyAnswered answered = new MyAnswered (driver);
+        answered.myAnswered ();
+
+//        // Clicking My Followed
+//
+//        Myfollowed myfollowed = new Myfollowed (driver);
+//        myfollowed.myFollow ();
 
     }
 }
