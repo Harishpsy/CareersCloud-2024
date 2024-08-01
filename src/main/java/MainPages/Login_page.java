@@ -2,7 +2,9 @@ package MainPages;
 
 import Doubts.*;
 import PageObjectModule.Loginpageobject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,7 +22,9 @@ public class Login_page {
 
     public static WebDriver driver = new ChromeDriver ();
 //    public static WebDriver driver = new FirefoxDriver ();
-
+public Login_page(WebDriver driver) {
+    Login_page.driver = driver;
+}
 
     public static void main(String[] args) throws InterruptedException, AWTException {
         // Setup for browser launch
@@ -71,12 +75,19 @@ public class Login_page {
 
         //Clicking the Continue_button
 
-        Thread.sleep (5000);
+        Thread.sleep (7000);
         Continuebutton.click ();
 
         //Changing the focus to the parent window
 
         driver.switchTo ().window (parent);
+
+        // GETing The Username For Verification
+
+        Thread.sleep (3000);
+        WebElement gettingUserName = driver.findElement (By.xpath ("//*[@style=\"text-overflow: ellipsis; white-space: nowrap; text-transform: capitalize; font-size: 12px; color: rgb(11, 100, 157); font-weight: 900;\"]"));
+        String userName = gettingUserName.getText ();
+        System.out.println ("UserName:" + userName); // Storing The value In The variable
 
 //        // Calling Home Page
 //

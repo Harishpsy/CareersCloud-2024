@@ -1,13 +1,16 @@
 package Doubts;
 
+import MainPages.Login_page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class MyAnswered {
 
     WebDriver driver;
+    Login_page loginPage;
 
 
     public MyAnswered(WebDriver driver) {
@@ -25,8 +28,6 @@ public class MyAnswered {
         System.out.println ("SuccessFully Clicked The My Answered Button ");
 
         // Verifying My answer was present or Not by using try catch method
-
-        try {
 
             try {
                 // Pause execution for 10 seconds
@@ -74,24 +75,71 @@ public class MyAnswered {
                     threeDotsTrigger.click ();
                     System.out.println ("Successfully clicked the 'ThreeDots' trigger");
 
+
+                    // Clicking The Share Button In the MyAnswered
+
+                    Thread.sleep (5000);
+                    WebElement clickingShareButtonInDoubt = driver.findElement (By.xpath ("//ul[@class=\"ant-dropdown-menu ant-dropdown-menu-root ant-dropdown-menu-vertical ant-dropdown-menu-light css-xu9wm8\"]//preceding-sibling::li"));
+                    clickingShareButtonInDoubt.click ();
+                    System.out.println ("Successfully CLicked The Share Button ");
+
+                    // Clicking The CopyLink Button In The Share
+
+                    Thread.sleep (5000);
+                    WebElement clickingCopyLink = driver.findElement (By.xpath ("//*[@class=\"ant-btn css-xu9wm8 ant-btn-link quiz-popup-modal-share-copy-url-button\"]"));
+                    clickingCopyLink.click ();
+                    System.out.println ("Successfully CLicked The Copylink Button ");
+
+                    // Clicking The cancel Button In The Share Popup
+
+                    Thread.sleep (5000);
+                    WebElement clickingCancelButtonInPopup = driver.findElement (By.xpath ("//*[@class=\"ant-btn css-xu9wm8 ant-btn-default ant-btn-lg ant-btn-block quiz-popup-modal-share-footer-button\"]"));
+                    clickingCancelButtonInPopup.click ();
+                    System.out.println ("Successfully CLicked The Cancel Button ");
+
+                    // Clicking The Answer
+
+                    Thread.sleep (4000);
+                    WebElement clickingAnswerButton = driver.findElement (By.xpath ("(//*[@class=\"ant-btn css-xu9wm8 ant-btn-primary btn-answer\"])[15]"));
+                    clickingAnswerButton.click ();
+
+                    // Retreving The Username From the Doubt Answer
+
+                    Thread.sleep (4000);
+                    WebElement gettingUsernameFromDoubt = driver.findElement (By.xpath ("//*[@class=\"doubts-answer-user\"]"));
+                    String doubtUserNames = gettingUsernameFromDoubt.getText ();
+                    System.out.println ("UserNames: " + doubtUserNames);
+
+                    // Calling LoginPage By Using Contructor
+
+                    loginPage = new Login_page (driver);
+//
+//                    WebElement gettingUserName = driver.findElement (By.xpath ("//*[@style=\"text-overflow: ellipsis; white-space: nowrap; text-transform: capitalize; font-size: 12px; color: rgb(11, 100, 157); font-weight: 900;\"]"));
+//                    String userName = gettingUserName.getText ();
+//                    System.out.println ( "UserName:" +userName); // Storing The value In The variable
+
+                    String userName = loginPage.toString ();
+
+                    // Verifying That the username is equal to Doubt username
+
+                    Assert.assertEquals (doubtUserNames, userName + "Username and user name do not match!");
+
+
                 } else {
 
                     System.out.println ("Neither 'Followed' button nor 'ThreeDots' trigger was found to click");
 
                 }
+
+
             } catch (InterruptedException e) {
 
                 System.out.println ("An error occurred: " + e.getMessage ());
-
             }
 
-        } catch (Exception e) {
-
-            System.out.println ("An unexpected error occurred: " + e.getMessage ());
 
         }
     }
 
 
-}
 
