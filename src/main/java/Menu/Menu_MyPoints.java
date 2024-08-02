@@ -20,37 +20,39 @@ public class Menu_MyPoints {
 
         PageFactory.initElements (driver, Mypointspageobject.class);
 
-        // Clicking The My Points
+        // Clicking My Points
 
-        Thread.sleep (3000);
+
+        Thread.sleep (5000);
         clickingMyPoints.click ();
+        System.out.println ("Successfully Clicked My Points");
 
-        // Clicking The View Earn Points
+        // Clicking View Earn Points
 
-        Thread.sleep (3000);
+        Thread.sleep (5000);
         clickingViewEarnPoints.click ();
+        System.out.println ("Successfully Clicked ViewEarnPoints ");
 
         // Clicking The close Button
 
         Thread.sleep (5000);
         clickingCloseIcon.click ();
+        System.out.println ("Successfully Clicked CloseIcon");
 
         //Scrolling Down Function
 
+        Thread.sleep (5000);
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
+        System.out.println ("Successfully Scroll The Page ");
 
         // Clicking The Dropdown Menu
 
+        Thread.sleep (5000);
         Actions actions = new Actions (driver);
         actions.scrollToElement (clickingDropDown).perform ();
         clickingDropDown.click ();
-
-        // Clicking The Home Button
-
-        Thread.sleep (2000);
-        clickingHomeButton.click ();
-
+        System.out.println ("Successfully Clicked DropDown");
 
     }
 

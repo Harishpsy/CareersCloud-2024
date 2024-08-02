@@ -20,15 +20,26 @@ public class MyAnswered {
 
     public void myAnswered() throws InterruptedException {
 
-        // Clciking My Answered Button in Doubt Page,
+        try {
 
-        Thread.sleep (3000);
-        WebElement clickingMyAnsweredButton = driver.findElement (By.xpath ("//*[text()='My Answered']"));
-        clickingMyAnsweredButton.click ();
-        System.out.println ("SuccessFully Clicked The My Answered Button ");
+            // Clicking My Answered Button in Doubt Page,
 
-        // Verifying My answer was present or Not by using try catch method
+            WebElement clickingMyAnsweredButton = driver.findElement (By.xpath ("//*[text()='My Answered']"));
 
+            if (clickingMyAnsweredButton.isSelected ()) {
+
+                Thread.sleep (3000);
+                System.out.println ("My Answered Button was already Selected");
+            } else if (clickingMyAnsweredButton.isDisplayed ()) {
+
+                Thread.sleep (5000);
+                clickingMyAnsweredButton.click ();
+                System.out.println ("Successfully clicked the My Answer button");
+
+            } else {
+                System.out.println ("Error Occured In The Above Code");
+            }
+            // Verifying My answer was present or Not by using try catch method
             try {
                 // Pause execution for 10 seconds
                 Thread.sleep (3000);
@@ -57,7 +68,7 @@ public class MyAnswered {
                     System.out.println ("Dropdown trigger element not found.");
                 }
 
-                System.out.println ("'No Doubts Found' element displayed: " + isNoDoubtFoundDisplayed);
+                System.out.println ("No Doubts Found' element displayed: " + isNoDoubtFoundDisplayed);
                 System.out.println ("Dropdown trigger element displayed: " + isThreeDotsTriggerDisplayed);
 
                 // Conditional logic for clicking elements
@@ -74,7 +85,6 @@ public class MyAnswered {
                     WebElement threeDotsTrigger = driver.findElement (By.xpath ("(//*[@class='ant-dropdown-trigger'])[16]"));
                     threeDotsTrigger.click ();
                     System.out.println ("Successfully clicked the 'ThreeDots' trigger");
-
 
                     // Clicking The Share Button In the MyAnswered
 
@@ -113,33 +123,25 @@ public class MyAnswered {
                     // Calling LoginPage By Using Contructor
 
                     loginPage = new Login_page (driver);
-//
-//                    WebElement gettingUserName = driver.findElement (By.xpath ("//*[@style=\"text-overflow: ellipsis; white-space: nowrap; text-transform: capitalize; font-size: 12px; color: rgb(11, 100, 157); font-weight: 900;\"]"));
-//                    String userName = gettingUserName.getText ();
-//                    System.out.println ( "UserName:" +userName); // Storing The value In The variable
-
                     String userName = loginPage.toString ();
-
                     // Verifying That the username is equal to Doubt username
 
                     Assert.assertEquals (doubtUserNames, userName + "Username and user name do not match!");
 
-
                 } else {
-
                     System.out.println ("Neither 'Followed' button nor 'ThreeDots' trigger was found to click");
-
                 }
-
-
             } catch (InterruptedException e) {
-
                 System.out.println ("An error occurred: " + e.getMessage ());
             }
-
-
+        } catch (NoSuchElementException e) {
+            System.out.println ("Error " + e.getMessage ());
         }
+
     }
+
+
+}
 
 
 

@@ -1,6 +1,8 @@
 package MainPages;
 
+
 import Doubts.*;
+import Menu.*;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +23,7 @@ import static PageObjectModule.Loginpageobject.*;
 public class Login_page {
 
     public static WebDriver driver = new ChromeDriver ();
+
 //    public static WebDriver driver = new FirefoxDriver ();
 public Login_page(WebDriver driver) {
     Login_page.driver = driver;
@@ -38,7 +41,7 @@ public Login_page(WebDriver driver) {
 
         Thread.sleep (5000);
 
-        PageFactory.initElements (driver, Loginpageobject.class);
+        PageFactory.initElements (driver, Loginpageobject.class);// POM Method we are using
 
         // Clicking the login button
 
@@ -84,7 +87,7 @@ public Login_page(WebDriver driver) {
 
         // GETing The Username For Verification
 
-        Thread.sleep (3000);
+        Thread.sleep (5000);
         WebElement gettingUserName = driver.findElement (By.xpath ("//*[@style=\"text-overflow: ellipsis; white-space: nowrap; text-transform: capitalize; font-size: 12px; color: rgb(11, 100, 157); font-weight: 900;\"]"));
         String userName = gettingUserName.getText ();
         System.out.println ("UserName:" + userName); // Storing The value In The variable
@@ -114,10 +117,10 @@ public Login_page(WebDriver driver) {
 //        Menu_MyCoins MyCoins = new Menu_MyCoins (driver);
 //        MyCoins.MyCoins ();
 //
-//        // CALLING MY POINTS
+//         CALLING MY POINTS
 //
-//        Menu_MyPoints MyPoints = new Menu_MyPoints (driver);
-//        MyPoints.MyPoints ();
+        Menu_MyPoints MyPoints = new Menu_MyPoints (driver);
+        MyPoints.MyPoints ();
 //
 //        //Calling InviteFriends
 //
@@ -189,15 +192,26 @@ public Login_page(WebDriver driver) {
 //        AllDoubts Doubts = new AllDoubts (driver);
 //        Doubts.allDoubts ();
 
+        // Calling Doubts > My Doubts
+
+        Mydoubts mydoubts = new Mydoubts (driver);
+        mydoubts.myDoubts ();
+
         // Clicking My Answered
 
         MyAnswered answered = new MyAnswered (driver);
         answered.myAnswered ();
 
-//        // Clicking My Followed
-//
-//        Myfollowed myfollowed = new Myfollowed (driver);
-//        myfollowed.myFollow ();
+        // Clicking My Followed
+
+        Myfollowed myfollowed = new Myfollowed (driver);
+        myfollowed.myFollow ();
+
+        // Clicking My Points In The Doubts Page
+
+        Mypoints mypoints = new Mypoints (driver);
+        mypoints.myPoints ();
+
 
     }
 }

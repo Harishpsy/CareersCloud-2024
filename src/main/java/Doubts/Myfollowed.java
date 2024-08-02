@@ -26,51 +26,38 @@ public class Myfollowed {
 
         // Checking wheather there is data present Or Not In the Followed If Not Navigate to the Next Module
 
-        Thread.sleep (5000); // Waiting for the element display
 
         try {
-
-            WebElement checkingNoDoubtsFound = driver.findElement (By.xpath ("//span[text()=\"No Doubts Found.\"]"));
-
-            // Verifying That the element was present or Not
-
-            boolean isnoDoubtsFoundDisplayed = false;
+            // Verifying whether the element is present or not
+            Thread.sleep (5000);
+            boolean isNoDoubtsFoundDisplayed = false;
 
             try {
-
-                isnoDoubtsFoundDisplayed = checkingNoDoubtsFound.isDisplayed ();
-
+                // Waiting for the element to be displayed
+                Thread.sleep (5000);
+                WebElement checkingNoDoubtsFound = driver.findElement (By.xpath ("//*[text()='No Doubts Found.']/ancestor::*[self::div and @id=\"rc-tabs-0-panel-4\"]"));
+                isNoDoubtsFoundDisplayed = checkingNoDoubtsFound.isDisplayed ();
             } catch (NoSuchElementException e) {
-
                 System.out.println ("No Doubt Found element not found.");
-
             }
 
-            // Printing Wheather data was Found or Not By using Boolean
+            // Printing whether the data was found or not using the boolean
+            System.out.println ("No Doubt Found displayed in Followed: " + isNoDoubtsFoundDisplayed);
 
-            System.out.println ("No Doubt Found displayed: " + isnoDoubtsFoundDisplayed);
-
-            // In Here we are creating IF else condition for the navigations
-
-            if (isnoDoubtsFoundDisplayed) {
-
-                // Clicking The My Points button when No record Found was displayed
-
-                Thread.sleep (4000);
+            // Creating if-else condition for navigation
+            if (isNoDoubtsFoundDisplayed) {
+                // Clicking the My Points button when no record found was displayed
+                Thread.sleep (5000);
                 WebElement clickingMyPointsPage = driver.findElement (By.xpath ("//*[text()='My Points']"));
                 clickingMyPointsPage.click ();
-                System.out.println ("Successfully Clicked The My Points Button ");
-
+                System.out.println ("Successfully clicked the My Points button");
             } else {
-
-                System.out.println ("Data Was Present In The Followed Page");
-
+                System.out.println ("Data was present in the Followed page");
             }
         } catch (NoSuchElementException e) {
-
-            System.out.println ("Error In The Code " + e.getMessage ());
-
+            System.out.println ("Error in the code: " + e.getMessage ());
         }
+
 
 
     }
