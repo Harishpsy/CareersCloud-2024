@@ -1,8 +1,8 @@
 package MainPages;
 
 
-import Doubts.*;
-import Menu.*;
+import Doubts.Doubts;
+import Doubts.Mydoubts;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,9 +26,10 @@ public class Login_page {
 
 //    public static WebDriver driver = new FirefoxDriver ();
 public Login_page(WebDriver driver) {
-    Login_page.driver = driver;
-}
 
+    Login_page.driver = driver;
+
+}
     public static void main(String[] args) throws InterruptedException, AWTException {
         // Setup for browser launch
 
@@ -118,9 +119,9 @@ public Login_page(WebDriver driver) {
 //        MyCoins.MyCoins ();
 //
 //         CALLING MY POINTS
-//
-        Menu_MyPoints MyPoints = new Menu_MyPoints (driver);
-        MyPoints.MyPoints ();
+////
+//        Menu_MyPoints MyPoints = new Menu_MyPoints (driver);
+//        MyPoints.MyPoints ();
 //
 //        //Calling InviteFriends
 //
@@ -197,20 +198,20 @@ public Login_page(WebDriver driver) {
         Mydoubts mydoubts = new Mydoubts (driver);
         mydoubts.myDoubts ();
 
-        // Clicking My Answered
+//        // Clicking My Answered
+//
+//        MyAnswered answered = new MyAnswered (driver);
+//        answered.myAnswered ();
 
-        MyAnswered answered = new MyAnswered (driver);
-        answered.myAnswered ();
-
-        // Clicking My Followed
-
-        Myfollowed myfollowed = new Myfollowed (driver);
-        myfollowed.myFollow ();
-
-        // Clicking My Points In The Doubts Page
-
-        Mypoints mypoints = new Mypoints (driver);
-        mypoints.myPoints ();
+//        // Clicking My Followed
+//
+//        Myfollowed myfollowed = new Myfollowed (driver);
+//        myfollowed.myFollow ();
+//
+//        // Clicking My Points In The Doubts Page
+//
+//        Mypoints mypoints = new Mypoints (driver);
+//        mypoints.myPoints ();
 
 
     }

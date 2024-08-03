@@ -1,13 +1,17 @@
 package Doubts;
 
+import MainPages.Login_page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class Mydoubts {
 
     WebDriver driver;
+    Login_page loginPage;
 
     public Mydoubts(WebDriver driver) {
 
@@ -26,6 +30,7 @@ public class Mydoubts {
         try {
             // Verifying if the "No Doubts Found" element is present or not
             boolean isNoRecordfoundDisplayed = false;
+            boolean isUserNameDisplayed = false;
 
             try {
                 Thread.sleep (5000); // Waiting for the element to be displayed
@@ -37,13 +42,13 @@ public class Mydoubts {
 
             try {
 
+                Thread.sleep (5000); // Waiting for the element to be displayed
+                WebElement gettingUserNameInMyDoubts = driver.findElement (By.xpath ("//*[@class=\"doubts-card-title\"]/ancestor::*[self::div and  @id=\"rc-tabs-0-panel-2\"]"));
+                isUserNameDisplayed = gettingUserNameInMyDoubts.isDisplayed ();
 
             } catch (NoSuchElementException e) {
-
                 System.out.println ("Error in inner try block2: Answer Found elementnot located");
-
             }
-
 
             // Verifying if the "No Doubts Found" element was displayed
             System.out.println ("'No Doubts Found' element displayed in My Doubts: " + isNoRecordfoundDisplayed);
@@ -53,13 +58,26 @@ public class Mydoubts {
                 WebElement clickingMyAnsweredButton = driver.findElement (By.xpath ("//*[text()='My Answered']"));
                 clickingMyAnsweredButton.click ();
                 System.out.println ("Successfully clicked the 'My Answered' button from My Doubts.");
+            } else if (isUserNameDisplayed) {
+                Thread.sleep (5000); // Waiting before performing the next action
+                List<WebElement> doubtsCardTitles = driver.findElements (By.xpath ("//*[@class=\"doubts-card-title\"]"));
+                for (WebElement myDoubtsUserName : doubtsCardTitles) {
+                    String userNameDoubt = myDoubtsUserName.getText ();
+                    System.out.println ("UserName : " + userNameDoubt);
+                }
+
+                // Calling The UserName
+
+                loginPage = new Login_page (driver);
+
+
             } else {
                 System.out.println ("Data was present in the Followed page.");
             }
+
         } catch (NoSuchElementException e) {
             System.out.println ("Error message in outer catch block: " + e.getMessage ());
         }
-
 
     }
 
