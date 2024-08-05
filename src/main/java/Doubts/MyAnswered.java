@@ -1,6 +1,6 @@
 package Doubts;
 
-import MainPages.Login_page;
+import MainPages.Loginpage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.testng.Assert;
 public class MyAnswered {
 
     WebDriver driver;
-    Login_page loginPage;
+    Loginpage login;
 
 
     public MyAnswered(WebDriver driver) {
@@ -122,11 +122,11 @@ public class MyAnswered {
 
                     // Calling LoginPage By Using Contructor
 
-                    loginPage = new Login_page (driver);
-                    String userName = loginPage.toString ();
+                    login = new Loginpage (driver);
+                    String OriginalUserName = login.toString ();
                     // Verifying That the username is equal to Doubt username
 
-                    Assert.assertEquals (doubtUserNames, userName + "Username and user name do not match!");
+                    Assert.assertEquals (doubtUserNames, OriginalUserName + "Username and user name do not match!");
 
                 } else {
                     System.out.println ("Neither 'Followed' button nor 'ThreeDots' trigger was found to click");
