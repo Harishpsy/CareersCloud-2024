@@ -23,12 +23,6 @@ public class CoursePath {
 
     public void Path() throws InterruptedException {
 
-        // Clicking The My Course Button
-
-        Thread.sleep (3000);
-        WebElement clickingMyCourseButton = driver.findElement (xpath ("//a[text()='My Course']"));
-        clickingMyCourseButton.click ();
-
         // Clicking The First Course Card In the My Course
 
         Thread.sleep (3000);

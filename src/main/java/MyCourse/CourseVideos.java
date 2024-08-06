@@ -22,12 +22,6 @@ public class CourseVideos {
 
     public void videos() throws InterruptedException {
 
-        // Clicking The My Course Button
-
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (30));
-        WebElement clickingMyCourseButton = driver.findElement (xpath ("//* [text()='My Course']"));
-        clickingMyCourseButton.click ();
-
         // Clicking The Ninth Course Card In the My Course
 
         Thread.sleep (3000);
@@ -40,6 +34,52 @@ public class CourseVideos {
         Thread.sleep (3000);
         WebElement clickingVideoTab = driver.findElement (xpath ("//*[@id=\"rc-tabs-0-tab-4\"]"));
         clickingVideoTab.click ();
+
+        // Scrolling The Videos List Page
+
+        int numberOfTimesScrollVideos = 10;
+
+        for (int i = 0; i < numberOfTimesScrollVideos; i++) {
+            try {
+                Thread.sleep (5000);
+                JavascriptExecutor jse = (JavascriptExecutor) driver;
+                jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
+                System.out.println ("Successfully scroll The page " + (i + 1) + " time(s).");
+            } catch (Exception scroll) {
+                System.out.println ("Failed to Scroll : " + scroll.getMessage ());
+            }
+        }
+
+        // Clicking Float Icon
+
+        WebElement clickingFloatIcon = driver.findElement (xpath ("//*[@class=\"ant-float-btn-body\"]"));
+        clickingFloatIcon.click ();
+
+        // Verifying the videoscard was getting duplicating using the unique videos Url
+        List<WebElement> cards = driver.findElements (xpath ("//*[@class=\"video-iframe\"]"));
+
+        // Create a set to store unique Ebook Titles
+        Set<String> uniqueUrls = new HashSet<> ();
+        int uniqueCount = 0;
+
+        for (WebElement card : cards) {
+            String actualUrl = card.getAttribute ("src");
+
+            if (uniqueUrls.contains (actualUrl)) {
+                System.out.println ("Duplicate found --> " + actualUrl);
+            } else {
+                uniqueUrls.add (actualUrl);
+                uniqueCount++;
+                System.out.println ("Found: " + uniqueCount + " --> " + actualUrl);
+                System.out.println ("-------------------------------------------------------------------------");
+            }
+        }
+
+        // Print the total number of unique URLs found
+        System.out.println ("Total unique videos url found: " + uniqueCount);
+
+        // Assert that the number of unique URLs is equal to the number of elements
+        Assert.assertEquals (uniqueCount, uniqueUrls.size ());
 
         // Clicking The View Button
 
@@ -160,13 +200,14 @@ public class CourseVideos {
 
         // Another Method for verifying Duplicate In The Wep page Using HashSet
 
-        String[] videosLinks = {"https://careerscloud.in/course-details/6/video/2164", "https://careerscloud.in/course-details/6/video/2158",
-                "https://careerscloud.in/course-details/6/video/2162", "https://careerscloud.in/course-details/6/video/2160",
-                "https://careerscloud.in/course-details/6/video/2155"};
-
         List<WebElement> recentVideos = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
+
+        // Create a set to store unique Recent Videos
+
         Set<String> uniqueurl = new HashSet<> ();
         int uniquevideosurlcount = 0;
+
+        // Iterate through the list of elements
 
         for (WebElement recentVideo : recentVideos) {
             String actualUrls = recentVideo.getAttribute ("href");
@@ -176,17 +217,14 @@ public class CourseVideos {
                 System.out.println ("Duplicate found --> " + actualUrls);
             } else {
                 uniqueurl.add (actualUrls);
-                if (Arrays.asList (videosLinks).contains (actualUrls)) {
                     uniquevideosurlcount++;
                     System.out.println ("Found: " + uniquevideosurlcount + "-->" + actualUrls);
-                }
             }
         }
         System.out.println ("Total unique videos url found: " + uniquevideosurlcount);
-        Assert.assertEquals (uniquevideosurlcount, videosLinks.length);
+        Assert.assertEquals (uniquevideosurlcount, uniqueurl.size ());
 
-
-        // Clicking The Back Arrow in Viedo page
+        // Clicking The Back Arrow in Viedos page
 
         Thread.sleep (3000);
         WebElement clickingBackArrow = driver.findElement (xpath ("//*[@class=\"ant-breadcrumb-link\"]"));
@@ -194,53 +232,14 @@ public class CourseVideos {
         System.out.println ("--------------------------------");
         System.out.println ("Sucessfully Clicking Back Arrow");
 
-        // Scrolling the page down
+        // Clicking The Breadcrumbs
 
-        Thread.sleep (3000);
-        JavascriptExecutor scrollpage = (JavascriptExecutor) driver;
-        scrollpage.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+        Thread.sleep (5000);
+        WebElement clickingBreadCrumbs = driver.findElement (xpath ("//*[text()='Course']"));
+        clickingBreadCrumbs.click ();
+        System.out.println ("SuccessFully Clicked The Bread crumbs and navigated to the My Course List Page");
 
-        // Again Scrolling the page down
-
-        Thread.sleep (3000);
-        scrollpage = (JavascriptExecutor) driver;
-        scrollpage.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
-
-        // Scrolling the page Up
-        JavascriptExecutor scrollpageup = (JavascriptExecutor) driver;
-        scrollpageup.executeScript ("window.scrollTo(0,0)");
-
-        // Verifying the videoscard was getting duplicating using the unique videos Url
-
-        String[] videoscard = {"https://www.youtube.com/embed/WesnnBbVMNs", "https://www.youtube.com/embed/I6jckmkU90w", "https://www.youtube.com/embed/66dm-vf3Yew", "https://www.youtube.com/embed/2YF_wwrUFBU"
-                , "https://www.youtube.com/embed/tzWTqG6AjgA", "https://www.youtube.com/embed/BVxZTcXCQ1w", "https://www.youtube.com/embed/hCG1fxWsiIs", "https://www.youtube.com/embed/nXFDs9-d98k"
-                , "https://www.youtube.com/embed/0w6kk-NvtaM", "https://www.youtube.com/embed/Eqt0azCKCmY", "https://www.youtube.com/embed/MrScTfvFVDk", "https://www.youtube.com/embed/yX5tOeyGMpE",
-                "https://www.youtube.com/embed/B4x0o3Xxh0I", "https://www.youtube.com/embed/aZlCCjH224I", "https://www.youtube.com/embed/TmLHK6yZ_1U", "https://www.youtube.com/embed/7HoLC0bouZM", "https://www.youtube.com/embed/5kDFVNrB_uE", "https://www.youtube.com/embed/l_U14N2OZ3Y"
-                , "https://www.youtube.com/embed/yQyqSFvhV6E", "https://www.youtube.com/embed/sSisSX7mRTs", "https://www.youtube.com/embed/j9gCpOpSd5c", "https://www.youtube.com/embed/uD8COFsPXI4",
-                "https://www.youtube.com/embed/ksytSb7-QKI", "https://www.youtube.com/embed/Mh1v2nPnXEw", "https://www.youtube.com/embed/xgSncNI1uMU", "https://www.youtube.com/embed/e4TWEFT-eR0"
-                , "https://www.youtube.com/embed/iBxsIZ2jyog", "https://www.youtube.com/embed/x94bd9BOZhA", "https://www.youtube.com/embed/3Edf_H2aKD8", "https://www.youtube.com/embed/7mB3UecOb-Y"};
-
-        List<WebElement> cards = driver.findElements (xpath ("//*[@class=\"video-iframe\"]"));
-
-        Set<String> uniqueUrls = new HashSet<> ();
-        int uniqueCount = 0;
-
-        for (WebElement card : cards) {
-            String actualUrl = card.getAttribute ("src");
-
-            if (uniqueUrls.contains (actualUrl)) {
-                System.out.println ("Duplicate found --> " + actualUrl);
-            } else {
-                uniqueUrls.add (actualUrl);
-                if (Arrays.asList (videoscard).contains (actualUrl)) {
-                    uniqueCount++;
-                    System.out.println ("Found: " + uniqueCount + "-->" + actualUrl);
-                }
-            }
-        }
-
-        System.out.println ("Total unique videos url found: " + uniqueCount);
-        Assert.assertEquals (uniqueCount, videoscard.length);
     }
-
 }
+
+

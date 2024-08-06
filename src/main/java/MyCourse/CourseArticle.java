@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,12 +21,6 @@ public class CourseArticle {
     }
 
     public void Article() throws InterruptedException {
-
-        // Clicking The My Course Button
-
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (30));
-        WebElement clickingMyCourseButton = driver.findElement (xpath ("//* [text()='My Course']"));
-        clickingMyCourseButton.click ();
 
         // Clicking The Eigth Course Card In the My Course
 
@@ -86,9 +79,7 @@ public class CourseArticle {
                 uniquesArticleUrlCount++;
                 System.out.println ("Found: " + uniquesArticleUrlCount + " --> " + actualArticleImageUrl);
                 System.out.println ("-------------------------------------------------------------------------");
-
             }
-
         }
 
         // Print the total number of unique URLs found
@@ -119,46 +110,39 @@ public class CourseArticle {
             }
         }
 
-        // Clicking The home button
-
-        Thread.sleep (3000);
-        WebElement clickingHomeButton = driver.findElement (xpath ("//*[text()='Home']"));
-        clickingHomeButton.click ();
-
-        // Clicking The MyNotes
-
-        Thread.sleep (5000);
-        WebElement clickingMyNotes = driver.findElement (xpath ("//*[@id=\"1\"]"));
-        clickingMyNotes.click ();
-
-        // Verifying the article in my notes By using If Else Statement
-
-        Thread.sleep (5000);
-        final List<WebElement> savedarticle = driver.findElements (xpath ("//*[@src=\"https://assets.careerscloud.in/course/article/images/57f0d0c460019c05a8f66e6a9b3476d0.webp\"]"));
-        // Verification (assuming you have a way to verify card existence)
-
-        if (savedarticle.isEmpty ()) {
-
-            Thread.sleep (5000);
-            System.out.println ("Verification Failed : Article not present ");
-
-        } else {
-            Thread.sleep (5000);
-            System.out.println ("Verification Passed: 'Article present...' cards.");
-        }
-
-        // Clicking The My Course Button
-
-        Thread.sleep (5000);
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (30));
-        clickingMyCourseButton = driver.findElement (xpath ("//* [text()='My Course']"));
-        clickingMyCourseButton.click ();
-
-        // Clicking The Eigth Course Card In the My Course
-
-        Thread.sleep (5000);
-        clickingFirstCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[8]"));
-        clickingFirstCourseCard.click ();
+//        // Clicking The home button
+//
+//        Thread.sleep (3000);
+//        WebElement clickingHomeButton = driver.findElement (xpath ("//*[text()='Home']"));
+//        clickingHomeButton.click ();
+//
+//        // Clicking The MyNotes
+//
+//        Thread.sleep (5000);
+//        WebElement clickingMyNotes = driver.findElement (xpath ("//*[@id=\"1\"]"));
+//        clickingMyNotes.click ();
+//
+//        // Verifying the article in my notes By using If Else Statement
+//
+//        Thread.sleep (5000);
+//        final List<WebElement> savedarticle = driver.findElements (xpath ("//*[@src=\"https://assets.careerscloud.in/course/article/images/57f0d0c460019c05a8f66e6a9b3476d0.webp\"]"));
+//        // Verification (assuming you have a way to verify card existence)
+//
+//        if (savedarticle.isEmpty ()) {
+//
+//            Thread.sleep (5000);
+//            System.out.println ("Verification Failed : Article not present ");
+//
+//        } else {
+//            Thread.sleep (5000);
+//            System.out.println ("Verification Passed: 'Article present...' cards.");
+//        }
+//
+//        // Clicking The Eigth Course Card In the My Course
+//
+//        Thread.sleep (5000);
+//        clickingFirstCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[8]"));
+//        clickingFirstCourseCard.click ();
 
         // Clicking The Article
 

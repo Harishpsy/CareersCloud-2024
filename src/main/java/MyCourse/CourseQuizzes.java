@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import static org.openqa.selenium.By.*;
@@ -24,23 +27,64 @@ public class CourseQuizzes {
 
     public void Quizzes() throws InterruptedException {
 
-        // Clicking The My Course Button
+        // Clicking The Course In the My Course
 
         Thread.sleep (3000);
-        WebElement clickingMyCourseButton = driver.findElement (xpath ("//* [text()='My Course']"));
-        clickingMyCourseButton.click ();
-
-        // Clicking The First Course Card In the My Course
-
-        Thread.sleep (3000);
-        WebElement clickingFirstCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[1]"));
-        clickingFirstCourseCard.click ();
+        WebElement clickingCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[2]"));
+        clickingCourseCard.click ();
 
         // Clicking The Quizzes In The Course
 
         Thread.sleep (3000);
         WebElement clickingQuizzes = driver.findElement (xpath ("//div[text()='Quizzes']"));
         clickingQuizzes.click ();
+
+        // Scrolling The Quizzes List Page
+
+        int numberOfTimesScrollQuizzes = 10;
+
+        for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
+            try {
+                Thread.sleep (5000);
+                JavascriptExecutor jse = (JavascriptExecutor) driver;
+                jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
+                System.out.println ("Successfully scroll The page " + (i + 1) + " time(s).");
+            } catch (Exception scroll) {
+                System.out.println ("Failed to Scroll : " + scroll.getMessage ());
+            }
+        }
+
+        // Clicking Float Icon
+
+        WebElement clickingFloatIcon = driver.findElement (xpath ("//*[@class=\"ant-float-btn-body\"]"));
+        clickingFloatIcon.click ();
+
+        // Verifying the Quiz List was getting duplicating using the unique videos Url
+        List<WebElement> quizTitle = driver.findElements (xpath ("//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]"));
+
+        // Create a set to store unique Ebook Titles
+
+        Set<String> uniqueQuizTitles = new HashSet<> ();
+        int uniqueQuizCount = 0;
+
+        for (WebElement uniqueTitle : quizTitle) {
+            String actualquizTitle = uniqueTitle.getText ();
+
+            if (uniqueQuizTitles.contains (actualquizTitle)) {
+                System.out.println ("Duplicate found --> " + actualquizTitle);
+            } else {
+                uniqueQuizTitles.add (actualquizTitle);
+                uniqueQuizCount++;
+                System.out.println ("Found: " + uniqueQuizCount + " --> " + actualquizTitle);
+                System.out.println ("-------------------------------------------------------------------------");
+            }
+        }
+
+        // Print the total number of unique URLs found
+        System.out.println ("Total unique videos url found: " + uniqueQuizCount);
+
+        // Assert that the number of unique URLs is equal to the number of elements
+        Assert.assertEquals (uniqueQuizCount, uniqueQuizTitles.size ());
 
 //        // Clicking The Resume Button In the quiz
 //

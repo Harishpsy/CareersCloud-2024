@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.time.Duration;
 
 import static org.openqa.selenium.By.name;
 import static org.openqa.selenium.By.xpath;
@@ -19,12 +18,6 @@ public class CourseDetails {
     }
 
     public void Details() throws InterruptedException, AWTException {
-
-        // Clicking The My Course Button
-
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (30));
-        WebElement clickingMyCourseButton = driver.findElement (xpath ("//* [text()='My Course']"));
-        clickingMyCourseButton.click ();
 
         // Clicking The First Course Card In the My Course
 

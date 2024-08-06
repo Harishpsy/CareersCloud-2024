@@ -1,7 +1,8 @@
 package Base;
 
 import MainPages.Loginpage;
-import MyCourse.CourseArticle;
+import MyCourse.CourseQuizzes;
+import MyCourse.myCourse;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -57,6 +58,12 @@ public class baseConstructor {
         // Menu_Hireus hireUs = new Menu_Hireus(driver);
         // hireUs.Hireus();
 
+        // My Course
+
+        myCourse Mycourse = new myCourse (driver);
+        Mycourse.myCourseClicking ();
+
+
         // My Course Filters
         // MyCourse_Filters filter = new MyCourse_Filters(driver);
         // filter.Filter();
@@ -66,20 +73,20 @@ public class baseConstructor {
         // path.Path();
 
         // Course Quizzes
-        // CourseQuizzes quizzes = new CourseQuizzes(driver);
-        // quizzes.Quizzes();
+        CourseQuizzes quizzes = new CourseQuizzes (driver);
+        quizzes.Quizzes ();
 
         // Course Ebooks
-        // CourseEbooks ebooks = new CourseEbooks(driver);
-        // ebooks.Ebooks();
+//         CourseEbooks ebooks = new CourseEbooks(driver);
+//         ebooks.Ebooks();
 
-//    // Course Article
-        CourseArticle article = new CourseArticle (driver);
-        article.Article ();
+        // Course Article
+//        CourseArticle article = new CourseArticle (driver);
+//        article.Article ();
 
-        // Course Videos
-        // CourseVideos videos = new CourseVideos(driver);
-        // videos.videos();
+//         Course Videos
+//         CourseVideos videos = new CourseVideos(driver);
+//         videos.videos();
 
         // Course Details
         // CourseDetails details = new CourseDetails(driver);
