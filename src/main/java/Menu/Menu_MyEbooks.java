@@ -71,7 +71,6 @@ public class Menu_MyEbooks {
                 // Handle the case when no records are found
 
             } else if (threedotsDisplayed) {
-                System.out.println ("Successfully entering if-else statement");
 
                 // Click the three-dot menu and perform actions
 
