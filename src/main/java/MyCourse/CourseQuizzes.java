@@ -35,8 +35,9 @@ public class CourseQuizzes {
         WebElement clickingQuizzes = driver.findElement (xpath ("//div[text()='Quizzes']"));
         clickingQuizzes.click ();
 
-        // Scrolling The Quizzes List Page to verify data
-
+//
+//        // Scrolling The Quizzes List Page to verify data
+//
 //        int numberOfTimesScrollQuizzes = 10;
 //
 //        for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
@@ -54,7 +55,7 @@ public class CourseQuizzes {
 //
 //        WebElement clickingFloatIcon = driver.findElement (xpath ("//*[@class=\"ant-float-btn-body\"]"));
 //        clickingFloatIcon.click ();
-
+//
 //        // Verifying the Quiz List was getting duplicating using the unique videos Url
 //        List<WebElement> quizTitle = driver.findElements (xpath ("//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]"));
 //
@@ -187,33 +188,35 @@ public class CourseQuizzes {
                     System.out.println (" Both The COde Has Not Executed ");
                 }
 
-                // Clicking the options and Save & Next button in a loop
+                // Define the options to be clicked
+                options = new String[]{"A", "B", "C", "D", "E", "A", "B", "C", "D", "E", "A", "B", "C", "D", "E",};
 
-                options = new String[]{"A", "B", "C", "D", "E"};
+                // Locate the Save & Next button
                 WebElement saveAndNextButton = driver.findElement (By.xpath ("//div[text()='Save & Next']"));
-                WebElement numberOnRightSide;
 
+                // Clicking the options and Save & Next button in a loop
                 for (String option : options) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + option + "']"));
                     optionElement.click ();
+                    System.out.println ("Successfully Clicked The Option: " + option);
 
                     Thread.sleep (3000);
                     saveAndNextButton.click ();
-
-                    Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 1) + "']"));
-                    numberOnRightSide.click ();
+                    System.out.println ("Successfully Clicked The Save & Next Button");
                 }
+
                 // Clicking options again after navigating back
                 for (int i = 0; i < options.length - 2; i++) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + options[i] + "']"));
                     optionElement.click ();
+                    System.out.println ("Successfully Clicked The Option: " + options[i]);
 
                     Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 9 + i) + "']"));
+                    WebElement numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (16 + i) + "']"));
                     numberOnRightSide.click ();
+                    System.out.println ("Successfully Clicked The Number: " + (16 + i));
                 }
 
                 // Clicking the Previous Button
@@ -294,21 +297,22 @@ public class CourseQuizzes {
                  WebElement bookMarkicon = driver.findElement(className ("bookmark-icon"));
                  bookMarkicon.click ();*/
 
-                // Clicking the options and Save & Next button in a loop
+                // Define the options to be clicked
+                options = new String[]{"A", "B", "C", "D", "E", "A", "B", "C", "D", "E", "A", "B", "C", "D", "E",};
 
+                // Locate the Save & Next button
                 saveAndNextButton = driver.findElement (By.xpath ("//div[text()='Save & Next']"));
 
+                // Clicking the options and Save & Next button in a loop
                 for (String option : options) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + option + "']"));
                     optionElement.click ();
+                    System.out.println ("Successfully Clicked The Option: " + option);
 
                     Thread.sleep (3000);
                     saveAndNextButton.click ();
-
-                    Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 1) + "']"));
-                    numberOnRightSide.click ();
+                    System.out.println ("Successfully Clicked The Save & Next Button");
                 }
 
                 // Clicking options again after navigating back
@@ -316,10 +320,12 @@ public class CourseQuizzes {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + options[i] + "']"));
                     optionElement.click ();
+                    System.out.println ("Successfully Clicked The Option: " + options[i]);
 
                     Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 2 + i) + "']"));
+                    WebElement numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (16 + i) + "']"));
                     numberOnRightSide.click ();
+                    System.out.println ("Successfully Clicked The Number and Navigated To The Next Question: " + (16 + i));
                 }
 
                 // Clicking the Previous Button
@@ -459,34 +465,35 @@ public class CourseQuizzes {
                 } catch (Exception e) {
                     System.out.println ("An unexpected error occurred: " + e.getMessage ());
                 }
+                // Define the options to be clicked
+                options = new String[]{"A", "B", "C", "D", "E", "A", "B", "C", "D", "E", "A", "B", "C", "D", "E",};
 
-                // Clicking the options and Save & Next button in a loop
-                // Clicking the options and Save & Next button in a loop
-
-                options = new String[]{"A", "B", "C", "D", "E"};
+                // Locate the Save & Next button
                 saveAndNextButton = driver.findElement (By.xpath ("//div[text()='Save & Next']"));
 
+                // Clicking the options and Save & Next button in a loop
                 for (String option : options) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + option + "']"));
                     optionElement.click ();
+                    System.out.println ("Successfully Clicked The Option: " + option);
 
                     Thread.sleep (3000);
                     saveAndNextButton.click ();
-
-                    Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 1) + "']"));
-                    numberOnRightSide.click ();
+                    System.out.println ("Successfully Clicked The Save & Next Button");
                 }
+
                 // Clicking options again after navigating back
                 for (int i = 0; i < options.length - 2; i++) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + options[i] + "']"));
                     optionElement.click ();
+                    System.out.println ("Successfully Clicked The Option: " + options[i]);
 
                     Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 9 + i) + "']"));
+                    WebElement numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (16 + i) + "']"));
                     numberOnRightSide.click ();
+                    System.out.println ("Successfully Clicked The Number: " + (16 + i));
                 }
 
                 // Clicking the Previous Button
@@ -727,26 +734,22 @@ public class CourseQuizzes {
                 Thread.sleep (3000);
                 WebElement Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
                 Threedots.click ();
+                System.out.println ("Successfully clicked The ThreeDots");
 
-                // Clicking The Save My Notes
+                // Clicking The save My Notes or Remove my notes
 
-                Thread.sleep (3000);
-                WebElement clickingSaveMyNotes = driver.findElement (xpath ("//*[text()='Save to My Notes']"));
-                clickingSaveMyNotes.click ();
-                System.out.println ("Sucessfully Save My Notes Clicked ");
+                Thread.sleep (5000);
+                WebElement clickMyNote = driver.findElement (xpath ("//*[contains(text(), 'Save to My Notes') or contains(text(), 'Remove My  Notes')]"));
 
-                // Again Click the three dots in the Quiz Tab
+                if (clickMyNote.isDisplayed ()) {
+                    clickMyNote.click ();
 
-                Thread.sleep (3000);
-                Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
-                Threedots.click ();
-
-                // Clicking The Remove My Notes
-
-                Thread.sleep (3000);
-                WebElement Remove_My_Notes = driver.findElement (xpath ("//span[text()='Remove My  Notes']"));
-                Remove_My_Notes.click ();
-                System.out.println ("Sucessfully remove My Notes Clicked ");
+                    if (clickMyNote.getText ().contains ("Remove My  Notes")) {
+                        System.out.println ("Successfully -  Remove - Article");
+                    } else {
+                        System.out.println ("Successfully -  saved - Article");
+                    }
+                }
 
                 // Again Click the three dots in the Quiz Tab
 
@@ -1047,36 +1050,36 @@ public class CourseQuizzes {
                     System.out.println ("An unexpected error occurred: " + e.getMessage ());
                 }
 
-                // Clicking the options and Save & Next button in a loop
-                // Clicking the options and Save & Next button in a loop
+                // Define the options to be clicked
+                options = new String[]{"A", "B", "C", "D", "E", "A", "B", "C", "D", "E", "A", "B", "C", "D", "E",};
 
-                options = new String[]{"A", "B", "C", "D", "E"};
+                // Locate the Save & Next button
                 saveAndNextButton = driver.findElement (By.xpath ("//div[text()='Save & Next']"));
 
-
+                // Clicking the options and Save & Next button in a loop
                 for (String option : options) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + option + "']"));
                     optionElement.click ();
+                    System.out.println ("Successfully Clicked The Option: " + option);
 
                     Thread.sleep (3000);
                     saveAndNextButton.click ();
-
-                    Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 1) + "']"));
-                    numberOnRightSide.click ();
+                    System.out.println ("Successfully Clicked The Save & Next Button");
                 }
+
                 // Clicking options again after navigating back
                 for (int i = 0; i < options.length - 2; i++) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + options[i] + "']"));
                     optionElement.click ();
+                    System.out.println ("Successfully Clicked The Option: " + options[i]);
 
                     Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 9 + i) + "']"));
+                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (16 + i) + "']"));
                     numberOnRightSide.click ();
+                    System.out.println ("Successfully Clicked The Number: " + (16 + i));
                 }
-
                 // Clicking the Previous Button
                 Thread.sleep (3000);
                 clickingThePreviousButton = driver.findElement (By.xpath ("//div[text()='Previous']"));
@@ -1216,24 +1219,28 @@ public class CourseQuizzes {
                 // Clicking Like/Unlike Button
 
                 try {
-                    // Locate the like and unlike buttons
-                    WebElement likeButton = driver.findElement (By.xpath ("//*[@class='like']"));
-                    WebElement unlikeButton = driver.findElement (By.xpath ("//*[@class='unlike']"));
+                    try {
+                        // Locate the like button
+                        WebElement likeButton = driver.findElement (By.xpath ("//*[@class='like']"));
+                        if (likeButton.isDisplayed ()) {
+                            likeButton.click ();
+                            System.out.println ("Successfully Clicked The Like Button");
+                        }
+                    } catch (NoSuchElementException e) {
+                        System.out.println ("Like Button not found");
 
-                    // Check if the like button is displayed and click it
-                    if (likeButton.isDisplayed ()) {
-                        likeButton.click ();
-                        System.out.println ("Successfully Clicked The Like Button");
+                        try {
+                            // Locate the unlike button
+                            WebElement unlikeButton = driver.findElement (By.xpath ("//*[@class='unlike']"));
+                            if (unlikeButton.isDisplayed ()) {
+                                unlikeButton.click ();
+                                System.out.println ("Successfully Clicked The Unlike Button");
+                            }
+                        } catch (NoSuchElementException e2) {
+                            System.out.println ("Unlike Button not found");
+                        }
                     }
-                    // Otherwise, check if the unlike button is displayed and click it
-                    else if (unlikeButton.isDisplayed ()) {
-                        unlikeButton.click ();
-                        System.out.println ("Successfully Clicked The Unlike Button");
-                    }
-                    // If neither button is found/displayed
-                    else {
-                        System.out.println ("Both Code Not Executed");
-                    }
+
                 } catch (NoSuchElementException e) {
                     System.out.println ("Like/Unlike Button not found");
                 }
@@ -1315,33 +1322,22 @@ public class CourseQuizzes {
                 Thread.sleep (3000);
                 WebElement Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
                 Threedots.click ();
+                System.out.println ("Successfully clicked The ThreeDots");
 
-                // Clicking The Save My Notes
+                // Clicking The save My Notes or Remove my notes
 
-                Thread.sleep (3000);
-                WebElement clickingSaveMyNotes = driver.findElement (xpath ("//*[text()='Save to My Notes']"));
-                clickingSaveMyNotes.click ();
-                System.out.println ("Sucessfully Save My Notes Clicked ");
+                Thread.sleep (5000);
+                WebElement clickMyNote = driver.findElement (xpath ("//*[contains(text(), 'Save to My Notes') or contains(text(), 'Remove My  Notes')]"));
 
-                // Again Click the three dots in the Quiz Tab
+                if (clickMyNote.isDisplayed ()) {
+                    clickMyNote.click ();
 
-                Thread.sleep (3000);
-                Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
-                Threedots.click ();
-
-                // Clicking The Remove My Notes
-
-                Thread.sleep (3000);
-                WebElement Remove_My_Notes = driver.findElement (xpath ("//span[text()='Remove My  Notes']"));
-                Remove_My_Notes.click ();
-                System.out.println ("Sucessfully remove My Notes Clicked ");
-
-                // Again Click the three dots in the Quiz Tab
-
-                Thread.sleep (3000);
-                Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
-                Threedots.click ();
-
+                    if (clickMyNote.getText ().contains ("Remove My  Notes")) {
+                        System.out.println ("Successfully -  Remove - Article");
+                    } else {
+                        System.out.println ("Successfully -  saved - Article");
+                    }
+                }
                 /* Clicking the share icon in Quiz Tab */
 
                 Thread.sleep (3000);
@@ -1447,12 +1443,18 @@ public class CourseQuizzes {
                 Cancel_button.click ();
                 System.out.println ("Successfully Clicked The Cancel Button");
 
+                // Clicking The Report Button
+
+                Thread.sleep (3000);
+                WebElement clickingReportIcon = driver.findElement (xpath ("//*[@class=\"report-image\"]"));
+                clickingReportIcon.click ();
+
                 // Click The Translation Error In The Report Popup
 
                 Thread.sleep (3000);
-                clickingTranslationErrorRadioButton = driver.findElement (xpath ("//span[text()='Translations Error']"));
-                clickingTranslationErrorRadioButton.click ();
-                System.out.println ("Successfully clicked The Translation Error Radio Button");
+                WebElement clickingIncompleteQuestionRadioButton = driver.findElement (xpath ("//span[text()='Incomplete Question']"));
+                clickingIncompleteQuestionRadioButton.click ();
+                System.out.println ("Successfully clicked The IncompleteQuestion Radio Button");
 
                 // Clicking The Report Description button
 
@@ -1468,6 +1470,7 @@ public class CourseQuizzes {
                 System.out.println ("Successfully Clicked The Report Button");
 
                 // Clicking The ReattempButton
+
                 Thread.sleep (10000);
                 //wait = new WebDriverWait (driver,30);
                 WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (40)); // Adjust the timeout as necessary
@@ -1484,52 +1487,47 @@ public class CourseQuizzes {
                     System.out.println ("An unexpected error occurred: " + e.getMessage ());
                 }
 
-                // Clicking the options and Save & Next button in a loop
+                // Define the options to be clicked
+                options = new String[]{"A", "B", "C", "D", "E", "A", "B", "C", "D", "E", "A", "B", "C", "D", "E",};
 
-                options = new String[]{"A", "B", "C", "D", "E"};
+                // Locate the Save & Next button
                 WebElement saveAndNextButton = driver.findElement (By.xpath ("//div[text()='Save & Next']"));
-                WebElement numberOnRightSide;
 
+                // Clicking the options and Save & Next button in a loop
                 for (String option : options) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + option + "']"));
                     optionElement.click ();
-                    System.out.println ("Successfully Clicked The Options" + options);
+                    System.out.println ("Successfully Clicked The Option: " + option);
 
                     Thread.sleep (3000);
                     saveAndNextButton.click ();
-                    System.out.println ("Successfully Clicked The Save Next Button ");
-
-                    Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 1) + "']"));
-                    numberOnRightSide.click ();
-                    System.out.println ("Successfully Clicked The Number" + numberOnRightSide);
+                    System.out.println ("Successfully Clicked The Save & Next Button");
                 }
 
                 // Clicking options again after navigating back
-
                 for (int i = 0; i < options.length - 2; i++) {
                     Thread.sleep (3000);
                     WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + options[i] + "']"));
                     optionElement.click ();
-                    System.out.println ("SUccessfully clicked The Option" + options + i++);
+                    System.out.println ("Successfully Clicked The Option: " + options[i]);
 
                     Thread.sleep (3000);
-                    numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (options.length + 9 + i) + "']"));
+                    WebElement numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (16 + i) + "']"));
                     numberOnRightSide.click ();
-                    System.out.println ("Successfully Clicked The Number" + numberOnRightSide);
+                    System.out.println ("Successfully Clicked The Number: " + (16 + i));
                 }
+
                 // Clicking The Previous Button
 
                 Thread.sleep (3000);
-                driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
                 clickingThePreviousButton = driver.findElement (xpath ("//div[text()='Previous']"));
                 clickingThePreviousButton.click ();
                 System.out.println ("Successfully Clicked The Previous Button");
 
                 // Scrolling The Solution Page
 
-                Thread.sleep (1000);
+                Thread.sleep (3000);
                 scrollToReportIcon = driver.findElement (xpath ("//*[@class=\"report-image\"]"));
                 actions = new Actions (driver);
                 actions.scrollToElement (scrollToReportIcon).perform ();
@@ -1557,9 +1555,32 @@ public class CourseQuizzes {
                 Cancel_button.click ();
                 System.out.println ("Successfully Clicked Cancel button");
 
-                // Click the report button
+                // Scrolling The Solution Page
 
                 Thread.sleep (3000);
+                scrollToReportIcon = driver.findElement (xpath ("//*[@class=\"report-image\"]"));
+                actions = new Actions (driver);
+                actions.scrollToElement (scrollToReportIcon).perform ();
+                scrollToReportIcon.click ();
+                System.out.println ("Successfully Scrolled and Clicked The Report icon");
+
+                // Click The Translation Error In The Report Popup
+
+                Thread.sleep (3000);
+                clickingTranslationErrorRadioButton = driver.findElement (xpath ("//span[text()='Translations Error']"));
+                clickingTranslationErrorRadioButton.click ();
+                System.out.println ("Successfully Clicked Translation Error Radio Button");
+
+                //Entering the text inside the report text field In Solution Page
+
+                Thread.sleep (3000);
+                Enter_the_report = driver.findElement (name ("reportDescription"));
+                Enter_the_report.sendKeys ("Checking The text was Entering In The Report Text Field");
+                System.out.println ("Successfully Clicked Enter_the_report text field");
+
+                // Click the report button
+
+                Thread.sleep (5000);
                 Report_button = driver.findElement (xpath ("//span[text()='REPORT']"));
                 Report_button.click ();
                 System.out.println ("Successfully Clicked Report button");
@@ -1616,7 +1637,6 @@ public class CourseQuizzes {
                 clickingAnalysisIcon.click ();
                 System.out.println ("Successfully Clicked The Analysis Icon In Solution Screen ");
 
-
                 // Clicking The FullScreen Button
 
                 WebElement clickingTheFullScreenButton = driver.findElement (className ("anticon-expand"));
@@ -1668,23 +1688,26 @@ public class CourseQuizzes {
                 // Clicking Like/Unlike Button
 
                 try {
-                    // Locate the like and unlike buttons
-                    WebElement likeButton = driver.findElement (By.xpath ("//*[@class='like']"));
-                    WebElement unlikeButton = driver.findElement (By.xpath ("//*[@class='unlike']"));
+                    try {
+                        // Locate the like button
+                        WebElement likeButton = driver.findElement (By.xpath ("//*[@class='like']"));
+                        if (likeButton.isDisplayed ()) {
+                            likeButton.click ();
+                            System.out.println ("Successfully Clicked The Like Button");
+                        }
+                    } catch (NoSuchElementException e) {
+                        System.out.println ("Like Button not found");
 
-                    // Check if the like button is displayed and click it
-                    if (likeButton.isDisplayed ()) {
-                        likeButton.click ();
-                        System.out.println ("Successfully Clicked The Like Button");
-                    }
-                    // Otherwise, check if the unlike button is displayed and click it
-                    else if (unlikeButton.isDisplayed ()) {
-                        unlikeButton.click ();
-                        System.out.println ("Successfully Clicked The Unlike Button");
-                    }
-                    // If neither button is found/displayed
-                    else {
-                        System.out.println ("Both Code Not Executed");
+                        try {
+                            // Locate the unlike button
+                            WebElement unlikeButton = driver.findElement (By.xpath ("//*[@class='unlike']"));
+                            if (unlikeButton.isDisplayed ()) {
+                                unlikeButton.click ();
+                                System.out.println ("Successfully Clicked The Unlike Button");
+                            }
+                        } catch (NoSuchElementException e2) {
+                            System.out.println ("Unlike Button not found");
+                        }
                     }
                 } catch (NoSuchElementException e) {
                     System.out.println ("Like/Unlike Button not found");
@@ -1781,38 +1804,24 @@ public class CourseQuizzes {
                 Threedots.click ();
                 System.out.println ("Successfully clicked The ThreeDots");
 
-                // Clicking The Save My Notes
+                // Clicking The save My Notes or Remove my notes
 
-                Thread.sleep (3000);
-                WebElement clickingSaveMyNotes = driver.findElement (xpath ("//*[text()='Save to My Notes']"));
-                clickingSaveMyNotes.click ();
-                System.out.println ("Sucessfully Save My Notes Clicked ");
+                Thread.sleep (5000);
+                WebElement clickMyNote = driver.findElement (xpath ("//*[contains(text(), 'Save to My Notes') or contains(text(), 'Remove My  Notes')]"));
 
-                // Again Click the three dots in the Quiz Tab
+                if (clickMyNote.isDisplayed ()) {
+                    clickMyNote.click ();
 
-                Thread.sleep (3000);
-                Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
-                Threedots.click ();
-                System.out.println ("Successfully clicked The ThreeDots");
-
-
-                // Clicking The Remove My Notes
-
-                Thread.sleep (3000);
-                WebElement Remove_My_Notes = driver.findElement (xpath ("//span[text()='Remove My  Notes']"));
-                Remove_My_Notes.click ();
-                System.out.println ("Sucessfully remove My Notes Clicked ");
-
-                // Again Click the three dots in the Quiz Tab
-
-                Thread.sleep (3000);
-                Threedots = driver.findElement (xpath ("//*[@class=\"anticon anticon-more\"]"));
-                Threedots.click ();
-                System.out.println ("Successfully clicked The ThreeDots");
+                    if (clickMyNote.getText ().contains ("Remove My  Notes")) {
+                        System.out.println ("Successfully -  Remove - Article");
+                    } else {
+                        System.out.println ("Successfully -  saved - Article");
+                    }
+                }
 
                 /* Clicking the share icon in Quiz Tab */
 
-                Thread.sleep (3000);
+                Thread.sleep (10000);
                 WebElement Share_icon = driver.findElement (xpath ("//span[text()='Share']"));
                 Share_icon.click ();
                 System.out.println ("Successfully clicked The Share Icon");
@@ -1879,11 +1888,36 @@ public class CourseQuizzes {
 
         // Clicking The paused Sub Tab In Quiz
 
-        Thread.sleep (2000);
+        Thread.sleep (4000);
         WebElement clickingPausedTab = driver.findElement (xpath ("//*[text()='Paused']"));
         clickingPausedTab.click ();
         System.out.println ("SuccessFully Clicked The Paused Tab");
 
+        try {
+            boolean noRecordFoundIsDisplayed = false;
 
+            // Check if "No Records Found" is displayed
+            try {
+                WebElement noRecordFound = driver.findElement (By.xpath ("//*[text()='No Records Found.']"));
+                noRecordFoundIsDisplayed = noRecordFound.isDisplayed ();
+            } catch (NoSuchElementException e1) {
+
+                System.out.println ("Can Not Find The 'No Records Found' element.");
+            }
+
+            System.out.println ("No Record Found Is Displayed: " + noRecordFoundIsDisplayed);
+
+            if (noRecordFoundIsDisplayed) {
+                WebElement clickingUnAttempted = driver.findElement (By.xpath ("//*[contains(text(), 'Unattempted')]"));
+                clickingUnAttempted.click ();
+                System.out.println ("Successfully Clicked The 'Unattempted' Sub-Tab");
+            } else {
+                System.out.println ("Unattempted was not clicked");
+            }
+
+        } catch (NoSuchElementException e) {
+            System.out.println ("Error Message: " + e.getMessage ());
+        }
     }
+
 }
