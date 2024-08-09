@@ -1948,14 +1948,11 @@ public class CourseQuizzes {
                 System.out.println ( "-------------------------------------------------------------------------" );
             }
         }
-
-        // Print the total number of unique URLs found
-        System.out.println ( "Total unique videos url found: " + uniquePausedQuizCount );
-
-        // Assert that the number of unique URLs is equal to the number of elements
+        // Assert that the number of unique titles is equal to the number of elements
         Assert.assertEquals ( uniquePausedQuizCount , uniquePausedQuizTitles.size () );
+        System.out.println ( "Successfully Verified" );
 
-//        // Using Try Catch Method For pursuing all the actions in quiz
+        // Using Try Catch Method For pursuing all the actions in quiz
 
         try {
             boolean noRecordFoundIsDisplayed = false;
@@ -1963,7 +1960,7 @@ public class CourseQuizzes {
 
             // Check if "No Records Found" is displayed
             try {
-                WebElement noRecordFound = driver.findElement ( By.xpath ( "//*[text()='No Records Found.']" ) );
+                WebElement noRecordFound = driver.findElement ( xpath ( "//*[text()='No Records Found.']" ) );
                 noRecordFoundIsDisplayed = noRecordFound.isDisplayed ();
             } catch (NoSuchElementException e1) {
 
@@ -1976,16 +1973,22 @@ public class CourseQuizzes {
 
             } catch (NoSuchElementException e2) {
 
-                System.out.println ( "Get An Error: " + e2.getMessage () );
+                System.out.println ( "Quiz was not displayed in the Paused Tab " );
             }
 
             System.out.println ( "No Record Found Is Displayed : " + noRecordFoundIsDisplayed );
             System.out.println ( "Resume quiz has been displayed : " + isResumeQuizIsDisplayed );
 
             if (noRecordFoundIsDisplayed) {
-                WebElement clickingUnAttempted = driver.findElement ( By.xpath ( "//*[contains(text(), 'Unattempted')]" ) );
+                WebElement clickingUnAttempted = driver.findElement ( xpath ( "//*[contains(text(), 'Unattempted')]" ) );
                 clickingUnAttempted.click ();
                 System.out.println ( "Successfully Clicked The 'Unattempted' Sub-Tab" );
+
+                // Creating The constructor For Un-Attempted
+
+                CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
+                unattempt.unAttempted ();
+
             } else {
                 System.out.println ( "Unattempted was not clicked" );
             }
@@ -1994,48 +1997,45 @@ public class CourseQuizzes {
                 WebElement clickingResumeQuiz = driver.findElement ( xpath ( "(//*[text() =' Resume '])[1]" ) );
                 clickingResumeQuiz.click ();
                 System.out.println ( "Successfully Clicked The Resume Quiz" );
-            } else {
-                System.out.println ( "Resume quiz is not clicked" );
-            }
 
-            // Windows Handeling
+                // Windows Handeling
 
-            Set<String> windows = driver.getWindowHandles ();
-            Iterator<String> it = windows.iterator ();
-            String parent = it.next ();
-            String child = it.next ();
-            driver.switchTo ().window ( child );
-            System.out.println ( "SuccessFully Navigated To The Child Windows" );
+                Set<String> windows = driver.getWindowHandles ();
+                Iterator<String> it = windows.iterator ();
+                String parent = it.next ();
+                String child = it.next ();
+                driver.switchTo ().window ( child );
+                System.out.println ( "SuccessFully Navigated To The Child Windows" );
 
-            // Getting The Quiz Name For Verify once completed
+                // Getting The Quiz Name For Verify once completed
 
-            Thread.sleep ( 3000 );
-            WebElement gettingQuizTitle = driver.findElement ( xpath ( "//span[@class=\"title\"]" ) );
-            String QuizTitle = gettingQuizTitle.getText ();
-            System.out.println ( "Quiz Title : " + QuizTitle );
+                Thread.sleep ( 3000 );
+                WebElement gettingQuizTitle = driver.findElement ( xpath ( "//span[@class=\"title\"]" ) );
+                String QuizTitle = gettingQuizTitle.getText ();
+                System.out.println ( "Quiz Title : " + QuizTitle );
 
-            // Getting The User Answered Count
+                // Getting The User Answered Count
 
-            Thread.sleep ( 3000 );
-            WebElement gettingAnswerCount = driver.findElement ( xpath ( "//div[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
-            String AnswerCount = gettingAnswerCount.getText ();
-            System.out.println ( "User Answered Question Count : " + AnswerCount );
+                Thread.sleep ( 3000 );
+                WebElement gettingAnswerCount = driver.findElement ( xpath ( "//div[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
+                String AnswerCount = gettingAnswerCount.getText ();
+                System.out.println ( "User Answered Question Count : " + AnswerCount );
 
-            // Getting The Unanswered Count
+                // Getting The Unanswered Count
 
-            Thread.sleep ( 3000 );
-            WebElement gettingUnAnsweredCount = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
-            String UnAnswerCount = gettingUnAnsweredCount.getText ();
-            System.out.println ( "User Unanswered Count : " + UnAnswerCount );
+                Thread.sleep ( 3000 );
+                WebElement gettingUnAnsweredCount = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
+                String UnAnswerCount = gettingUnAnsweredCount.getText ();
+                System.out.println ( "User Unanswered Count : " + UnAnswerCount );
 
-            // Getting The quiz Time
+                // Getting The quiz Time
 
-            Thread.sleep ( 3000 );
-            WebElement gettingQuizTime = driver.findElement ( xpath ( "//span[@class=\"text\"]" ) );
-            String QuizTime = gettingQuizTime.getText ();
-            System.out.println ( "quiz Time : " + QuizTime );
+                Thread.sleep ( 3000 );
+                WebElement gettingQuizTime = driver.findElement ( xpath ( "//span[@class=\"text\"]" ) );
+                String QuizTime = gettingQuizTime.getText ();
+                System.out.println ( "quiz Time : " + QuizTime );
 
-            //Windows mazimize
+                //Windows mazimize
 
                 WebDriverWait waitForWindowsMaximize;
                 waitForWindowsMaximize = new WebDriverWait (driver, Duration.ofSeconds (30));
@@ -2062,34 +2062,34 @@ public class CourseQuizzes {
                 System.out.println ("SuccessFully Clicked The Full Screen Button ");
 
                 // Clicking the BookMark-icon
-            try {
-                WebElement bookmarkIcon = driver.findElement ( By.xpath ( "//*[@class='bookmark-icon']" ) );
-                if (bookmarkIcon.isDisplayed ()) {
-                    bookmarkIcon.click ();
-                    System.out.println ( "Successfully Clicked The Bookmark Icon" );
-                }
-            } catch (NoSuchElementException e1) {
                 try {
-                    WebElement bookmarkedIcon = driver.findElement ( By.xpath ( "//*[@class='bookmarked-icon']" ) );
-                    if (bookmarkedIcon.isDisplayed ()) {
-                        bookmarkedIcon.click ();
-                        System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                    WebElement bookmarkIcon = driver.findElement ( xpath ( "//*[@class='bookmark-icon']" ) );
+                    if (bookmarkIcon.isDisplayed ()) {
+                        bookmarkIcon.click ();
+                        System.out.println ( "Successfully Clicked The Bookmark Icon" );
                     }
-                } catch (NoSuchElementException e2) {
-                    System.out.println ( "Both The Code Has Not Executed" );
-                }
+                } catch (NoSuchElementException e1) {
+                    try {
+                        WebElement bookmarkedIcon = driver.findElement ( xpath ( "//*[@class='bookmarked-icon']" ) );
+                        if (bookmarkedIcon.isDisplayed ()) {
+                            bookmarkedIcon.click ();
+                            System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                        }
+                    } catch (NoSuchElementException e2) {
+                        System.out.println ( "Both The Code Has Not Executed" );
+                    }
                 }
 
                 // Define the options to be clicked
-            String[] options = new String[]{"E" , "D" , "C" , "B" , "A" , "E" , "D" , "C" , "B" , "A" , "E" , "D" , "C" , "B" , "A"};
+                String[] options = new String[]{"E" , "D" , "C" , "B" , "A" , "E" , "D" , "C" , "B" , "A" , "E" , "D" , "C" , "B" , "A"};
 
                 // Locate the Save & Next button
-                WebElement saveAndNextButton = driver.findElement (By.xpath ("//div[text()='Save & Next']"));
+                WebElement saveAndNextButton = driver.findElement ( xpath ( "//div[text()='Save & Next']" ) );
 
                 // Clicking the options and Save & Next button in a loop
                 for (String option : options) {
                     Thread.sleep (3000);
-                    WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + option + "']"));
+                    WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + option + "']" ) );
                     optionElement.click ();
                     System.out.println ("Successfully Clicked The Option: " + option);
 
@@ -2101,19 +2101,19 @@ public class CourseQuizzes {
                 // Clicking options again after navigating back
                 for (int i = 0; i < options.length - 2; i++) {
                     Thread.sleep (3000);
-                    WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + options[i] + "']"));
+                    WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                     optionElement.click ();
                     System.out.println ("Successfully Clicked The Option: " + options[i]);
 
                     Thread.sleep (3000);
-                    WebElement numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (16 + i) + "']"));
+                    WebElement numberOnRightSide = driver.findElement ( xpath ( "//Span[text()='" + (16 + i) + "']" ) );
                     numberOnRightSide.click ();
                     System.out.println ("Successfully Clicked The Number: " + (16 + i));
                 }
 
                 // Clicking the Previous Button
                 Thread.sleep (3000);
-                WebElement clickingThePreviousButton = driver.findElement (By.xpath ("//div[text()='Previous']"));
+                WebElement clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
                 clickingThePreviousButton.click ();
 
                 // Clicking The Pause Button
@@ -2128,26 +2128,26 @@ public class CourseQuizzes {
                 WebElement clickingCancelButtonInPopup = driver.findElement (xpath ("//*[text()=' Cancel ']"));
                 clickingCancelButtonInPopup.click ();
 
-            // Getting The User Answered Count
+                // Getting The User Answered Count
 
-            Thread.sleep ( 3000 );
-            WebElement gettingAnswerCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
-            String AnswerCountBeforepause = gettingAnswerCount.getText ();
-            System.out.println ( "Answered Question Count Before Pause : " + AnswerCountBeforepause );
+                Thread.sleep ( 3000 );
+                WebElement gettingAnswerCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
+                String AnswerCountBeforepause = gettingAnswerCount.getText ();
+                System.out.println ( "Answered Question Count Before Pause : " + AnswerCountBeforepause );
 
-            // Getting The Unanswered Count
+                // Getting The Unanswered Count
 
-            Thread.sleep ( 3000 );
-            WebElement gettingUnAnsweredCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
-            String UnAnswerCountBeforepause = gettingUnAnsweredCount.getText ();
-            System.out.println ( "User Unanswered Count Before Pause : " + UnAnswerCountBeforepause );
+                Thread.sleep ( 3000 );
+                WebElement gettingUnAnsweredCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
+                String UnAnswerCountBeforepause = gettingUnAnsweredCount.getText ();
+                System.out.println ( "User Unanswered Count Before Pause : " + UnAnswerCountBeforepause );
 
-            // Getting The quiz Time
+                // Getting The quiz Time
 
-            Thread.sleep ( 3000 );
-            WebElement gettingQuizTimeBeforepause = driver.findElement ( xpath ( "//span[@class=\"text\"]" ) );
-            String QuizTimeBeforepause = gettingQuizTime.getText ();
-            System.out.println ( "quiz Time Before pause: " + QuizTimeBeforepause );
+                Thread.sleep ( 3000 );
+                WebElement gettingQuizTimeBeforepause = driver.findElement ( xpath ( "//span[@class=\"text\"]" ) );
+                String QuizTimeBeforepause = gettingQuizTime.getText ();
+                System.out.println ( "quiz Time Before pause: " + QuizTimeBeforepause );
 
                 // Again Clicking The Pause Button leaves the quiz
 
@@ -2168,9 +2168,9 @@ public class CourseQuizzes {
                 // Clicking the Resume quiz
 
                 Thread.sleep (3000);
-                WebElement clickingResumeQuiz = driver.findElement (xpath ("//*[text() = ' Resume ']"));
+                clickingResumeQuiz = driver.findElement ( xpath ( "//*[text() = ' Resume ']" ) );
                 clickingResumeQuiz.click ();
-            System.out.println ( " Clicked The resume quiz In The paused Tab " );
+                System.out.println ( " Clicked The resume quiz In The paused Tab " );
 
                 //Windows Handeling
 
@@ -2179,52 +2179,52 @@ public class CourseQuizzes {
                 parent = it.next ();
                 child = it.next ();
                 driver.switchTo ().window (child);
-            System.out.println ( "SuccessFully Navigated To The Child Windows" );
+                System.out.println ( "SuccessFully Navigated To The Child Windows" );
 
 //                //Windows mazimize
-            Thread.sleep ( 5000 );
-            driver.manage ().window ().maximize ();
+                Thread.sleep ( 5000 );
+                driver.manage ().window ().maximize ();
 
-            // Getting The answer Count After Resume
+                // Getting The answer Count After Resume
 
-            Thread.sleep ( 5000 );
-            WebElement gettingAnsweredCountAfterResume = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
-            String AnsweredCountAfterResume = gettingAnsweredCountAfterResume.getText ();
-            System.out.println ( "Answered Count After Resume : " + AnsweredCountAfterResume );
+                Thread.sleep ( 5000 );
+                WebElement gettingAnsweredCountAfterResume = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
+                String AnsweredCountAfterResume = gettingAnsweredCountAfterResume.getText ();
+                System.out.println ( "Answered Count After Resume : " + AnsweredCountAfterResume );
 
-            // Verifying The Paused Answer Count was same as Resume Answr Count
+                // Verifying The Paused Answer Count was same as Resume Answr Count
 
-            Assert.assertEquals ( AnsweredCountAfterResume , AnswerCountBeforepause );
-            System.out.println ( "Verification Passed: Answered Count Before Pause (" + AnswerCountBeforepause + ") matches Answered Count After Resume (" + AnsweredCountAfterResume + ")" );
+                Assert.assertEquals ( AnsweredCountAfterResume , AnswerCountBeforepause );
+                System.out.println ( "Verification Passed: Answered Count Before Pause (" + AnswerCountBeforepause + ") matches Answered Count After Resume (" + AnsweredCountAfterResume + ")" );
 
-            //Getting The un answer Count After Resume
+                //Getting The un answer Count After Resume
 
-            WebElement gettingUnansweredCountAfterResume = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
-            String UnansweredCountAfterResume = gettingUnansweredCountAfterResume.getText ();
-            System.out.println ( "Answered Count After Resume : " + UnansweredCountAfterResume );
+                WebElement gettingUnansweredCountAfterResume = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
+                String UnansweredCountAfterResume = gettingUnansweredCountAfterResume.getText ();
+                System.out.println ( "Answered Count After Resume : " + UnansweredCountAfterResume );
 
-            // Verifying The Paused Un-Answer Count was the same as Resume Un-Answer Count
+                // Verifying The Paused Un-Answer Count was the same as Resume Un-Answer Count
 
-            Assert.assertEquals ( UnAnswerCountBeforepause , UnansweredCountAfterResume );
-            System.out.println ( "Verification Passed: Answered Count Before Pause (" + UnAnswerCountBeforepause + ") matches Answered Count After Resume (" + UnansweredCountAfterResume + ")" );
+                Assert.assertEquals ( UnAnswerCountBeforepause , UnansweredCountAfterResume );
+                System.out.println ( "Verification Passed: Answered Count Before Pause (" + UnAnswerCountBeforepause + ") matches Answered Count After Resume (" + UnansweredCountAfterResume + ")" );
 
-            // Getting The quiz Timer After Resume
+                // Getting The quiz Timer After Resume
 
-            WebElement gettingQUizTimeAfterResume = driver.findElement ( xpath ( "//*[@class=\"quiz-timer\"]" ) );
-            String quizTimeAfterResume = gettingQUizTimeAfterResume.getText ();
-            System.out.println ( "Quiz Time After Resume : " + quizTimeAfterResume );
+                WebElement gettingQUizTimeAfterResume = driver.findElement ( xpath ( "//*[@class=\"quiz-timer\"]" ) );
+                String quizTimeAfterResume = gettingQUizTimeAfterResume.getText ();
+                System.out.println ( "Quiz Time After Resume : " + quizTimeAfterResume );
 
-            // Verifying The Quiz Time Before Pause was the same as Quiz Time After Resume
+                // Verifying The Quiz Time Before Pause was the same as Quiz Time After Resume
 
 //            Assert.assertEquals ( QuizTimeBeforepause,quizTimeAfterResume );
-            System.out.println ( "Verification Passed: Answered Count Before Pause (" + QuizTimeBeforepause + ") matches Answered Count After Resume (" + quizTimeAfterResume + ")" );
+                System.out.println ( "Verification Passed: Quiz Time Before Pause (" + QuizTimeBeforepause + ") matches Quiz Time After Resume (" + quizTimeAfterResume + ")" );
 
-            //Clicking the Instruction Button
+                //Clicking the Instruction Button
 
-            Thread.sleep ( 3000 );
-            clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
-            clickingTheInstructionIcon.click ();
-            System.out.println ( "Sucessfully clicked instruction icon" );
+                Thread.sleep ( 3000 );
+                clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
+                clickingTheInstructionIcon.click ();
+                System.out.println ( "Sucessfully clicked instruction icon" );
 
                 // Again Clicking the close icon in the quiz instruction
 
@@ -2238,34 +2238,34 @@ public class CourseQuizzes {
                 clickingTheFullScreenButton = driver.findElement (className ("anticon-expand"));
                 clickingTheFullScreenButton.click ();
 
-            // Clicking the BookMark-icon
-            try {
-                WebElement bookmarkIcon = driver.findElement ( By.xpath ( "//*[@class='bookmark-icon']" ) );
-                if (bookmarkIcon.isDisplayed ()) {
-                    bookmarkIcon.click ();
-                    System.out.println ( "Successfully Clicked The Bookmark Icon" );
-                }
-            } catch (NoSuchElementException e1) {
+                // Clicking the BookMark-icon
                 try {
-                    WebElement bookmarkedIcon = driver.findElement ( By.xpath ( "//*[@class='bookmarked-icon']" ) );
-                    if (bookmarkedIcon.isDisplayed ()) {
-                        bookmarkedIcon.click ();
-                        System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                    WebElement bookmarkIcon = driver.findElement ( xpath ( "//*[@class='bookmark-icon']" ) );
+                    if (bookmarkIcon.isDisplayed ()) {
+                        bookmarkIcon.click ();
+                        System.out.println ( "Successfully Clicked The Bookmark Icon" );
                     }
-                } catch (NoSuchElementException e2) {
-                    System.out.println ( "Both The Code Has Not Executed" );
+                } catch (NoSuchElementException e1) {
+                    try {
+                        WebElement bookmarkedIcon = driver.findElement ( xpath ( "//*[@class='bookmarked-icon']" ) );
+                        if (bookmarkedIcon.isDisplayed ()) {
+                            bookmarkedIcon.click ();
+                            System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                        }
+                    } catch (NoSuchElementException e2) {
+                        System.out.println ( "Both The Code Has Not Executed" );
+                    }
                 }
-            }
                 // Define the options to be clicked
-            options = new String[]{"B" , "A" , "E" , "C" , "A" , "D" , "E" , "C" , "B" , "B" , "B" , "A" , "D" , "E" , "A" ,};
+                options = new String[]{"B" , "A" , "E" , "C" , "A" , "D" , "E" , "C" , "B" , "B" , "B" , "A" , "D" , "E" , "A" ,};
 
                 // Locate the Save & Next button
-                saveAndNextButton = driver.findElement (By.xpath ("//div[text()='Save & Next']"));
+                saveAndNextButton = driver.findElement ( xpath ( "//div[text()='Save & Next']" ) );
 
                 // Clicking the options and Save & Next button in a loop
                 for (String option : options) {
                     Thread.sleep (3000);
-                    WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + option + "']"));
+                    WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + option + "']" ) );
                     optionElement.click ();
                     System.out.println ("Successfully Clicked The Option: " + option);
 
@@ -2277,12 +2277,12 @@ public class CourseQuizzes {
                 // Clicking options again after navigating back
                 for (int i = 0; i < options.length - 2; i++) {
                     Thread.sleep (3000);
-                    WebElement optionElement = driver.findElement (By.xpath ("//div[text()='" + options[i] + "']"));
+                    WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                     optionElement.click ();
                     System.out.println ("Successfully Clicked The Option: " + options[i]);
 
                     Thread.sleep (3000);
-                    WebElement numberOnRightSide = driver.findElement (By.xpath ("//Span[text()='" + (16 + i) + "']"));
+                    WebElement numberOnRightSide = driver.findElement ( xpath ( "//Span[text()='" + (16 + i) + "']" ) );
                     numberOnRightSide.click ();
                     System.out.println ("Successfully Clicked The Number and Navigated To The Next Question: " + (16 + i));
                 }
@@ -2299,24 +2299,24 @@ public class CourseQuizzes {
                 WebElement clickingCancelButtonInThePopup = driver.findElement (xpath ("//span[text()=\"Cancel\"]"));
                 clickingCancelButtonInThePopup.click ();
 
-            // Getting The answer Count Before Submit
+                // Getting The answer Count Before Submit
 
-            Thread.sleep ( 5000 );
-            WebElement gettingAnsweredCountBeforeSubmit = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
-            String AnsweredCountBeforeSubmit = gettingAnsweredCountBeforeSubmit.getText ();
-            System.out.println ( "Answered Count Before Submit : " + AnsweredCountBeforeSubmit );
+                Thread.sleep ( 5000 );
+                WebElement gettingAnsweredCountBeforeSubmit = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
+                String AnsweredCountBeforeSubmit = gettingAnsweredCountBeforeSubmit.getText ();
+                System.out.println ( "Answered Count Before Submit : " + AnsweredCountBeforeSubmit );
 
-            //Getting The un answer Count After Resume
+                //Getting The un answer Count After Resume
 
-            WebElement gettingUnansweredCountBeforeSubmit = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
-            String UnansweredCountBeforeSubmit = gettingUnansweredCountBeforeSubmit.getText ();
-            System.out.println ( "Answered Count Before Submit : " + UnansweredCountBeforeSubmit );
+                WebElement gettingUnansweredCountBeforeSubmit = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
+                String UnansweredCountBeforeSubmit = gettingUnansweredCountBeforeSubmit.getText ();
+                System.out.println ( "Un-Answered Count Before Submit : " + UnansweredCountBeforeSubmit );
 
-            // Getting The quiz Timer After Resume
+                // Getting The quiz Timer After Resume
 
-            WebElement gettingQUizTimeBeforeSubmit = driver.findElement ( xpath ( "//*[@class=\"quiz-timer\"]" ) );
-            String quizTimeBeforeSubmit = gettingQUizTimeBeforeSubmit.getText ();
-            System.out.println ( "Quiz Time Before Submit : " + quizTimeBeforeSubmit );
+                WebElement gettingQUizTimeBeforeSubmit = driver.findElement ( xpath ( "//*[@class=\"quiz-timer\"]" ) );
+                String quizTimeBeforeSubmit = gettingQUizTimeBeforeSubmit.getText ();
+                System.out.println ( "Quiz Time Before Submit : " + quizTimeBeforeSubmit );
 
                 // Again Clicking The Submit Button
 
@@ -2334,59 +2334,68 @@ public class CourseQuizzes {
 
                 driver.switchTo ().window (parent);
 
-            // Once Test Finish Navigate to The Attempted List Page
+                // Once Test Finish Navigate to The Attempted List Page
 
-            Thread.sleep ( 4000 );
-            WebElement clickingTheAttemptedButton = driver.findElement ( xpath ( "//*[text()='Attempted']" ) );
-            clickingTheAttemptedButton.click ();
-            System.out.println ( "Successfully Clicked The Attempted Button " );
+                Thread.sleep ( 4000 );
+                WebElement clickingTheAttemptedButton = driver.findElement ( xpath ( "//*[text()='Attempted']" ) );
+                clickingTheAttemptedButton.click ();
+                System.out.println ( "Successfully Clicked The Attempted Button " );
 
-            // Getting the Quiz Title Name to check Whether completed quiz from paused was showin In Attempt or not
 
-            // Find all elements matching the XPath and store them in a list
-            List<WebElement> gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
+                // Scrolling The Attempted Quizzes List Page to verify data
 
-            // Iterate through the list and print the text of each element
-            for (WebElement quizTitle : gettingQuizTitles) {
-                String quiztitleText = quizTitle.getText ();
-                System.out.println ( "Quiz Title: " + quiztitleText );
+                int numberOfTimesScrollQuizzes = 2;
 
-                // Verifying The completed quiz from paused was showing or not in the attempted
+                for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
+                    try {
+                        Thread.sleep ( 5000 );
+                        JavascriptExecutor jse = (JavascriptExecutor) driver;
+                        jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
+                        System.out.println ( "Successfully scroll The page " + (i + 1) + " time(s)." );
+                    } catch (Exception scroll) {
+                        System.out.println ( "Failed to Scroll : " + scroll.getMessage () );
+                    }
+                }
 
-                Assert.assertEquals ( QuizTitle , quiztitleText );
-                System.out.println ( "Verification Passed: Quiz Title In Paused (" + QuizTitle + ") matches Quiz Title In Attempted (" + quiztitleText + ")" );
+                // Clicking Float Icon
 
-            }
+                WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
+                clickingFloatIcon.click ();
+                Thread.sleep ( 5000 );
 
-            // Clicking The Completed quiz from the paused tab in the attempted
+                // Getting the Quiz Title Name to check Whether completed quiz from paused was showing In Attempt or not
 
-            // Iterate through the list and clicking solution
+                // Find all elements matching the XPath and store them in a list
+                List<WebElement> gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
 
-            for (WebElement quizTitle : quizTitles) {
-                String quizTitleText = quizTitle.getText ();
-                if (quizTitleText.equals ( QuizTitle )) {
-                    WebElement solutionButton = quizTitle.findElement ( By.xpath ( "./preceding::span[text()=' Solution ']" ) );
-                    solutionButton.click ();
-                    System.out.println ( "Successfully clicked the Solution button for the verified quiz title: " + quizTitleText );
+                // Iterate through the list and print the text of each element
+                for (WebElement quizTitle : gettingQuizTitles) {
+                    String quiztitleText = quizTitle.getText ();
+                    System.out.println ( "Quiz Title: " + quiztitleText );
+
+                    // Verifying The completed quiz from paused was showing or not in the attempted
+
+                    Assert.assertEquals ( QuizTitle , quiztitleText );
+                    System.out.println ( "Verification Passed: Quiz Title In Paused (" + QuizTitle + ") matches Quiz Title In Attempted (" + quiztitleText + ")" );
 
                 }
+
+                // Clicking The Completed quiz from the paused tab in the attempted
+
+                // Iterate through the list and clicking solution
+
+                for (WebElement quizTitle : quizTitles) {
+                    String quizTitleText = quizTitle.getText ();
+                    if (quizTitleText.equals ( QuizTitle )) {
+                        WebElement solutionButton = quizTitle.findElement ( By.xpath ( "//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]/parent::*/preceding::span[text()=' Solution ']" ) );
+                        solutionButton.click ();
+                        System.out.println ( "Successfully clicked the Solution button for the verified quiz title: " + quizTitleText );
+                    }
+                }
+
+            } else {
+                System.out.println ( "Resume quiz is not clicked" );
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         } catch (NoSuchElementException e) {
             System.out.println ("Error Message: " + e.getMessage ());
