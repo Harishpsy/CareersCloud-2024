@@ -28,7 +28,7 @@ public class CourseQuizzes {
         // Clicking The Course In the My Course
 
         Thread.sleep (3000);
-        WebElement clickingCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[10]"));
+        WebElement clickingCourseCard = driver.findElement ( xpath ( "(//*[@class=\"ant-card-body\"])[2]" ) );
         clickingCourseCard.click ();
 
         // Clicking The Quizzes In The Course

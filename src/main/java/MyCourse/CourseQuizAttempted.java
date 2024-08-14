@@ -4,440 +4,34 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 import static org.openqa.selenium.By.*;
-import static org.openqa.selenium.By.name;
 
-public class CourseQuizzesUnattempted extends CourseQuizAttempted {
+public class CourseQuizAttempted {
 
+    // Creating a Constructor
     WebDriver driver;
 
-    public CourseQuizzesUnattempted(WebDriver driver) {
-
+    public CourseQuizAttempted(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void unAttempted() throws InterruptedException {
+    public CourseQuizAttempted() {
+    }
 
+    public void attemptedTab() {
 
-        int numberOfTimesScrollunattemptedQuizzesListpage = 2;
+        WebElement clickingAttemptedTab = driver.findElement ( By.xpath ( "//*[text()='Attempted']" ) );
+        clickingAttemptedTab.click ();
+    }
 
-        for (int i = 0; i < numberOfTimesScrollunattemptedQuizzesListpage; i++) {
-            try {
-                Thread.sleep ( 5000 );
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The page " + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll : " + scroll.getMessage () );
-            }
-        }
+    public void clickingsolutionbutton() throws InterruptedException {
 
-        // Clicking Float Icon
-        try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-            if (clickingFloatIcon.isDisplayed ()) {
-                clickingFloatIcon.click ();
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed" );
-        }
-
-        // Verifying the Quiz List was getting duplicating using the unique videos Url
-        List<WebElement> unattemptedQuizTitle = driver.findElements ( xpath ( "//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]" ) );
-
-        // Create a set to store unique Quiz Titles
-
-        Set<String> uniqueunattemptedQuizTitles = new HashSet<> ();
-        int uniqueunattemptedQuizCount = 0;
-
-        for (WebElement uniqueTitle : unattemptedQuizTitle) {
-            String actualquizTitle = uniqueTitle.getText ();
-
-            if (uniqueunattemptedQuizTitles.contains ( actualquizTitle )) {
-                System.out.println ( "Duplicate found --> " + actualquizTitle + uniqueunattemptedQuizCount );
-            } else {
-                uniqueunattemptedQuizTitles.add ( actualquizTitle );
-                uniqueunattemptedQuizCount++;
-                System.out.println ( "Found: " + uniqueunattemptedQuizCount + " --> " + actualquizTitle );
-                System.out.println ( "-------------------------------------------------------------------------" );
-            }
-        }
-
-        // Assert that the number of unique URLs is equal to the number of elements
-        Assert.assertEquals ( uniqueunattemptedQuizCount , uniqueunattemptedQuizTitles.size () );
-
-        // Clicking The Start Quiz
-
-        WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
-        WebElement clickingStartQuiz = wait.until ( ExpectedConditions.elementToBeClickable ( By.xpath ( " (//*[text() = ' Start Quiz '])[1]" ) ) );
-        clickingStartQuiz.click ();
-        System.out.println ( "Successfully Clicked The Start Button" );
-
-        //Windows Handeling
-
-        Set<String> windows = driver.getWindowHandles ();
-        Iterator<String> it = windows.iterator ();
-        String parent = it.next ();
-        String child = it.next ();
-        driver.switchTo ().window ( child );
-
-        // Clicking the close icon in the quiz instruction
-
-        Thread.sleep ( 5000 );
-        WebElement Close_icon = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-close\"]" ) );
-        Close_icon.click ();
-        System.out.println ( "SuccessFully Clicked The CloseIcon" );
-
-        //Windows mazimize
-
-        new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
-        driver.manage ().window ().maximize ();
-
-        // Getting The Quiz Name For Verify In The Paused Tab From The Unattempted Tab
-
-        Thread.sleep ( 3000 );
-        WebElement gettingQuizTitle = driver.findElement ( xpath ( "//span[@class=\"title\"]" ) );
-        String QuizTitle = gettingQuizTitle.getText ();
-        System.out.println ( "Quiz Title Name From The Unattempted : " + QuizTitle );
-
-        // Getting The quiz Time
-
-        Thread.sleep ( 3000 );
-        WebElement gettingQuizTime = driver.findElement ( xpath ( "//span[@class=\"text\"]" ) );
-        String QuizTime = gettingQuizTime.getText ();
-        System.out.println ( "quiz Time : " + QuizTime );
-
-
-        // Clicking The FullScreen Button
-        Thread.sleep ( 3000 );
-        WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
-        clickingTheFullScreenButton.click ();
-        System.out.println ( "SuccessFully Clicked The Full Screen Button " );
-
-        // Clicking the BookMark-icon
-        try {
-            WebElement bookmarkIcon = driver.findElement ( By.xpath ( "//*[@class='bookmark-icon']" ) );
-            if (bookmarkIcon.isDisplayed ()) {
-                bookmarkIcon.click ();
-                System.out.println ( "Successfully Clicked The Bookmark Icon" );
-            }
-        } catch (NoSuchElementException e1) {
-            try {
-                WebElement bookmarkedIcon = driver.findElement ( By.xpath ( "//*[@class='bookmarked-icon']" ) );
-                if (bookmarkedIcon.isDisplayed ()) {
-                    bookmarkedIcon.click ();
-                    System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
-                }
-            } catch (NoSuchElementException e2) {
-                System.out.println ( "Both The Code Has Not Executed" );
-            }
-        }
-
-        // Define the options to be clicked
-        String[] options = new String[]{"E" , "D" , "C" , "B" , "A" , "E" , "D" , "C" , "B" , "A" , "E" , "D" , "C" , "B" , "A"};
-
-        // Locate the Save & Next button
-        WebElement saveAndNextButton = driver.findElement ( By.xpath ( "//div[text()='Save & Next']" ) );
-
-        // Clicking the options and Save & Next button in a loop
-        for (String option : options) {
-            Thread.sleep ( 3000 );
-            WebElement optionElement = driver.findElement ( By.xpath ( "//div[text()='" + option + "']" ) );
-            optionElement.click ();
-            System.out.println ( "Successfully Clicked The Option: " + option );
-
-            Thread.sleep ( 3000 );
-            saveAndNextButton.click ();
-            System.out.println ( "Successfully Clicked The Save & Next Button" );
-        }
-
-        // Clicking options again after navigating back
-        for (int i = 0; i < options.length - 2; i++) {
-            Thread.sleep ( 3000 );
-            WebElement optionElement = driver.findElement ( By.xpath ( "//div[text()='" + options[i] + "']" ) );
-            optionElement.click ();
-            System.out.println ( "Successfully Clicked The Option: " + options[i] );
-
-            Thread.sleep ( 3000 );
-            WebElement numberOnRightSide = driver.findElement ( By.xpath ( "//Span[text()='" + (16 + i) + "']" ) );
-            numberOnRightSide.click ();
-            System.out.println ( "Successfully Clicked The Number: " + (16 + i) );
-        }
-
-        // Clicking the Previous Button
-        Thread.sleep ( 3000 );
-        WebElement clickingThePreviousButton = driver.findElement ( By.xpath ( "//div[text()='Previous']" ) );
-        clickingThePreviousButton.click ();
-
-        // Clicking The Pause Button
-
-        Thread.sleep ( 3000 );
-        WebElement clickingThePauseButton = driver.findElement ( xpath ( "//*[@class=\"pause-icon\"]" ) );
-        clickingThePauseButton.click ();
-
-        // Clicking The Cancel Button In The Pause popup
-
-        Thread.sleep ( 3000 );
-        WebElement clickingCancelButtonInPopup = driver.findElement ( xpath ( "//*[text()=' Cancel ']" ) );
-        clickingCancelButtonInPopup.click ();
-
-        // Getting The User Answered Count
-
-        Thread.sleep ( 3000 );
-        WebElement gettingAnswerCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
-        String AnswerCountBeforepause = gettingAnswerCountBeforepause.getText ();
-        System.out.println ( "Answered Question Count Before Pause : " + AnswerCountBeforepause );
-
-        // Getting The Unanswered Count
-
-        Thread.sleep ( 3000 );
-        WebElement gettingUnAnsweredCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
-        String UnAnswerCountBeforepause = gettingUnAnsweredCountBeforepause.getText ();
-        System.out.println ( "User Unanswered Count Before Pause : " + UnAnswerCountBeforepause );
-
-        // Getting The quiz Time
-
-        Thread.sleep ( 3000 );
-        driver.findElement ( xpath ( "//span[@class=\"text\"]" ) );
-        String QuizTimeBeforepause = gettingQuizTime.getText ();
-        System.out.println ( "quiz Time Before pause: " + QuizTimeBeforepause );
-
-        // Again, Clicking The Pause Button leaves the quiz
-
-        Thread.sleep ( 3000 );
-        clickingThePauseButton = driver.findElement ( xpath ( "//*[@class=\"pause-icon\"]" ) );
-        clickingThePauseButton.click ();
-        System.out.println ( "Successfully CLicked The Pause Button " );
-
-        // Clicking The Leave button In the Pause Popup
-
-        Thread.sleep ( 3000 );
-        WebElement clickingLeaveButtonInPopup = driver.findElement ( xpath ( "//span[text()=\" Leave \"]" ) );
-        clickingLeaveButtonInPopup.click ();
-        System.out.println ( "Successfully Clicked The Leave Button" );
-
-        // Changing The Child Windows To Parent Window
-
-        driver.switchTo ().window ( parent );
-
-        // Clicking The Paused Tab
-
-        Thread.sleep ( 3000 );
-        WebElement clickingPausedTab = driver.findElement ( xpath ( "//*[text() ='Paused']" ) );
-        clickingPausedTab.click ();
-        System.out.println ( "Successfully Clicked The Paused Tab" );
-
-        // Scrolling The Attempted Quizzes List Page to verify data
-
-        int numberOfTimesScrollQuizzes = 5;
-
-        for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
-            try {
-                Thread.sleep ( 5000 );
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The page " + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll : " + scroll.getMessage () );
-            }
-        }
-
-        // Clicking Float Icon
-        try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-            if (clickingFloatIcon.isDisplayed ()) {
-                clickingFloatIcon.click ();
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed" );
-        }
-
-        // Getting the Quiz Title Name to check Whether completed quiz from paused was showing In Attempt or not
-
-        // Find all elements matching the XPath and store them in a list
-        List<WebElement> gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
-
-        // Iterate through the list and print the text of each element
-        for (WebElement quizTitle : gettingQuizTitles) {
-            String quiztitleText = quizTitle.getText ();
-            System.out.println ( "Quiz Title: " + quiztitleText );
-
-            // Verifying The completed quiz from paused was showing or not in the attempted
-
-            Assert.assertEquals ( QuizTitle , quiztitleText );
-            System.out.println ( "Verification Passed: Quiz Title In Paused (" + QuizTitle + ") matches Quiz Title In Attempted (" + quiztitleText + ")" );
-        }
-        // Checking That from the unattempted attened quiz was showing in the paused
-
-        // Iterate through the list and clicking solution
-
-        for (WebElement quizTitle : gettingQuizTitles) {
-            String quizTitleText = quizTitle.getText ();
-            if (quizTitleText.equals ( QuizTitle )) {
-                WebElement ResumeButton = quizTitle.findElement ( By.xpath ( "//*[text() = ' Resume ']" ) );
-                ResumeButton.click ();
-                System.out.println ( "Successfully clicked the Resume button for the verified quiz title: " + quizTitleText );
-            }
-        }
-
-        //Windows Handeling
-
-        windows = driver.getWindowHandles ();
-        it = windows.iterator ();
-        parent = it.next ();
-        child = it.next ();
-        driver.switchTo ().window ( child ); // Navigating to the clild window
-
-        // Clicking The Submit Button
-
-        Thread.sleep ( 3000 );
-        WebElement clickingSubmitButton = driver.findElement ( xpath ( "//span[text()=' Submit ']" ) );
-        clickingSubmitButton.click ();
-
-        // Clicking the Cancel Button In the submit Popup
-
-        Thread.sleep ( 1000 );
-        WebElement clickingCancelButtonInThePopup = driver.findElement ( xpath ( "//span[text()=\"Cancel\"]" ) );
-        clickingCancelButtonInThePopup.click ();
-
-        // Getting The answer Count Before Submit
-
-        Thread.sleep ( 5000 );
-        WebElement gettingAnsweredCountBeforeSubmit = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
-        String AnsweredCountBeforeSubmit = gettingAnsweredCountBeforeSubmit.getText ();
-        System.out.println ( "Answered Count Before Submit : " + AnsweredCountBeforeSubmit );
-
-        //Getting The un answer Count After Resume
-
-        WebElement gettingUnansweredCountBeforeSubmit = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
-        String UnansweredCountBeforeSubmit = gettingUnansweredCountBeforeSubmit.getText ();
-        System.out.println ( "Un-Answered Count Before Submit : " + UnansweredCountBeforeSubmit );
-
-        // Getting The quiz Timer After Resume
-
-        WebElement gettingQUizTimeBeforeSubmit = driver.findElement ( xpath ( "//*[@class=\"quiz-timer\"]" ) );
-        String quizTimeBeforeSubmit = gettingQUizTimeBeforeSubmit.getText ();
-        System.out.println ( "Quiz Time Before Submit : " + quizTimeBeforeSubmit );
-
-        // Getting The Quiz Name For Verify In The Paused Tab From The Unattempted Tab
-
-        Thread.sleep ( 3000 );
-        gettingQuizTitle = driver.findElement ( By.xpath ( "//*[@class=\"ant-col title-column ant-col-xs-22 ant-col-sm-22 ant-col-md-22 ant-col-lg-22 ant-col-xl-22 ant-col-xxl-22 css-xu9wm8\"]" ) );
-        String attemptedQuizTitle = gettingQuizTitle.getText ();
-        System.out.println ( "Quiz Title Name From The Resume Test Before Submit: " + attemptedQuizTitle );
-
-        // Again Clicking The Submit Button
-
-        Thread.sleep ( 3000 );
-        clickingSubmitButton = driver.findElement ( By.xpath ( "//*[text()=' Submit ']" ) );
-        clickingSubmitButton.click ();
-
-        // Clicking The Submit Button In The Submit Popup
-
-        Thread.sleep ( 5000 );
-        clickingSubmitButton = driver.findElement ( By.xpath ( "//*[text() = \"Submit\"]" ) );
-        clickingSubmitButton.click ();
-        System.out.println ( "Successfully Clicked The Submit Button In The Popup" );
-
-        // Switching Windows From Child To Parent
-
-        driver.switchTo ().window ( parent );
-
-        // Once Test Finish Navigate to The Attempted List Page
-
-        Thread.sleep ( 4000 );
-        WebElement clickingTheAttemptedButton = driver.findElement ( By.xpath ( "//*[text()='Attempted']" ) );
-        clickingTheAttemptedButton.click ();
-        System.out.println ( "Successfully Clicked The Attempted Button" );
-
-        // Scrolling The Attempted Quizzes List Page to verify data
-
-        numberOfTimesScrollQuizzes = 50;
-
-        for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
-            try {
-                Thread.sleep ( 4000 );
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scrolled the page " + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll: " + scroll.getMessage () );
-            }
-        }
-
-        // Clicking Float Icon
-
-        try {
-            WebElement clickingFloatIcon = driver.findElement ( By.xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-            if (clickingFloatIcon.isDisplayed ()) {
-                clickingFloatIcon.click ();
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed" );
-        }
-
-        // Getting the Quiz Title Name to check whether completed quiz from paused was showing in Attempted or not
-
-        // Find all elements matching the XPath and store them in a list
-        gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
-
-        Thread.sleep ( 5000 );
-        // Iterate through the list and print the text of each element
-        boolean matchFound = false;
-        for (WebElement quizTitle : gettingQuizTitles) {
-            String quiztitleText = quizTitle.getText ();
-            System.out.println ( quiztitleText );
-
-            // Verifying the completed quiz from paused was showing or not in the attempted
-            if (attemptedQuizTitle.equals ( quiztitleText )) {
-                matchFound = true;
-                System.out.println ( "Verification Passed: Quiz Title In Paused (" + attemptedQuizTitle + ") matches Quiz Title In Attempted Tabs (" + quiztitleText + ")" );
-                break; // To exit loop if match found
-            }
-        }
-        // Verifying That the Both the Titles are equal
-        Assert.assertTrue ( matchFound , "No matching quiz title found in the attempted list." );
-
-
-        // Checking That from the Submitted quiz from the Paused was showing in the Attempted tab
-
-//        // Iterate through the list and clicking solution
-//        try {
-//            List<WebElement> gettingQuizTitleSolution = driver.findElements(By.xpath("//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']"));
-//            System.out.println("Entering the For loop");
-//
-//            for (WebElement quizTitlesolution : gettingQuizTitleSolution) {
-//                gettingQuizTitleSolution = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
-//                String quizTitleTextSolution = quizTitlesolution.getText().trim();
-//
-//                if (quizTitleTextSolution.equals(attemptedQuizTitle)) {
-//                    try {
-//                        // Locate and click the Solution button
-//                        WebElement solutionButton = quizTitlesolution.findElement(By.xpath(".//*[text()='Solution']"));
-//                        solutionButton.click();
-//                        System.out.println("Successfully clicked the Solution button for the verified quiz title: " + quizTitleTextSolution);
-//
-//                        // Wait for a specific element that indicates page stabilization
-//                        new WebDriverWait(driver, Duration.ofSeconds(10))
-//                                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']")));
-//                    } catch (NoSuchElementException e) {
-//                        System.out.println("Solution button not found for the quiz title: " + quizTitleTextSolution);
-//                    }
-//                }
-//            }
-//        } catch (StaleElementReferenceException e) {
-//            System.out.println("Error occurred: StaleElementReferenceException");
-//        }
-
-        // Calling The solution
+        WebElement clickingsolutionbutton = driver.findElement ( xpath ( "//*[text()='Solution']" ) );
+        clickingsolutionbutton.click ();
+        System.out.println ( "Successfully Clicked The Solution button " );
 
         Thread.sleep ( 5000 );
         WebElement clickingSolution = driver.findElement ( By.xpath ( "(//*[text()=' Solution '])[1]" ) );
@@ -521,7 +115,7 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
 
         Thread.sleep ( 10000 );
         //wait = new WebDriverWait (driver,30);
-        wait = new WebDriverWait ( driver , Duration.ofSeconds ( 40 ) ); // Adjust the timeout as necessary
+        WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 40 ) ); // Adjust the timeout as necessary
 
         try {
             WebElement reattemptIcon = wait.until ( ExpectedConditions.elementToBeClickable ( By.xpath ( "//div[@class='ant-switch-handle']" ) ) );
@@ -536,10 +130,10 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
         }
 
         // Define the options to be clicked
-        options = new String[]{"A" , "B" , "C" , "D" , "E" , "A" , "B" , "C" , "D" , "E" , "A" , "B" , "C" , "D" , "E" ,};
+        String[] options = new String[]{"A" , "B" , "C" , "D" , "E" , "A" , "B" , "C" , "D" , "E" , "A" , "B" , "C" , "D" , "E" ,};
 
         // Locate the Save & Next button
-        saveAndNextButton = driver.findElement ( By.xpath ( "//div[text()='Save & Next']" ) );
+        WebElement saveAndNextButton = driver.findElement ( By.xpath ( "//div[text()='Save & Next']" ) );
 
         // Clicking the options and Save & Next button in a loop
         for (String option : options) {
@@ -569,7 +163,7 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
         // Clicking The Previous Button
 
         Thread.sleep ( 3000 );
-        clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
+        WebElement clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
         clickingThePreviousButton.click ();
         System.out.println ( "Successfully Clicked The Previous Button" );
 
@@ -687,7 +281,7 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
 
         // Clicking The FullScreen Button
 
-        clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
+        WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
         clickingTheFullScreenButton.click ();
         System.out.println ( "Successfully Clicked The Analysis Icon In Solution Screen " );
 
@@ -934,32 +528,9 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
         Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
         Cancel_button.click ();
         System.out.println ( "Successfully Clicked The Cancel button" );
-
     }
 
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

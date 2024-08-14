@@ -1,7 +1,9 @@
 package Base;
 
 import MainPages.Loginpage;
+import MyCourse.CourseQuizAttempted;
 import MyCourse.CourseQuizzes;
+import MyCourse.CourseQuizzesUnattempted;
 import MyCourse.myCourse;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -75,6 +77,16 @@ public class baseConstructor {
         // Course Quizzes
         CourseQuizzes quizzes = new CourseQuizzes (driver);
         quizzes.Quizzes ();
+
+        // Course Quiz > Unattempted
+
+        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
+        unattempt.unAttempted ();
+
+        // Course Quiz > Attempted
+
+        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
+        attempted.attemptedTab ();
 
         // Course Ebooks
 //         CourseEbooks ebooks = new CourseEbooks(driver);
