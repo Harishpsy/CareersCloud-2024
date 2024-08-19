@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -20,6 +21,7 @@ public class HomePage {
         this.driver = driver;
     }
 
+    @Test
     public void clickingHomePage() throws InterruptedException {
 
         // Writing For Home Feed

@@ -21,22 +21,44 @@ public class CourseQuizAttempted {
     public CourseQuizAttempted() {
     }
 
-    public void attemptedTab() {
-
+    public void attemptedTab() throws InterruptedException {
         WebElement clickingAttemptedTab = driver.findElement ( By.xpath ( "//*[text()='Attempted']" ) );
-        clickingAttemptedTab.click ();
+        WebElement clickingSolution = driver.findElement ( By.xpath ( "(//*[text()=' Solution '])[1]" ) );
+        if (clickingAttemptedTab.isEnabled ()) {
+            clickingSolution.click ();
+        } else if (clickingAttemptedTab.isDisplayed ()) {
+            clickingAttemptedTab.click ();
+            Thread.sleep ( 5000 );
+            clickingSolution.click ();
+            System.out.println ( "Successfully Clicked The Solution In The Quiz List Page" );
+
+        } else if (clickingSolution.isSelected ()) {
+
+            // Clicking the BookMark-icon
+            try {
+                WebElement bookmarkIcon = driver.findElement ( By.xpath ( "//*[@class='bookmark-icon']" ) );
+                if (bookmarkIcon.isDisplayed ()) {
+                    bookmarkIcon.click ();
+                    System.out.println ( "Successfully Clicked The Bookmark Icon" );
+                }
+            } catch (NoSuchElementException e1) {
+                try {
+                    WebElement bookmarkedIcon = driver.findElement ( By.xpath ( "//*[@class='bookmarked-icon']" ) );
+                    if (bookmarkedIcon.isDisplayed ()) {
+                        bookmarkedIcon.click ();
+                        System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                    }
+                } catch (NoSuchElementException e2) {
+                    System.out.println ( "Both The Code Has Not Executed" );
+                }
+            }
+
+        } else {
+            System.out.println ( "Both the functution has not executed" );
+        }
     }
 
     public void clickingsolutionbutton() throws InterruptedException {
-
-        WebElement clickingsolutionbutton = driver.findElement ( xpath ( "//*[text()='Solution']" ) );
-        clickingsolutionbutton.click ();
-        System.out.println ( "Successfully Clicked The Solution button " );
-
-        Thread.sleep ( 5000 );
-        WebElement clickingSolution = driver.findElement ( By.xpath ( "(//*[text()=' Solution '])[1]" ) );
-        clickingSolution.click ();
-        System.out.println ( "Successfully Clicked The Solution In The Quiz List Page" );
 
         // Clicking the BookMark-icon
         try {

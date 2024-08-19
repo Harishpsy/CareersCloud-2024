@@ -15,7 +15,6 @@ import static org.openqa.selenium.By.xpath;
 
 public class CourseQuizzes {
     WebDriver driver;
-    private Iterable<? extends WebElement> quizTitles;
 
     public CourseQuizzes(WebDriver driver) {
 
@@ -28,7 +27,7 @@ public class CourseQuizzes {
         // Clicking The Course In the My Course
 
         Thread.sleep (3000);
-        WebElement clickingCourseCard = driver.findElement ( xpath ( "(//*[@class=\"ant-card-body\"])[2]" ) );
+        WebElement clickingCourseCard = driver.findElement ( xpath ( "(//*[@class=\"ant-card-body\"])[9]" ) );
         clickingCourseCard.click ();
 
         // Clicking The Quizzes In The Course
@@ -1976,6 +1975,7 @@ public class CourseQuizzes {
                 System.out.println ( "Quiz was not displayed in the Paused Tab " );
             }
 
+            // Printing Whether It Is Present or Not
             System.out.println ( "No Record Found Is Displayed : " + noRecordFoundIsDisplayed );
             System.out.println ( "Resume quiz has been displayed : " + isResumeQuizIsDisplayed );
 
@@ -1989,11 +1989,7 @@ public class CourseQuizzes {
                 CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
                 unattempt.unAttempted ();
 
-            } else {
-                System.out.println ( "Unattempted was not clicked" );
-            }
-
-            if (isResumeQuizIsDisplayed) {
+            } else if (isResumeQuizIsDisplayed) {
                 WebElement clickingResumeQuiz = driver.findElement ( xpath ( "(//*[text() =' Resume '])[1]" ) );
                 clickingResumeQuiz.click ();
                 System.out.println ( "Successfully Clicked The Resume Quiz" );
@@ -2201,12 +2197,12 @@ public class CourseQuizzes {
 
                 WebElement gettingUnansweredCountAfterResume = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
                 String UnansweredCountAfterResume = gettingUnansweredCountAfterResume.getText ();
-                System.out.println ( "Answered Count After Resume : " + UnansweredCountAfterResume );
+                System.out.println ( "UnAnswered Count After Resume : " + UnansweredCountAfterResume );
 
                 // Verifying The Paused Un-Answer Count was the same as Resume Un-Answer Count
 
                 Assert.assertEquals ( UnAnswerCountBeforepause , UnansweredCountAfterResume );
-                System.out.println ( "Verification Passed: Answered Count Before Pause (" + UnAnswerCountBeforepause + ") matches Answered Count After Resume (" + UnansweredCountAfterResume + ")" );
+                System.out.println ( "Verification Passed: UnAnswered Count Before Pause (" + UnAnswerCountBeforepause + ") matches Answered Count After Resume (" + UnansweredCountAfterResume + ")" );
 
                 // Getting The quiz Timer After Resume
 
@@ -2318,6 +2314,13 @@ public class CourseQuizzes {
                 String quizTimeBeforeSubmit = gettingQUizTimeBeforeSubmit.getText ();
                 System.out.println ( "Quiz Time Before Submit : " + quizTimeBeforeSubmit );
 
+                // Getting The Quiz Name For Verify once completed
+
+                Thread.sleep ( 3000 );
+                gettingQuizTitle = driver.findElement ( xpath ( "//span[@class=\"title\"]" ) );
+                QuizTitle = gettingQuizTitle.getText ();
+                System.out.println ( "Quiz Title Before Submit: " + QuizTitle );
+
                 // Again Clicking The Submit Button
 
                 Thread.sleep (3000);
@@ -2339,12 +2342,12 @@ public class CourseQuizzes {
                 Thread.sleep ( 4000 );
                 WebElement clickingTheAttemptedButton = driver.findElement ( xpath ( "//*[text()='Attempted']" ) );
                 clickingTheAttemptedButton.click ();
-                System.out.println ( "Successfully Clicked The Attempted Button " );
+                System.out.println ( "Successfully Navigate to The Attempted List Page " );
 
 
                 // Scrolling The Attempted Quizzes List Page to verify data
 
-                int numberOfTimesScrollQuizzes = 2;
+                int numberOfTimesScrollQuizzes = 10;
 
                 for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
                     try {
@@ -2359,14 +2362,19 @@ public class CourseQuizzes {
 
                 // Clicking Float Icon
 
-                WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-                clickingFloatIcon.click ();
-                Thread.sleep ( 5000 );
+                try {
+                    WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
+                    if (clickingFloatIcon.isDisplayed ()) {
+                        clickingFloatIcon.click ();
+                    }
+                } catch (NoSuchElementException e) {
+                    System.out.println ( "FloatIcon Button Is Not Displayed" );
+                }
 
                 // Getting the Quiz Title Name to check Whether completed quiz from paused was showing In Attempt or not
 
                 // Find all elements matching the XPath and store them in a list
-                List<WebElement> gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
+                List<WebElement> gettingQuizTitles = driver.findElements ( xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
 
                 // Iterate through the list and print the text of each element
                 for (WebElement quizTitle : gettingQuizTitles) {
@@ -2376,15 +2384,14 @@ public class CourseQuizzes {
                     // Verifying The completed quiz from paused was showing or not in the attempted
 
                     Assert.assertEquals ( QuizTitle , quiztitleText );
-                    System.out.println ( "Verification Passed: Quiz Title In Paused (" + QuizTitle + ") matches Quiz Title In Attempted (" + quiztitleText + ")" );
-
+                    System.out.println ( "Verification Passed: Quiz Title In Completed Quiz (" + QuizTitle + ") matches Quiz Title In Attempted (" + quiztitleText + ")" );
                 }
 
                 // Clicking The Completed quiz from the paused tab in the attempted
 
                 // Iterate through the list and clicking solution
 
-                for (WebElement quizTitle : quizTitles) {
+                for (WebElement quizTitle : gettingQuizTitles) {
                     String quizTitleText = quizTitle.getText ();
                     if (quizTitleText.equals ( QuizTitle )) {
                         WebElement solutionButton = quizTitle.findElement ( By.xpath ( "//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]/parent::*/preceding::span[text()=' Solution ']" ) );
@@ -2392,9 +2399,12 @@ public class CourseQuizzes {
                         System.out.println ( "Successfully clicked the Solution button for the verified quiz title: " + quizTitleText );
                     }
                 }
+                //
+                CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
+                attempted.attemptedTab ();
 
             } else {
-                System.out.println ( "Resume quiz is not clicked" );
+                System.out.println ( "Both the action has not performed" );
             }
 
         } catch (NoSuchElementException e) {
