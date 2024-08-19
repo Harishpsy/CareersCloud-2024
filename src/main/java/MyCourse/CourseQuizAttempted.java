@@ -22,13 +22,33 @@ public class CourseQuizAttempted {
     }
 
     public void attemptedTab() throws InterruptedException {
+
+
+        // Clicking The Course In the My Course
+
+        Thread.sleep ( 3000 );
+        WebElement clickingCourseCard = driver.findElement ( xpath ( "(//*[@class=\"ant-card-body\"])[9]" ) );
+        clickingCourseCard.click ();
+
+        // Clicking The Quizzes In The Course
+
+        Thread.sleep ( 3000 );
+        WebElement clickingQuizzes = driver.findElement ( xpath ( "//div[text()='Quizzes']" ) );
+        clickingQuizzes.click ();
+
+
         WebElement clickingAttemptedTab = driver.findElement ( By.xpath ( "//*[text()='Attempted']" ) );
         WebElement clickingSolution = driver.findElement ( By.xpath ( "(//*[text()=' Solution '])[1]" ) );
         if (clickingAttemptedTab.isEnabled ()) {
             clickingSolution.click ();
+            System.out.println ( "Successfully Clicked The Solution Button" );
         } else if (clickingAttemptedTab.isDisplayed ()) {
             clickingAttemptedTab.click ();
+            System.out.println ( "Successfully Clicked The Attempted Tab Button" );
+
+            // Clicking The Solution Button
             Thread.sleep ( 5000 );
+            clickingSolution = driver.findElement ( By.xpath ( "(//*[text()=' Solution '])[1]" ) );
             clickingSolution.click ();
             System.out.println ( "Successfully Clicked The Solution In The Quiz List Page" );
 
@@ -56,9 +76,8 @@ public class CourseQuizAttempted {
         } else {
             System.out.println ( "Both the functution has not executed" );
         }
-    }
 
-    public void clickingsolutionbutton() throws InterruptedException {
+
 
         // Clicking the BookMark-icon
         try {
@@ -323,7 +342,7 @@ public class CourseQuizAttempted {
 
         // Clicking The Analysis Icon
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 10000 );
         clickingAnalysisIcon = driver.findElement ( xpath ( "//*[@class=\"image-analysis\"]" ) );
         clickingAnalysisIcon.click ();
         System.out.println ( "Successfully Clicked The Analysis Icon In Solution Screen " );
@@ -414,7 +433,7 @@ public class CourseQuizAttempted {
 
         //  Again Click the back arrow in the solution screen
 
-        Thread.sleep ( 2000 );
+        Thread.sleep ( 5000 );
         WebElement againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
         againclickingBackArrow.click ();
         System.out.println ( "Successfully clicked Back Arrow" );
@@ -428,42 +447,42 @@ public class CourseQuizAttempted {
 
         //  Again Click the back arrow in the solution screen
 
-        Thread.sleep ( 2000 );
+        Thread.sleep ( 10000 );
         againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
         againclickingBackArrow.click ();
         System.out.println ( "Successfully clicked clicking Back Arrow" );
 
         // Scrolling The analysis page Forward
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         jse = (JavascriptExecutor) driver;
         jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
         System.out.println ( "Successfully Scroll The Page Down " );
 
         // Scrolling The analysis page Backward
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         jse = (JavascriptExecutor) driver;
         jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
         System.out.println ( "Successfully Scroll The Backwards " );
 
         // Clicking The Back To Quiz Breadcrumbs In The Analysis Page
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         clickingBackToQuizBreadCrumbs = driver.findElement ( xpath ( "//span[text()='Back to Quiz']" ) );
         clickingBackToQuizBreadCrumbs.click ();
         System.out.println ( "Successfully Scroll The Back To Quiz Bread Crumbs " );
 
         //  Clicking the back arrow in the solution screen for coming to course > Quiz
 
-        Thread.sleep ( 2000 );
+        Thread.sleep ( 15000 );
         againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
         againclickingBackArrow.click ();
         System.out.println ( "Successfully clicked clicking Back Arrow" );
 
         // Clicking The ThreeDots in The MyCourse > Quizzes > Paussed > Quiz
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         WebElement Threedots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
         Threedots.click ();
         System.out.println ( "Successfully clicked The ThreeDots" );
@@ -485,7 +504,7 @@ public class CourseQuizAttempted {
 
         // Clicking The ThreeDots in The MyCourse > Quizzes > Paussed > Quiz
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         Threedots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
         Threedots.click ();
         System.out.println ( "Successfully clicked The ThreeDots" );
@@ -499,7 +518,7 @@ public class CourseQuizAttempted {
 
         //click the copy link in the share popup
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
         Copy_link.click ();
         System.out.println ( "Successfully clicked The Copy Icon " );
@@ -513,21 +532,21 @@ public class CourseQuizAttempted {
 
         // Again Click the three dots in the Quiz Tab
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         Threedots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
         Threedots.click ();
         System.out.println ( "Successfully clicked The ThreeDots" );
 
         //clicking the report icon
 
-        Thread.sleep ( 1000 );
+        Thread.sleep ( 5000 );
         WebElement Report_icon = driver.findElement ( xpath ( "//span[text()='Report']" ) );
         Report_icon.click ();
         System.out.println ( "Successfully clicked The Report Icon" );
 
         //Click the wrong information radio button
 
-        Thread.sleep ( 1000 );
+        Thread.sleep ( 5000 );
         WebElement Wrong_information_radio_button = driver.findElement ( xpath ( "//span[text()='Wrong Information']" ) );
         Wrong_information_radio_button.click ();
         System.out.println ( "Successfully clicked The Wrong information radio button" );
@@ -540,7 +559,7 @@ public class CourseQuizAttempted {
 
         // Click the report button
 
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         Report_button = driver.findElement ( xpath ( "//span[text()='REPORT']" ) );
         Report_button.click ();
         System.out.println ( "Successfully Clicked The Report_button" );

@@ -2,6 +2,7 @@ package Menu;
 
 import PageObjectModule.Mynotespageobject;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,290 +23,335 @@ public class Menu_MyNotes {
     public Menu_MyNotes(WebDriver driver) {
         this.driver = driver;
     }
-
     public void MyNotes() throws InterruptedException {
 
         //Then click the MyNote
 
-        PageFactory.initElements (driver, Mynotespageobject.class);
+        PageFactory.initElements ( driver , Mynotespageobject.class );
 
-        Thread.sleep (7000);
+        Thread.sleep ( 5000 );
         MyNotes.click ();
+        System.out.println ( "Successfully CLicked The My Notes Button" );
 
-        // Click the three dots in the My notes
+        // Check if noRecordFound element is displayed and log the result
+        Thread.sleep ( 5000 );
+        boolean noRecordfoundDisplayedInMyNotes = false;
+        boolean threedotsDisplayedInMyNotes = false;
 
-        Thread.sleep (3000);
-        Threedots.click ();
+        try {
+            noRecordfoundDisplayedInMyNotes = noRecordfoundMyNotes.isDisplayed ();
+            System.out.println ( "noRecordFound displayed In My Notes: " + noRecordfoundDisplayedInMyNotes );
+        } catch (NoSuchElementException e) {
+            System.out.println ( "noRecordFound element not found In My Notes ." );
+        }
 
-        //Clicking the remove My notes icon in dropdown
+        try {
+            threedotsDisplayedInMyNotes = ThreedotsInMyNotes.isDisplayed ();
+            System.out.println ( "Threedots displayed In My Notes: " + threedotsDisplayedInMyNotes );
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Threedots element not foundIn My Notes ." );
+        }
 
-        Thread.sleep (3000);
-        Remove_My_Notes.click ();
+        // Proceed with if-else logic
 
-        // Again Click the three dots in the My notes
+        if (noRecordfoundDisplayedInMyNotes) {
+            Thread.sleep ( 3000 );
+            clickingMyQuestion.click ();
+            System.out.println ( "No records found message is displayed In My Notes, navigating to My Question page." );
+        } else if (threedotsDisplayedInMyNotes) {
+            Thread.sleep ( 3000 );
+            ThreedotsInMyNotes.click ();
+            System.out.println ( "Successfully Clicked The Three dots In The My Notes" );
 
-        Thread.sleep (3000);
-        Threedots.click ();
+            //Clicking the remove My notes icon in dropdown
+            Thread.sleep ( 3000 );
+            Remove_My_Notes.click ();
+            System.out.println ( "Successfully Clicked The Remove My Notes " );
 
-        /* Clicking the share icon in My Notes */
+            boolean noRecordFoundDisplayedAfterRemove = false;
+            boolean threedotsDisplayedAfterRemove = false;
 
-        Thread.sleep (3000);
-        Share_icon.click ();
+            try {
+                noRecordFoundDisplayedAfterRemove = noRecordfoundMyNotes.isDisplayed ();
+            } catch (NoSuchElementException e) {
+                System.out.println ( "noRecordFound element not found." );
+            }
 
-        //click the copy link in the share popup
+            try {
+                threedotsDisplayedAfterRemove = ThreedotsInMyNotes.isDisplayed ();
+            } catch (NoSuchElementException e) {
+                System.out.println ( "Threedots element not found." );
+            }
 
-        Thread.sleep (3000);
-        Copy_link.click ();
+            if (noRecordFoundDisplayedAfterRemove) {
+                Menu_MyQuestions myQuestions = new Menu_MyQuestions ( driver );
+                myQuestions.Myquestion ();
+                System.out.println ( "Successfully Navigated To The my Question Because No record Found Is Displayed" );
 
-        //Clicking the cancel button in the in share popup
+            } else if (threedotsDisplayedAfterRemove) {
+                // Again Click the three dots in the My notes
+                Thread.sleep ( 3000 );
+                ThreedotsInMyNotes.click ();
 
-        WebDriverWait waitforCancelButtonclick = new WebDriverWait (driver, Duration.ofSeconds (30));
-        Cancel_button.click ();
+                /* Clicking the share icon in My Notes */
 
-        // Again Click the three dots in the My notes
+                Thread.sleep ( 3000 );
+                Share_icon.click ();
 
-        Thread.sleep (3000);
-        Threedots.click ();
+                //click the copy link in the share popup
 
-        //clicking the report icon
+                Thread.sleep ( 3000 );
+                Copy_link.click ();
 
-        Thread.sleep (1000);
-        Report_icon.click ();
+                //Clicking the cancel button in the in share popup
 
-        //Click the wrong information radio button
+                WebDriverWait waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
+                Cancel_button.click ();
 
-        Thread.sleep (1000);
-        Wronginformationradiobutton.click ();
+                // Again Click the three dots in the My notes
 
-        //Entering the text inside the report text field
+                Thread.sleep ( 3000 );
+                ThreedotsInMyNotes.click ();
 
-        Enterthereport.sendKeys ("Checking The text was Entering In The Report Text Field");
+                //clicking the report icon
 
-        // Click the report button
+                Thread.sleep ( 1000 );
+                Report_icon.click ();
 
-//        Thread.sleep (3000);
-//        Reportbutton.click ();
+                //Click the wrong information radio button
 
-        // Clicking The Cancel Button
+                Thread.sleep ( 1000 );
+                Wronginformationradiobutton.click ();
 
-        Cancel_button.click ();
+                //Entering the text inside the report text field
 
-//        //Clicking the Course name in My Notes Card
+                Enterthereport.sendKeys ( "Checking The text was Entering In The Report Text Field" );
 
-        Thread.sleep (3000);
-        ClickingCourseName.click ();
+                // Click the report button
 
-        //Clicking the breadcrums to navigate backward to My notes page
+                // Thread.sleep (3000);
+                // Reportbutton.click ();
 
-        Thread.sleep (3000);
-        ClickingCoursebreadcrums.click ();
+                // Clicking The Cancel Button
 
-        // Clicking the like button
+                Cancel_button.click ();
 
-        Thread.sleep (1000);
-        Likebutton.click ();
+                //Clicking the Course name in My Notes Card
 
-        // Clicking the start button
+                Thread.sleep ( 3000 );
+                ClickingCourseName.click ();
 
-        Thread.sleep (3000);
-        Clickingstartbutton.click ();
+                //Clicking the breadcrums to navigate backward to My notes page
 
-        //Clicking the Resume Quiz
+                Thread.sleep ( 3000 );
+                ClickingCoursebreadcrums.click ();
 
-        clickingTheResumequiz.click ();
+                // Clicking the like button
 
-        //Windows Handeling
+                Thread.sleep ( 1000 );
+                Likebutton.click ();
+
+                // Clicking the start button
+
+                Thread.sleep ( 3000 );
+                Clickingstartbutton.click ();
+
+                //Clicking the Resume Quiz
+
+                clickingTheResumequiz.click ();
+
+                //Windows Handeling
 
 
-        Set<String> windows = driver.getWindowHandles ();
-        Iterator<String> it = windows.iterator ();
-        String parent = it.next ();
-        String child = it.next ();
-        driver.switchTo ().window (child);
+                Set<String> windows = driver.getWindowHandles ();
+                Iterator<String> it = windows.iterator ();
+                String parent = it.next ();
+                String child = it.next ();
+                driver.switchTo ().window ( child );
 
-        //Clicking the close icon in the quiz instruction
+                //Clicking the close icon in the quiz instruction
 
-        Thread.sleep (3000);
-        Closeicon.click ();
+                Thread.sleep ( 3000 );
+                Closeicon.click ();
 
-        //Windows mazimize
+                //Windows mazimize
 
-        WebDriverWait waitForWindowsMaximize = new WebDriverWait (driver, Duration.ofSeconds (30));
-        driver.manage ().window ().maximize ();
+                WebDriverWait waitForWindowsMaximize = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
+                driver.manage ().window ().maximize ();
 
-        //Clicking the Instruction Button
+                //Clicking the Instruction Button
 
-        clickingTheInstructionIcon.click ();
+                clickingTheInstructionIcon.click ();
 
-        // Clicking the close icon in the quiz instruction
+                // Clicking the close icon in the quiz instruction
 
-        Thread.sleep (3000);
-        againCloseicon.click ();
+                Thread.sleep ( 3000 );
+                againCloseicon.click ();
 
-        // Clicking The FullScreen Button
+                // Clicking The FullScreen Button
 
-        clickingTheFullScreenButton.click ();
+                clickingTheFullScreenButton.click ();
 
-        // Clicking the BookMark-icon
+                // Clicking the BookMark-icon
 
         /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         bookMarkicon.click ();*/
 
-        // Clicking the First Option
+                // Clicking the First Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_A.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_A.click ();
 
-        //Clicking The Save & Next Button
+                //Clicking The Save & Next Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheSaveAndNextbutton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheSaveAndNextbutton.click ();
 
-        // Clicking the Second Option
+                // Clicking the Second Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_B.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_B.click ();
 
-        //Again Clicking The Save & Next Button
+                //Again Clicking The Save & Next Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheSaveAndNextbutton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheSaveAndNextbutton.click ();
 
-        // Clicking the Third Option
+                // Clicking the Third Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_C.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_C.click ();
 
-        //Again Clicking The Save & Next Button
+                //Again Clicking The Save & Next Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheSaveAndNextbutton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheSaveAndNextbutton.click ();
 
-        // Clicking the Fourth Option
+                // Clicking the Fourth Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_D.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_D.click ();
 
-        //Again Clicking The Save & Next Button
+                //Again Clicking The Save & Next Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheSaveAndNextbutton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheSaveAndNextbutton.click ();
 
-        // Clicking the Fifth Option
+                // Clicking the Fifth Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_E.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_E.click ();
 
-        // Clicking The Number on the right side Count Status
+                // Clicking The Number on the right side Count Status
 
-        clickingTheNumber6OnTheRigntSide.click ();
+                clickingTheNumber6OnTheRigntSide.click ();
 
-        // Clicking the First Option
+                // Clicking the First Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_A.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_A.click ();
 
-        // Clicking The Number on the right side Count Status
+                // Clicking The Number on the right side Count Status
 
-        WebElement clickingTheNumber7OnTheRightSide = driver.findElement (xpath ("//Span[text()='7']"));
-        clickingTheNumber7OnTheRightSide.click ();
+                WebElement clickingTheNumber7OnTheRightSide = driver.findElement ( xpath ( "//Span[text()='7']" ) );
+                clickingTheNumber7OnTheRightSide.click ();
 
-        // Clicking the Second Option
+                // Clicking the Second Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_B.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_B.click ();
 
-        // Clicking The Number on the right side Count Status
+                // Clicking The Number on the right side Count Status
 
-        WebElement clickingTheNumber8OnTheRightSide = driver.findElement (xpath ("//Span[text()='8']"));
-        clickingTheNumber8OnTheRightSide.click ();
+                WebElement clickingTheNumber8OnTheRightSide = driver.findElement ( xpath ( "//Span[text()='8']" ) );
+                clickingTheNumber8OnTheRightSide.click ();
 
-        // Clicking the Third Option
+                // Clicking the Third Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_C.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_C.click ();
 
-        // Clicking The Previous Button
+                // Clicking The Previous Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        WebElement clickingThePreviousButton = driver.findElement (xpath ("//div[text()='Previous']"));
-        clickingThePreviousButton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                WebElement clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
+                clickingThePreviousButton.click ();
 
-        // Clicking The Pause Button
+                // Clicking The Pause Button
 
-        Thread.sleep (3000);
-        clickingThePauseButton.click ();
+                Thread.sleep ( 3000 );
+                clickingThePauseButton.click ();
 
-        // Clicking The Cancel Button In The Pause popup
+                // Clicking The Cancel Button In The Pause popup
 
         /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         clickingCancelButtonInPopup.click ();*/
 
-        // Clicking The Leave button In the Pause Popup
+                // Clicking The Leave button In the Pause Popup
 
-        Thread.sleep (3000);
-        WebElement clickingLeaveButtonInPopup = driver.findElement (xpath ("//span[text()=\" Leave \"]"));
-        clickingLeaveButtonInPopup.click ();
+                Thread.sleep ( 3000 );
+                WebElement clickingLeaveButtonInPopup = driver.findElement ( xpath ( "//span[text()=\" Leave \"]" ) );
+                clickingLeaveButtonInPopup.click ();
 
-        // Changing The Child Windows To Parent Window
+                // Changing The Child Windows To Parent Window
 
-        driver.switchTo ().window (parent);
+                driver.switchTo ().window ( parent );
 
-        //Clicking the Resume Quiz
+                //Clicking the Resume Quiz
 
-        Thread.sleep (3000);
-        clickingTheResumequiz.click ();
+                Thread.sleep ( 3000 );
+                clickingTheResumequiz.click ();
 
 
-        // Again Handeling Windows
+                // Again Handeling Windows
 
-        windows = driver.getWindowHandles ();
-        it = windows.iterator ();
-        parent = it.next ();
-        child = it.next ();
-        driver.switchTo ().window (child);
+                windows = driver.getWindowHandles ();
+                it = windows.iterator ();
+                parent = it.next ();
+                child = it.next ();
+                driver.switchTo ().window ( child );
 
-        // Window Maximize
+                // Window Maximize
 
-        driver.manage ().window ().maximize ();
+                driver.manage ().window ().maximize ();
 
-        // Clicking The Quiz BackButton
+                // Clicking The Quiz BackButton
 
-        quizBackButton.click ();
+                quizBackButton.click ();
 
-        // Clicking The Leave button In the BackArrow Popup
+                // Clicking The Leave button In the BackArrow Popup
 
-        Thread.sleep (3000);
-        clickingLeaveButtonPopup.click ();
+                Thread.sleep ( 3000 );
+                clickingLeaveButtonPopup.click ();
 
-        // Again Changing The Child Windows To Parent Window
+                // Again Changing The Child Windows To Parent Window
 
-        driver.switchTo ().window (parent);
+                driver.switchTo ().window ( parent );
 
-        //Clicking the Resume Quiz
+                //Clicking the Resume Quiz
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (30));
-        clickingTheResumequiz.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 30 ) );
+                clickingTheResumequiz.click ();
 
-        // Again Handeling Windows
+                // Again Handeling Windows
 
-        windows = driver.getWindowHandles ();
-        it = windows.iterator ();
-        parent = it.next ();
-        child = it.next ();
-        driver.switchTo ().window (child);
+                windows = driver.getWindowHandles ();
+                it = windows.iterator ();
+                parent = it.next ();
+                child = it.next ();
+                driver.switchTo ().window ( child );
 
-        // Window Maximize
+                // Window Maximize
 
-        driver.manage ().window ().maximize ();
+                driver.manage ().window ().maximize ();
 
-        // Clicking The Submit Button
+                // Clicking The Submit Button
 
-        Thread.sleep (1000);
-        WebElement clickingSubmitButton = driver.findElement (xpath ("//span[text()=' Submit ']"));
-        clickingSubmitButton.click ();
+                Thread.sleep ( 1000 );
+                WebElement clickingSubmitButton = driver.findElement ( xpath ( "//span[text()=' Submit ']" ) );
+                clickingSubmitButton.click ();
 
-        // Clicking the Cancel Button In the submit Popup
+                // Clicking the Cancel Button In the submit Popup
 
         /*Thread.sleep (1000);
         clickingCancelButtonInThePopup.click ();
@@ -336,173 +382,173 @@ public class Menu_MyNotes {
         WebElement clickingTheBookMarkedButton = driver.findElement(className ("bookmark-icon"));
         clickingTheBookMarkedButton.click ();*/
 
-        // Clicking The Share Icon In The Solution Page
+                // Clicking The Share Icon In The Solution Page
 
-        Thread.sleep (3000);
-        WebElement clickingTheShareIcon = driver.findElement (xpath ("//*[@alt=\"share\"]"));
-        clickingTheShareIcon.click ();
+                Thread.sleep ( 3000 );
+                WebElement clickingTheShareIcon = driver.findElement ( xpath ( "//*[@alt=\"share\"]" ) );
+                clickingTheShareIcon.click ();
 
-        //click the copy link in the share popup
+                //click the copy link in the share popup
 
-        Thread.sleep (3000);
-        Copy_link.click ();
+                Thread.sleep ( 3000 );
+                Copy_link.click ();
 
-        //Clicking the cancel button in the in share popup
+                //Clicking the cancel button in the in share popup
 
-        waitforCancelButtonclick = new WebDriverWait (driver, Duration.ofSeconds (30));
-        Cancel_button.click ();
+                waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
+                Cancel_button.click ();
 
-        // Scrolling The Solution Page
+                // Scrolling The Solution Page
 
-        Thread.sleep (1000);
-        WebElement scrollToReportIcon = driver.findElement (xpath ("//*[@class=\"report-image\"]"));
-        Actions actions = new Actions (driver);
-        actions.scrollToElement (scrollToReportIcon).perform ();
-        scrollToReportIcon.click ();
+                Thread.sleep ( 1000 );
+                WebElement scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
+                Actions actions = new Actions ( driver );
+                actions.scrollToElement ( scrollToReportIcon ).perform ();
+                scrollToReportIcon.click ();
 
-        // Click The Translation Error In The Report Popup
+                // Click The Translation Error In The Report Popup
 
-        Thread.sleep (3000);
-        WebElement clickingTranslationErrorRadioButton = driver.findElement (xpath ("//span[text()='Translations Error']"));
-        clickingTranslationErrorRadioButton.click ();
+                Thread.sleep ( 3000 );
+                WebElement clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
+                clickingTranslationErrorRadioButton.click ();
 
-        //Entering the text inside the report text field In Solution Page
+                //Entering the text inside the report text field In Solution Page
 
-        Enterthereport.sendKeys ("Checking The text was Entering In The Report Text Field");
+                Enterthereport.sendKeys ( "Checking The text was Entering In The Report Text Field" );
 
-        // Click the report button
+                // Click the report button
 
-        Thread.sleep (3000);
-        Reportbutton.click ();
+                Thread.sleep ( 3000 );
+                Reportbutton.click ();
 
-        // Clicking The Cancel Button
+                // Clicking The Cancel Button
 
-        //  Cancel_button.click ();
+                //  Cancel_button.click ();
 
-        // Clicking The ReattempButton
+                // Clicking The ReattempButton
 
-        Thread.sleep (5000);
-        reattempIcon.click ();
+                Thread.sleep ( 5000 );
+                reattempIcon.click ();
 
-        // Clicking the First Option
+                // Clicking the First Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_A.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_A.click ();
 
-        //Clicking The Save & Next Button
+                //Clicking The Save & Next Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheSaveAndNextbutton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheSaveAndNextbutton.click ();
 
-        // Clicking the Second Option
+                // Clicking the Second Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_B.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_B.click ();
 
-        //Again Clicking The Save & Next Button
+                //Again Clicking The Save & Next Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheSaveAndNextbutton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheSaveAndNextbutton.click ();
 
-        // Clicking the Third Option
+                // Clicking the Third Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_C.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_C.click ();
 
-        //Again Clicking The Save & Next Button
+                //Again Clicking The Save & Next Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheSaveAndNextbutton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheSaveAndNextbutton.click ();
 
-        // Clicking the Fourth Option
+                // Clicking the Fourth Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_D.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_D.click ();
 
-        //Again Clicking The Save & Next Button
+                //Again Clicking The Save & Next Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheSaveAndNextbutton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheSaveAndNextbutton.click ();
 
-        // Clicking the Fifth Option
+                // Clicking the Fifth Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_E.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_E.click ();
 
-        // Clicking The Number on the right side Count Status
+                // Clicking The Number on the right side Count Status
 
-        clickingTheNumber6OnTheRigntSide.click ();
+                clickingTheNumber6OnTheRigntSide.click ();
 
-        // Clicking the First Option
+                // Clicking the First Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_A.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_A.click ();
 
-        // Clicking The Number on the right side Count Status
+                // Clicking The Number on the right side Count Status
 
-        clickingTheNumber7OnTheRightSide.click ();
+                clickingTheNumber7OnTheRightSide.click ();
 
-        // Clicking the Second Option
+                // Clicking the Second Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_B.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_B.click ();
 
-        // Clicking The Number on the right side Count Status
+                // Clicking The Number on the right side Count Status
 
-        clickingTheNumber8OnTheRightSide.click ();
+                clickingTheNumber8OnTheRightSide.click ();
 
-        // Clicking the Third Option
+                // Clicking the Third Option
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingTheOption_C.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingTheOption_C.click ();
 
-        // Clicking The Previous Button
+                // Clicking The Previous Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (5));
-        clickingThePreviousButton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+                clickingThePreviousButton.click ();
 
-        // Scrolling The Solution Page
+                // Scrolling The Solution Page
 
-        Thread.sleep (1000);
-        scrollToReportIcon = driver.findElement (xpath ("//*[@class=\"report-image\"]"));
-        actions = new Actions (driver);
-        actions.scrollToElement (scrollToReportIcon).perform ();
-        scrollToReportIcon.click ();
+                Thread.sleep ( 1000 );
+                scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
+                actions = new Actions ( driver );
+                actions.scrollToElement ( scrollToReportIcon ).perform ();
+                scrollToReportIcon.click ();
 
-        // Click The Translation Error In The Report Popup
+                // Click The Translation Error In The Report Popup
 
-        Thread.sleep (3000);
-        clickingTranslationErrorButton.click ();
+                Thread.sleep ( 3000 );
+                clickingTranslationErrorButton.click ();
 
-        //Entering the text inside the report text field In Solution Page
+                //Entering the text inside the report text field In Solution Page
 
-        Enterthereport.sendKeys ("Checking The text was Entering In The Report Text Field");
+                Enterthereport.sendKeys ( "Checking The text was Entering In The Report Text Field" );
 
-        // Click the report button
+                // Click the report button
 
-        Thread.sleep (3000);
-        Reportbutton.click ();
+                Thread.sleep ( 3000 );
+                Reportbutton.click ();
 
-        // Clicking The Cancel Button
+                // Clicking The Cancel Button
 
-        // Cancel_button.click ();
+                // Cancel_button.click ();
 
-        // Clicking The Share Icon In The Solution Page
+                // Clicking The Share Icon In The Solution Page
 
-        Thread.sleep (3000);
-        clickingTheShareIcon.click ();
+                Thread.sleep ( 3000 );
+                clickingTheShareIcon.click ();
 
-        //click the copy link in the share popup
+                //click the copy link in the share popup
 
-        Thread.sleep (3000);
-        Copy_link.click ();
+                Thread.sleep ( 3000 );
+                Copy_link.click ();
 
-        //Clicking the cancel button in the in share popup
+                //Clicking the cancel button in the in share popup
 
-        waitforCancelButtonclick = new WebDriverWait (driver, Duration.ofSeconds (30));
-        Cancel_button.click ();
+                waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
+                Cancel_button.click ();
 
-        String src = "/static/media/quiz-bookmark.2ee759e3701295a6112f7b214e743556.svg";
+                String src = "/static/media/quiz-bookmark.2ee759e3701295a6112f7b214e743556.svg";
 
 //        WebElement clickingBookmark;
 //
@@ -518,196 +564,203 @@ public class Menu_MyNotes {
 //        // Clicking the bookmark or bookmarked icon
 //        clickingBookmark.click();
 
-        // Clicking The ReattemptButton
+                // Clicking The ReattemptButton
 
-        Thread.sleep (5000);
-        clickingReattemptButton.click ();
+                Thread.sleep ( 5000 );
+                clickingReattemptButton.click ();
 
 
-        //  Click the back arrow in the solution screen
+                //  Click the back arrow in the solution screen
 
-        clickingBackArrow.click ();
+                clickingBackArrow.click ();
 
-        // Clicking The solution button
+                // Clicking The solution button
 
-        Thread.sleep (2000);
-        clickingSolutionButton.click ();
+                Thread.sleep ( 2000 );
+                clickingSolutionButton.click ();
 
-        // Analysis was not working in site
+                // Analysis was not working in site
 
-        // Clicking The Analysis Icon
+                // Clicking The Analysis Icon
 
-        clickingAnalysisIcon.click ();
+                clickingAnalysisIcon.click ();
 
-        // Clicking The FullScreen Button
+                // Clicking The FullScreen Button
 
-        clickingTheFullScreenButton.click ();
+                clickingTheFullScreenButton.click ();
 
-        // Exiting The FullScreen Button
+                // Exiting The FullScreen Button
 
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (10));
-        exitingTheFullScreenButton.click ();
+                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 10 ) );
+                exitingTheFullScreenButton.click ();
 
-        //  Again Click the back arrow in the solution screen
+                //  Again Click the back arrow in the solution screen
 
-        WebElement againclickingBackArrow = driver.findElement (xpath ("//*[@class=\"anticon anticon-arrow-left back-icon\"]"));
-        againclickingBackArrow.click ();
+                WebElement againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
+                againclickingBackArrow.click ();
 
-        // Clicking The Analysis Button
+                // Clicking The Analysis Button
 
-        WebElement clickingAnalysisButton = driver.findElement (xpath ("//span[text()='Analysis']"));
-        clickingAnalysisButton.click ();
+                WebElement clickingAnalysisButton = driver.findElement ( xpath ( "//span[text()='Analysis']" ) );
+                clickingAnalysisButton.click ();
 
-        // Clicking The Share Icon In The Analysis Page
+                // Clicking The Share Icon In The Analysis Page
 
-        Thread.sleep (3000);
-        clickingTheShareicon.click ();
+                Thread.sleep ( 3000 );
+                clickingTheShareicon.click ();
 
-        //click the copy link in the share popup
+                //click the copy link in the share popup
 
-        Thread.sleep (3000);
-        Copy_link.click ();
+                Thread.sleep ( 3000 );
+                Copy_link.click ();
 
-        //Clicking the cancel button in the in share popup
+                //Clicking the cancel button in the in share popup
 
-        waitforCancelButtonclick = new WebDriverWait (driver, Duration.ofSeconds (30));
-        Cancel_button.click ();
+                waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
+                Cancel_button.click ();
 
-        // Clicking The comment icon in the analysis page
+                // Clicking The comment icon in the analysis page
 
-        clickingCommentIconInAnalysisPage.click ();
+                clickingCommentIconInAnalysisPage.click ();
 
-        // Clicking The Like Button
+                // Clicking The Like Button
 
-        clickingunLikeButton.click ();
+                clickingunLikeButton.click ();
 
-        // Clicking The unlike Button
+                // Clicking The unlike Button
 
-        clickingLikeButton.click ();
+                clickingLikeButton.click ();
 
-        //  Entering Comment In The TextField
+                //  Entering Comment In The TextField
 
-        Thread.sleep (5000);
-        enteringTheCommentInTextField.sendKeys ("Checking The Comment Text Field");
+                Thread.sleep ( 5000 );
+                enteringTheCommentInTextField.sendKeys ( "Checking The Comment Text Field" );
 
-        // Clicking The Send Button In The Comment Text Field
+                // Clicking The Send Button In The Comment Text Field
 
-        Thread.sleep (2000);
-        WebElement clickingSendButton = driver.findElement (className ("anticon-send"));
-        clickingSendButton.click ();
+                Thread.sleep ( 2000 );
+                WebElement clickingSendButton = driver.findElement ( className ( "anticon-send" ) );
+                clickingSendButton.click ();
 
-        // Clicking The Reattempt Button Inside The analysis page
+                // Clicking The Reattempt Button Inside The analysis page
 
-        Thread.sleep (2000);
-        clickingReattempButton.click ();
+                Thread.sleep ( 2000 );
+                clickingReattempButton.click ();
 
-        //  Again Click the back arrow in the solution screen
+                //  Again Click the back arrow in the solution screen
 
-        Thread.sleep (2000);
-        clickingBackArrow.click ();
+                Thread.sleep ( 2000 );
+                clickingBackArrow.click ();
 
-        // Clicking The Solution Button Inside The analysis page
+                // Clicking The Solution Button Inside The analysis page
 
-        Thread.sleep (2000);
-        clickingSolutionButtonInAnalysis.click ();
+                Thread.sleep ( 2000 );
+                clickingSolutionButtonInAnalysis.click ();
 
-        //  Again Click the back arrow in the solution screen
+                //  Again Click the back arrow in the solution screen
 
-        Thread.sleep (2000);
-        clickingBackArrow.click ();
+                Thread.sleep ( 2000 );
+                clickingBackArrow.click ();
 
-        // Scrolling The analysis page Forward
+                // Scrolling The analysis page Forward
 
-        Thread.sleep (3000);
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+                Thread.sleep ( 3000 );
+                JavascriptExecutor jse = (JavascriptExecutor) driver;
+                jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
 
-        // Scrolling The analysis page Backward
+                // Scrolling The analysis page Backward
 
-        Thread.sleep (3000);
-        jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(document.body.scrollHeight,0)");
+                Thread.sleep ( 3000 );
+                jse = (JavascriptExecutor) driver;
+                jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
 
-        // Clicking The Back To Quiz Breadcrumbs In The Analysis Page
+                // Clicking The Back To Quiz Breadcrumbs In The Analysis Page
 
-        clickingBackToQuizBreadCrumbs.click ();
+                clickingBackToQuizBreadCrumbs.click ();
 
-        // Scrolling The analysis page Forward
+                // Scrolling The analysis page Forward
 
-        Thread.sleep (3000);
-        jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+                Thread.sleep ( 3000 );
+                jse = (JavascriptExecutor) driver;
+                jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
 
-        // Scrolling The analysis page Backward
+                // Scrolling The analysis page Backward
 
-        Thread.sleep (3000);
-        jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(document.body.scrollHeight,0)");
+                Thread.sleep ( 3000 );
+                jse = (JavascriptExecutor) driver;
+                jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
 
-        // Clicking The Article
+                // Clicking The Article
 
-        clickingArticle.click ();
+                clickingArticle.click ();
 
-        // Scrolling The Article page Forward
+                // Scrolling The Article page Forward
 
-        Thread.sleep (3000);
-        jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(0, document.body.scrollHeight)");
+                Thread.sleep ( 3000 );
+                jse = (JavascriptExecutor) driver;
+                jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
 
-        // Scrolling The Article  page Backward
+                // Scrolling The Article  page Backward
 
-        Thread.sleep (3000);
-        jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(document.body.scrollHeight,0)");
+                Thread.sleep ( 3000 );
+                jse = (JavascriptExecutor) driver;
+                jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
 
-        // Clicking The comment icon in the Article page
+                // Clicking The comment icon in the Article page
 
-        clickingCommentIconInAnalysisPage.click ();
+                clickingCommentIconInAnalysisPage.click ();
 
-        //  Entering Comment In The TextField
+                //  Entering Comment In The TextField
 
-        Thread.sleep (5000);
-        enteringTheCommentInTextField.sendKeys ("Easy To UnderStand, Thank You ");
+                Thread.sleep ( 5000 );
+                enteringTheCommentInTextField.sendKeys ( "Easy To UnderStand, Thank You " );
 
-        // Clicking The Send Button In The Comment Text Field
+                // Clicking The Send Button In The Comment Text Field
 
-        Thread.sleep (2000);
-        clickingSendButton.click ();
+                Thread.sleep ( 2000 );
+                clickingSendButton.click ();
 
-        // Scrolling The analysis page Backward
+                // Scrolling The analysis page Backward
 
-        Thread.sleep (3000);
-        jse = (JavascriptExecutor) driver;
-        jse.executeScript ("window.scrollTo(document.body.scrollHeight,0)");
+                Thread.sleep ( 3000 );
+                jse = (JavascriptExecutor) driver;
+                jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
 
-        // Clicking The Share Icon In The Article Page
+                // Clicking The Share Icon In The Article Page
 
-        Thread.sleep (3000);
-        clickingTheShareicon.click ();
+                Thread.sleep ( 3000 );
+                clickingTheShareicon.click ();
 
-        //click the copy link in the share popup
+                //click the copy link in the share popup
 
-        Thread.sleep (3000);
-        Copy_link.click ();
+                Thread.sleep ( 3000 );
+                Copy_link.click ();
 
-        //Clicking the cancel button in the in share popup
+                //Clicking the cancel button in the in share popup
 
-        waitforCancelButtonclick = new WebDriverWait (driver, Duration.ofSeconds (30));
-        Cancel_button.click ();
+                waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
+                Cancel_button.click ();
 
-        // Clicking The Recent Article
+                // Clicking The Recent Article
 
-        clickingRecentArticle.click ();
+                clickingRecentArticle.click ();
 
-        // Clicking Back Button In The article page
+                // Clicking Back Button In The article page
 
-        Thread.sleep (2000);
-        clickingBackButton.click ();
+                Thread.sleep ( 2000 );
+                clickingBackButton.click ();
 
-        // Again Clicking Back Button In The article page
+                // Again Clicking Back Button In The article page
 
-        Thread.sleep (2000);
-        clickingBackButton.click ();
+                Thread.sleep ( 2000 );
+                clickingBackButton.click ();
+            } else {
+                System.out.println ( "Error in The Inner If else StateMent which contain ThreeDots" );
+            }
+        } else {
+
+            System.out.println ( "Both The Code Has Not Executed In The My Notes " );
+        }
     }
 
 }

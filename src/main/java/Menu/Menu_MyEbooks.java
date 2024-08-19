@@ -50,21 +50,22 @@ public class Menu_MyEbooks {
             try {
                 noRecordFoundDisplayed = noRecordFound.isDisplayed ();
             } catch (NoSuchElementException e) {
-                System.out.println ("noRecordFound element not found.");
+                System.out.println ( "noRecordFound element not found In My Ebooks ." );
             }
 
             try {
                 threedotsDisplayed = Threedots.isDisplayed ();
             } catch (NoSuchElementException e) {
-                System.out.println ("Threedots element not found.");
+                System.out.println ( "Threedots element not found In My Ebooks." );
             }
 
-            System.out.println ("noRecordFound displayed: " + noRecordFoundDisplayed);
-            System.out.println ("Threedots displayed: " + threedotsDisplayed);
+            System.out.println ( "noRecordFound displayed In My Ebooks: " + noRecordFoundDisplayed );
+            System.out.println ( "Threedots displayed In My Ebooks: " + threedotsDisplayed );
 
             // Proceed with if-else logic
 
             if (noRecordFoundDisplayed) {
+                Thread.sleep ( 3000 );
                 clickingMycoin.click ();
                 System.out.println ("No records found message is displayed, navigating to My Coin page.");
 
@@ -109,7 +110,7 @@ public class Menu_MyEbooks {
                     // Clicking My coins
                     Thread.sleep (5000);
                     clickingMycoin.click ();
-                    System.out.println ("No records found message is displayed, navigating to My Coin page.");
+                    System.out.println ( "No records found message is displayed In My Ebooks,So navigating to My Coin page." );
 
                 } else if (threedotsDisplayedAfterRemove) {
 

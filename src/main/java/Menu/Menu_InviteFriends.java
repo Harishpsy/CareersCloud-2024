@@ -23,7 +23,7 @@ public class Menu_InviteFriends {
 
         Thread.sleep (3000);
         clickingInviteFriends.click ();
-        System.out.println ("This feature is still under developing process");
+        System.out.println ( "Invite Friends feature is still under developing process" );
 
         // Clicking The Home Button
 

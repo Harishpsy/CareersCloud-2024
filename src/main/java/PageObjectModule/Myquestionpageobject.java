@@ -25,46 +25,6 @@ public class Myquestionpageobject {
     @FindBy(xpath = "//*[@class=\"anticon anticon-arrow-left back-icon\"]")
     public static WebElement quizBackButton;
 
-    // Clicking the First Option
-
-    @FindBy(xpath = "//div[text()='A']")
-    public static WebElement clickingTheOption_A;
-
-    //Clicking The Next Button
-
-    @FindBy(xpath = "//div[text()='Next']")
-    public static WebElement clickingNextbutton;
-
-    // Clicking the Second Option
-
-    @FindBy(xpath = "//div[text()='B']")
-    public static WebElement clickingTheOption_B;
-
-    // Clicking the Third Option
-
-    @FindBy(xpath = "//div[text()='C']")
-    public static WebElement clickingTheOption_C;
-
-    // Clicking the Fourth Option
-
-    @FindBy(xpath = "//div[text()='D']")
-    public static WebElement clickingTheOption_D;
-
-    // Clicking the Fifth Option
-
-    @FindBy(xpath = "//div[text()='E']")
-    public static WebElement clickingTheOption_E;
-
-    // Clicking The Number on the right side Count Status
-
-    @FindBy(xpath = "//Span[text()='6']")
-    public static WebElement clickingTheNumber6OnTheRigntSide;
-
-    // Clicking The Number on the right side Count Status
-
-    @FindBy(xpath = "//Span[text()='7']")
-    public static WebElement clickingTheNumber7OnTheRigntSide;
-
     // Clicking The Previous Button
 
     @FindBy(xpath = "//div[text()='Previous']")
@@ -109,6 +69,16 @@ public class Myquestionpageobject {
 
     @FindBy(xpath = "//a[text()='Home']")
     public static WebElement clickingHomeButton;
+
+    @FindBy(xpath = "//span[text()='CANCEL']")
+    public static WebElement clickingCancelButtonInReport;
+
+    @FindBy(xpath = "//*[text()= 'No Records Found.']")
+    public static WebElement noRecordsFoundMyQuestion;
+
+    @FindBy(xpath = "//*[@id=\"3\"]")
+    public static WebElement clickingTheMyEbooks;
+
 
 
 }

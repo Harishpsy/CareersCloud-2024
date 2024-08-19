@@ -24,8 +24,6 @@ public class Menu_MyCoins {
 
         PageFactory.initElements (driver, Mycoinpageobject.class);
 
-        // Clicking My Coin
-
         try {
             if (clickingMycoin.isSelected ()) {
 

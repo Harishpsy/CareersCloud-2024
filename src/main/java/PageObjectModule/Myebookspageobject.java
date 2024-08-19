@@ -130,7 +130,6 @@ public class Myebookspageobject {
     @FindBy(xpath = "//*[text()='No Records Found.']")
     public static WebElement noRecordFound;
 
-
     // Clicking My Coin
 
     @FindBy(xpath = "//*[@id=\"4\"]")

@@ -10,10 +10,16 @@ public class Mynotespageobject {
     @FindBy(xpath = "//*[@id=\"1\"]")
     public static WebElement MyNotes;
 
+    @FindBy(xpath = "//*[text() ='No Records Found.']")
+    public static WebElement noRecordfoundMyNotes;
+
+    @FindBy(xpath = "//*[@id=\"2\"]")
+    public static WebElement clickingMyQuestion;
+
     // Click the three dots in the My notes
 
     @FindBy(xpath = "//*[@class=\"ant-dropdown-trigger\"]")
-    public static WebElement Threedots;
+    public static WebElement ThreedotsInMyNotes;
 
     //Clicking the remove My notes icon in dropdown
 

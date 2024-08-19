@@ -1,10 +1,7 @@
 package Base;
 
 import MainPages.Loginpage;
-import MyCourse.CourseQuizAttempted;
-import MyCourse.CourseQuizzes;
-import MyCourse.CourseQuizzesUnattempted;
-import MyCourse.myCourse;
+import Menu.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -21,49 +18,49 @@ public class baseConstructor {
         loginPage.login ();
 
         // Home Page
-        // HomePage clickingHomePage = new HomePage(driver);
-        // clickingHomePage.clickingHomePage();
+//         HomePage clickingHomePage = new HomePage(driver);
+//         clickingHomePage.clickingHomePage();
 
         // My Notes
-        // Menu_MyNotes myNotes = new Menu_MyNotes(driver);
-        // myNotes.MyNotes();
+        Menu_MyNotes myNotes = new Menu_MyNotes ( driver );
+        myNotes.MyNotes ();
 
         // My Questions
-        // Menu_MyQuestions myQuestions = new Menu_MyQuestions(driver);
-        // myQuestions.Myquestion();
+        Menu_MyQuestions myQuestions = new Menu_MyQuestions ( driver );
+        myQuestions.Myquestion ();
 
         // My Ebooks
-        // Menu_MyEbooks myEbooks = new Menu_MyEbooks(driver);
-        // myEbooks.MyEbooks();
+        Menu_MyEbooks myEbooks = new Menu_MyEbooks ( driver );
+        myEbooks.MyEbooks ();
 
         // My Coins
-        // Menu_MyCoins myCoins = new Menu_MyCoins(driver);
-        // myCoins.MyCoins();
+        Menu_MyCoins myCoins = new Menu_MyCoins ( driver );
+        myCoins.MyCoins ();
 
         // My Points
-        // Menu_MyPoints myPoints = new Menu_MyPoints(driver);
-        // myPoints.MyPoints();
+        Menu_MyPoints myPoints = new Menu_MyPoints ( driver );
+        myPoints.MyPoints ();
 
         // Invite Friends
-        // Menu_InviteFriends inviteFriends = new Menu_InviteFriends(driver);
-        // inviteFriends.InviteFriends();
+        Menu_InviteFriends inviteFriends = new Menu_InviteFriends ( driver );
+        inviteFriends.InviteFriends ();
 
         // Rate App
-        // Menu_RateApp rateApp = new Menu_RateApp(driver);
-        // rateApp.RateApp();
+        Menu_RateApp rateApp = new Menu_RateApp ( driver );
+        rateApp.RateApp ();
 
         // My Purchase
-        // Menu_MyPurchase myPurchase = new Menu_MyPurchase(driver);
-        // myPurchase.MyPurchase();
+        Menu_MyPurchase myPurchase = new Menu_MyPurchase ( driver );
+        myPurchase.MyPurchase ();
 
         // Hire Us
-        // Menu_Hireus hireUs = new Menu_Hireus(driver);
-        // hireUs.Hireus();
+        Menu_Hireus hireUs = new Menu_Hireus ( driver );
+        hireUs.Hireus ();
 
         // My Course
 
-        myCourse Mycourse = new myCourse (driver);
-        Mycourse.myCourseClicking ();
+//        myCourse Mycourse = new myCourse (driver);
+//        Mycourse.myCourseClicking ();
 
 
         // My Course Filters
@@ -75,18 +72,18 @@ public class baseConstructor {
         // path.Path();
 
         // Course Quizzes
-        CourseQuizzes quizzes = new CourseQuizzes (driver);
-        quizzes.Quizzes ();
+//        CourseQuizzes quizzes = new CourseQuizzes (driver);
+//        quizzes.Quizzes ();
 
         // Course Quiz > Unattempted
 
-        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
-        unattempt.unAttempted ();
+//        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
+//        unattempt.unAttempted ();
 
         // Course Quiz > Attempted
 //
-        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
-        attempted.attemptedTab ();
+//        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
+//        attempted.attemptedTab ();
 
         // Course Ebooks
 //         CourseEbooks ebooks = new CourseEbooks(driver);
