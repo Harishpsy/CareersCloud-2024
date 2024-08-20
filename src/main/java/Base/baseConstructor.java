@@ -25,37 +25,52 @@ public class baseConstructor {
         Menu_MyNotes myNotes = new Menu_MyNotes ( driver );
         myNotes.MyNotes ();
 
+        // My Notes > Article
+
+        Menu_MyNotes article = new Menu_MyNotes ( driver );
+        article.artilce ();
+
+        // My Notes > Videos
+
+        Menu_MyNotes videos = new Menu_MyNotes ( driver );
+        videos.videos ();
+
+        // My Notes > Quiz
+
+        Menu_MyNotes quiz = new Menu_MyNotes ( driver );
+        quiz.quiz ();
+
         // My Questions
-        Menu_MyQuestions myQuestions = new Menu_MyQuestions ( driver );
-        myQuestions.Myquestion ();
+//        Menu_MyQuestions myQuestions = new Menu_MyQuestions ( driver );
+//        myQuestions.Myquestion ();
 
         // My Ebooks
-        Menu_MyEbooks myEbooks = new Menu_MyEbooks ( driver );
-        myEbooks.MyEbooks ();
+//        Menu_MyEbooks myEbooks = new Menu_MyEbooks ( driver );
+//        myEbooks.MyEbooks ();
 
         // My Coins
-        Menu_MyCoins myCoins = new Menu_MyCoins ( driver );
-        myCoins.MyCoins ();
+//        Menu_MyCoins myCoins = new Menu_MyCoins ( driver );
+//        myCoins.MyCoins ();
 
         // My Points
-        Menu_MyPoints myPoints = new Menu_MyPoints ( driver );
-        myPoints.MyPoints ();
+//        Menu_MyPoints myPoints = new Menu_MyPoints ( driver );
+//        myPoints.MyPoints ();
 
         // Invite Friends
-        Menu_InviteFriends inviteFriends = new Menu_InviteFriends ( driver );
-        inviteFriends.InviteFriends ();
+//        Menu_InviteFriends inviteFriends = new Menu_InviteFriends ( driver );
+//        inviteFriends.InviteFriends ();
 
         // Rate App
-        Menu_RateApp rateApp = new Menu_RateApp ( driver );
-        rateApp.RateApp ();
+//        Menu_RateApp rateApp = new Menu_RateApp ( driver );
+//        rateApp.RateApp ();
 
         // My Purchase
-        Menu_MyPurchase myPurchase = new Menu_MyPurchase ( driver );
-        myPurchase.MyPurchase ();
+//        Menu_MyPurchase myPurchase = new Menu_MyPurchase ( driver );
+//        myPurchase.MyPurchase ();
 
         // Hire Us
-        Menu_Hireus hireUs = new Menu_Hireus ( driver );
-        hireUs.Hireus ();
+//        Menu_Hireus hireUs = new Menu_Hireus ( driver );
+//        hireUs.Hireus ();
 
         // My Course
 

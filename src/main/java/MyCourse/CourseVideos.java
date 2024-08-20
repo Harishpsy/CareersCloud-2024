@@ -28,7 +28,6 @@ public class CourseVideos {
         WebElement clickingFirstCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[9]"));
         clickingFirstCourseCard.click ();
 
-
         // Clicking The Videos
 
         Thread.sleep (3000);
@@ -94,7 +93,6 @@ public class CourseVideos {
 
         if (clickAction.isDisplayed ()) {
             clickAction.click ();
-
 
             if (clickAction.getAttribute ("class").contains ("unlike")) {
                 System.out.println ("Un Liked Successfully ");
