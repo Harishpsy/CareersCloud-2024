@@ -41,36 +41,36 @@ public class baseConstructor {
         quiz.quiz ();
 
         // My Questions
-//        Menu_MyQuestions myQuestions = new Menu_MyQuestions ( driver );
-//        myQuestions.Myquestion ();
+        Menu_MyQuestions myQuestions = new Menu_MyQuestions ( driver );
+        myQuestions.Myquestion ();
 
         // My Ebooks
-//        Menu_MyEbooks myEbooks = new Menu_MyEbooks ( driver );
-//        myEbooks.MyEbooks ();
+        Menu_MyEbooks myEbooks = new Menu_MyEbooks ( driver );
+        myEbooks.MyEbooks ();
 
         // My Coins
-//        Menu_MyCoins myCoins = new Menu_MyCoins ( driver );
-//        myCoins.MyCoins ();
+        Menu_MyCoins myCoins = new Menu_MyCoins ( driver );
+        myCoins.MyCoins ();
 
         // My Points
-//        Menu_MyPoints myPoints = new Menu_MyPoints ( driver );
-//        myPoints.MyPoints ();
+        Menu_MyPoints myPoints = new Menu_MyPoints ( driver );
+        myPoints.MyPoints ();
 
         // Invite Friends
-//        Menu_InviteFriends inviteFriends = new Menu_InviteFriends ( driver );
-//        inviteFriends.InviteFriends ();
+        Menu_InviteFriends inviteFriends = new Menu_InviteFriends ( driver );
+        inviteFriends.InviteFriends ();
 
         // Rate App
-//        Menu_RateApp rateApp = new Menu_RateApp ( driver );
-//        rateApp.RateApp ();
+        Menu_RateApp rateApp = new Menu_RateApp ( driver );
+        rateApp.RateApp ();
 
         // My Purchase
-//        Menu_MyPurchase myPurchase = new Menu_MyPurchase ( driver );
-//        myPurchase.MyPurchase ();
+        Menu_MyPurchase myPurchase = new Menu_MyPurchase ( driver );
+        myPurchase.MyPurchase ();
 
         // Hire Us
-//        Menu_Hireus hireUs = new Menu_Hireus ( driver );
-//        hireUs.Hireus ();
+        Menu_Hireus hireUs = new Menu_Hireus ( driver );
+        hireUs.Hireus ();
 
         // My Course
 
