@@ -419,10 +419,11 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
 
             // Find all elements matching the XPath and store them in a list
             gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
-
             Thread.sleep ( 5000 );
-            // Iterate through the list and print the text of each element
-            boolean matchFound = false;
+
+        // Iterate through the list and print the text of each element
+
+        boolean matchFound = false;
             for (WebElement quizTitle : gettingQuizTitles) {
                 String quiztitleText = quizTitle.getText ();
                 System.out.println ( "Quiz Title " + quiztitleText );

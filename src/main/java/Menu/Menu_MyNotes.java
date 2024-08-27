@@ -157,11 +157,70 @@ public class Menu_MyNotes {
             Assert.assertEquals ( uniquerecentArticlelCount , uniquerecentArticleUrls.size () );
 
             // Click the BackButton In The Article
-
             Thread.sleep ( 5000 );
             WebElement clickingBackButton = driver.findElement ( xpath ( "//*[@class=\"ant-breadcrumb-link\"]" ) );
             clickingBackButton.click ();
             System.out.println ( "Navigated To Article List Page" );
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Click The Share Button
+            Thread.sleep ( 2000 );
+            WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
+            clickingShareButton.click ();
+
+            // Clicking The Copy Link
+            Thread.sleep ( 3000 );
+            WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
+            clickingCopyLink.click ();
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
+            clickingCancelButton.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Report Button
+            Thread.sleep ( 3000 );
+            WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
+            clickingReportButton.click ();
+
+            // Click The Radio Button which present in second Position
+            Thread.sleep ( 3000 );
+            WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
+            clickingRadioButton.click ();
+
+            // Entering The Text Inside the Text Field
+            Thread.sleep ( 3000 );
+            WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
+            enteringText.sendKeys ( "The content was good" );
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
+            clickingCancel.click ();
+
+//            // Clicking The report Button
+//
+//            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
+//            clickingReport.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Remove My Notes
+            Thread.sleep ( 3000 );
+            WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
+            clickingRemoveMyNotes.click ();
 
         } else {
 
@@ -332,25 +391,85 @@ public class Menu_MyNotes {
                 } else {
                     uniqueurl.add ( actualUrls );
                     uniquevideosurlcount++;
-                    System.out.println ( "Found: " + uniquevideosurlcount + "-->" + actualUrls );
+                    System.out.println ( "Recent Video URL Found: " + uniquevideosurlcount + "-->" + actualUrls );
                 }
             }
             System.out.println ( "Total unique videos url found: " + uniquevideosurlcount );
             Assert.assertEquals ( uniquevideosurlcount , uniqueurl.size () );
 
             // Clicking The Back Arrow in Viedos page
-
             Thread.sleep ( 3000 );
             WebElement clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"ant-breadcrumb-link\"]" ) );
             clickingBackArrow.click ();
             System.out.println ( "--------------------------------" );
             System.out.println ( "Sucessfully Clicking Back Arrow" );
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Click The Share Button
+            Thread.sleep ( 2000 );
+            WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
+            clickingShareButton.click ();
+
+            // Clicking The Copy Link
+            Thread.sleep ( 3000 );
+            WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
+            clickingCopyLink.click ();
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
+            clickingCancelButton.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Report Button
+            Thread.sleep ( 3000 );
+            WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
+            clickingReportButton.click ();
+
+            // Click The Radio Button which present in second Position
+            Thread.sleep ( 3000 );
+            WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
+            clickingRadioButton.click ();
+
+            // Entering The Text Inside the Text Field
+            Thread.sleep ( 3000 );
+            WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
+            enteringText.sendKeys ( "The content was good" );
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
+            clickingCancel.click ();
+
+//            // Clicking The report Button
+//
+//            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
+//            clickingReport.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Remove My Notes
+            Thread.sleep ( 3000 );
+            WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
+            clickingRemoveMyNotes.click ();
+
         } else {
             System.out.println ( "Both are was not executed for videos in my notes" );
         }
     }
 
-    public void quiz() throws InterruptedException {
+    public void Startquiz() throws InterruptedException {
 
         // Check if elements are displayed and log the results
         Thread.sleep ( 5000 );
@@ -358,7 +477,6 @@ public class Menu_MyNotes {
         // Initialize flags to track the visibility of different elements
         boolean noRecordfoundDisplayedInMyNotes = false;
         boolean quizStartDisplayedInMyNotes = false;
-        boolean quizresumeDisplayedInMyNotes = false;
         boolean quizsolutionDisplayedInMyNotes = false;
 
         try {
@@ -373,11 +491,6 @@ public class Menu_MyNotes {
             System.out.println ( "StartQuiz element not found In My Notes." );
         }
 
-        try {
-            quizresumeDisplayedInMyNotes = clickingResumequiz.isDisplayed ();
-        } catch (NoSuchElementException e) {
-            System.out.println ( "ResumeQuiz element not found In My Notes." );
-        }
 
         try {
             quizsolutionDisplayedInMyNotes = clickingSolutionquiz.isDisplayed ();
@@ -388,7 +501,6 @@ public class Menu_MyNotes {
         // Log the visibility status of each element
         System.out.println ( "noRecordFound displayed In My Notes: " + noRecordfoundDisplayedInMyNotes );
         System.out.println ( "StartQuiz displayed In My Notes: " + quizStartDisplayedInMyNotes );
-        System.out.println ( "ResumeQuiz displayed In My Notes: " + quizresumeDisplayedInMyNotes );
         System.out.println ( "Solution button displayed In My Notes: " + quizsolutionDisplayedInMyNotes );
 
         // Perform actions based on which element is visible
@@ -1005,7 +1117,94 @@ public class Menu_MyNotes {
             clickingBackToQuizBreadCrumbs.click ();
             System.out.println ( "Successfully Scroll The Back To Quiz Bread Crumbs " );
 
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Click The Share Button
+            Thread.sleep ( 2000 );
+            WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
+            clickingShareButton.click ();
+
+            // Clicking The Copy Link
+            Thread.sleep ( 3000 );
+            WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
+            clickingCopyLink.click ();
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
+            clickingCancelButton.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Report Button
+            Thread.sleep ( 3000 );
+            WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
+            clickingReportButton.click ();
+
+            // Click The Radio Button which present in second Position
+            Thread.sleep ( 3000 );
+            WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
+            clickingRadioButton.click ();
+
+            // Entering The Text Inside the Text Field
+            Thread.sleep ( 3000 );
+            WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
+            enteringText.sendKeys ( "The content was good" );
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
+            clickingCancel.click ();
+
+//            // Clicking The report Button
+//
+//            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
+//            clickingReport.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Remove My Notes
+            Thread.sleep ( 3000 );
+            WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
+            clickingRemoveMyNotes.click ();
+
+        } else {
+            System.out.println ( "No matching condition was found in the Start quiz My Notes." );
+        }
+    }
+
+    public void resumequiz() throws InterruptedException {
+        System.out.println ( "----------------------Resume Quiz---------------------------" );
+        boolean noRecordfoundDisplayedInMyNotes = false;
+        boolean quizresumeDisplayedInMyNotes = false;
+
+        try {
+            noRecordfoundDisplayedInMyNotes = noRecordfoundMyNotes.isDisplayed ();
+        } catch (NoSuchElementException e) {
+            System.out.println ( "noRecordFound element not found In My Notes." );
+        }
+        try {
+            quizresumeDisplayedInMyNotes = clickingResumequiz.isDisplayed ();
+        } catch (NoSuchElementException e) {
+            System.out.println ( "ResumeQuiz element not found In My Notes." );
+        }
+
+        System.out.println ( "noRecordFound displayed In My Notes: " + noRecordfoundDisplayedInMyNotes );
+        System.out.println ( "ResumeQuiz displayed In My Notes: " + quizresumeDisplayedInMyNotes );
+
+        if (noRecordfoundDisplayedInMyNotes) {
+            clickingMyQuestion.click ();
         } else if (quizresumeDisplayedInMyNotes) {
+
             Thread.sleep ( 3000 );
             clickingResumequiz.click ();
             System.out.println ( "Successfully clicked the Resume button in My Notes." );
@@ -1036,13 +1235,13 @@ public class Menu_MyNotes {
             WebElement againClose_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
             againClose_icon.click ();
 
-                // Clicking The FullScreen Button
+            // Clicking The FullScreen Button
 
             Thread.sleep ( 2000 );
             WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
-                clickingTheFullScreenButton.click ();
+            clickingTheFullScreenButton.click ();
 
-                // Clicking the BookMark-icon
+            // Clicking the BookMark-icon
 
                 /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
                  WebElement bookMarkicon = driver.findElement(className ("bookmark-icon"));
@@ -1485,7 +1684,101 @@ public class Menu_MyNotes {
             clickingBackToQuizBreadCrumbs.click ();
             System.out.println ( "Successfully Scroll The Back To Quiz Bread Crumbs " );
 
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Click The Share Button
+            Thread.sleep ( 2000 );
+            WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
+            clickingShareButton.click ();
+
+            // Clicking The Copy Link
+            Thread.sleep ( 3000 );
+            WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
+            clickingCopyLink.click ();
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
+            clickingCancelButton.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Report Button
+            Thread.sleep ( 3000 );
+            WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
+            clickingReportButton.click ();
+
+            // Click The Radio Button which present in second Position
+            Thread.sleep ( 3000 );
+            WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
+            clickingRadioButton.click ();
+
+            // Entering The Text Inside the Text Field
+            Thread.sleep ( 3000 );
+            WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
+            enteringText.sendKeys ( "The content was good" );
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
+            clickingCancel.click ();
+
+//            // Clicking The report Button
+//
+//            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
+//            clickingReport.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Remove My Notes
+            Thread.sleep ( 3000 );
+            WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
+            clickingRemoveMyNotes.click ();
+
+        } else {
+            System.out.println ( "No matching condition was found in the Resume quiz My Notes." );
+        }
+    }
+
+    public void solution() throws InterruptedException {
+        System.out.println ( "-----------------------Solutions---------------------------" );
+        // Check if elements are displayed and log the results
+        Thread.sleep ( 5000 );
+
+        // Initialize flags to track the visibility of different elements
+        boolean noRecordfoundDisplayedInMyNotes = false;
+        boolean quizsolutionDisplayedInMyNotes = false;
+
+        try {
+            noRecordfoundDisplayedInMyNotes = noRecordfoundMyNotes.isDisplayed ();
+        } catch (NoSuchElementException e) {
+            System.out.println ( "noRecordFound element not found In My Notes." );
+        }
+
+        try {
+            quizsolutionDisplayedInMyNotes = clickingSolutionquiz.isDisplayed ();
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Solution button element not found In My Notes." );
+        }
+
+        // Log the visibility status of each element
+        System.out.println ( "noRecordFound displayed In My Notes: " + noRecordfoundDisplayedInMyNotes );
+        System.out.println ( "Solution button displayed In My Notes: " + quizsolutionDisplayedInMyNotes );
+
+        if (noRecordfoundDisplayedInMyNotes) {
+            clickingMyQuestion.click ();
+
         } else if (quizsolutionDisplayedInMyNotes) {
+
             clickingSolutionquiz.click ();
             System.out.println ( "Successfully clicked the Solution button in My Notes." );
 
@@ -1824,12 +2117,68 @@ public class Menu_MyNotes {
             clickingBackToQuizBreadCrumbs.click ();
             System.out.println ( "Successfully Scroll The Back To Quiz Bread Crumbs " );
 
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Click The Share Button
+            Thread.sleep ( 2000 );
+            WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
+            clickingShareButton.click ();
+
+            // Clicking The Copy Link
+            Thread.sleep ( 3000 );
+            WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
+            clickingCopyLink.click ();
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
+            clickingCancelButton.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Report Button
+            Thread.sleep ( 3000 );
+            WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
+            clickingReportButton.click ();
+
+            // Click The Radio Button which present in second Position
+            Thread.sleep ( 3000 );
+            WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
+            clickingRadioButton.click ();
+
+            // Entering The Text Inside the Text Field
+            Thread.sleep ( 3000 );
+            WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
+            enteringText.sendKeys ( "The content was good" );
+
+            // Clicking The cancel Button
+            Thread.sleep ( 3000 );
+            WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
+            clickingCancel.click ();
+
+//            // Clicking The report Button
+//
+//            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
+//            clickingReport.click ();
+
+            // Clicking the three Dots in the CourseCard
+            Thread.sleep ( 5000 );
+            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+            clickingThreeDots.click ();
+
+            // Clicking The Remove My Notes
+            Thread.sleep ( 3000 );
+            WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
+            clickingRemoveMyNotes.click ();
+
         } else {
-            System.out.println ( "No matching condition was found in the quiz My Notes." );
+            System.out.println ( "No matching condition was found in the Solution quiz My Notes." );
         }
-
-
     }
-
-
 }

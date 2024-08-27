@@ -49,7 +49,8 @@ public class Loginpage {
         switchToChildWindow ();
 
         // Enter email ID and click next
-        Entering_mailID.sendKeys ("harishpsy12@gmail.com");
+        Entering_mailID.sendKeys ( "harishpsy12@gmail.com" );
+        //  Entering_mailID.sendKeys ("harishpoker8@gmail.com");
         Nextbutton.click ();
 
         // Enter password and click next

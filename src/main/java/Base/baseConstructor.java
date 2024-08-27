@@ -1,7 +1,8 @@
 package Base;
 
 import MainPages.Loginpage;
-import Menu.*;
+import MyCourse.CourseArticle;
+import MyCourse.myCourse;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -12,33 +13,39 @@ public class baseConstructor {
     public static void main(String[] args) throws InterruptedException, AWTException {
 
         WebDriver driver = new ChromeDriver ();
+        //WebDriver driver = new FirefoxDriver ();
 
         // Login
         Loginpage loginPage = new Loginpage (driver);
         loginPage.login ();
 
         // Home Page
-//         HomePage clickingHomePage = new HomePage(driver);
-//         clickingHomePage.clickingHomePage();
+//      HomePage clickingHomePage = new HomePage(driver);
+//      clickingHomePage.clickingHomePage();
 
-        // My Notes
+     /*  // My Notes
         Menu_MyNotes myNotes = new Menu_MyNotes ( driver );
         myNotes.MyNotes ();
 
         // My Notes > Article
-
         Menu_MyNotes article = new Menu_MyNotes ( driver );
         article.artilce ();
 
         // My Notes > Videos
-
         Menu_MyNotes videos = new Menu_MyNotes ( driver );
         videos.videos ();
 
-        // My Notes > Quiz
-
+        // My Notes > Start Quiz
         Menu_MyNotes quiz = new Menu_MyNotes ( driver );
-        quiz.quiz ();
+        quiz.Startquiz ();
+
+        // My Notes > Resume Quiz
+        Menu_MyNotes resume = new Menu_MyNotes ( driver );
+        resume.resumequiz ();
+
+        // My Notes > Quiz Solution
+        Menu_MyNotes solutionclick = new Menu_MyNotes ( driver );
+        solutionclick.solution ();
 
         // My Questions
         Menu_MyQuestions myQuestions = new Menu_MyQuestions ( driver );
@@ -70,12 +77,12 @@ public class baseConstructor {
 
         // Hire Us
         Menu_Hireus hireUs = new Menu_Hireus ( driver );
-        hireUs.Hireus ();
+        hireUs.Hireus ();*/
 
         // My Course
 
-//        myCourse Mycourse = new myCourse (driver);
-//        Mycourse.myCourseClicking ();
+        myCourse Mycourse = new myCourse ( driver );
+        Mycourse.myCourseClicking ();
 
 
         // My Course Filters
@@ -105,8 +112,8 @@ public class baseConstructor {
 //         ebooks.Ebooks();
 
         // Course Article
-//        CourseArticle article = new CourseArticle (driver);
-//        article.Article ();
+        CourseArticle article = new CourseArticle ( driver );
+        article.Article ();
 
 //         Course Videos
 //         CourseVideos videos = new CourseVideos(driver);
