@@ -22,6 +22,10 @@ public class Menu_MyEbooks {
     public Menu_MyEbooks(WebDriver driver) {
         this.driver = driver;
     }
+
+    public Menu_MyEbooks() {
+    }
+
     public void MyEbooks() throws InterruptedException {
 
         PageFactory.initElements (driver, Myebookspageobject.class);

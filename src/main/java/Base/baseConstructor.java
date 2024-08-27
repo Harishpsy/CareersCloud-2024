@@ -1,7 +1,7 @@
 package Base;
 
 import MainPages.Loginpage;
-import MyCourse.CourseArticle;
+import MyCourse.CourseEbooks;
 import MyCourse.myCourse;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -108,12 +108,12 @@ public class baseConstructor {
 //        attempted.attemptedTab ();
 
         // Course Ebooks
-//         CourseEbooks ebooks = new CourseEbooks(driver);
-//         ebooks.Ebooks();
+        CourseEbooks ebooks = new CourseEbooks ( driver );
+        ebooks.Ebooks ();
 
         // Course Article
-        CourseArticle article = new CourseArticle ( driver );
-        article.Article ();
+//        CourseArticle article = new CourseArticle ( driver );
+//        article.Article ();
 
 //         Course Videos
 //         CourseVideos videos = new CourseVideos(driver);

@@ -162,13 +162,13 @@ public class CourseArticle {
             } else {
                 uniquerecentArticleUrls.add ( actuarecentArticlelLink );
                 uniquerecentArticlelCount++;
-                System.out.println ( "Found: " + uniquerecentArticlelCount + " --> " + actuarecentArticlelLink );
+                System.out.println ( "Article Found: " + uniquerecentArticlelCount + " --> " + actuarecentArticlelLink );
                 System.out.println ( "-------------------------------------------------------------------------" );
             }
         }
 
         // Print the total number of unique URLs found
-        System.out.println ( "Total unique image URLs found: " + uniquerecentArticlelCount );
+        System.out.println ( "Total unique Article Name found: " + uniquerecentArticlelCount );
 
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniquerecentArticlelCount , uniquerecentArticleUrls.size () );
