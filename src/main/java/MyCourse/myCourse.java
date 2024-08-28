@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -21,14 +22,18 @@ public class myCourse {
         this.driver = driver;
     }
 
-    public void myCourseClicking() throws InterruptedException {
+    @Test
+    public void myCourseClicking() {
 
         // Clicking My Course Button
-
-        driver.manage ().timeouts ().implicitlyWait (Duration.ofSeconds (30));
-        WebElement clickingMyCourseButton = driver.findElement (xpath ("//* [text()='My Course']"));
+        driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 30 ) );
+        WebElement clickingMyCourseButton = driver.findElement ( xpath ( "//* [text()='My Course']" ) );
         clickingMyCourseButton.click ();
-        System.out.println ("Successfully Clicked The My Course");
+        System.out.println ( "Successfully Clicked The My Course" );
+    }
+
+    @Test
+    public void performingActionInMyCourse() {
 
         //Scrolling My Course List Page Down
         int numberoftimesscrollMycourselistpage = 3;
@@ -44,8 +49,8 @@ public class myCourse {
         }
 
         // Scrolling My Course List Page Up
-        numberoftimesscrollMycourselistpage = 3;
-        for (int i = 0; i < numberoftimesscrollMycourselistpage; i++) {
+        int numberoftimesscrollMycourselistpageup = 3;
+        for (int i = 0; i < numberoftimesscrollMycourselistpageup; i++) {
             try {
                 Thread.sleep ( 3000 );
                 JavascriptExecutor jse = (JavascriptExecutor) driver;

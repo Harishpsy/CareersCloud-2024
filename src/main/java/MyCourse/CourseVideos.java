@@ -1,6 +1,7 @@
 package MyCourse;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,40 +20,43 @@ public class CourseVideos {
     public CourseVideos(WebDriver driver) {
         this.driver = driver;
     }
-
     public void videos() throws InterruptedException {
 
         // Clicking The Ninth Course Card In the My Course
-
         Thread.sleep (3000);
         WebElement clickingFirstCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[9]"));
         clickingFirstCourseCard.click ();
 
         // Clicking The Videos
-
         Thread.sleep (3000);
         WebElement clickingVideoTab = driver.findElement (xpath ("//*[@id=\"rc-tabs-0-tab-4\"]"));
         clickingVideoTab.click ();
+        System.out.println ( "SuccessFully Clicked The Video Tan Inside The Course" );
 
         // Scrolling The Videos List Page
-
-        int numberOfTimesScrollVideos = 10;
+        int numberOfTimesScrollVideos = 5;
 
         for (int i = 0; i < numberOfTimesScrollVideos; i++) {
             try {
                 Thread.sleep (5000);
                 JavascriptExecutor jse = (JavascriptExecutor) driver;
                 jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
-                System.out.println ("Successfully scroll The page " + (i + 1) + " time(s).");
+                System.out.println ( "Successfully scroll The Video List page " + (i + 1) + " time(s)." );
             } catch (Exception scroll) {
-                System.out.println ("Failed to Scroll : " + scroll.getMessage ());
+                System.out.println ( "Failed to Scroll The Video List Page: " + scroll.getMessage () );
             }
         }
 
         // Clicking Float Icon
-
-        WebElement clickingFloatIcon = driver.findElement (xpath ("//*[@class=\"ant-float-btn-body\"]"));
-        clickingFloatIcon.click ();
+        try {
+            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"]" ) );
+            if (clickingFloatIcon.isDisplayed ()) {
+                Thread.sleep ( 5000 );
+                clickingFloatIcon.click ();
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println ( "FloatIcon Button Is Not Displayed" );
+        }
 
         // Verifying the videoscard was getting duplicating using the unique videos Url
         List<WebElement> cards = driver.findElements (xpath ("//*[@class=\"video-iframe\"]"));
@@ -69,8 +73,8 @@ public class CourseVideos {
             } else {
                 uniqueUrls.add (actualUrl);
                 uniqueCount++;
-                System.out.println ("Found: " + uniqueCount + " --> " + actualUrl);
-                System.out.println ("-------------------------------------------------------------------------");
+                //System.out.println ("Found: " + uniqueCount + " --> " + actualUrl);
+                //System.out.println ("-------------------------------------------------------------------------");
             }
         }
 
@@ -81,14 +85,17 @@ public class CourseVideos {
         Assert.assertEquals (uniqueCount, uniqueUrls.size ());
 
         // Clicking The View Button
-
         WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (30));
         WebElement clickingViewButton = wait.until (ExpectedConditions.elementToBeClickable (xpath ("//*[@class=\"video-card-inner-content\"]")));
         wait.until (ExpectedConditions.visibilityOf (clickingViewButton));
         clickingViewButton.click ();
 
-        // Clicking the like and unlike button
+        // Getting The video Name For Verify In The My Notes
+        WebElement gettingVideoName = driver.findElement ( xpath ( "//*[@class=\"ant-typography title css-xu9wm8\"]" ) );
+        String VideoName = gettingVideoName.getText ();
+        System.out.println ( "Original Video Name:" + VideoName );
 
+        // Clicking the like and unlike button
         WebElement clickAction = driver.findElement (xpath ("//*[contains(@class, 'like') or contains(@class, 'unlike')]"));
 
         if (clickAction.isDisplayed ()) {
@@ -102,44 +109,37 @@ public class CourseVideos {
         }
 
 //        // Clicking The Comment Icon
-//
 //        WebElement clickingCommentIcon = driver.findElement (id ("comments-icon"));
 //        clickingCommentIcon.click ();
 //
 //        // Entering The comments
-//
 //        Thread.sleep (3000);
 //        WebElement enteringComments = driver.findElement (name ("comments1"));
 //        enteringComments.sendKeys ("Thanks For the update");
 //        System.out.println ("Comment Added Sucessfully");
 //
 //       // Clicking The send Button
-//
 //        Thread.sleep (3000);
 //        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
 //        clickingSendButton.click ();
 
         // Clicking the share icon
-
         Thread.sleep (3000);
         WebElement clickingshareicon = driver.findElement (xpath ("//*[@class=\"share\"]"));
         clickingshareicon.click ();
 
         //click the copy link in the share popup
-
         Thread.sleep (3000);
         WebElement Copy_link = driver.findElement (xpath ("//span[text()='COPY LINK']"));
         Copy_link.click ();
 
         //Clicking the cancel button in the in share popup
-
         Thread.sleep (3000);
         WebElement Cancel_button = driver.findElement (xpath ("//span[text()='Cancel']"));
         Cancel_button.click ();
         System.out.println ("Clicked cancel button");
 
         // Clicking The Pause Button In The Viedos
-
         driver.switchTo ().frame (0);
         Thread.sleep (3000);
         WebElement clickingPauseButton = driver.findElement (xpath ("//*[@title=\"Pause (k)\"]"));
@@ -147,41 +147,35 @@ public class CourseVideos {
         System.out.println ("SucessFully Clicked Paused button");
 
         // Click the mute button in the video
-
         WebElement clickingMuteButton = driver.findElement (xpath ("//*[@title=\"Mute (m)\"]"));
         clickingMuteButton.click ();
         System.out.println ("SucessFully Clicked Mute button");
 
         // Clicking The Caption button
-
         WebElement clickingCaptionButton = driver.findElement (xpath ("//*[@title=\"Subtitles/closed captions (c)\"]"));
         clickingCaptionButton.click ();
         System.out.println ("SucessFully Clicked Caption (ON) button");
 
         // Clicking the Full screen Button
-
         Thread.sleep (3000);
         WebElement clickingFullScreenButton = driver.findElement (xpath ("//*[@title=\"Full screen (f)\"]"));
         clickingFullScreenButton.click ();
         System.out.println ("SucessFully Clicked The Full Screen Button");
 
         // Clicking the Exit The Full screen Button
-
         Thread.sleep (3000);
         WebElement clickingExitFullScreenButton = driver.findElement (xpath ("//*[@title=\"Exit full screen (f)\"]"));
         clickingExitFullScreenButton.click ();
         System.out.println ("SucessFully Clicked The Exit Full Screen Button");
 
 
-        // Clicking the YouTube Logo It will navigate to YouTube or new windows
-
+        // Clicking the YouTube Logo, It will navigate to YouTube or new windows
         Thread.sleep (3000);
         WebElement clickingYouTubeLogo = driver.findElement (xpath ("//*[@title=\"Watch on YouTube\"]"));
         clickingYouTubeLogo.click ();
         System.out.println ("SucessFully Clicked The YouTube Logo ");
 
         // Windows Handeling
-
         Set<String> windows = driver.getWindowHandles ();
         Iterator<String> it = windows.iterator ();
         String parent = it.next ();
@@ -193,20 +187,16 @@ public class CourseVideos {
         driver.close ();
 
         // Switching Windows to Parent
-
         driver.switchTo ().window (parent);
 
         // Another Method for verifying Duplicate In The Wep page Using HashSet
-
         List<WebElement> recentVideos = driver.findElements (xpath ("//*[@class=\"ant-list-items\"]/child::*"));
 
         // Create a set to store unique Recent Videos
-
         Set<String> uniqueurl = new HashSet<> ();
         int uniquevideosurlcount = 0;
 
         // Iterate through the list of elements
-
         for (WebElement recentVideo : recentVideos) {
             String actualUrls = recentVideo.getAttribute ("href");
 
@@ -215,27 +205,78 @@ public class CourseVideos {
                 System.out.println ("Duplicate found --> " + actualUrls);
             } else {
                 uniqueurl.add (actualUrls);
-                    uniquevideosurlcount++;
-                    System.out.println ("Found: " + uniquevideosurlcount + "-->" + actualUrls);
+                uniquevideosurlcount++;
+                System.out.println ( "Found: " + uniquevideosurlcount + "-->" + actualUrls );
             }
         }
         System.out.println ("Total unique videos url found: " + uniquevideosurlcount);
         Assert.assertEquals (uniquevideosurlcount, uniqueurl.size ());
 
         // Clicking The Back Arrow in Viedos page
-
         Thread.sleep (3000);
         WebElement clickingBackArrow = driver.findElement (xpath ("//*[@class=\"ant-breadcrumb-link\"]"));
         clickingBackArrow.click ();
         System.out.println ("--------------------------------");
         System.out.println ("Sucessfully Clicking Back Arrow");
 
-        // Clicking The Breadcrumbs
+        // Clicking the three Dots in the CourseCard
+        Thread.sleep ( 5000 );
+        WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+        clickingThreeDots.click ();
 
+        // Clicking The save My Notes OR Remove My Notes
+        wait = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
+
+        try {
+            Thread.sleep ( 3000 );
+            WebElement saveMyEbookElement = wait.until ( ExpectedConditions.visibilityOfElementLocated ( xpath ( "(//*[@class=\"ant-dropdown-menu-title-content\"])[1]" ) ) );
+            if (saveMyEbookElement.isDisplayed ()) {
+                saveMyEbookElement.click ();
+            }
+        } catch (NoSuchElementException | TimeoutException e) {
+            System.out.println ( "Save Or Remove My Ebook is not displayed." );
+        }
+
+        // Clicking The Breadcrumbs
         Thread.sleep (5000);
         WebElement clickingBreadCrumbs = driver.findElement (xpath ("//*[text()='Course']"));
         clickingBreadCrumbs.click ();
         System.out.println ("SuccessFully Clicked The Bread crumbs and navigated to the My Course List Page");
+
+        // Clicking The home button
+        Thread.sleep ( 3000 );
+        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+        clickingHomeButton.click ();
+        System.out.println ( "SuccessFully Clicked The HomeButton" );
+
+        // Clicking The MyNotes
+        Thread.sleep ( 5000 );
+        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
+        clickingMyNotes.click ();
+        System.out.println ( "SuccessFully Clicked The My-Notes" );
+
+        // Verifying saved or removed article was showing in the My Notes Page
+        List<WebElement> videoMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
+
+        boolean videoFound = false;
+
+        for (WebElement Video : videoMyNotes) {
+            String videoNameInMyNotes = Video.getText ();
+            System.out.println ( videoNameInMyNotes );
+
+            if (VideoName.equals ( videoNameInMyNotes )) {
+                System.out.println ( "Verification Passed: Video Title (" + VideoName + ") matches Video Title In My Notes (" + videoNameInMyNotes + ")" );
+                videoFound = true;
+            } else {
+                System.out.println ( "Video Name Does Not Match" );
+            }
+        }
+        if (!videoFound) {
+            System.out.println ( "Video Is Not Showing In The My Notes" );
+        }
+        // Clicking My Course Button In the Header
+        myCourse Mycourse = new myCourse ( driver );
+        Mycourse.myCourseClicking ();
 
     }
 }

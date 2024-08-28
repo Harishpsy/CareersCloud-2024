@@ -1,6 +1,7 @@
 package Base;
 
 import MainPages.Loginpage;
+import MyCourse.CourseVideos;
 import MyCourse.myCourse;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,8 +20,8 @@ public class baseConstructor {
         loginPage.login ();
 
         // Home Page
-//      HomePage clickingHomePage = new HomePage(driver);
-//      clickingHomePage.clickingHomePage();
+//       HomePage clickingHomePage = new HomePage(driver);
+//       clickingHomePage.clickingHomePage();
 
 //       // My Notes
 //        Menu_MyNotes myNotes = new Menu_MyNotes ( driver );
@@ -83,8 +84,11 @@ public class baseConstructor {
         myCourse Mycourse = new myCourse ( driver );
         Mycourse.myCourseClicking ();
 
+        // My Course > Performing Action In The My Course
+        myCourse actionInMyCourse = new myCourse ( driver );
+        actionInMyCourse.performingActionInMyCourse ();
 
-        // My Course Filters
+//         My Course Filters
         // MyCourse_Filters filter = new MyCourse_Filters(driver);
         // filter.Filter();
 
@@ -92,65 +96,61 @@ public class baseConstructor {
         // CoursePath path = new CoursePath(driver);
         // path.Path();
 
-        // Course Quizzes
-//        CourseQuizzes quizzes = new CourseQuizzes (driver);
-//        quizzes.Quizzes ();
-
-        // Course Quiz > Unattempted
-
-//        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
-//        unattempt.unAttempted ();
-
-        // Course Quiz > Attempted
-//
-//        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
-//        attempted.attemptedTab ();
-
-//        // Course Ebooks
-//        CourseEbooks ebooks = new CourseEbooks ( driver );
-//        ebooks.Ebooks ();
-//
-//        // Course Article
+//        Course Article
 //        CourseArticle article = new CourseArticle ( driver );
 //        article.Article ();
 
 //         Course Videos
-//         CourseVideos videos = new CourseVideos(driver);
-//         videos.videos();
+        CourseVideos videos = new CourseVideos ( driver );
+        videos.videos ();
 
-        // Course Details
-        // CourseDetails details = new CourseDetails(driver);
-        // details.Details();
+//         Course Quizzes
+//         CourseQuizzes quizzes = new CourseQuizzes (driver);
+//         quizzes.Quizzes ();
 
-        // Course Doubts
-        // CourseDoubts doubt = new CourseDoubts(driver);
-        // doubt.Doubts();
+//        Course Quiz > Unattempted
+//        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
+//        unattempt.unAttempted ();
 
-        // Doubts Section
-//     Doubts doubt = new Doubts(driver);
-//     doubt.doubts();
+//        Course Quiz > Attempted
+//        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
+//        attempted.attemptedTab ();
 
-        // All Doubts
+//        Course Ebooks
+//        CourseEbooks ebooks = new CourseEbooks ( driver );
+//        ebooks.Ebooks ();
+
+//        Course Doubts
+//        CourseDoubts doubt = new CourseDoubts(driver);
+//        doubt.Doubts();
+
+//        Course Details
+        //CourseDetails details = new CourseDetails(driver);
+        //details.Details();
+
+//       Doubts Section
+//       Doubts doubt = new Doubts(driver);
+//       doubt.doubts();
+
+//       All Doubts
         // AllDoubts allDoubts = new AllDoubts(driver);
         // allDoubts.allDoubts();
 
-        //  My Doubts
-//     Mydoubts myDoubts = new Mydoubts(driver);
-//     myDoubts.myDoubts();
+//      My Doubts
+//      Mydoubts myDoubts = new Mydoubts(driver);
+//      myDoubts.myDoubts();
 
-        // My Answered
+//         My Answered
         // MyAnswered answered = new MyAnswered(driver);
         // answered.myAnswered();
 
-        // My Followed
+//       My Followed
         // Myfollowed myFollowed = new Myfollowed(driver);
         // myFollowed.myFollow();
 
-        // My Points in the Doubts Page
+//       My Points in the Doubts Page
         // Mypoints myPointsInDoubts = new Mypoints(driver);
         // myPointsInDoubts.myPoints();
 
-
     }
-
 }

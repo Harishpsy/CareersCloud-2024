@@ -129,6 +129,7 @@ public class CourseEbooks {
         WebElement Threedots = driver.findElement ( xpath ( "(//*[@class=\"ant-dropdown-trigger\"])[2]" ) );
         Threedots.click ();
 
+        // Clicking The save My Notes OR Remove My Notes
         WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) ); // 30 seconds timeout
 
         try {
