@@ -160,7 +160,7 @@ public class Menu_MyNotes {
             Thread.sleep ( 5000 );
             WebElement clickingBackButton = driver.findElement ( xpath ( "//*[@class=\"ant-breadcrumb-link\"]" ) );
             clickingBackButton.click ();
-            System.out.println ( "Navigated To Article List Page" );
+            System.out.println ( "Navigated To My Notes List Page" );
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );

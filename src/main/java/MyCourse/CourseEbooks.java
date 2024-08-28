@@ -1,21 +1,20 @@
 package MyCourse;
 
-import Menu.Menu_MyEbooks;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.*;
 
-import static PageObjectModule.Myebookspageobject.*;
-import static org.openqa.selenium.By.name;
-import static org.openqa.selenium.By.xpath;
+import static org.openqa.selenium.By.*;
 
-public class CourseEbooks extends Menu_MyEbooks {
+public class CourseEbooks {
     WebDriver driver;
-
     public CourseEbooks(WebDriver driver) {
         this.driver = driver;
     }
@@ -31,9 +30,10 @@ public class CourseEbooks extends Menu_MyEbooks {
         Thread.sleep (3000);
         WebElement clickingEbooksTab = driver.findElement (xpath ("//*[text()='Ebooks']"));
         clickingEbooksTab.click ();
+        System.out.println ( "Successfully Clicked The Ebook Tab Inside The Course" );
 
+        // Scrolling The page In the ebook list page
         int numberOfTimesScrollEbooks = 5;
-
         for (int i = 0; i < numberOfTimesScrollEbooks; i++) {
             try {
                 Thread.sleep (5000);
@@ -55,6 +55,7 @@ public class CourseEbooks extends Menu_MyEbooks {
         } catch (NoSuchElementException e) {
             System.out.println ( "FloatIcon Button Is Not Displayed" );
         }
+
         // Verifying Weather There is Duplicate was find in the Ebooks or not
         List<WebElement> ebookTitle = driver.findElements (xpath ("//*[@class=\"ant-row ant-row-middle nowrap-content css-xu9wm8\"]"));
 
@@ -63,18 +64,16 @@ public class CourseEbooks extends Menu_MyEbooks {
         int ebookTitleCount = 0;
 
         // Iterate through the list of elements
-
         for (WebElement ebooksTitleName : ebookTitle) {
             String actualEbookTitle = ebooksTitleName.getText ();
-            System.out.println (actualEbookTitle);
+            //System.out.println ("Original Ebook Name:" + actualEbookTitle);
 
             if (uniqueTitleName.contains (actualEbookTitle)) {
                 System.out.println ("Duplicate Found ---> " + actualEbookTitle);
             } else {
                 uniqueTitleName.add (actualEbookTitle);
                 ebookTitleCount++;
-                System.out.println ("Found: " + ebookTitleCount + " --> " + actualEbookTitle);
-                System.out.println ("-------------------------------------------------------------------------");
+                //System.out.println ("Ebook Title Found: " + ebookTitleCount + " --> " + actualEbookTitle);
             }
             // Assert that the number of unique URLs is equal to the number of elements
             Assert.assertEquals (ebookTitleCount, uniqueTitleName.size ());
@@ -130,17 +129,16 @@ public class CourseEbooks extends Menu_MyEbooks {
         WebElement Threedots = driver.findElement ( xpath ( "(//*[@class=\"ant-dropdown-trigger\"])[2]" ) );
         Threedots.click ();
 
-        // Clicking The save My Notes or Remove my notes
-        Thread.sleep ( 5000 );
-        WebElement clickMyNote = driver.findElement ( xpath ( "//*[contains(text(), 'Save to My Notes') or contains(text(), 'Remove My  Notes')]" ) );
+        WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) ); // 30 seconds timeout
 
-        if (clickMyNote.isDisplayed ()) {
-            clickMyNote.click ();
-            if (clickMyNote.getText ().contains ( "Remove My  Notes" )) {
-                System.out.println ( "Successfully -  Remove - Article" );
-            } else {
-                System.out.println ( "Successfully -  saved - Article" );
+        try {
+            Thread.sleep ( 3000 );
+            WebElement saveMyEbookElement = wait.until ( ExpectedConditions.visibilityOfElementLocated ( xpath ( "(//*[@class=\"ant-dropdown-menu-title-content\"])[1]" ) ) );
+            if (saveMyEbookElement.isDisplayed ()) {
+                saveMyEbookElement.click ();
             }
+        } catch (NoSuchElementException | TimeoutException e) {
+            System.out.println ( "Save Or Remove My Ebook is not displayed." );
         }
 
         // Clicking The Three dots
@@ -185,7 +183,6 @@ public class CourseEbooks extends Menu_MyEbooks {
         Enterthereport.sendKeys ( "Checking The text was Entering In The Report Text Field" );
 
         // Click the report button
-
         /* Thread.sleep (3000);
         WebElement Report_button = driver.findElement (xpath ("//span[text()='REPORT']"));
         Report_button.click ();*/
@@ -203,28 +200,31 @@ public class CourseEbooks extends Menu_MyEbooks {
         System.out.println ( "SuccessFully Clicked The HomeButton" );
 
         // Clicking The Ebook
-        clickingTheMyEbooks.click ();
+        Thread.sleep ( 3000 );
+        WebElement clickingEbookInMenu = driver.findElement ( id ( "3" ) );
+        clickingEbookInMenu.click ();
 
         // Verifying saved or removed article was showing in the My Notes Page
-        List<WebElement> myEbookTitlename = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
+        List<WebElement> ebookTitleElements = driver.findElements ( xpath ( "//*[@class='feed-card-cover-inner-content']" ) );
+        boolean isEbookFound = false;
 
-        boolean EbookFound = false;
+        for (WebElement ebookElement : ebookTitleElements) {
+            String ebookName = ebookElement.getText ();
+            System.out.println ( "Ebook Title in My Notes: " + ebookName );
 
-        for (WebElement Ebook : myEbookTitlename) {
-            String EbooknameInMyEbooks = Ebook.getText ();
-            System.out.println ( "Article Name In My Notes: " + EbooknameInMyEbooks );
-
-            if (EbookName.equals ( EbooknameInMyEbooks )) {
-                System.out.println ( "Verification Passed: Article Title (" + myEbookTitlename + ") matches Article In My Notes (" + EbooknameInMyEbooks + ")" );
-                EbookFound = true;
+            if (ebookName.equals ( EbookName )) {
+                System.out.println ( "Verification Passed: Ebook Title (" + EbookName + ") matches Ebook in My Notes (" + ebookName + ")" );
+                isEbookFound = true;
             } else {
-                System.out.println ( "Article Name Does Not Match" );
+                System.out.println ( "Ebook Title Does Not Match" );
             }
         }
-        if (!EbookFound) {
-            System.out.println ( "Ebook Is Not Showing In The My-Ebooks" );
+        if (!isEbookFound) {
+            System.out.println ( "Ebook is Not Showing in My-Ebooks" );
         }
-
+        // Clicking My course for the next execution
+        myCourse Mycourse = new myCourse ( driver );
+        Mycourse.myCourseClicking ();
 
     }
 }

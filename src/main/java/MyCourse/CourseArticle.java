@@ -31,9 +31,9 @@ public class CourseArticle {
         // Clicking The Article
         WebElement clickingArticleTab = driver.findElement ( xpath ( "//*[text()='Articles']" ) );
         clickingArticleTab.click ();
+        System.out.println ( "Successfully Clicked The Article Tab" );
 
         int numberoftimesscrollarticle = 5;
-
         for (int i = 0; i < numberoftimesscrollarticle; i++) {
             try {
                 Thread.sleep ( 5000 );
@@ -68,14 +68,14 @@ public class CourseArticle {
         // Iterate through the list of elements
         for (WebElement articleElementUrl : allArticleName) {
             String actualArticleName = articleElementUrl.getText ();
-            System.out.println ( "Original Article Name: " + actualArticleName );
+            //    System.out.println ( "Original Article Name: " + actualArticleName );
             if (uniqueArticleUrl.contains ( actualArticleName )) {
                 System.out.println ( "Duplicate Article found --> " + actualArticleName );
             } else {
                 uniqueArticleUrl.add ( actualArticleName );
                 uniquesArticleCount++;
-                System.out.println ( "Article Found: " + uniquesArticleCount + " --> " + actualArticleName );
-                System.out.println ( "-------------------------------------------------------------------------" );
+                // System.out.println ( "Article Found: " + uniquesArticleCount + " --> " + actualArticleName );
+                //  System.out.println ( "-------------------------------------------------------------------------" );
             }
         }
         // Print the total number of unique URLs found
@@ -154,7 +154,7 @@ public class CourseArticle {
 
         for (WebElement articles : recentArticle) {
             String actuarecentArticlelLink = articles.getAttribute ( "href" );
-            System.out.println ( "Original Recent Article Link: " + actuarecentArticlelLink );
+            // System.out.println ( "Original Recent Article Link: " + actuarecentArticlelLink );
 
             if (uniquerecentArticleUrls.contains ( actuarecentArticlelLink )) {
                 uniquerecentArticlelCount++;
@@ -162,8 +162,8 @@ public class CourseArticle {
             } else {
                 uniquerecentArticleUrls.add ( actuarecentArticlelLink );
                 uniquerecentArticlelCount++;
-                System.out.println ( "Article Found: " + uniquerecentArticlelCount + " --> " + actuarecentArticlelLink );
-                System.out.println ( "-------------------------------------------------------------------------" );
+                //      System.out.println ( "Article Found: " + uniquerecentArticlelCount + " --> " + actuarecentArticlelLink );
+                //     System.out.println ( "-------------------------------------------------------------------------" );
             }
         }
 
@@ -214,7 +214,6 @@ public class CourseArticle {
         List<WebElement> articleMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
 
         boolean articleFound = false;
-
         for (WebElement Article : articleMyNotes) {
             String articlenameInMyNotes = Article.getText ();
             System.out.println ( "Article Name In My Notes: " + articlenameInMyNotes );
@@ -229,6 +228,10 @@ public class CourseArticle {
         if (!articleFound) {
             System.out.println ( "Article Is Not Showing In The My Notes" );
         }
+
+        // Clicking My Course Button In the Header
+        myCourse Mycourse = new myCourse ( driver );
+        Mycourse.myCourseClicking ();
 
     }
 }
