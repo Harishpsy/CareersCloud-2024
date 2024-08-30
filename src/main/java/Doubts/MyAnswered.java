@@ -11,11 +11,8 @@ public class MyAnswered {
 
     WebDriver driver;
     Loginpage login;
-
-
     public MyAnswered(WebDriver driver) {
         this.driver = driver;
-
     }
 
     public void myAnswered() throws InterruptedException {
@@ -23,19 +20,15 @@ public class MyAnswered {
         try {
 
             // Clicking My Answered Button in Doubt Page,
-
             WebElement clickingMyAnsweredButton = driver.findElement (By.xpath ("//*[text()='My Answered']"));
 
             if (clickingMyAnsweredButton.isSelected ()) {
-
                 Thread.sleep (3000);
                 System.out.println ("My Answered Button was already Selected");
             } else if (clickingMyAnsweredButton.isDisplayed ()) {
-
                 Thread.sleep (5000);
                 clickingMyAnsweredButton.click ();
                 System.out.println ("Successfully clicked the My Answer button");
-
             } else {
                 System.out.println ("Error Occured In The Above Code");
             }
@@ -122,7 +115,7 @@ public class MyAnswered {
 
                     // Calling LoginPage By Using Contructor
 
-                    login = new Loginpage (driver);
+                    login = new Loginpage ();
                     String OriginalUserName = login.toString ();
                     // Verifying That the username is equal to Doubt username
 

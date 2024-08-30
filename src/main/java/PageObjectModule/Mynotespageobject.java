@@ -38,7 +38,4 @@ public class Mynotespageobject {
     public static WebElement clickingSolutionquiz;
 
 
-
-
-
 }

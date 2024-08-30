@@ -65,14 +65,11 @@ public class Mydoubts {
                     System.out.println ("UserName : " + userNameDoubt);
 
                     // Calling The UserName Constructor to verify that OriginalUser name is equal to Myanswer-username
-                    Loginpage login_page = new Loginpage (driver);
+                    Loginpage login_page = new Loginpage ();
                     String username = login_page.username;
                     System.out.println ("OriginalUserName :" + username);
                     Assert.assertEquals (username, userNameDoubt.length ());
                 }
-
-
-
 
             } else {
                 System.out.println ("Data was present in the Followed page.");

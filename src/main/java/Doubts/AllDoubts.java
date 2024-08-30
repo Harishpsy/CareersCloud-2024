@@ -160,7 +160,6 @@ public class AllDoubts {
 //        clickingSendButton.click();
 
         // Clicking the Follow Icon
-
         Thread.sleep (3000);
         WebElement followIcon = driver.findElement (xpath ("//*[@alt=\"followed\"]"));
         WebElement unfollowIcon = driver.findElement (xpath ("//*[@alt=\"followed\"]"));
@@ -326,51 +325,52 @@ public class AllDoubts {
         if (clickingDoubtImage != null) {
             clickingDoubtImage.click ();
             System.out.println ("Doubt Image Clicked SucessFully");
+
+            // Clicking The Flip Button in the Y axis
+
+            Thread.sleep ( 5000 );
+            WebElement clickingFlipButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipY\"]" ) );
+            clickingFlipButton.click ();
+
+            // Clicking The Flip Button in the X axis
+
+            Thread.sleep ( 5000 );
+            WebElement clickingFlipButtonXAxis = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipX\"]" ) );
+            clickingFlipButtonXAxis.click ();
+
+            // Clicking The Rotated Left Button In Doubt Image
+
+            Thread.sleep ( 5000 );
+            WebElement clickingRotateLeftButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateLeft\"]" ) );
+            clickingRotateLeftButton.click ();
+
+            // Clicking The Rotated Right Button In Doubt Image
+
+            Thread.sleep ( 5000 );
+            WebElement clickingRotateRightButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateRight\"]" ) );
+            clickingRotateRightButton.click ();
+
+            // Clicking The ZoomIn Button
+
+            Thread.sleep ( 5000 );
+            WebElement clickingZoomInButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomIn\"]" ) );
+            clickingZoomInButton.click ();
+
+            // Click The Zoom Out Button
+
+            Thread.sleep ( 5000 );
+            WebElement clickingZoomOutButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomOut\"]" ) );
+            clickingZoomOutButton.click ();
+
+            // Clicking The Cancel Button
+
+            Thread.sleep ( 3000 );
+            WebElement clickingTheCancelButton = driver.findElement ( xpath ( "//button[@class=\"ant-image-preview-close\"]" ) );
+            clickingTheCancelButton.click ();
+
         } else {
-            System.out.println ("Doubt Image not found.");
+            System.out.println ( "Doubt Image not found." );
         }
-
-        // Clicking The Flip Button in the Y axis
-
-        Thread.sleep (5000);
-        WebElement clickingFlipButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipY\"]"));
-        clickingFlipButton.click ();
-
-        // Clicking The Flip Button in the X axis
-
-        Thread.sleep (5000);
-        WebElement clickingFlipButtonXAxis = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipX\"]"));
-        clickingFlipButtonXAxis.click ();
-
-        // Clicking The Rotated Left Button In Doubt Image
-
-        Thread.sleep (5000);
-        WebElement clickingRotateLeftButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateLeft\"]"));
-        clickingRotateLeftButton.click ();
-
-        // Clicking The Rotated Right Button In Doubt Image
-
-        Thread.sleep (5000);
-        WebElement clickingRotateRightButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateRight\"]"));
-        clickingRotateRightButton.click ();
-
-        // Clicking The ZoomIn Button
-
-        Thread.sleep (5000);
-        WebElement clickingZoomInButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomIn\"]"));
-        clickingZoomInButton.click ();
-
-        // Click The Zoom Out Button
-
-        Thread.sleep (5000);
-        WebElement clickingZoomOutButton = driver.findElement (xpath ("//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomOut\"]"));
-        clickingZoomOutButton.click ();
-
-        // Clicking The Cancel Button
-
-        Thread.sleep (3000);
-        WebElement clickingTheCancelButton = driver.findElement (xpath ("//button[@class=\"ant-image-preview-close\"]"));
-        clickingTheCancelButton.click ();
 
         /* Getting The Value of the User Asked Doubt */
 

@@ -20,8 +20,8 @@ public class Menu_RateApp {
 
         // Clicking The Rate App
 
-        Thread.sleep (3000);
-        WebElement clickingRateApp = driver.findElement (xpath ("//*[@id=\"7\"]"));
+        Thread.sleep ( 3000 );
+        WebElement clickingRateApp = driver.findElement ( xpath ( "//*[@id=\"7\"]" ) );
         clickingRateApp.click ();
 
         //Windows Handeling child to parent
@@ -30,10 +30,10 @@ public class Menu_RateApp {
         Iterator<String> it = windows.iterator ();
         String parent = it.next ();
         String child = it.next ();
-        driver.switchTo ().window (child);
+        driver.switchTo ().window ( child );
         driver.close ();
-        Thread.sleep (3000);
-        driver.switchTo ().window (parent);
+        Thread.sleep ( 3000 );
+        driver.switchTo ().window ( parent );
 
 
     }

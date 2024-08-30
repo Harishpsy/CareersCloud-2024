@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.Iterator;
 import java.util.Set;
 
-import static PageObjectModule.Hireuspageobject.*;
+import static PageObjectModule.Hireuspageobject.clickingHireUs;
 
 public class Menu_Hireus {
 
@@ -24,19 +24,19 @@ public class Menu_Hireus {
 
         // Clicking The Hire US Button
 
-        PageFactory.initElements (driver, Hireuspageobject.class);
+        PageFactory.initElements ( driver , Hireuspageobject.class );
 
-        Thread.sleep (3000);
+        Thread.sleep ( 3000 );
         clickingHireUs.click ();
 
         //Windows Handeling child to parent and parent to child
 
-        Thread.sleep (5000);
+        Thread.sleep ( 5000 );
         Set<String> windows = driver.getWindowHandles ();
         Iterator<String> it = windows.iterator ();
         String parent = it.next ();
         String child = it.next ();
-        driver.switchTo ().window (child);
+        driver.switchTo ().window ( child );
 
         // Closing the new tab
 
@@ -44,7 +44,7 @@ public class Menu_Hireus {
 
         // Navigating to parent tab
 
-        driver.switchTo ().window (parent);
+        driver.switchTo ().window ( parent );
 
     }
 }

@@ -17,17 +17,17 @@ public class Menu_InviteFriends {
 
     public void InviteFriends() throws InterruptedException {
 
-        PageFactory.initElements (driver, InviteFriendspageobject.class);
+        PageFactory.initElements ( driver , InviteFriendspageobject.class );
 
         // Clicking The Invite Friends
 
-        Thread.sleep (3000);
+        Thread.sleep ( 3000 );
         clickingInviteFriends.click ();
         System.out.println ( "Invite Friends feature is still under developing process" );
 
         // Clicking The Home Button
 
-        Thread.sleep (5000);
+        Thread.sleep ( 5000 );
         clickingHomeButton.click ();
 
     }

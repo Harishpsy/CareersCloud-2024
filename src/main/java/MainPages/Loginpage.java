@@ -22,11 +22,14 @@ public class Loginpage {
     public WebDriver driver;
     public String Orginalusername;
     public String username;
-
     // Constructor to set the WebDriver instance
     public Loginpage(WebDriver driver) {
 
         this.driver = driver;
+    }
+
+    public Loginpage() {
+
     }
 
     // Method to perform login
@@ -50,7 +53,7 @@ public class Loginpage {
 
         // Enter email ID and click next
         Entering_mailID.sendKeys ( "harishpsy12@gmail.com" );
-        //  Entering_mailID.sendKeys ("harishpoker8@gmail.com");
+//      Entering_mailID.sendKeys ("harishpoker8@gmail.com");
         Nextbutton.click ();
 
         // Enter password and click next
