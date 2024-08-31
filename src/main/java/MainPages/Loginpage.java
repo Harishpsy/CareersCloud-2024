@@ -28,10 +28,6 @@ public class Loginpage {
         this.driver = driver;
     }
 
-    public Loginpage() {
-
-    }
-
     // Method to perform login
     public void login() throws InterruptedException {
         // Navigate to the URL and maximize the window
@@ -45,8 +41,9 @@ public class Loginpage {
         PageFactory.initElements (driver, Loginpageobject.class);
 
         // Click the login button
+        Thread.sleep ( 5000 );
         LoginButton.click ();
-        Thread.sleep (3000);
+        System.out.println ( "SuccessFully Clicked The Login Button" );
 
         // Handle window switching
         switchToChildWindow ();
@@ -55,17 +52,18 @@ public class Loginpage {
         Entering_mailID.sendKeys ( "harishpsy12@gmail.com" );
 //      Entering_mailID.sendKeys ("harishpoker8@gmail.com");
         Nextbutton.click ();
+        System.out.println ( "SuccessFully Clicked The Next Button" );
 
         // Enter password and click next
         enterPassword ();
 
         // Click the continuing button and switch back to a parent window
-        Thread.sleep (7000);
+        Thread.sleep ( 15000 );
         Continuebutton.click ();
+        System.out.println ( "SuccessFully Clicked The Continue Button" );
         switchToParentWindow ();
 
         // Get and print the username for verification
-
         username ();
         String username = getUsername ();
         System.out.println ("OrginalUserName: " + username);
@@ -96,6 +94,7 @@ public class Loginpage {
         passwordField.sendKeys ("Harish@1998");
         Thread.sleep (2000);
         Nextbutton.click ();
+        System.out.println ( "SuccessFully Clicked The Next Button" );
     }
 
     // Method to get the username for verification

@@ -29,25 +29,32 @@ public class HomePage {
         // clicking Preference Button
         Thread.sleep (7000);
         clickingPreferenceButton.click ();
+        System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Railway Button
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         clickingRailwayButton.click ();
+        System.out.println ( "SuccessFully Clicked The Railway Button" );
+
         // clicking Preference Button
         Thread.sleep ( 3000 );
         clickingPreferenceButton.click ();
+        System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Bank&Insurance Button
         Thread.sleep (2000);
         clickingBankandInsuranceButton.click ();
+        System.out.println ( "SuccessFully Clicked The Bank&Insurance Button" );
 
         // clicking Preference Button
         Thread.sleep (2000);
         clickingPreferenceButton.click ();
+        System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
         Thread.sleep (2000);
         clickingAddPreferencebutton.click ();
+        System.out.println ( "SuccessFully Clicked The Add Preference Button" );
 
         //Scrolling Down Function
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -56,18 +63,22 @@ public class HomePage {
         // clicking UPSC Button
         Thread.sleep (2000);
         clickingUPSCButton.click ();
+        System.out.println ( "SuccessFully Clicked The UPSC Button" );
 
         // Clicking Save Preference
         Thread.sleep (2000);
         clickingsavePreference.click ();
+        System.out.println ( "SuccessFully Clicked The Save Preference Button" );
 
         // clicking Preference Button
         Thread.sleep (7000);
         clickingPreferenceButton.click ();
+        System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
         Thread.sleep (3000);
         clickingAddPreferencebutton.click ();
+        System.out.println ( "SuccessFully Clicked The Add Preference" );
 
         //Scrolling Down Function
         jse = (JavascriptExecutor) driver;
@@ -76,9 +87,11 @@ public class HomePage {
         // clicking UPSC Button
         Thread.sleep (3000);
         clickingUPSCButton.click ();
+        System.out.println ( "SuccessFully Clicked The UPSC Button" );
 
         // Clicking Save Preference
         clickingsavePreference.click ();
+        System.out.println ( "SuccessFully Clicked The Save Preference" );
 
 //        // Clicking Cancel Button In Profile
 //        WebElement clickingCancelButton = driver.findElement (xpath ("//span[text()='Cancel']"));
@@ -97,54 +110,67 @@ public class HomePage {
         //  Clicking The Right arrow in the Home feed
         Thread.sleep (3000);
         clickingRightArrow.click ();
+        System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         // Clicking The banners in the home feed
         Thread.sleep ( 5000 );
         clickingBannerInHomeFeed.click ();
+        System.out.println ( "SuccessFully Clicked The banners in the home feed" );
 
         // Clicking the course BreadCrumbs for coming back
         Thread.sleep (3000);
         clickingCourseInBreadCrumbs.click ();
+        System.out.println ( "SuccessFully Clicked The course BreadCrumbs" );
+
+        //  Clicking The Right arrow in the Home feed
+        Thread.sleep ( 5000 );
+        clickingRightArrow.click ();
+        System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep (3000);
         clickingRightArrow.click ();
-
-        //  Clicking The Right arrow in the Home feed
-        Thread.sleep (3000);
-        clickingRightArrow.click ();
+        System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         // Clicking The banners in the home feed
         Thread.sleep ( 3000 );
         clickingBannerInHomeFeed1.click ();
+        System.out.println ( "SuccessFully Clicked The banners in the home feed" );
 
         // Clicking the course BreadCrumbs for coming back
         Thread.sleep (3000);
         clickingCourseInBreadCrumbs.click ();
+        System.out.println ( "SuccessFully Clicked The course BreadCrumbs for coming back" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep (3000);
         clickingRightArrow.click ();
+        System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep (3000);
         clickingRightArrow.click ();
+        System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep (3000);
         clickingRightArrow.click ();
+        System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         // Clicking The banners in the home feed
         Thread.sleep ( 3000 );
         clickingBannerInHomeFeed2.click ();
+        System.out.println ( "SuccessFully Clicked The banners in the home feed" );
 
         // Clicking The Close icon In The Course Banner Modal
         Thread.sleep (3000);
         clickingCloseIcon.click ();
+        System.out.println ( "SuccessFully Clicked Close icon In The Course Banner Modal" );
 
         // Clcking The Google Play Button
         Thread.sleep (3000);
         clickingGoooglePlayButton.click ();
+        System.out.println ( "SuccessFully Clicked The Google Play Button" );
 
         //Windows Handeling child to parent and parent to child
         Thread.sleep (3000);
@@ -170,19 +196,22 @@ public class HomePage {
             }
         }
 
-        // Clicking The Aboutus In The Footer Section
+        // Clicking The About us In The Footer Section
         Thread.sleep (3000);
         clickingAboutUs.click ();
+        System.out.println ( "SuccessFully Clicked The About us In The Footer Section" );
 
         // Clicking The Authors In The Footer Section
         Thread.sleep (3000);
         WebElement clickingAuthors = driver.findElement (xpath ("//a[text()='Authors']"));
         clickingAuthors.click ();
+        System.out.println ( "SuccessFully Clicked The Authors In The Footer Section" );
 
         // Clicking The contactus In The Footer Section
         Thread.sleep ( 3000 );
         WebElement clickingcontactUs = driver.findElement ( xpath ( "//span[text()='Contact Us']" ) );
         clickingcontactUs.click ();
+        System.out.println ( "SuccessFully Clicked The contactus In The Footer Section" );
 
         // Entering The text In The Contactus TextField
         Thread.sleep ( 3000 );
@@ -194,6 +223,7 @@ public class HomePage {
         Thread.sleep ( 3000 );
         WebElement clickingSendButton = driver.findElement ( xpath ( "//span[text()='Send']" ) );
         clickingSendButton.click ();
+        System.out.println ( "SuccessFully Clicked The Send Button" );
 
 //        // Clicking the close icon
 //        Thread.sleep ( 2000 );
@@ -203,19 +233,22 @@ public class HomePage {
         // Clicking The FAQ Button In The Footer Section
         Thread.sleep (3000);
         clickingFAQButton.click ();
+        System.out.println ( "SuccessFully Clicked FAQ Button In The Footer Section" );
 
         // Clicking The Terms And Condition Button In The Footer Section
         Thread.sleep (3000);
         WebElement clickingTermsAndConditionButton = driver.findElement (xpath ("//a[text()='Terms and Conditions']"));
         clickingTermsAndConditionButton.click ();
+        System.out.println ( "SuccessFully Clicked The Terms And Condition Button In The Footer Section" );
 
         //Scrolling Down Function
         jse = (JavascriptExecutor) driver;
         jse.executeScript ("window.scrollTo( 0, document.body.scrollHeight)");
 
-        // Clicking The Terms And Condition Button In The Footer Section
+        // Clicking The Privacy Button In The Footer Section
         Thread.sleep (3000);
         clickingPrivacyPolicyButton.click ();
+        System.out.println ( "SuccessFully Clicked The Privacy Button In The Footer Section" );
 
         //Scrolling Down Function
         jse = (JavascriptExecutor) driver;
@@ -224,6 +257,7 @@ public class HomePage {
         // Clicking The Careers Button In The Footer Section
         Thread.sleep (1000);
         clickingCareersButton.click ();
+        System.out.println ( "SuccessFully Clicked Careers Button In The Footer Section" );
 
         //Scrolling Down Function
         jse = (JavascriptExecutor) driver;
@@ -232,6 +266,7 @@ public class HomePage {
         // Clicking The sitemap Button In The Footer Section
         Thread.sleep (1000);
         clickingsitemapButton.click ();
+        System.out.println ( "SuccessFully Clicked The sitemap Button In The Footer Section" );
 
         // Clicking Float Icon
         try {
@@ -239,6 +274,7 @@ public class HomePage {
             if (clickingFloatIcon.isDisplayed ()) {
                 Thread.sleep ( 5000 );
                 clickingFloatIcon.click ();
+                System.out.println ( "SuccessFully Clicked The Float Icon" );
             } else {
                 System.out.println ( "Float Icon Is Not Displayed" );
             }

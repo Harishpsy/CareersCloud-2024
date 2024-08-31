@@ -115,7 +115,7 @@ public class MyAnswered {
 
                     // Calling LoginPage By Using Contructor
 
-                    login = new Loginpage ();
+                    login = new Loginpage ( driver );
                     String OriginalUserName = login.toString ();
                     // Verifying That the username is equal to Doubt username
 

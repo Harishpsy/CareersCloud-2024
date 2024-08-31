@@ -12,13 +12,11 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
-public class CourseDoubts extends Loginpage {
+public class CourseDoubts {
     WebDriver driver;
     public CourseDoubts(WebDriver driver) {
-        super ();
         this.driver = driver;
     }
-
     public void Doubts() throws InterruptedException, AWTException {
 
         // Clicking The First Course Card In the My Course
@@ -27,7 +25,8 @@ public class CourseDoubts extends Loginpage {
         clickingFirstCourseCard.click ();
 
         // Clicking the Doubts Tab
-        WebElement clickingDoubts = driver.findElement ( id ( "rc-tabs-0-tab-8" ) );
+        Thread.sleep ( 3000 );
+        WebElement clickingDoubts = driver.findElement ( xpath ( "//*[@id=\"rc-tabs-8-tab-8\"]" ) );
         clickingDoubts.click ();
         System.out.println ( "Successfully Clicked The Doubt Tab Inside The Course" );
 
@@ -361,7 +360,7 @@ public class CourseDoubts extends Loginpage {
                 java.util.List<WebElement> doubtsCardTitles = driver.findElements ( xpath ( "//*[@class='doubts-card-title']" ) );
 
                 // Creating an instance of Loginpage to get the original username
-                Loginpage login = new Loginpage ();
+                Loginpage login = new Loginpage ( driver );
                 String originalUserName = login.toString ();
                 System.out.println ( originalUserName );
 
@@ -535,7 +534,7 @@ public class CourseDoubts extends Loginpage {
                 System.out.println ( "UserName In side the My Answer: " + doubtUserNames );// Need to split the div into two part
 
                 // Calling LoginPage By Using Contructor
-                Loginpage login = new Loginpage ();
+                Loginpage login = new Loginpage ( driver );
                 String OriginalUserName = login.toString ();
 
                 // Verifying That the username is equal to Doubt username

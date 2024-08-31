@@ -28,18 +28,15 @@ public class Menu_MyEbooks {
         PageFactory.initElements ( driver , Myebookspageobject.class );
 
         // Clicking My ebooks
-
         Thread.sleep ( 5000 );
         clickingTheMyEbooks.click ();
 
         //Verifying there is content is present if not there navigate to the next module
 
         //Check if "No Records Found." element is displayed
-
         WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
 
         // Sleep for 3 seconds
-
         Thread.sleep ( 3000 );
 
         try {
@@ -64,30 +61,25 @@ public class Menu_MyEbooks {
             System.out.println ( "Threedots displayed In My Ebooks: " + threedotsDisplayed );
 
             // Proceed with if-else logic
-
             if (noRecordFoundDisplayed) {
                 Thread.sleep ( 3000 );
                 clickingMycoin.click ();
                 System.out.println ( "No records found message is displayed, navigating to My Coin page." );
 
                 // Handle the case when no records are found
-
             } else if (threedotsDisplayed) {
 
                 // Click the three-dot menu and perform actions
-
                 Thread.sleep ( 9000 );
                 Threedots.click ();
                 System.out.println ( "Successfully Clicked Three Dots " );
 
                 // Clicking the remove My ebook icon in dropdown
-
                 Thread.sleep ( 3000 );
                 Remove_My_ebook.click ();
-                Thread.sleep ( 5000 );
 
                 // Check if noRecordFound element is displayed and log the result
-
+                Thread.sleep ( 10000 );
                 boolean noRecordFoundDisplayedAfterRemove = false;
                 boolean threedotsDisplayedAfterRemove = false;
 
@@ -102,6 +94,9 @@ public class Menu_MyEbooks {
                 } catch (NoSuchElementException e) {
                     System.out.println ( "Threedots element not found." );
                 }
+
+                System.out.println ( "noRecordFound displayed In My Ebooks: " + noRecordFoundDisplayedAfterRemove );
+                System.out.println ( "Threedots displayed In My Ebooks: " + threedotsDisplayedAfterRemove );
 
                 if (noRecordFoundDisplayedAfterRemove) {
                     // Clicking My coins

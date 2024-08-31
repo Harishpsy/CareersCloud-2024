@@ -28,8 +28,8 @@ public class CourseVideos {
         clickingFirstCourseCard.click ();
 
         // Clicking The Videos
-        Thread.sleep (3000);
-        WebElement clickingVideoTab = driver.findElement (xpath ("//*[@id=\"rc-tabs-0-tab-4\"]"));
+        Thread.sleep ( 5000 );
+        WebElement clickingVideoTab = driver.findElement ( xpath ( "//*[@id=\"rc-tabs-4-tab-4\"]" ) );
         clickingVideoTab.click ();
         System.out.println ( "SuccessFully Clicked The Video Tan Inside The Course" );
 
@@ -147,6 +147,7 @@ public class CourseVideos {
         System.out.println ("SucessFully Clicked Paused button");
 
         // Click the mute button in the video
+        Thread.sleep ( 3000 );
         WebElement clickingMuteButton = driver.findElement (xpath ("//*[@title=\"Mute (m)\"]"));
         clickingMuteButton.click ();
         System.out.println ("SucessFully Clicked Mute button");
@@ -206,7 +207,7 @@ public class CourseVideos {
             } else {
                 uniqueurl.add (actualUrls);
                 uniquevideosurlcount++;
-                System.out.println ( "Found: " + uniquevideosurlcount + "-->" + actualUrls );
+                System.out.println ( "Recent Videos Found: " + uniquevideosurlcount + "-->" + actualUrls );
             }
         }
         System.out.println ("Total unique videos url found: " + uniquevideosurlcount);
@@ -267,9 +268,10 @@ public class CourseVideos {
             if (VideoName.equals ( videoNameInMyNotes )) {
                 System.out.println ( "Verification Passed: Video Title (" + VideoName + ") matches Video Title In My Notes (" + videoNameInMyNotes + ")" );
                 videoFound = true;
-            } else {
-                System.out.println ( "Video Name Does Not Match" );
             }
+//            else {
+//                System.out.println ( "Video Name Does Not Match" );
+//            }
         }
         if (!videoFound) {
             System.out.println ( "Video Is Not Showing In The My Notes" );
