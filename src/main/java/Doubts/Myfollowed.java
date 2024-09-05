@@ -5,28 +5,35 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.openqa.selenium.By.xpath;
+
 public class Myfollowed {
 
     WebDriver driver;
 
     public Myfollowed(WebDriver driver) {
-
         this.driver = driver;
-
     }
 
     public void myFollow() throws InterruptedException {
 
         // Clicking The Followed Button In The Doubt Page
+        Thread.sleep ( 5000 );
+        WebElement clickingFollowedTab = driver.findElement ( xpath ( "//*[text()='Followed']" ) );
 
-        Thread.sleep (3000);
-        WebElement clickingFollowedButton = driver.findElement (By.xpath ("//*[text()='Followed']"));
-        clickingFollowedButton.click ();
-        System.out.println ("Successfully Clicked The Followed Button");
+        // Verifying that the Followed was already getting clicked or not
+        if (clickingFollowedTab.isSelected ()) {
+            Thread.sleep ( 3000 );
+            System.out.println ( "Followed Button was already Selected" );
+        } else if (clickingFollowedTab.isDisplayed ()) {
+            Thread.sleep ( 5000 );
+            clickingFollowedTab.click ();
+            System.out.println ( "Successfully clicked the Followed button" );
+        } else {
+            System.out.println ( "Error Occured In The Above Code" );
+        }
 
         // Checking wheather there is data present Or Not In the Followed If Not Navigate to the Next Module
-
-
         try {
             // Verifying whether the element is present or not
             Thread.sleep (5000);

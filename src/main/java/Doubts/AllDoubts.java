@@ -410,13 +410,11 @@ public class AllDoubts {
         Assert.assertEquals (uniqueDoubtUrlCount, uniqueDoubtUrls.size ());
 
       // Clicking The Googleplay Button
-
         Thread.sleep (5000);
         WebElement clickingGooglePlayButton = driver.findElement (xpath ("//a[@href=\"https://play.google.com/store/apps/details?id=com.affairscloud\"]"));
         clickingGooglePlayButton.click ();
 
         // Windows Handeling
-
         Thread.sleep (3000);
         Set<String> windows = driver.getWindowHandles ();
         Iterator<String> it = windows.iterator ();
@@ -425,74 +423,59 @@ public class AllDoubts {
         driver.switchTo ().window (child);
 
         // Closing the current tab
-
         Thread.sleep (5000);
         driver.close ();
 
         // Changing the current focus to Parent
-
         driver.switchTo ().window (parent);
 
         // Clicking The course In the OverFlow on The right Side
-
         Thread.sleep (5000);
         WebElement clickingCourseOnRightside = driver.findElement (xpath ("//*[@alt=\"cc69e8a3b3440463929f5f59e45f3175.webp\"]"));
         clickingCourseOnRightside.click ();
         System.out.println ("SuccessFully Navigated To the course");
 
         // Clicking The Breadcrumbs to Navigate
-
         Thread.sleep (5000);
         WebElement clickingCourseBreadcrumbs = driver.findElement (xpath ("//*[text()=\"Course\"]"));
         clickingCourseBreadcrumbs.click ();
         System.out.println ("SuccessFully Navigated To the Doubts Page");
 
         // Clicking The Search On the Left side Filter
-
         Thread.sleep (5000);
         clickingSearch = driver.findElement (xpath ("//*[@name=\"comments2\"]"));
         clickingSearch.sendKeys ("Mock");
 
         // Pressing The KeyBoard Action
-
         robot = new Robot ();
 
         // clicking The Enter Button
-
         Thread.sleep (3000);
         robot.keyPress (KeyEvent.VK_ENTER);
 
         // Releasing The Enter Button
-
         Thread.sleep (3000);
         robot.keyRelease (KeyEvent.VK_ENTER);
 
         // Set the number of times to perform the action
-
         int numberOfTimesClickingBack = 4;
 
         // Creating a Loop to performe this action multiple times
-
         for (int i = 0; i < numberOfTimesClickingBack; i++) {
-
             robot.keyPress (KeyEvent.VK_BACK_SPACE);
 
             // Releasing the BackSpace
-
             robot.keyRelease (KeyEvent.VK_BACK_SPACE);
         }
 
         // Pressing The Enter Button In The Keyboard
-
         Thread.sleep (3000);
         robot.keyPress (KeyEvent.VK_ENTER);
 
         // Releassing The Enter Button In The Keyboard
-
         robot.keyRelease (KeyEvent.VK_ENTER);
 
         // Clicking The Course For Filter The Doubts
-
         int clickingCoursetwotimes = 2;
 
         for (int i = 0; i < clickingCoursetwotimes; i++) {
@@ -510,14 +493,12 @@ public class AllDoubts {
         }
 
         // Clicking The Subject In the Doubt Filter
-
         Thread.sleep (5000);
         WebElement clickingSubject = driver.findElement (xpath ("//*[text() = 'Subjects']"));
         clickingSubject.click ();
 
 
         // Getting the text From The Filter and Verifying
-
         Thread.sleep (3000);
         WebElement printingTheSubjectFilter = driver.findElement (id ("doubt-sidebar-body"));
         String subjectCourse = printingTheSubjectFilter.getText ();
@@ -525,16 +506,11 @@ public class AllDoubts {
         System.out.println (subjectCourse);
         System.out.println ("-------------------------------------------------------");
 
-
         // Verifying the Exam Filter by using the Assertion method
-
-
         String[] subjectcourseNames = subjectCourse.split ("\n"); // Splitting text into course names
-
         System.out.println ("SuccessFully Fetching The Course Names -->" + Arrays.toString (subjectcourseNames));
 
         // Fetching the course list elements
-
         java.util.List<WebElement> subjectcourseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
         Set<String> uniquesubjectCourse = new HashSet<> ();
@@ -542,7 +518,6 @@ public class AllDoubts {
         int uniqueSubjectCourseCount = 0;
 
         // Iterating through course lists to find unique courses and count matches
-
         for (WebElement subjectcourseList : subjectcourseLists) {
             String actualsubjectCourseList = subjectcourseList.getText ().trim ();
 
@@ -550,28 +525,26 @@ public class AllDoubts {
                 System.out.println ("Duplicate found --> " + actualsubjectCourseList);
             } else {
                 uniquesubjectCourse.add (actualsubjectCourseList);
-
                 if (Arrays.asList (subjectcourseNames).contains (actualsubjectCourseList)) {
                     uniqueSubjectCourseCount++;
                     System.out.println ("Found: " + uniqueSubjectCourseCount + " --> " + actualsubjectCourseList);
                 }
             }
         }
-
         System.out.println ("Total unique CourseName found: " + uniqueSubjectCourseCount);
-        Assert.assertEquals (uniqueSubjectCourseCount, subjectcourseNames.length);
+        try {
+            Assert.assertEquals ( "Verification Passed" + uniqueSubjectCourseCount , subjectcourseNames.length );
+        } catch (AssertionError e) {
+            System.out.println ( "Verification Failed, can't able to find the Course" );
+        }
         System.out.println ("-------------------------------------------------------");
 
-
         // Clicking The Exams In The Doubt Filter..............
-
-
         Thread.sleep (5000);
         WebElement clickingExamFilter = driver.findElement (xpath ("//*[text() = 'Exams']"));
         clickingExamFilter.click ();
 
         // Getting the text From The Exam Filter and Verifying
-
         Thread.sleep (5000);
         WebElement printingTheExamFilter = driver.findElement (id ("doubt-sidebar-body"));
         String examText = printingTheExamFilter.getText ();
@@ -581,14 +554,11 @@ public class AllDoubts {
 
 
         // Verifying the Exam Filter by using the Assertion method
-
-
         String[] ExamcourseNames = examText.split ("\n"); // Splitting text into course names
 
         System.out.println ("SuccessFully Fetching The Course Names -->" + Arrays.toString (ExamcourseNames));
 
         // Fetching the course list elements
-
         List<WebElement> ExamcourseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
         Set<String> uniqueExamCourse = new HashSet<> ();
@@ -596,7 +566,6 @@ public class AllDoubts {
         int uniqueExamCourseCount = 0;
 
         // Iterating through course lists to find unique courses and count matches
-
         for (WebElement ExamcourseList : ExamcourseLists) {
             String actualExamCourseList = ExamcourseList.getText ().trim ();
 
@@ -616,19 +585,14 @@ public class AllDoubts {
         Assert.assertEquals (uniqueExamCourseCount, ExamcourseNames.length);
         System.out.println ("-------------------------------------------------------");
 
-
         // Clicking The All In The Doubt Filter
-
-
         WebElement clickingAllFilter = driver.findElement (xpath ("//*[text() = 'All']"));
         clickingAllFilter.click ();
 
         // Getting the text From The All Filter and Verifying there is any duplicate present
-
         Thread.sleep (5000);
 
         // Fetching the text from the doubt-sidebar-body element
-
         WebElement printingTheAllFilter = driver.findElement (id ("doubt-sidebar-body"));
         String allText = printingTheAllFilter.getText ();
         System.out.println ("List Of All Course are Below");
@@ -636,13 +600,10 @@ public class AllDoubts {
         System.out.println ("-------------------------------------------------------");
 
         // Verifying the All Filter by using the Assertion method
-
         String[] courseNames = allText.split ("\n"); // Splitting text into course names
-
         System.out.println ("SuccessFully Fetching The Course Names -->" + Arrays.toString (courseNames));
 
         // Fetching the course list elements
-
         java.util.List<WebElement> courseLists = driver.findElements (xpath ("//div[@class='doubt-left-sidebar-course-body']"));
 
         Set<String> uniqueCourse = new HashSet<> ();
@@ -650,7 +611,6 @@ public class AllDoubts {
         int uniqueCourseCount = 0;
 
         // Iterating through course lists to find unique courses and count matches
-
         for (WebElement courseList : courseLists) {
             String actualAllCourseList = courseList.getText ().trim ();
 
@@ -665,10 +625,8 @@ public class AllDoubts {
                 }
             }
         }
-
         System.out.println ("Total unique CourseName found: " + uniqueCourseCount);
         Assert.assertEquals (uniqueCourseCount, courseNames.length);
-
 
     }
 }

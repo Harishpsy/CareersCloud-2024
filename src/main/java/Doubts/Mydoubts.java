@@ -40,11 +40,9 @@ public class Mydoubts {
             }
 
             try {
-
                 Thread.sleep (5000); // Waiting for the element to be displayed
                 WebElement gettingUserNameInMyDoubts = driver.findElement (By.xpath ("//*[@class=\"doubts-card-title\"]/ancestor::*[self::div and  @id=\"rc-tabs-0-panel-2\"]"));
                 isUserNameDisplayed = gettingUserNameInMyDoubts.isDisplayed ();
-
             } catch (NoSuchElementException e) {
                 System.out.println ("Error in inner try block2: Answer Found elementnot located");
             }

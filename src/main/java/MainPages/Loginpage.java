@@ -24,7 +24,6 @@ public class Loginpage {
     public String username;
     // Constructor to set the WebDriver instance
     public Loginpage(WebDriver driver) {
-
         this.driver = driver;
     }
 
@@ -41,7 +40,7 @@ public class Loginpage {
         PageFactory.initElements (driver, Loginpageobject.class);
 
         // Click the login button
-        Thread.sleep ( 5000 );
+        Thread.sleep ( 7000 );
         LoginButton.click ();
         System.out.println ( "SuccessFully Clicked The Login Button" );
 
@@ -58,7 +57,7 @@ public class Loginpage {
         enterPassword ();
 
         // Click the continuing button and switch back to a parent window
-        Thread.sleep ( 15000 );
+        Thread.sleep ( 10000 );
         Continuebutton.click ();
         System.out.println ( "SuccessFully Clicked The Continue Button" );
         switchToParentWindow ();

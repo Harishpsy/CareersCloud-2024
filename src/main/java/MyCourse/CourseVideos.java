@@ -142,13 +142,13 @@ public class CourseVideos {
         // Clicking The Pause Button In The Viedos
         driver.switchTo ().frame (0);
         Thread.sleep (3000);
-        WebElement clickingPauseButton = driver.findElement (xpath ("//*[@title=\"Pause (k)\"]"));
+        WebElement clickingPauseButton = driver.findElement ( xpath ( "//*[@class=\"ytp-play-button ytp-button\"]" ) );
         clickingPauseButton.click ();
         System.out.println ("SucessFully Clicked Paused button");
 
         // Click the mute button in the video
         Thread.sleep ( 3000 );
-        WebElement clickingMuteButton = driver.findElement (xpath ("//*[@title=\"Mute (m)\"]"));
+        WebElement clickingMuteButton = driver.findElement ( xpath ( "//*[@class=\"ytp-mute-button ytp-button\"]" ) );
         clickingMuteButton.click ();
         System.out.println ("SucessFully Clicked Mute button");
 
@@ -202,7 +202,6 @@ public class CourseVideos {
             String actualUrls = recentVideo.getAttribute ("href");
 
             if (uniqueurl.contains (actualUrls)) {
-
                 System.out.println ("Duplicate found --> " + actualUrls);
             } else {
                 uniqueurl.add (actualUrls);
