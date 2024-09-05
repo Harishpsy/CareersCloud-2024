@@ -25,8 +25,9 @@ public class CourseDoubts {
         clickingFirstCourseCard.click ();
 
         // Clicking the Doubts Tab
-        Thread.sleep ( 3000 );
-        WebElement clickingDoubts = driver.findElement ( xpath ( "//*[@id=\"rc-tabs-8-tab-8\"]" ) );
+        Thread.sleep ( 5000 );
+        // WebElement clickingDoubts = driver.findElement ( xpath ( "//*[@id=\"rc-tabs-8-tab-8\"]" ) );
+        WebElement clickingDoubts = driver.findElement ( xpath ( "(//*[text()='Doubts'])[2]" ) );
         clickingDoubts.click ();
         System.out.println ( "Successfully Clicked The Doubt Tab Inside The Course" );
 

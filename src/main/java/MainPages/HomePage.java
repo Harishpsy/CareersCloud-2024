@@ -78,7 +78,7 @@ public class HomePage {
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
-        Thread.sleep ( 10000 );
+        Thread.sleep ( 15000 );
         clickingAddPreferencebutton.click ();
         System.out.println ( "SuccessFully Clicked The Add Preference" );
 

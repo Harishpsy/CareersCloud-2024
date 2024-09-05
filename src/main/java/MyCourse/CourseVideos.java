@@ -29,7 +29,7 @@ public class CourseVideos {
 
         // Clicking The Videos
         Thread.sleep ( 5000 );
-        WebElement clickingVideoTab = driver.findElement ( xpath ( "//*[@id=\"rc-tabs-4-tab-4\"]" ) );
+        WebElement clickingVideoTab = driver.findElement ( xpath ( "//*[text()='Videos']" ) );
         clickingVideoTab.click ();
         System.out.println ( "SuccessFully Clicked The Video Tan Inside The Course" );
 

@@ -33,7 +33,8 @@ public class Mydoubts {
 
             try {
                 Thread.sleep (5000); // Waiting for the element to be displayed
-                WebElement noDoubtFound = driver.findElement (By.xpath ("//*[text()='No Doubts Found.']/ancestor::*[self::div and @id=\"rc-tabs-0-panel-2\"]"));
+                // WebElement noDoubtFound = driver.findElement (By.xpath ("//*[text()='No Doubts Found.']/ancestor::*[self::div and @id=\"rc-tabs-0-panel-2\"]"));
+                WebElement noDoubtFound = driver.findElement ( By.xpath ( "//*[text()='No Doubts Found.']" ) );
                 isNoRecordfoundDisplayed = noDoubtFound.isDisplayed ();
             } catch (NoSuchElementException e) {
                 System.out.println ("Error in inner try block: No Doubts Found element not located.");
