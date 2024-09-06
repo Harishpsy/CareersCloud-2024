@@ -468,7 +468,6 @@ public class Menu_MyNotes {
             System.out.println ( "Both are was not executed for videos in my notes" );
         }
     }
-
     public void Startquiz() throws InterruptedException {
 
         // Check if elements are displayed and log the results
