@@ -34,12 +34,12 @@ public class CoursePath {
             System.out.println ( "Successfully Clicked The Course name" );
 
             // Click the title in the path page
-            List<WebElement> clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"]" ) ) );
+            List<WebElement> clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])[3]" ) ) );
 
             // Iterate through the list without re-fetching inside the loop
             for (int i = 0; i < clickingExamName.size (); i++) {
 
-                clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"]" ) ) );
+                clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])[3]" ) ) );
                 WebElement currentElement = clickingExamName.get ( i );
 
                 // Scroll the current element into view
@@ -70,7 +70,9 @@ public class CoursePath {
                     System.out.println ( "Successfully clicked The Current sub element in the path" );
 
                     // Clicking the Sub-Sub-Path In The path page
-                    List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
+                    List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@id=\"subsublevel_695\"]" ) ) );
+
+                    // List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
                     try {
                         for (int k = 0; k <= clickingExamNameSubSubPath.size (); k++) {
 
@@ -398,6 +400,7 @@ public class CoursePath {
         Thread.sleep ( 5000 );
 
         // Initialize flags to track the visibility of different elements
+        System.out.println ( "----------------------Start Quiz---------------------------" );
         boolean noRecordfoundDisplayedInPath = false;
         boolean quizStartDisplayedInPath = false;
 
@@ -409,7 +412,7 @@ public class CoursePath {
         }
 
         try {
-            WebElement clickingstartquizinpath = driver.findElement ( xpath ( "//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='Start']" ) );
+            WebElement clickingstartquizinpath = driver.findElement ( xpath ( "(//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='Start'])" ) );
             quizStartDisplayedInPath = clickingstartquizinpath.isDisplayed ();
         } catch (org.openqa.selenium.NoSuchElementException e) {
             System.out.println ( "StartQuiz element not found ." );
@@ -424,8 +427,8 @@ public class CoursePath {
             System.out.println ( "No records found message is displayed In Path." );
         } else if (quizStartDisplayedInPath) {
             Thread.sleep ( 5000 );
-            WebElement clickingSolutionQuiz = driver.findElement ( xpath ( "(//*[@class=\"ant-collapse-item ant-collapse-item-active\"])[2]/child::*[@class=\"ant-collapse-content ant-collapse-content-active\"]/preceding::*[@class=\"sub-sub-level-content\"]/preceding::*[text()='Quiz']/following::span[text()='Start']" ) );
-            clickingSolutionQuiz.click ();
+            WebElement clickingStartQuiz = driver.findElement ( xpath ( "(//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='Start'])" ) );
+            clickingStartQuiz.click ();
             System.out.println ( "Successfully clicked the Start button in Path:." );
 
             //Windows Handeling
@@ -545,7 +548,8 @@ public class CoursePath {
 
             // Clicking The resume Button
             Thread.sleep ( 3000 );
-            clickingResumequiz.click ();
+            WebElement clickingResumeinPath = driver.findElement ( xpath ( "//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='Resume']" ) );
+            clickingResumeinPath.click ();
             System.out.println ( "Successfully clicked the Resume button In The Path." );
 
             //Windows Handeling
@@ -658,7 +662,7 @@ public class CoursePath {
 
             // Clicking The solution button
             Thread.sleep ( 2000 );
-            clickingSolutionQuiz = driver.findElement ( xpath ( "//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='Resume']" ) );
+            WebElement clickingSolutionQuiz = driver.findElement ( xpath ( "//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='Resume']" ) );
             clickingSolutionQuiz.click ();
 
             // Scrolling and Clicking The Report Page
@@ -1186,7 +1190,7 @@ public class CoursePath {
 
             // Clicking The solution button
             Thread.sleep ( 2000 );
-            WebElement clickingSolutionQuiz = driver.findElement ( xpath ( "//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='Resume']" ) );
+            WebElement clickingSolutionQuiz = driver.findElement ( xpath ( "//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='View Solution']" ) );
             clickingSolutionQuiz.click ();
 
             // Scrolling and Clicking The Report Page
@@ -1584,7 +1588,6 @@ public class CoursePath {
 
         try {
             WebElement clickingSolutionQuiz = driver.findElement ( xpath ( "//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='View Solution']" ) );
-
             quizsolutionDisplayedInMyNotes = clickingSolutionQuiz.isDisplayed ();
         } catch (org.openqa.selenium.NoSuchElementException e) {
             System.out.println ( "Solution button element not found In The Path." );

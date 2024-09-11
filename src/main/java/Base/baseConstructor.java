@@ -16,9 +16,9 @@ public class baseConstructor {
      WebDriver driver = new ChromeDriver ();
      //WebDriver driver = new FirefoxDriver ();
 
-     // Login Page
-     Loginpage loginPage = new Loginpage ( driver );
-     loginPage.login ();
+        // Login Page
+        Loginpage loginPage = new Loginpage ( driver );
+        loginPage.login ();
 
 //     // Home Page
 //     HomePage clickingHomePage = new HomePage ( driver );
