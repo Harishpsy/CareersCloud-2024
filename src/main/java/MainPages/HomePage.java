@@ -29,7 +29,7 @@ public class HomePage {
         PageFactory.initElements ( driver , Homepageobject.class );
 
         // clicking Preference Button
-        Thread.sleep ( 10000 );
+        Thread.sleep ( 30000 );
         clickingPreferenceButton.click ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
@@ -116,7 +116,7 @@ public class HomePage {
         System.out.println ( "SuccessFully Clicked The course BreadCrumbs" );
 
         //  Clicking The Right arrow in the Home feed
-        Thread.sleep ( 5000 );
+        Thread.sleep ( 7000 );
         clickingRightArrow.click ();
         System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 

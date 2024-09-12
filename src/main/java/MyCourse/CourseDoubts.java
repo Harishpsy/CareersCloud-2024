@@ -523,9 +523,10 @@ public class CourseDoubts {
                 clickingCancelButtonInPopup.click ();
                 System.out.println ( "Successfully CLicked The Cancel Button " );
 
+                //Needs to write in the loop format
                 // Clicking The Answer
                 Thread.sleep ( 4000 );
-                WebElement clickingAnswerButton = driver.findElement ( By.xpath ( "//*[@class=\"ant-btn css-xu9wm8 ant-btn-primary btn-answer\"]" ) );
+                WebElement clickingAnswerButton = driver.findElement ( By.xpath ( "//*[@class=\"ant-tabs-tabpane ant-tabs-tabpane-active\"]/descendant::*[text()='Answer']" ) );
                 clickingAnswerButton.click ();
 
                 // Retreving The Username From the Doubt Answer
@@ -675,7 +676,6 @@ public class CourseDoubts {
                 clickingBreadCrums.click ();
                 System.out.println ( "Successfully clicked the Course BreadCrumbs button" );
             } else {
-
                 // Clicking the Answer Icon
                 Thread.sleep ( 5000 );
                 WebElement clickingAnswericon = driver.findElement ( id ( "comments-icon" ) );

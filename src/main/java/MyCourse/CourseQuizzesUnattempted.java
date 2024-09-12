@@ -118,7 +118,7 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
         Thread.sleep ( 10000 );
         WebElement Close_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close\"]" ) );
         Close_icon.click ();
-            System.out.println ( "SuccessFully Clicked The CloseIcon" );
+        System.out.println ( "SuccessFully Clicked The CloseIcon" );
 
             //Windows mazimize
 
@@ -202,12 +202,10 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
             WebElement clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
             clickingThePreviousButton.click ();
 
-
             // Clicking The Pause Button
             Thread.sleep ( 3000 );
             WebElement clickingThePauseButton = driver.findElement ( xpath ( "//*[@class=\"pause-icon\"]" ) );
             clickingThePauseButton.click ();
-
 
             // Clicking The Cancel Button In The Pause popup
             Thread.sleep ( 3000 );
@@ -215,29 +213,24 @@ public class CourseQuizzesUnattempted extends CourseQuizAttempted {
             clickingCancelButtonInPopup.click ();
 
             // Getting The User Answered Count
-
             Thread.sleep ( 3000 );
             WebElement gettingAnswerCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
             String AnswerCountBeforepause = gettingAnswerCountBeforepause.getText ();
             System.out.println ( "Answered Question Count Before Pause : " + AnswerCountBeforepause );
 
             // Getting The Unanswered Count
-
             Thread.sleep ( 3000 );
             WebElement gettingUnAnsweredCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
             String UnAnswerCountBeforepause = gettingUnAnsweredCountBeforepause.getText ();
             System.out.println ( "User Unanswered Count Before Pause : " + UnAnswerCountBeforepause );
 
             // Getting The quiz Time
-
             Thread.sleep ( 3000 );
             WebElement getGettingQUizTimeBeforepause = driver.findElement ( xpath ( "//span[@class=\"text\"]" ) );
             String QuizTimeBeforepause = getGettingQUizTimeBeforepause.getText ();
             System.out.println ( "quiz Time Before pause: " + QuizTimeBeforepause );
 
             // Again, Clicking The Pause Button leaves the quiz
-
-
             Thread.sleep ( 3000 );
             clickingThePauseButton = driver.findElement ( xpath ( "//*[@class=\"pause-icon\"]" ) );
             clickingThePauseButton.click ();

@@ -34,12 +34,11 @@ public class CoursePath {
             System.out.println ( "Successfully Clicked The Course name" );
 
             // Click the title in the path page
-            List<WebElement> clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])[3]" ) ) );
+            List<WebElement> clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])" ) ) );
 
             // Iterate through the list without re-fetching inside the loop
             for (int i = 0; i < clickingExamName.size (); i++) {
 
-                clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])[3]" ) ) );
                 WebElement currentElement = clickingExamName.get ( i );
 
                 // Scroll the current element into view
@@ -54,7 +53,7 @@ public class CoursePath {
                 // Exam Sub-Path Clicking
 
 //                List<WebElement> clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@class=\"ant-collapse-content ant-collapse-content-inactive ant-collapse-content-hidden\"]/ancestor::*[@class=\"ant-collapse-item\"]" ) ) );
-                List<WebElement> clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[1]" ) ) );
+                List<WebElement> clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])" ) ) );
 
                 // Iterate through the list without re-fetching inside the loop
                 for (int j = 0; j < clickingExamNameSubPath.size (); j++) {
@@ -70,17 +69,17 @@ public class CoursePath {
                     System.out.println ( "Successfully clicked The Current sub element in the path" );
 
                     // Clicking the Sub-Sub-Path In The path page
-                    List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@id=\"subsublevel_695\"]" ) ) );
+                    //  List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@id=\"subsublevel_695\"]" ) ) );
 
-                    // List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
+                    List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
                     try {
                         for (int k = 0; k <= clickingExamNameSubSubPath.size (); k++) {
 
                             // Re-fetch the list of elements to avoid StaleElementReferenceException
-                            System.out.println ( "Successfully clicked The Current sub element in the path to work on on the below code " +
-                                    "" );
+                            System.out.println ( "Successfully clicked The Current sub element in the path to work on on the below code " );
                             currentSubElement = clickingExamNameSubPath.get ( j );
 
+                            //Clicking The sub sub element in the path page
                             WebElement currentSubSubElement = clickingExamNameSubSubPath.get ( k );
 
                             // Scroll the current element into view
@@ -92,20 +91,56 @@ public class CoursePath {
                             System.out.println ( "Successfully clicked The Current sub-sub element in the path" );
 
                             // Verifying The Article was displaying In The page or Not
-//                            CoursePath patharticle = new CoursePath ( driver );
-//                            patharticle.pathArticle ();
+                            CoursePath patharticle = new CoursePath ( driver );
+                            patharticle.pathArticle ();
+
+//                            clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])" ) ) );
+//                            wait.until ( ExpectedConditions.elementToBeClickable ( currentElement ) ).click ();
+//
+//                            clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])" ) ) );
+//                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
+//
+//                            clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
+//                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
 
                             // Verifying The ebooks Sub-sub-Tab element
-//                            CoursePath pathebook = new CoursePath ( driver );
-//                            pathebook.PathEbooks ();
+                            CoursePath pathebook = new CoursePath ( driver );
+                            pathebook.PathEbooks ();
+
+                            clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentElement ) ).click ();
+
+                            clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
+
+                            wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
 
                             //Verifying The Start quiz In Path
                             CoursePath startquiz = new CoursePath ( driver );
                             startquiz.startquiz ();
 
+                            clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentElement ) ).click ();
+
+                            clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
+
+                            wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
+
                             //Verifying The Resume quiz In Path
                             CoursePath resumequiz = new CoursePath ( driver );
                             resumequiz.resumequiz ();
+
+                            clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentElement ) ).click ();
+
+                            clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
+
+                            wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
 
                             //Verifying The Soution quiz In Path
                             CoursePath solutionquiz = new CoursePath ( driver );
@@ -118,11 +153,14 @@ public class CoursePath {
                     }
                 }
                 break;
-
             }
         } catch (NoSuchElementException e) {
             System.out.println ( "No such Element exception" );
         }
+
+        //Clicking The Course Back-Button
+        WebElement clickingcoursebutton = driver.findElement ( xpath ( "//*[text()='Course']" ) );
+        clickingcoursebutton.click ();
     }
 
     public void pathArticle() throws InterruptedException {
@@ -317,7 +355,7 @@ public class CoursePath {
             WebElement norecordfoundPath = driver.findElement ( xpath ( "(//*[text()='No Records'])[1]" ) );
             noRecordFoundDisplayed = norecordfoundPath.isDisplayed ();
         } catch (org.openqa.selenium.NoSuchElementException e) {
-            System.out.println ( "noRecordFound element not found In My Ebooks ." );
+            System.out.println ( "noRecordFound element not found In The Path." );
         }
 
         try {
@@ -1054,11 +1092,12 @@ public class CoursePath {
         PageFactory.initElements ( driver , Mynotespageobject.class );
 
         System.out.println ( "----------------------Resume Quiz---------------------------" );
-        boolean noRecordfoundDisplayedInMyNotes = false;
+        boolean noRecordFoundDisplayed = false;
         boolean quizresumeDisplayedInPath = false;
 
         try {
-            noRecordfoundDisplayedInMyNotes = noRecordfoundMyNotes.isDisplayed ();
+            WebElement norecordfoundPath = driver.findElement ( xpath ( "(//*[text()='No Records'])[1]" ) );
+            noRecordFoundDisplayed = norecordfoundPath.isDisplayed ();
         } catch (org.openqa.selenium.NoSuchElementException e) {
             System.out.println ( "noRecordFound element not found In The Path." );
         }
@@ -1069,10 +1108,10 @@ public class CoursePath {
             System.out.println ( "ResumeQuiz element not found In The Path." );
         }
 
-        System.out.println ( "noRecordFound displayed In The Path: " + noRecordfoundDisplayedInMyNotes );
+        System.out.println ( "noRecordFound displayed In The Path: " + noRecordFoundDisplayed );
         System.out.println ( "ResumeQuiz displayed In The Path: " + quizresumeDisplayedInPath );
 
-        if (noRecordfoundDisplayedInMyNotes) {
+        if (noRecordFoundDisplayed) {
             System.out.println ( "No record found was not displayed" );
         } else if (quizresumeDisplayedInPath) {
 
@@ -1367,200 +1406,6 @@ public class CoursePath {
             WebElement clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             clickingBackArrow.click ();
 
-            // Clicking The solution button
-            Thread.sleep ( 2000 );
-            clickingSolutionquiz.click ();
-
-            // Analysis was not working in site
-            //  Click the back arrow in the solution screen
-            Thread.sleep ( 30000 );
-            clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
-            clickingBackArrow.click ();
-//
-            // Clicking The Analysis Button In The MY Notes
-            Thread.sleep ( 3000 );
-            WebElement clickingAnalysisButton = driver.findElement ( xpath ( "//*[text()='Analysis']" ) );
-            clickingAnalysisButton.click ();
-
-            // Clicking The FullScreen Button
-            Thread.sleep ( 3000 );
-            clickingTheFullScreenButton = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-expand\"]" ) );
-            clickingTheFullScreenButton.click ();
-            System.out.println ( "Successfully Clicked The Analysis Icon In Solution Screen " );
-
-            // Exiting The FullScreen Button
-            driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 10 ) );
-            WebElement exitingTheFullScreenButton = driver.findElement ( className ( "anticon-compress" ) );
-            exitingTheFullScreenButton.click ();
-            System.out.println ( "Successfully Clicked The Full Screen Button In Solution Screen " );
-
-            // Clicking The share Icon
-            Thread.sleep ( 3000 );
-            clickingTheShareIcon = driver.findElement ( xpath ( "//*[@alt=\"share\"]" ) );
-            clickingTheShareIcon.click ();
-            System.out.println ( "Successfully Clicked The The Share Icon In Solution Screen " );
-
-            //click the copy link in the share popup
-            Thread.sleep ( 3000 );
-            Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
-            Copy_link.click ();
-            System.out.println ( "Successfully Clicked The Copy link In Solution Screen " );
-
-            //Clicking the cancel button in the in share popup
-            new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
-            Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
-            Cancel_button.click ();
-            System.out.println ( "Successfully Clicked The Cancel buttonIn Solution Screen " );
-
-            // Clicking Like/Unlike Button
-            try {
-                try {
-                    // Locate the like button
-                    WebElement likeButton = driver.findElement ( By.xpath ( "//*[@class='like']" ) );
-                    if (likeButton.isDisplayed ()) {
-                        likeButton.click ();
-                        System.out.println ( "Successfully Clicked The Like Button" );
-                    }
-                } catch (org.openqa.selenium.NoSuchElementException e) {
-                    System.out.println ( "Like Button not found" );
-
-                    try {
-                        // Locate the unlike button
-                        WebElement unlikeButton = driver.findElement ( By.xpath ( "//*[@class='unlike']" ) );
-                        if (unlikeButton.isDisplayed ()) {
-                            unlikeButton.click ();
-                            System.out.println ( "Successfully Clicked The Unlike Button" );
-                        }
-                    } catch (org.openqa.selenium.NoSuchElementException e2) {
-                        System.out.println ( "Unlike Button not found" );
-                    }
-                }
-            } catch (org.openqa.selenium.NoSuchElementException e) {
-                System.out.println ( "Like/Unlike Button not found" );
-            }
-            // Clicking The comment icon in the analysis page
-            Thread.sleep ( 3000 );
-            WebElement clickingCommentIconInAnalysisPage = driver.findElement ( xpath ( "//*[@id=\"comments-icon\"]" ) );
-            clickingCommentIconInAnalysisPage.click ();
-            System.out.println ( "Successfully Clicked The Comment Icon In Analysis Page" );
-
-            //Entering Comment In The TextField
-            Thread.sleep ( 5000 );
-            WebElement enteringTheCommentInTextField = driver.findElement ( xpath ( "//*[@name=\"comments1\"]" ) );
-            enteringTheCommentInTextField.sendKeys ( "Checking The Comment Text Field" );
-            System.out.println ( "Successfully Entered The Comments" );
-
-            // Clicking The Send Button In The Comment Text Field
-//            Thread.sleep (2000);
-//            clickingSendButton = driver.findElement (className ("anticon-send"));
-//            clickingSendButton.click ();
-
-            // Scrolling The analysis page Up
-            Thread.sleep ( 3000 );
-            JavascriptExecutor jse = (JavascriptExecutor) driver;
-            jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
-            System.out.println ( "Successfully Scroll The Page" );
-
-            // Clicking The Reattempt Button Inside The analysis page
-            Thread.sleep ( 2000 );
-            WebElement clickingReattempButton = driver.findElement ( xpath ( "//span[text()=' Reattempt ']" ) );
-            clickingReattempButton.click ();
-            System.out.println ( "Successfully clicked Reattemp Button" );
-
-            //  Again Click the back arrow in the solution screen
-            Thread.sleep ( 5000 );
-            WebElement againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
-            againclickingBackArrow.click ();
-            System.out.println ( "Successfully clicked Back Arrow" );
-
-            // Clicking The Solution Button Inside The analysis page
-            Thread.sleep ( 2000 );
-            WebElement clickingSolutionButtonInAnalysis = driver.findElement ( xpath ( "//span[text()=' View Solution ']" ) );
-            clickingSolutionButtonInAnalysis.click ();
-            System.out.println ( "Successfully clicked Solution Button In Analysis" );
-
-            //  Again Click the back arrow in the solution screen
-            Thread.sleep ( 10000 );
-            againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
-            againclickingBackArrow.click ();
-            System.out.println ( "Successfully clicked clicking Back Arrow" );
-
-            // Scrolling The analysis page Forward
-            Thread.sleep ( 5000 );
-            jse = (JavascriptExecutor) driver;
-            jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
-            System.out.println ( "Successfully Scroll The Page Down " );
-
-            // Scrolling The analysis page Backward
-            Thread.sleep ( 5000 );
-            jse = (JavascriptExecutor) driver;
-            jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
-            System.out.println ( "Successfully Scroll The Backwards " );
-
-            // Clicking The Back To Quiz Breadcrumbs In The Analysis Page
-            Thread.sleep ( 5000 );
-            WebElement clickingBackToQuizBreadCrumbs = driver.findElement ( xpath ( "//span[text()='Back to Quiz']" ) );
-            clickingBackToQuizBreadCrumbs.click ();
-            System.out.println ( "Successfully Scroll The Back To Quiz Bread Crumbs " );
-
-            // Clicking the three Dots in the CourseCard
-            Thread.sleep ( 5000 );
-            WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
-            clickingThreeDots.click ();
-
-            // Click The Share Button
-            Thread.sleep ( 2000 );
-            WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
-            clickingShareButton.click ();
-
-            // Clicking The Copy Link
-            Thread.sleep ( 3000 );
-            WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
-            clickingCopyLink.click ();
-
-            // Clicking The cancel Button
-            Thread.sleep ( 3000 );
-            WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
-            clickingCancelButton.click ();
-
-            // Clicking the three Dots in the CourseCard
-            Thread.sleep ( 5000 );
-            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
-            clickingThreeDots.click ();
-
-            // Clicking The Report Button
-            Thread.sleep ( 3000 );
-            WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
-            clickingReportButton.click ();
-
-            // Click The Radio Button which present in second Position
-            Thread.sleep ( 3000 );
-            WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
-            clickingRadioButton.click ();
-
-            // Entering The Text Inside the Text Field
-            Thread.sleep ( 3000 );
-            WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
-            enteringText.sendKeys ( "The content was good" );
-
-            // Clicking The cancel Button
-            Thread.sleep ( 3000 );
-            WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
-            clickingCancel.click ();
-
-//            // Clicking The report Button
-//            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
-//            clickingReport.click ();
-
-            // Clicking the three Dots in the CourseCard
-            Thread.sleep ( 5000 );
-            clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
-            clickingThreeDots.click ();
-
-            // Clicking The Remove My Notes
-            Thread.sleep ( 3000 );
-            WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
-            clickingRemoveMyNotes.click ();
 
         } else {
             System.out.println ( "No matching condition was found in the Resume quizIn The Path." );
@@ -1576,12 +1421,12 @@ public class CoursePath {
         Thread.sleep ( 5000 );
 
         // Initialize flags to track the visibility of different elements
-        boolean noRecordfoundDisplayedInMyNotes = false;
+        boolean noRecordfoundDisplayedInPath = false;
         boolean quizsolutionDisplayedInMyNotes = false;
 
         try {
             WebElement norecordfoundPath = driver.findElement ( xpath ( "(//*[text()='No Records'])[1]" ) );
-            noRecordfoundDisplayedInMyNotes = norecordfoundPath.isDisplayed ();
+            noRecordfoundDisplayedInPath = norecordfoundPath.isDisplayed ();
         } catch (org.openqa.selenium.NoSuchElementException e) {
             System.out.println ( "noRecordFound element not found In The Path." );
         }
@@ -1594,10 +1439,10 @@ public class CoursePath {
         }
 
         // Log the visibility status of each element
-        System.out.println ( "noRecordFound displayed In The Path: " + noRecordfoundDisplayedInMyNotes );
+        System.out.println ( "noRecordFound displayed In The Path: " + noRecordfoundDisplayedInPath );
         System.out.println ( "Solution button displayed In The Path: " + quizsolutionDisplayedInMyNotes );
 
-        if (noRecordfoundDisplayedInMyNotes) {
+        if (noRecordfoundDisplayedInPath) {
         } else if (quizsolutionDisplayedInMyNotes) {
             WebElement clickingSolutionQuiz = driver.findElement ( xpath ( "//*[@class=\"path-content-scroll\"]/child::*[@class=\"sub-sub-level-content\"]/child::*[@style=\"padding: 5px 0px; color: grey; font-size: 10px;\"]/child::*[text()='Quiz']/following::*[text()='View Solution']" ) );
             clickingSolutionQuiz.click ();
@@ -1775,6 +1620,7 @@ public class CoursePath {
         } else {
             System.out.println ( "No matching condition was found in the Solution quiz In The Path." );
         }
+
     }
 }
 

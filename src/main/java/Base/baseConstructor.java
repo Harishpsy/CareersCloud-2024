@@ -2,7 +2,7 @@ package Base;
 
 
 import MainPages.Loginpage;
-import MyCourse.CoursePath;
+import MyCourse.CourseQuizzes;
 import MyCourse.myCourse;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,9 +20,9 @@ public class baseConstructor {
         Loginpage loginPage = new Loginpage ( driver );
         loginPage.login ();
 
-//     // Home Page
-//     HomePage clickingHomePage = new HomePage ( driver );
-//     clickingHomePage.clickingHomePage ();
+//        // Home Page
+//        HomePage clickingHomePage = new HomePage ( driver );
+//        clickingHomePage.clickingHomePage ();
 //
 //        // Home Page > ArticleandCourse
 //        HomePage articleandcourse = new HomePage ( driver );
@@ -91,23 +91,23 @@ public class baseConstructor {
 //        // Hire Us
 //        Menu_Hireus hireUs = new Menu_Hireus ( driver );
 //        hireUs.Hireus ();
-
+//
         // My Course
         myCourse Mycourse = new myCourse ( driver );
         Mycourse.myCourseClicking ();
-
+//
 //        // My Course > Performing Action In The My Course
 //        myCourse actionInMyCourse = new myCourse ( driver );
 //        actionInMyCourse.performingActionInMyCourse ();
-
-        //My Course Filters
-        // MyCourse_Filters filter = new MyCourse_Filters(driver);
-        // filter.Filter();
-
+//
+//        //My Course Filters
+//        MyCourse_Filters filter = new MyCourse_Filters ( driver );
+//        filter.Filter ();
+//
         // Course Path
-        CoursePath path = new CoursePath ( driver );
-        path.Path ();
-
+//        CoursePath path = new CoursePath ( driver );
+//        path.Path ();
+//
 //        //Course Article
 //        CourseArticle article = new CourseArticle ( driver );
 //        article.Article ();
@@ -116,15 +116,15 @@ public class baseConstructor {
 //        CourseVideos video = new CourseVideos ( driver );
 //        video.videos ();
 
-//         Course Quizzes
-//         CourseQuizzes quizzes = new CourseQuizzes (driver);
-//         quizzes.Quizzes ();
-
-//        Course Quiz > Unattempted
+//        //Course Quizzes
+        CourseQuizzes quizzes = new CourseQuizzes ( driver );
+        quizzes.Quizzes ();
+//
+//        // Course Quiz > Unattempted
 //        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
 //        unattempt.unAttempted ();
-
-//        Course Quiz > Attempted
+//
+//        // Course Quiz > Attempted
 //        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
 //        attempted.attemptedTab ();
 
@@ -152,7 +152,7 @@ public class baseConstructor {
 //        CourseDetails details = new CourseDetails ( driver );
 //        details.Details ();
 //
-//     //Doubts Section
+//        //Doubts Section
 //        Doubts doubts = new Doubts ( driver );
 //        doubts.doubts ();
 //
@@ -160,7 +160,7 @@ public class baseConstructor {
 //        AllDoubts allDoubts = new AllDoubts ( driver );
 //        allDoubts.allDoubts ();
 //
-//       //My Doubts
+//        //My Doubts
 //        Mydoubts myDoubts = new Mydoubts ( driver );
 //        myDoubts.myDoubts ();
 //
@@ -175,7 +175,6 @@ public class baseConstructor {
 //        // My Points in the Doubts Page
 //        Mypoints myPointsInDoubts = new Mypoints ( driver );
 //        myPointsInDoubts.myPoints ();
-
 
     }
 }
