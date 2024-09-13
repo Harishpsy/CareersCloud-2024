@@ -84,18 +84,18 @@ public class CourseQuizzes extends Mynotespageobject {
 
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniqueQuizCount , uniqueQuizTitles.size () );
-//
-//        // Performing the start quiz action
-//        CourseQuizzes startquiz = new CourseQuizzes ( driver );
-//        startquiz.quizStart ();
-//
-//        //Performing The resume quiz
-//        CourseQuizzes resumequiz = new CourseQuizzes ( driver );
-//        resumequiz.resumeQuiz ();
-//
-//        //Performing The Solutions Action
-//        CourseQuizzes solutionquiz = new CourseQuizzes ( driver );
-//        solutionquiz.quizSolution ();
+
+        // Performing the start quiz action
+        CourseQuizzes startquiz = new CourseQuizzes ( driver );
+        startquiz.quizStart ();
+
+        //Performing The resume quiz
+        CourseQuizzes resumequiz = new CourseQuizzes ( driver );
+        resumequiz.resumeQuiz ();
+
+        //Performing The Solutions Action
+        CourseQuizzes solutionquiz = new CourseQuizzes ( driver );
+        solutionquiz.quizSolution ();
     }
 
     private void quizStart() throws InterruptedException {
@@ -313,14 +313,11 @@ public class CourseQuizzes extends Mynotespageobject {
             boolean matchFound = false;
             for (WebElement quizTitle : gettingQuizTitles) {
                 String quiztitleText = quizTitle.getText ();
-                System.out.println ( "Quiz Title " + quiztitleText );
 
                 // Verifying the All Tab quiz was showing or not in the Paused Tab
                 if (QuizTitle.equals ( quiztitleText )) {
                     matchFound = true;
                     System.out.println ( "Verification Passed: Quiz Title In Paused (" + QuizTitle + ") matches Quiz Title In Attempted Tabs (" + quiztitleText + ")" );
-                } else {
-                    System.out.println ( "Verification Failed" );
                 }
             }
             // Verifying That the Both the Titles are equal
@@ -571,11 +568,15 @@ public class CourseQuizzes extends Mynotespageobject {
         System.out.println ( "Solution button displayed In The quiz List Page: " + quizsolutionDisplayedInAllQuiz );
 
         if (noRecordfoundDisplayedInAllQuiz) {
+
+            // Clicking The All Quiz Tab
             WebElement clickingAllQuiz = driver.findElement ( xpath ( "//*[text()='All Quizzes']" ) );
             clickingAllQuiz.click ();
             System.out.println ( "No Record Found is Displayed, So Page was Navigating to the All Quiz" );
+
         } else if (quizsolutionDisplayedInAllQuiz) {
 
+            //Clicking The Solution Button
             WebElement quizsolution = driver.findElement ( xpath ( "(//*[@class=\"ant-btn css-xu9wm8 ant-btn-default ant-btn-background-ghost ant-btn-block quiz-attempt1-solution-button\"]/child::*[text()=' Solution '])[1]" ) );
             quizsolution.click ();
             System.out.println ( "Successfully clicked the Solution button In The quiz List Page." );

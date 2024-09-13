@@ -36,9 +36,9 @@ public class CourseQuizAttempted {
                 Thread.sleep ( 5000 );
                 JavascriptExecutor jse = (JavascriptExecutor) driver;
                 jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The page " + (i + 1) + " time(s)." );
+                System.out.println ( "Successfully scroll The page In The Attempted Tab" + (i + 1) + " time(s)." );
             } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll : " + scroll.getMessage () );
+                System.out.println ( "Failed to Scroll The page In The Attempted Tab: " + scroll.getMessage () );
             }
         }
 
@@ -464,6 +464,10 @@ public class CourseQuizAttempted {
             Thread.sleep ( 3000 );
             WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
             clickingRemoveMyNotes.click ();
+
+            // Click The The Course Beadcru
+            WebElement clickingCourseBeadCrums = driver.findElement ( xpath ( "//*[text()='Course']" ) );
+            clickingCourseBeadCrums.click ();
 
         } else {
             System.out.println ( "No matching condition was found in the Solution quiz In The quiz List Page." );

@@ -39,9 +39,9 @@ public class CourseArticle {
                 Thread.sleep ( 5000 );
                 JavascriptExecutor jse = (JavascriptExecutor) driver;
                 jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The page " + (i + 1) + " time(s)." );
+                System.out.println ( "Successfully scroll The Article List Page" + (i + 1) + " time(s)." );
             } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll : " + scroll.getMessage () );
+                System.out.println ( "Failed to Scroll The Article List Page : " + scroll.getMessage () );
             }
         }
 
@@ -79,7 +79,7 @@ public class CourseArticle {
             }
         }
         // Print the total number of unique URLs found
-        System.out.println ( "Total unique image URLs found: " + uniquesArticleCount );
+        System.out.println ( "Total unique Article Name found: " + uniquesArticleCount );
 
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniquesArticleCount , uniqueArticleUrl.size () );
@@ -91,7 +91,6 @@ public class CourseArticle {
         System.out.println ( "Succesfully Clicked The View Article" );
 
         // Getting The Article Name To Verify In My Notes
-
         WebElement gettingArticleName = driver.findElement ( xpath ( "(//span[@class=\"ant-typography text css-xu9wm8\"])[1]" ) );
         String articleName = gettingArticleName.getText ();
         System.out.println ( "Article Name: " + articleName );
@@ -108,6 +107,7 @@ public class CourseArticle {
                 System.out.println ( "Liked Successfully" );
             }
         }
+
         // Clicking The Comment Icon
         Thread.sleep ( 5000 );
         WebElement clickingCommentIcon = driver.findElement ( id ( "comments-icon" ) );
@@ -154,7 +154,7 @@ public class CourseArticle {
 
         for (WebElement articles : recentArticle) {
             String actuarecentArticlelLink = articles.getAttribute ( "href" );
-            // System.out.println ( "Original Recent Article Link: " + actuarecentArticlelLink );
+            System.out.println ( "Original Recent Article Link: " + actuarecentArticlelLink );
 
             if (uniquerecentArticleUrls.contains ( actuarecentArticlelLink )) {
                 uniquerecentArticlelCount++;

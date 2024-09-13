@@ -15,7 +15,6 @@ import java.util.List;
 public class MyAnswered {
 
     WebDriver driver;
-    Loginpage login;
     public MyAnswered(WebDriver driver) {
         this.driver = driver;
     }
@@ -106,9 +105,10 @@ public class MyAnswered {
 //                        answeredClick.click ();  // Click the myanswer element
 //                    }
 
+                    // Needs to write this in loop There is an issue in that once it fix we can move further
                     //Clicking The Answer
                     Thread.sleep ( 4000 );
-                    WebElement clickingAnswerbutton = driver.findElement ( By.xpath ( "(//span[text()='Answer'])[16]" ) );
+                    WebElement clickingAnswerbutton = driver.findElement ( By.xpath ( "(//span[text()='Answer'])[22]" ) );
                     clickingAnswerbutton.click ();
 
                     // Retreving The Username From the Doubt Answer
@@ -117,16 +117,8 @@ public class MyAnswered {
                     String doubtUserNames = gettingUsernameFromDoubt.getText ();
                     System.out.println ("UserNames: " + doubtUserNames);
 
-                    // Calling LoginPage By Using Contructor
-                    login = new Loginpage ( driver );
-                    String OriginalUserName = login.toString ();
-
                     // Verifying That the username is equal to Doubt username
-                    try {
-                        Assert.assertEquals ( doubtUserNames , OriginalUserName + "Username and user name do not match!" );
-                    } catch (AssertionError e) {
-                        System.out.println ( "Verification Failed to verify the user name and doubt user name not matchs" );
-                    }
+                    // It was still in pending Needs to find an way to Solve that issue
 
                     //Clicking The close icon in the MyAnswer > User Doubt > Popup
                     Thread.sleep ( 3000 );

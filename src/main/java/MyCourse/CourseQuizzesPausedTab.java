@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.By.*;
 
@@ -126,6 +125,22 @@ public class CourseQuizzesPausedTab {
             new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
             driver.manage ().window ().maximize ();
 
+            //Clicking the Instruction Button
+            Thread.sleep ( 30000 );
+            WebElement clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
+            clickingTheInstructionIcon.click ();
+            System.out.println ( "Sucessfully clicked instruction icon" );
+
+            // Again Clicking the close icon in the quiz instruction
+            Thread.sleep ( 5000 );
+            WebElement againClose_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
+            againClose_icon.click ();
+
+            // Clicking The FullScreen Button
+            Thread.sleep ( 2000 );
+            WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
+            clickingTheFullScreenButton.click ();
+
             // Clicking or Unclicking the BookMark-icon By using try catch method
             try {
                 WebElement bookmarkIcon = driver.findElement ( xpath ( "//*[@class='bookmark-icon']" ) );
@@ -144,27 +159,6 @@ public class CourseQuizzesPausedTab {
                     System.out.println ( "Both The Code Has Not Executed" );
                 }
             }
-
-            //Clicking the Instruction Button
-            driver.manage ().timeouts ().implicitlyWait ( 30 , TimeUnit.SECONDS );
-            WebElement clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
-            clickingTheInstructionIcon.click ();
-            System.out.println ( "Sucessfully clicked instruction icon" );
-
-            // Again Clicking the close icon in the quiz instruction
-            Thread.sleep ( 5000 );
-            WebElement againClose_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
-            againClose_icon.click ();
-
-            // Clicking The FullScreen Button
-            Thread.sleep ( 2000 );
-            WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
-            clickingTheFullScreenButton.click ();
-
-            // Clicking the BookMark-icon
-                /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-                 WebElement bookMarkicon = driver.findElement(className ("bookmark-icon"));
-                 bookMarkicon.click ();*/
 
             // Define the options to be clicked
             String[] options = new String[]{"A" , "A" , "B" , "D" , "E" , "C" , "C" , "A" , "D" , "E" , "A" , "E" , "A" , "C" , "E" ,};

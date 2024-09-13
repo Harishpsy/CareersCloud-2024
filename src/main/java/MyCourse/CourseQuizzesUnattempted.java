@@ -39,9 +39,9 @@ public class CourseQuizzesUnattempted {
                 Thread.sleep ( 5000 );
                 JavascriptExecutor jse = (JavascriptExecutor) driver;
                 jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The page " + (i + 1) + " time(s)." );
+                System.out.println ( "Successfully scroll The page In The UnAttempted" + (i + 1) + " time(s)." );
             } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll : " + scroll.getMessage () );
+                System.out.println ( "Failed to Scroll The page In The UnAttempted: " + scroll.getMessage () );
             }
         }
 
@@ -308,14 +308,11 @@ public class CourseQuizzesUnattempted {
             boolean matchFound = false;
             for (WebElement quizTitle : gettingQuizTitles) {
                 String quiztitleText = quizTitle.getText ();
-                System.out.println ( "Quiz Title " + quiztitleText );
 
                 // Verifying the All Tab quiz was showing or not in the Paused Tab
                 if (QuizTitle.equals ( quiztitleText )) {
                     matchFound = true;
                     System.out.println ( "Verification Passed: Quiz Title In Paused (" + QuizTitle + ") matches Quiz Title In Attempted Tabs (" + quiztitleText + ")" );
-                } else {
-                    System.out.println ( "Verification Failed" );
                 }
             }
             // Verifying That the Both the Titles are equal
@@ -424,7 +421,6 @@ public class CourseQuizzesUnattempted {
                     WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                     optionElement.click ();
                     System.out.println ( "Successfully clicked the option: " + options[i] );
-
                     Thread.sleep ( 3000 );
 
                     // Try to find and click the number on the right side
