@@ -608,6 +608,7 @@ public class CourseQuizzesUnattempted {
             WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) ); // Adjust the timeout as necessary
 
             try {
+                Thread.sleep ( 15000 );
                 WebElement reattemptIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//div[@class='ant-switch-handle']" ) ) );
                 reattemptIcon.click ();
                 System.out.println ( "Successfully clicked the reattempt icon." );
@@ -732,7 +733,7 @@ public class CourseQuizzesUnattempted {
             WebElement clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             clickingBackArrow.click ();
 
-            // Clicking The Analysis Button In The MY Notes
+            // Clicking The Analysis Button Attempted Tab
             Thread.sleep ( 3000 );
             WebElement clickingAnalysisButton = driver.findElement ( xpath ( "(//*[@class=\"ant-btn css-xu9wm8 ant-btn-default ant-btn-background-ghost ant-btn-block quiz-attempt1-solution-button\"]/child::*[text()=' Analysis '])[1]" ) );
             clickingAnalysisButton.click ();
