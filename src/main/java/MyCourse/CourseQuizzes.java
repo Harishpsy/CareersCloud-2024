@@ -335,7 +335,7 @@ public class CourseQuizzes extends Mynotespageobject {
         }
     }
 
-    private void resumeQuiz() throws InterruptedException {
+    void resumeQuiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
 
@@ -540,7 +540,7 @@ public class CourseQuizzes extends Mynotespageobject {
 
     }
 
-    private void quizSolution() throws InterruptedException {
+    void quizSolution() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
 
