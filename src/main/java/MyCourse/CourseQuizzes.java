@@ -22,6 +22,10 @@ public class CourseQuizzes extends Mynotespageobject {
     public CourseQuizzes(WebDriver driver) {
         this.driver = driver;
     }
+
+    public CourseQuizzes() {
+    }
+
     public void Quizzes() throws InterruptedException {
 
         // Clicking The Course In the My Course
@@ -98,7 +102,7 @@ public class CourseQuizzes extends Mynotespageobject {
         solutionquiz.quizSolution ();
     }
 
-    private void quizStart() throws InterruptedException {
+    public void quizStart() throws InterruptedException {
 
         // Check if elements are displayed and log the results
         Thread.sleep ( 5000 );
@@ -332,7 +336,7 @@ public class CourseQuizzes extends Mynotespageobject {
         }
     }
 
-    void resumeQuiz() throws InterruptedException {
+    public void resumeQuiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
 
@@ -537,7 +541,7 @@ public class CourseQuizzes extends Mynotespageobject {
 
     }
 
-    void quizSolution() throws InterruptedException {
+    public void quizSolution() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
 
