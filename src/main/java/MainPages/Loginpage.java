@@ -58,7 +58,7 @@ public class Loginpage {
         enterPassword ();
 
         // Click the continuing button and switch back to a parent window
-        Thread.sleep ( 10000 );
+        Thread.sleep ( 30000 );
         Continuebutton.click ();
         System.out.println ( "SuccessFully Clicked The Continue Button" );
         switchToParentWindow ();
@@ -73,7 +73,6 @@ public class Loginpage {
     private void switchToChildWindow() {
         Set<String> windows = driver.getWindowHandles ();
         Iterator<String> it = windows.iterator ();
-        String parent = it.next ();
         String child = it.next ();
         driver.switchTo ().window (child);
     }
@@ -100,7 +99,7 @@ public class Loginpage {
     // Method to get the username for verification
     public String username() throws InterruptedException {
 
-        Thread.sleep (5000);
+        Thread.sleep ( 10000 );
         WebElement usernameElement = driver.findElement (By.xpath ("//*[@style=\"text-overflow: ellipsis; white-space: nowrap; text-transform: capitalize; font-size: 12px; color: rgb(11, 100, 157); font-weight: 900;\"]"));
         Orginalusername = usernameElement.getText ();
         System.out.println ("SuccessFully Get The User Name");

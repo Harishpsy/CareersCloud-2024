@@ -14,13 +14,16 @@ public class MyCourse_Filters {
         this.driver = driver;
     }
 
+    public MyCourse_Filters() {
+    }
+
     public void Filter() throws InterruptedException {
 
         // Clicking The My Course Button
-
-        Thread.sleep (3000);
-        WebElement clickingMyCourseButton = driver.findElement (xpath ("//a[text()='My Course']"));
-        clickingMyCourseButton.click ();
+//
+//        Thread.sleep (3000);
+//        WebElement clickingMyCourseButton = driver.findElement (xpath ("//a[text()='My Course']"));
+//        clickingMyCourseButton.click ();
 
         //Scrolling Down Function
 

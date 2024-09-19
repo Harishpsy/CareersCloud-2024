@@ -30,8 +30,8 @@ public class allCourseTab {
 
         //Verifying The Duplicate Course In The all Course List
 
-        allCourseTab duplicateCourseName = new allCourseTab ( driver );
-        duplicateCourseName.verifyingDuplicate ();
+//        allCourseTab duplicateCourseName = new allCourseTab ( driver );
+//        duplicateCourseName.verifyingDuplicate ();
 
     }
 

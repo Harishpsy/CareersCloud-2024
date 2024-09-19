@@ -1,6 +1,6 @@
 package Base;
 
-import AllCourse.allCourseTab;
+import AllCourse.*;
 import MainPages.Loginpage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -183,9 +183,14 @@ public class baseConstructor {
 //        myPointsInDoubts.myPoints ();
 
         // All Course Tab In Home Feeds
-
         allCourseTab allcourse = new allCourseTab ( driver );
         allcourse.allCourse ();
+
+        //All Course Filter
+        allCourseFilter allfilter = new allCourseFilter ( driver );
+        allfilter.filter ();
+
+
 
 
 
