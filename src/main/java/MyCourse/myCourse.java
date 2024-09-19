@@ -121,5 +121,7 @@ public class myCourse {
 
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniqueFeaturedCourseCount , uniqueFeaturedCourseName.size () );
+
+
     }
 }

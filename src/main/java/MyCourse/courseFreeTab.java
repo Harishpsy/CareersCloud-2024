@@ -34,7 +34,7 @@ public class courseFreeTab {
         System.out.println ( "Successfully Clicked The Course card " );
 
         //clicking The Free Tab In The Course List Page
-        WebElement clickingFreeTab = driver.findElement ( By.xpath ( "//*[@id=\"rc-tabs-0-tab-10\"]" ) );
+        WebElement clickingFreeTab = driver.findElement ( By.xpath ( "//*[text()='Free']" ) );
         clickingFreeTab.click ();
         System.out.println ( "SuccessFully Clicked The Free Tab In The Course List Page" );
 

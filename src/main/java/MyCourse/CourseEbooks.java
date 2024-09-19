@@ -86,6 +86,7 @@ public class CourseEbooks {
         System.out.println ("SuccessFully Clicked The view Button");
 
         // Getting The Clicked Ebook Name
+        Thread.sleep ( 5000 );
         WebElement gettingEbookName = driver.findElement ( xpath ( "//*[@class=\"ant-typography text css-xu9wm8\"]" ) );
         String EbookName = gettingEbookName.getText ();
         System.out.println ( "Ebook Name: " + EbookName );

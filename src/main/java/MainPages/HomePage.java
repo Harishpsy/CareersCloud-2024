@@ -29,7 +29,7 @@ public class HomePage {
         PageFactory.initElements ( driver , Homepageobject.class );
 
         // clicking Preference Button
-        Thread.sleep ( 30000 );
+        Thread.sleep ( 5000 );
         clickingPreferenceButton.click ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
@@ -54,7 +54,7 @@ public class HomePage {
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
-        Thread.sleep ( 10000 );
+        Thread.sleep ( 20000 );
         clickingAddPreferencebutton.click ();
         System.out.println ( "SuccessFully Clicked The Add Preference Button" );
 
@@ -78,7 +78,7 @@ public class HomePage {
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
-        Thread.sleep ( 30000 );
+        Thread.sleep ( 40000 );
         clickingAddPreferencebutton.click ();
         System.out.println ( "SuccessFully Clicked The Add Preference" );
 
@@ -96,7 +96,7 @@ public class HomePage {
         clickingsavePreference.click ();
         System.out.println ( "SuccessFully Clicked The Save Preference" );
 
-//        // Clicking Cancel Button In Profile
+        // Clicking Cancel Button In Profile
 //        WebElement clickingCancelButton = driver.findElement (xpath ("//span[text()='Cancel']"));
 //        clickingCancelButton.click ();
 
@@ -235,7 +235,7 @@ public class HomePage {
 //        clickingSendButton.click ();
 //        System.out.println ( "SuccessFully Clicked The Send Button" );
 
-//        // Clicking the close icon
+        // Clicking the close icon
         Thread.sleep ( 2000 );
         clickingCloseIcon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
         clickingCloseIcon.click ();

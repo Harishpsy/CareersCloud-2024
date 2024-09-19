@@ -91,6 +91,7 @@ public class CourseArticle {
         System.out.println ( "Succesfully Clicked The View Article" );
 
         // Getting The Article Name To Verify In My Notes
+        Thread.sleep ( 5000 );
         WebElement gettingArticleName = driver.findElement ( xpath ( "(//span[@class=\"ant-typography text css-xu9wm8\"])[1]" ) );
         String articleName = gettingArticleName.getText ();
         System.out.println ( "Article Name: " + articleName );
@@ -119,7 +120,7 @@ public class CourseArticle {
         enteringComments.sendKeys ( "Thanks For the update" );
         System.out.println ( "Comment Added Sucessfully" );
 
-//        // Clicking The send Button
+        // Clicking The send Button
 //        Thread.sleep (3000);
 //        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
 //        clickingSendButton.click ();
@@ -210,7 +211,6 @@ public class CourseArticle {
         System.out.println ( "SuccessFully Clicked The My-Notes" );
 
         // Verifying saved or removed article was showing in the My Notes Page
-
         List<WebElement> articleMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
 
         boolean articleFound = false;

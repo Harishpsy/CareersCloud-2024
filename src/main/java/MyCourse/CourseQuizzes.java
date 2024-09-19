@@ -379,11 +379,11 @@ public class CourseQuizzes extends Mynotespageobject {
             driver.switchTo ().window ( child );
 
             //Windows mazimize
-            new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
+            new WebDriverWait ( driver , Duration.ofSeconds ( 60 ) );
             driver.manage ().window ().maximize ();
 
             //Clicking the Instruction Button
-            driver.manage ().timeouts ().implicitlyWait ( 30 , TimeUnit.SECONDS );
+            driver.manage ().timeouts ().implicitlyWait ( 60 , TimeUnit.SECONDS );
             WebElement clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
             clickingTheInstructionIcon.click ();
             System.out.println ( "Sucessfully clicked instruction icon" );

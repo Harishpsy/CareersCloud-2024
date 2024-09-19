@@ -422,7 +422,7 @@ public class MyCourse_Filters {
         clickingFilterIcon = driver.findElement (xpath ("//*[@class=\"ant-dropdown-trigger\"]"));
         clickingFilterIcon.click ();
 
-        // Clicking The 89 - 70 in The coin discount sub-popup
+        // Clicking The 89-70 in The coin discount sub-popup
 
         Thread.sleep (3000);
         WebElement clicking89_70Plus = driver.findElement (xpath ("//span[text()='89 - 70']"));
@@ -440,7 +440,7 @@ public class MyCourse_Filters {
         clickingFilterIcon = driver.findElement (xpath ("//*[@class=\"ant-dropdown-trigger\"]"));
         clickingFilterIcon.click ();
 
-        // Clicking The 69 - 40 in The coin discount sub-popup
+        // Clicking The 69-40 in The coin discount sub-popup
 
         Thread.sleep (3000);
         WebElement clicking69_40Plus = driver.findElement (xpath ("//span[text()='69 - 40']"));
@@ -458,7 +458,7 @@ public class MyCourse_Filters {
         clickingFilterIcon = driver.findElement (xpath ("//*[@class=\"ant-dropdown-trigger\"]"));
         clickingFilterIcon.click ();
 
-        // Clicking The 39 - 20 in The coin discount sub-popup
+        // Clicking The 39-20 in The coin discount sub-popup
 
         Thread.sleep (3000);
         WebElement clicking39_20Plus = driver.findElement (xpath ("//span[text()='39 - 20']"));
