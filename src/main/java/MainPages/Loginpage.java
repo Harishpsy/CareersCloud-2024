@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.Iterator;
@@ -16,7 +15,6 @@ import java.util.Set;
 
 import static PageObjectModule.Loginpageobject.*;
 
-@Test
 public class Loginpage {
 
     public WebDriver driver;
@@ -48,7 +46,7 @@ public class Loginpage {
         switchToChildWindow ();
 
         // Enter email ID and click next
-        Thread.sleep ( 7000 );
+        Thread.sleep ( 5000 );
         Entering_mailID.sendKeys ( "harishpsy12@gmail.com" );
 //      Entering_mailID.sendKeys ("harishpoker8@gmail.com");
         Nextbutton.click ();
@@ -58,7 +56,7 @@ public class Loginpage {
         enterPassword ();
 
         // Click the continuing button and switch back to a parent window
-        Thread.sleep ( 30000 );
+        Thread.sleep ( 7000 );
         Continuebutton.click ();
         System.out.println ( "SuccessFully Clicked The Continue Button" );
         switchToParentWindow ();
@@ -73,6 +71,7 @@ public class Loginpage {
     private void switchToChildWindow() {
         Set<String> windows = driver.getWindowHandles ();
         Iterator<String> it = windows.iterator ();
+        String parent = it.next ();
         String child = it.next ();
         driver.switchTo ().window (child);
     }
@@ -99,7 +98,7 @@ public class Loginpage {
     // Method to get the username for verification
     public String username() throws InterruptedException {
 
-        Thread.sleep ( 10000 );
+        Thread.sleep ( 5000 );
         WebElement usernameElement = driver.findElement (By.xpath ("//*[@style=\"text-overflow: ellipsis; white-space: nowrap; text-transform: capitalize; font-size: 12px; color: rgb(11, 100, 157); font-weight: 900;\"]"));
         Orginalusername = usernameElement.getText ();
         System.out.println ("SuccessFully Get The User Name");

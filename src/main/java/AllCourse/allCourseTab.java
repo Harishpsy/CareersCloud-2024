@@ -29,13 +29,11 @@ public class allCourseTab {
         System.out.println ( "SuccessFully Clicked The All Course Button In The Header" );
 
         //Verifying The Duplicate Course In The all Course List
-
 //        allCourseTab duplicateCourseName = new allCourseTab ( driver );
 //        duplicateCourseName.verifyingDuplicate ();
-
     }
 
-    public void verifyingDuplicate() throws InterruptedException {
+    private void verifyingDuplicate() throws InterruptedException {
 
         //Scrolling The Page
         int numberoftimesscrollAllcourselistpage = 5;
@@ -90,7 +88,6 @@ public class allCourseTab {
         Assert.assertEquals ( uniquesAllcourseCount , uniqueAllcourseName.size () );
 
         // Getting The List Of featured Course In The all Course List Before Filter
-
         // Getting the featured Course List
         List<WebElement> featuredCourseName = driver.findElements ( xpath ( "//img[@alt=\"fearured_tag\"]/preceding::*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]" ) );
 

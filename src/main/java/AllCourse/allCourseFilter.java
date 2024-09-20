@@ -20,8 +20,8 @@ public class allCourseFilter extends MyCourse_Filters {
     public void filter() throws InterruptedException {
 
         //Performing The Same action From The My Course to The All Course For The Filter
-//        MyCourse_Filters filter = new MyCourse_Filters ( driver );
-//        filter.Filter ();
+        MyCourse_Filters filter = new MyCourse_Filters ( driver );
+        filter.Filter ();
         System.out.println ( "Successfully Filter Performed In The All Course Tab" );
 
         //Non Subscribe Course List
@@ -31,6 +31,11 @@ public class allCourseFilter extends MyCourse_Filters {
         //Subscribe Course List
         allCourseFilter subscribedlist = new allCourseFilter ( driver );
         subscribedlist.subscribedCourse ();
+
+        //Free Course Which Is Not Subscribed In The All Course List Page
+        allCourseFilter free = new allCourseFilter ( driver );
+        free.freeCourse ();
+
     }
 
     public void nonSubscribedCourseList() throws InterruptedException {
@@ -59,42 +64,51 @@ public class allCourseFilter extends MyCourse_Filters {
             System.out.println ( "FloatIcon Button Is Not Displayed In The All Course List Page " );
         }
 
-//        // Getting the non-subscribed Course List
-        List<WebElement> nonSubscribedCourseName = driver.findElements ( By.xpath ( "//*[@class='ant-typography all-courses-special-price css-xu9wm8']" ) );
+        // Getting the non-subscribed Course List
+        List<WebElement> nonSubscribedCourseName = driver.findElements ( By.xpath ( "//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]/following::*[@class=\"ant-typography all-courses-special-price css-xu9wm8\"]" ) );
 
         Set<String> uniquenonSubscribedCourseName = new HashSet<> ();
 
         // Print the total number of elements found by the XPath
-        System.out.println ( "Total number of elements found with the given XPath: " + nonSubscribedCourseName.size () );
+        System.out.println ( "Total number of Courses found In The Non-Subscribed List: " + nonSubscribedCourseName.size () );
 
         for (WebElement FeaturedCourse : nonSubscribedCourseName) {
             String actualFeaturedCourseName = FeaturedCourse.getText ();
+            System.out.println ( "Course Name:" + actualFeaturedCourseName );
             if (!uniquenonSubscribedCourseName.contains ( actualFeaturedCourseName )) {
                 uniquenonSubscribedCourseName.add ( actualFeaturedCourseName );
             }
         }
-        // Print the count of unique Featured Courses
-//        System.out.println("Total unique Featured Courses found: " + uniquenonSubscribedCourseName.size());
     }
 
     public void subscribedCourse() {
 
         // Getting the subscribed Course List
-        List<WebElement> subscribedCourseName = driver.findElements ( By.xpath ( "//*[@class=\"ant-typography all-courses-subscribed-text css-xu9wm8\"]" ) );
+        //  <WebElement> subscribedCourseName = driver.findElements ( By.xpath ( "//*[@class=\"ant-typography all-courses-subscribed-text css-xu9wm8\"]" ) );
+        List<WebElement> subscribedCourseName = driver.findElements ( By.xpath ( "//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]/following::*[@class=\"ant-typography all-courses-subscribed-text css-xu9wm8\"]" ) );
 
         Set<String> uniqueSubscribedCourseName = new HashSet<> ();
 
         // Print the total number of elements found by the XPath
-        System.out.println ( "Total number of elements found with the given XPath In The Subscribed List: " + subscribedCourseName.size () );
+        System.out.println ( "Total number of Courses found In The Subscribed List: " + subscribedCourseName.size () );
 
         for (WebElement subscribedCourse : subscribedCourseName) {
             String actualSubscribedCourseName = subscribedCourse.getText ();
+            System.out.println ( "Course Name:" + actualSubscribedCourseName );
             if (!uniqueSubscribedCourseName.contains ( actualSubscribedCourseName )) {
                 uniqueSubscribedCourseName.add ( actualSubscribedCourseName );
             }
         }
-        // Print the count of unique Featured Courses
-//        System.out.println("Total unique Featured Courses found: " + uniquenonSubscribedCourseName.size());
+    }
+
+    public void freeCourse() {
+
+        List<WebElement> freeCourseNonSubscribed = driver.findElements ( xpath ( "//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]/following::*[@class=\"ant-typography all-courses-free-text css-xu9wm8\"]" ) );
+        Set<String> uniquesFreeCourseNonSubscribed = new HashSet<> ();
+
+        //Printing The Total Number Of Elements Present For Free
+        System.out.println ( "Total number of Courses found In The Free Course which Not Subscribed:" + freeCourseNonSubscribed.size () );
+
     }
 
 }

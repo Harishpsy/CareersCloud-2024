@@ -187,8 +187,12 @@ public class baseConstructor {
         allcourse.allCourse ();
 
         //All Course Filter
-        allCourseFilter allfilter = new allCourseFilter ( driver );
-        allfilter.filter ();
+//        allCourseFilter allfilter = new allCourseFilter ( driver );
+//        allfilter.filter ();
+
+        //Clicking The Inside The All Course List Page
+        allCoursesActions courseclick = new allCoursesActions ( driver );
+        courseclick.courseClicking ();
 
 
 
