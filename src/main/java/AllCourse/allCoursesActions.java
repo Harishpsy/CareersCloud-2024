@@ -2,9 +2,9 @@ package AllCourse;
 
 import org.openqa.selenium.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
+import static org.openqa.selenium.By.xpath;
 
 public class allCoursesActions {
 
@@ -23,66 +23,78 @@ public class allCoursesActions {
 
         // Counter to track total elements clicked
         int totalElementsClicked = 0;
-        int currentIndex = 0;  // This will track the index of the element to be clicked next
+        int previousTotalElements = 0;  // To track the number of elements after each scroll
 
-// Set to keep track of clicked elements to avoid duplicates
-        Set<WebElement> clickedElements = new HashSet<> ();
-
+        // Infinite loop, will break once all elements are processed
         while (true) {
-            // Fetch the current list of elements, including any new ones loaded after scrolling
-            List<WebElement> clickingCourse = driver.findElements(By.xpath("//*[@class='all-courses-card-inner-img-div']"));
+            // Fetch the current list of elements, including newly loaded ones
+            List<WebElement> clickingCourse = driver.findElements ( By.xpath ( "(//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"])" ) );
             int totalElements = clickingCourse.size(); // Get the current total number of elements
 
-            // Check if we have reached the end of the elements (no more new elements)
-            if (currentIndex >= totalElements) {
+            // If no new elements were loaded after scrolling, and all elements have been clicked, break the loop
+            if (totalElementsClicked >= totalElements) {
                 System.out.println("All elements have been processed.");
                 break;
             }
 
-            // Loop through each unclicked element and click it
-            for (int i = currentIndex; i < totalElements; i++) {
-                WebElement currentElement = clickingCourse.get(i);
-
-                // Check if the element has already been clicked
-                if (clickedElements.contains(currentElement)) {
-                    continue; // Skip if already clicked
-                }
-
-                // Scroll the current element into view
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", currentElement);
-                Thread.sleep(3000);  // Wait for scrolling to complete
-
-                // Click the course
-                currentElement.click();
-                Thread.sleep(1000); // Optional delay between clicks
-
-                // Try to click the breadcrumb link, if present
+            // Loop through and click the remaining unclicked elements
+            for (int i = totalElementsClicked; i < totalElements; i++) {
                 try {
-                    WebElement breadcrumbLink = driver.findElement(By.xpath("(//*[@class='ant-breadcrumb-link'])[1]"));
-                    Thread.sleep(5000); // Wait for the page to load
-                    breadcrumbLink.click();
-                    System.out.println("Successfully clicked the breadcrumb link");
-                } catch (NoSuchElementException e1) {
-                    System.out.println("Breadcrumb link not found");
-                }
+                    // Refetch the element list to avoid stale element issues
+                    clickingCourse = driver.findElements ( By.xpath ( "(//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"])" ) );
 
-                totalElementsClicked++; // Increment the clicked elements counter
-                clickedElements.add(currentElement); // Mark this element as clicked
-                Thread.sleep(3000); // Wait before moving to the next item
+                    // Ensure the index is within bounds to avoid IndexOutOfBoundsException
+                    if (i >= clickingCourse.size ()) {
+                        break;
+                    }
+
+                    WebElement courseElement = clickingCourse.get ( i );
+
+                    // Get the text of the element
+                    String elementText = courseElement.getText ();
+                    System.out.println ( "Course Name: " + elementText );
+
+                    // Scroll the current element into view
+                    ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , courseElement );
+                    System.out.println ( "Successfully Scrolled 1" );
+                    Thread.sleep ( 2000 );  // Optional wait after scrolling
+
+                    // Scroll the current element into view
+                    ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , courseElement );
+                    System.out.println ( "Successfully Scrolled 2" );
+
+                    Thread.sleep ( 5000 );  // Optional wait after scrolling
+
+                    // Click the element
+                    courseElement.click ();
+                    Thread.sleep ( 3000 );  // Optional wait after clicking
+
+                    // Try to click the breadcrumb link, if present, to go back to the list
+                    try {
+                        WebElement breadcrumbLink = driver.findElement ( By.xpath ( "(//*[@class='ant-breadcrumb-link'])[1]" ) );
+                        Thread.sleep ( 2000 );  // Wait for the page to load
+                        breadcrumbLink.click ();
+                    } catch (NoSuchElementException e1) {
+                        System.out.println ( "Breadcrumb link not found" );
+                    }
+
+                    totalElementsClicked++; // Increment the clicked elements counter
+                    Thread.sleep ( 3000 );  // Wait before moving to the next element
+                } catch (StaleElementReferenceException e) {
+                    System.out.println ( "StaleElementReferenceException occurred. Refetching elements." );
+                    // Retry by refetching elements and continuing
+                    i--;  // Decrement index to retry the current element
+                }
             }
 
             // Scroll down to load more content after clicking the visible elements
             ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,document.body.scrollHeight)");
             Thread.sleep(5000); // Wait for new elements to load after scrolling
-
-            // Refetch the list of elements to check if more have been loaded
-            clickingCourse = driver.findElements(By.xpath("//*[@class='all-courses-card-inner-img-div']"));
-            totalElements = clickingCourse.size(); // Update the total number of elements
-
-            // Update the index of the element to be clicked next (continue from where we left off)
-            currentIndex = totalElementsClicked;
+            ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
+            Thread.sleep ( 5000 ); // Wait for new elements to load after scrolling
+            ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
+            Thread.sleep ( 5000 ); // Wait for new elements to load after scrolling
         }
-
 
 
 
