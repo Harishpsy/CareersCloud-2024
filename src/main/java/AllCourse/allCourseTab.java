@@ -31,6 +31,10 @@ public class allCourseTab {
         //Verifying The Duplicate Course In The all Course List
 //        allCourseTab duplicateCourseName = new allCourseTab ( driver );
 //        duplicateCourseName.verifyingDuplicate ();
+//
+//        //All Course Filter
+//        allCourseFilter allfilter = new allCourseFilter ( driver );
+//        allfilter.filter ();
     }
 
     private void verifyingDuplicate() throws InterruptedException {

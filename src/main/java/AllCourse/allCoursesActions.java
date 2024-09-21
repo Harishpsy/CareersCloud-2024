@@ -52,22 +52,30 @@ public class allCoursesActions {
 
                     // Get the text of the element
                     String elementText = courseElement.getText ();
-                    System.out.println ( "Course Name: " + elementText );
+                    System.out.println ( "Course Name In The All Course Feed Before Clicking: " + elementText );
 
                     // Scroll the current element into view
-                    ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , courseElement );
-                    System.out.println ( "Successfully Scrolled 1" );
-                    Thread.sleep ( 2000 );  // Optional wait after scrolling
-
-                    // Scroll the current element into view
-                    ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , courseElement );
-                    System.out.println ( "Successfully Scrolled 2" );
+                    int numberOfTimesScroll = 4;
+                    for (int j = 0; j < numberOfTimesScroll; j++) {
+                        try {
+                            // Scroll down to load more content after clicking the visible elements
+                            Thread.sleep ( 3000 );
+                            ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
+                            System.out.println ( "Successfully Scrolled The All Course Page After Clicking" + (j + 1) + "time(s)" );
+                        } catch (NoSuchElementException e) {
+                            System.out.println ( "Failed To Scroll The All Course After Clicking" + e.getMessage () );
+                        }
+                    }
 
                     Thread.sleep ( 5000 );  // Optional wait after scrolling
 
                     // Click the element
                     courseElement.click ();
                     Thread.sleep ( 3000 );  // Optional wait after clicking
+
+                    // CLicking the subscribe now button
+                    allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
+                    subscribeNow.subscribeNowButton ();
 
                     // Try to click the breadcrumb link, if present, to go back to the list
                     try {
@@ -87,17 +95,18 @@ public class allCoursesActions {
                 }
             }
 
-            // Scroll down to load more content after clicking the visible elements
-            ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,document.body.scrollHeight)");
-            Thread.sleep(5000); // Wait for new elements to load after scrolling
-            ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
-            Thread.sleep ( 5000 ); // Wait for new elements to load after scrolling
-            ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
-            Thread.sleep ( 5000 ); // Wait for new elements to load after scrolling
+//            int numberOfTimesScroll = 3;
+//            for (int k = 0; k < numberOfTimesScroll; k++) {
+//                try {
+//                    // Scroll down to load more content after clicking the visible elements
+//                    Thread.sleep ( 3000 );
+//                    ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
+//                    System.out.println ("Successfully Scrolled The All Course Page After Clicking" + (k+1) + "time(s)");
+//                }catch (NoSuchElementException e){
+//                    System.out.println ("Failed To Scroll The All Course After Clicking" + e.getMessage ());
+//                }
+//            }
         }
-
-
-
 
     }
 }

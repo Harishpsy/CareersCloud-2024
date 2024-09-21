@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.awt.*;
 
-public class baseConstructor {
+public class baseObjects {
     public static void main(String[] args) throws InterruptedException, AWTException {
 
         // Web Driver
@@ -186,13 +186,19 @@ public class baseConstructor {
         allCourseTab allcourse = new allCourseTab ( driver );
         allcourse.allCourse ();
 
-        //All Course Filter
-//        allCourseFilter allfilter = new allCourseFilter ( driver );
-//        allfilter.filter ();
-
-        //Clicking The Inside The All Course List Page
+//        //Clicking The Inside The All Course List Page
         allCoursesActions courseclick = new allCoursesActions ( driver );
         courseclick.courseClicking ();
+
+        // CLicking the subscribe now button
+        allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
+        subscribeNow.subscribeNowButton ();
+
+        //DetailsPage In The all Course
+        allCourseDetails detailsPage = new allCourseDetails ( driver );
+        detailsPage.details ();
+
+
 
 
 

@@ -10,22 +10,18 @@ public class Loginpageobject {
     public static WebElement LoginButton;
 
     //Entering the mailId
-
-    @FindBy(id = "identifierId")
+    @FindBy(xpath = "//*[@name=\"identifier\"]")
     public static WebElement Entering_mailID;
 
     //Clicking the next button
-
     @FindBy(xpath = "//span[text()='Next']")
     public static WebElement Nextbutton;
 
     //Entering Password
-
     @FindBy(xpath = "//*[@name='Passwd']")
     public static WebElement passwordField;
 
     //Clicking the Continue_button
-
     @FindBy(xpath = "//span[text()='Continue']")
     public static WebElement Continuebutton;
 
