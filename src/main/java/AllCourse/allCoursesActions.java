@@ -55,7 +55,7 @@ public class allCoursesActions {
                     System.out.println ( "Course Name In The All Course Feed Before Clicking: " + elementText );
 
                     // Scroll the current element into view
-                    int numberOfTimesScroll = 4;
+                    int numberOfTimesScroll = 3;
                     for (int j = 0; j < numberOfTimesScroll; j++) {
                         try {
                             // Scroll down to load more content after clicking the visible elements
@@ -80,7 +80,7 @@ public class allCoursesActions {
                     // Try to click the breadcrumb link, if present, to go back to the list
                     try {
                         WebElement breadcrumbLink = driver.findElement ( By.xpath ( "(//*[@class='ant-breadcrumb-link'])[1]" ) );
-                        Thread.sleep ( 2000 );  // Wait for the page to load
+                        Thread.sleep ( 5000 );  // Wait for the page to load
                         breadcrumbLink.click ();
                     } catch (NoSuchElementException e1) {
                         System.out.println ( "Breadcrumb link not found" );
@@ -95,17 +95,18 @@ public class allCoursesActions {
                 }
             }
 
-//            int numberOfTimesScroll = 3;
-//            for (int k = 0; k < numberOfTimesScroll; k++) {
-//                try {
-//                    // Scroll down to load more content after clicking the visible elements
-//                    Thread.sleep ( 3000 );
-//                    ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
-//                    System.out.println ("Successfully Scrolled The All Course Page After Clicking" + (k+1) + "time(s)");
-//                }catch (NoSuchElementException e){
-//                    System.out.println ("Failed To Scroll The All Course After Clicking" + e.getMessage ());
-//                }
-//            }
+            // Scrolling The Web Page
+            int numberOfTimesScroll = 3;
+            for (int k = 0; k < numberOfTimesScroll; k++) {
+                try {
+                    // Scroll down to load more content after clicking the visible elements
+                    Thread.sleep ( 3000 );
+                    ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
+                    System.out.println ( "Successfully Scrolled The All Course Page After Clicking" + (k + 1) + "time(s)" );
+                } catch (NoSuchElementException e) {
+                    System.out.println ( "Failed To Scroll The All Course After Clicking" + e.getMessage () );
+                }
+            }
         }
 
     }
