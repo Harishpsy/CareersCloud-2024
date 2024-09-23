@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -24,44 +26,29 @@ public class allCourseDetails {
     }
 
     @Test
-    public void details() throws InterruptedException, AWTException {
-
-        //Using The try, catch method to identify whether the details tab was present or not or else already clicked of not
-        boolean detailsPageSelected = false;
-        boolean detailsPageDisplayed = false;
-
+    public void details() throws InterruptedException {
         try {
             WebElement clickingDetails = driver.findElement ( By.xpath ( "//*[text()='Details']" ) );
-            detailsPageSelected = clickingDetails.isSelected ();
+
+            // Check if the "Details" tab is already selected
+            if (clickingDetails.isSelected ()) {
+                System.out.println ( "Details Page is already selected, proceeding with the actions." );
+            }
+            // Check if the "Details" tab is displayed but not selected
+            else if (clickingDetails.isDisplayed ()) {
+                System.out.println ( "Details Page is displayed, clicking to select it." );
+                clickingDetails.click ();
+                System.out.println ( "Successfully clicked the Details page." );
+            }
         } catch (NoSuchElementException e) {
-            System.out.println ( "Detail Page Was Not Displayed In The List Page" );
+            // Handle a case when the "Details" tab is not found
+            System.out.println ( "Details Page is not found in the Course List, skipping to the next module." );
         }
 
-        try {
-            WebElement clickingDetails = driver.findElement ( By.xpath ( "//*[text()='Details']" ) );
-            detailsPageSelected = clickingDetails.isDisplayed ();
-        } catch (NoSuchElementException e) {
-            System.out.println ( "Detail Page Was Not Displayed In The List Page" );
-        }
-
-        //Log the visibility status of each element
-        System.out.println ( "Subscribe Now Button Is Displayed: " + detailsPageSelected );
-
-        //Performing The Action In The Details Page
-        if (detailsPageSelected) {
-            System.out.println ( "Detail Page Is Already Selected, So Performing The Below Actions " );
-        } else if (detailsPageDisplayed) {
-            Thread.sleep ( 3000 );
-            WebElement clickingDetails = driver.findElement ( By.xpath ( "//*[text()='Details']" ) );
-            clickingDetails.click ();
-            System.out.println ( "Detail Page Is Clicked Successfully" );
-        } else {
-            System.out.println ( "Details Page Is Not Displayed In The Course List Page,So We Are Skipping And Move To Next Module" );
-        }
 
         // Creating The Object For The Support > Email
-        allCourseDetails email = new allCourseDetails ( driver );
-        email.emialIcon ();
+//        allCourseDetails email = new allCourseDetails ( driver );
+//        email.emialIcon ();
 
         // Creating The Object For The Support > phone
         allCourseDetails phone = new allCourseDetails ( driver );
@@ -70,7 +57,6 @@ public class allCourseDetails {
         //Creating The Object For The Support > WhatsApp Chat
         allCourseDetails whatappchat = new allCourseDetails ( driver );
         whatappchat.whatsAppChat ();
-
     }
 
     @Test
@@ -154,36 +140,28 @@ public class allCourseDetails {
         //Checking The Email Icon Is Displaying Or Not, If it displayed Performing The Actions, If It is Not Displayed Skipping The Action
         boolean phoneIconDisplayed = false;
 
-        //We're Using try,catch method to check that the email icon is Present or Not In The Detail Page
         try {
-            WebElement clickingPhoneIcon = driver.findElement ( xpath ( "//*[@src=\"/static/media/phone-voice.499d15994eb8b4704d97a5de16bc4cd4.svg\"]" ) );
+            WebElement clickingPhoneIcon = driver.findElement ( By.xpath ( "//*[@src=\"/static/media/phone-voice.499d15994eb8b4704d97a5de16bc4cd4.svg\"]" ) );
             phoneIconDisplayed = clickingPhoneIcon.isDisplayed ();
 
+            if (phoneIconDisplayed) {
+                clickingPhoneIcon.click ();
+                System.out.println ( "Successfully Clicked The Phone Icon" );
+
+                // Using explicit wait to find and click the close icon
+                WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
+                WebElement closeIcon = wait.until ( ExpectedConditions.elementToBeClickable ( By.xpath ( "//*[@class=\"ant-modal-close-x\"]" ) ) );
+                closeIcon.click ();
+                System.out.println ( "Successfully Clicked The Close Icon" );
+            } else {
+                System.out.println ( "Phone Icon Is Not Displayed In the Details Page" );
+            }
+
         } catch (NoSuchElementException e) {
-            System.out.println ( "Email Icon Is Not Present In The Detail Page " );
+            System.out.println ( "Phone Icon Is Not Present In the Detail Page" );
         }
 
-        // Printing The Log
-        System.out.println ( "Phone Icon Is Displayed: " + phoneIconDisplayed );
-
-        if (phoneIconDisplayed) {
-
-            // Clicking The Phone Icon
-            Thread.sleep ( 3000 );
-            WebElement clickingPhoneIcon = driver.findElement ( xpath ( "//*[@src=\"/static/media/phone-voice.499d15994eb8b4704d97a5de16bc4cd4.svg\"]" ) );
-            clickingPhoneIcon.click ();
-            System.out.println ( "Successfully Clicked The Phone Icon" );
-
-            // Clicking The Close Icon In The Call Support Popup
-            WebElement clickingClose = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-close-circle\"]" ) );
-            clickingClose.click ();
-            System.out.println ( "SuccessFully Clicked The Close Icon " );
-
-        } else {
-            System.out.println ( "Phone Icon Is Not Displayed In The Details Page" );
-        }
     }
-
     @Test
     public void whatsAppChat() throws InterruptedException {
 
@@ -208,24 +186,17 @@ public class allCourseDetails {
             Thread.sleep ( 3000 );
             WebElement clickingWhatsappChat = driver.findElement ( xpath ( "//*[@src=\"/static/media/chat.216be488af93fc69d54ce1b02de52596.svg\"]" ) );
             clickingWhatsappChat.click ();
+            System.out.println ( "Successfully Clicked The Whatsapp Chat icon" );
 
-            // Windows Handeling Switching To The Child Tab
+            //Windows Handeling child to parent
+            Thread.sleep ( 5000 );
             Set<String> windows = driver.getWindowHandles ();
             Iterator<String> it = windows.iterator ();
             String parent = it.next ();
             String child = it.next ();
             driver.switchTo ().window ( child );
-
-            // Closing The WhatsApp Chat Window
-            driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 10 ) );
-//            Thread.sleep ( 5000 );
+            Thread.sleep ( 3000 );
             driver.close ();
-
-            // Wnidows Handeing Switching To Parent Tab
-            windows = driver.getWindowHandles ();
-            it = windows.iterator ();
-            parent = it.next ();
-            child = it.next ();
             driver.switchTo ().window ( parent );
 
         } else {

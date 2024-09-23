@@ -2,6 +2,7 @@ package AllCourse;
 
 import org.openqa.selenium.*;
 
+import java.awt.*;
 import java.time.Duration;
 
 public class allCourseSubscribeActions {
@@ -11,7 +12,7 @@ public class allCourseSubscribeActions {
         this.driver = driver;
     }
 
-    public void subscribeNowButton() throws InterruptedException {
+    public void subscribeNowButton() throws InterruptedException, AWTException {
 
 
         //Using try, catch method to Hanle whether The subscribe button is present of not
@@ -112,6 +113,10 @@ public class allCourseSubscribeActions {
 
             } else if (unsubscribeButtonDispayed) {
                 System.out.println ( "Unsubscribed Button Is displayed,So It Is An Free Course So Popup Won't Display, It Get Subscribe Automatically without Payment" );
+
+                //DetailsPage In The all Course
+                allCourseDetails detailsPage = new allCourseDetails ( driver ); // Details Page Object has been created to preforme the actions after the subscribe
+                detailsPage.details ();
 
                 // Go back to the course list using breadcrumb (if available)
                 try {

@@ -186,25 +186,13 @@ public class baseObjects {
         allCourseTab allcourse = new allCourseTab ( driver );
         allcourse.allCourse ();
 
-//        //Clicking The Inside The All Course List Page
+        //Clicking The Inside The All Course List Page
         allCoursesActions courseclick = new allCoursesActions ( driver );
         courseclick.courseClicking ();
 
         // CLicking the subscribe now button
         allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
         subscribeNow.subscribeNowButton ();
-
-//        //DetailsPage In The all Course
-//        allCourseDetails detailsPage = new allCourseDetails ( driver );
-//        detailsPage.details ();
-
-
-
-
-
-
-
-
 
 
     }

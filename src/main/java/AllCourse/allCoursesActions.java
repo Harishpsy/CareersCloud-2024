@@ -60,9 +60,13 @@ public class allCoursesActions {
 
                     // **Re-initialize the subscribeNow object to handle dynamic page reloading**
                     allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
-                    System.out.println ( "Attempting to click the subscribe button for: " + elementText );
+//                    System.out.println ( "Attempting to click the subscribe button for: " + elementText );
                     subscribeNow.subscribeNowButton ();  // Perform the subscription action
-                    System.out.println ( "Subscribe button clicked for: " + elementText );
+//                    System.out.println ( "Subscribe button clicked for: " + elementText );
+
+                    //DetailsPage In The all Course
+                    allCourseDetails detailsPage = new allCourseDetails ( driver ); // Details Page Object has been created to preforme the actions after the subscribe
+                    detailsPage.details ();
 
                     // Go back to the course list using breadcrumb (if available)
                     try {
@@ -87,17 +91,17 @@ public class allCoursesActions {
 
             // **Scroll the page to load more elements**
             try {
-                System.out.println ( "Scrolling to load more elements." );
+//                System.out.println ( "Scrolling to load more elements." );
                 ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
                 Thread.sleep ( 3000 ); // Wait for new elements to load
 
-                System.out.println ( "Scrolling to load more elements." );
+//                System.out.println ( "Scrolling to load more elements." );
                 ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
                 Thread.sleep ( 3000 ); // Wait for new elements to load
 
                 // **Re-initialize the subscribeNow object after scrolling** (in case the page reloads or elements change)
                 allCourseSubscribeActions subscribeNowAfterScroll = new allCourseSubscribeActions ( driver );
-                System.out.println ( "Re-initialized subscribeNow after scrolling." );
+//                System.out.println ( "Re-initialized subscribeNow after scrolling." );
             } catch (Exception e) {
                 System.out.println ( "An error occurred while scrolling: " + e.getMessage () );
             }

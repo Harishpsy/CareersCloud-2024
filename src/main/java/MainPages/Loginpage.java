@@ -31,6 +31,9 @@ public class Loginpage {
         driver.get ("https://careerscloud.in/home-feed");
         driver.manage ().window ().maximize ();
 
+        // Clear cookies to avoid issues with corrupted data
+        driver.manage ().deleteAllCookies ();
+
         // Wait for elements to be visible
         Thread.sleep (5000);
 

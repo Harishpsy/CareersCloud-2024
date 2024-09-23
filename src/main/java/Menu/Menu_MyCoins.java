@@ -32,14 +32,12 @@ public class Menu_MyCoins {
                 clickingCoinEarningText.click ();
                 System.out.println ( "SucessFully clicked the clickingCoinEarningText 1 " );
 
-
             } else if (clickingMycoin.isDisplayed ()) {
                 System.out.println ( "SucessFully My coin is displayed 2" );
                 Thread.sleep ( 5000 );
                 clickingMycoin.click ();
 
                 // Clicking My coin
-
                 if (clickingMycoin.isEnabled ()) {
 
                     Thread.sleep ( 5000 );
@@ -47,14 +45,10 @@ public class Menu_MyCoins {
                     System.out.println ( "Sucessfully Clicked the coin earning page" );
 
                 } else {
-
                     System.out.println ( "Error occured " );
                 }
-
             } else {
-
                 System.out.println ( "Both has been not excecuted" );
-
             }
             // Clicking The close Button
 
