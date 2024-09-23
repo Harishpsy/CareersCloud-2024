@@ -13,34 +13,6 @@ public class allCourseSubscribeActions {
 
     public void subscribeNowButton() throws InterruptedException {
 
-//        int numberoftimesscrollAllcourselistpage = 5;
-//        for (int i = 0; i < numberoftimesscrollAllcourselistpage; i++) {
-//            try {
-//                Thread.sleep ( 3000 );
-//                JavascriptExecutor jse = (JavascriptExecutor) driver;
-//                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-//                System.out.println ( "Successfully scroll The All Course List page " + (i + 1) + " time(s)." );
-//            } catch (Exception scroll) {
-//                System.out.println ( "Failed to Scroll The All Course List page : " + scroll.getMessage () );
-//            }
-//        }
-//
-//        //Clicking The Float Icon In The All Course List Page
-//        try {
-//            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//button[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"]" ) );
-//            if (clickingFloatIcon.isDisplayed ()) {
-//                Thread.sleep ( 5000 );
-//                clickingFloatIcon.click ();
-//            }
-//        } catch (NoSuchElementException e) {
-//            System.out.println ( "FloatIcon Button Is Not Displayed In The All Course List Page " );
-//        }
-//
-//        //Clicking Free Course
-//        Thread.sleep ( 3000 );
-//        WebElement clickingFreeCourse = driver.findElement (xpath ( "(//*[text()='Free'])[2]" ));
-//        clickingFreeCourse.click ();
-
 
         //Using try, catch method to Hanle whether The subscribe button is present of not
         Thread.sleep ( 5000 );
@@ -140,6 +112,16 @@ public class allCourseSubscribeActions {
 
             } else if (unsubscribeButtonDispayed) {
                 System.out.println ( "Unsubscribed Button Is displayed,So It Is An Free Course So Popup Won't Display, It Get Subscribe Automatically without Payment" );
+
+                // Go back to the course list using breadcrumb (if available)
+                try {
+                    WebElement breadcrumbLink = driver.findElement ( By.xpath ( "(//*[@class='ant-breadcrumb-link'])[1]" ) );
+                    Thread.sleep ( 3000 );  // Wait for the page to load
+                    breadcrumbLink.click ();
+                    Thread.sleep ( 3000 );  // Wait for the course list to reload
+                } catch (NoSuchElementException e1) {
+                    System.out.println ( "Breadcrumb link not found" );
+                }
 
             } else {
                 System.out.println ( "Both The Code Has Not Executed So Error In The Course Subscribe Page" );

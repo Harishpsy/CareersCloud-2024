@@ -194,9 +194,9 @@ public class baseObjects {
         allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
         subscribeNow.subscribeNowButton ();
 
-        //DetailsPage In The all Course
-        allCourseDetails detailsPage = new allCourseDetails ( driver );
-        detailsPage.details ();
+//        //DetailsPage In The all Course
+//        allCourseDetails detailsPage = new allCourseDetails ( driver );
+//        detailsPage.details ();
 
 
 
