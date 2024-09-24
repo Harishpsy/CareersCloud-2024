@@ -190,9 +190,14 @@ public class baseObjects {
         allCoursesActions courseclick = new allCoursesActions ( driver );
         courseclick.courseClicking ();
 
-        // CLicking the subscribe now button
-        allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
-        subscribeNow.subscribeNowButton ();
+//        // CLicking the subscribe now button
+//        allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
+//        subscribeNow.subscribeNowButton ();
+
+//        // Creating Object For The All Course Path
+//        allCoursePath path = new allCoursePath ( driver );
+//        path.allpath ();
+
 
 
     }

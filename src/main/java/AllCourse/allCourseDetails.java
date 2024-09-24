@@ -26,7 +26,7 @@ public class allCourseDetails {
     }
 
     @Test
-    public void details() throws InterruptedException {
+    public void details() throws InterruptedException, AWTException {
         try {
             WebElement clickingDetails = driver.findElement ( By.xpath ( "//*[text()='Details']" ) );
 
@@ -47,8 +47,8 @@ public class allCourseDetails {
 
 
         // Creating The Object For The Support > Email
-//        allCourseDetails email = new allCourseDetails ( driver );
-//        email.emialIcon ();
+        allCourseDetails email = new allCourseDetails ( driver );
+        email.emialIcon ();
 
         // Creating The Object For The Support > phone
         allCourseDetails phone = new allCourseDetails ( driver );
@@ -92,7 +92,7 @@ public class allCourseDetails {
 
             // Uploading the image
             Thread.sleep ( 3000 );
-            String file = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Untitled155.png";
+            String file = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Pic1.jpg";
             StringSelection selection = new StringSelection ( file );
             Toolkit.getDefaultToolkit ().getSystemClipboard ().setContents ( selection , null );
             System.out.println ( "Sucessfully Uploaded The Image" );
