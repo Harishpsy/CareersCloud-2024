@@ -183,20 +183,14 @@ public class baseObjects {
 //        myPointsInDoubts.myPoints ();
 
         // All Course Tab In Home Feeds
-        allCourseTab allcourse = new allCourseTab ( driver );
+        allCourseTabAndFeed allcourse = new allCourseTabAndFeed ( driver );
         allcourse.allCourse ();
 
         //Clicking The Inside The All Course List Page
-        allCoursesActions courseclick = new allCoursesActions ( driver );
+        allCourseBase courseclick = new allCourseBase ( driver );
         courseclick.courseClicking ();
 
-//        // CLicking the subscribe now button
-//        allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
-//        subscribeNow.subscribeNowButton ();
 
-//        // Creating Object For The All Course Path
-//        allCoursePath path = new allCoursePath ( driver );
-//        path.allpath ();
 
 
 

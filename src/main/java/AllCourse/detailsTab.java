@@ -18,10 +18,10 @@ import java.util.Set;
 import static org.openqa.selenium.By.name;
 import static org.openqa.selenium.By.xpath;
 
-public class allCourseDetails {
+public class detailsTab {
     WebDriver driver;
 
-    public allCourseDetails(WebDriver driver) {
+    public detailsTab(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -47,15 +47,15 @@ public class allCourseDetails {
 
 
         // Creating The Object For The Support > Email
-        allCourseDetails email = new allCourseDetails ( driver );
+        detailsTab email = new detailsTab ( driver );
         email.emialIcon ();
 
         // Creating The Object For The Support > phone
-        allCourseDetails phone = new allCourseDetails ( driver );
+        detailsTab phone = new detailsTab ( driver );
         phone.phoneIcon ();
 
         //Creating The Object For The Support > WhatsApp Chat
-        allCourseDetails whatappchat = new allCourseDetails ( driver );
+        detailsTab whatappchat = new detailsTab ( driver );
         whatappchat.whatsAppChat ();
     }
 

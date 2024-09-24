@@ -12,11 +12,11 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
-public class allCourseTab {
+public class allCourseTabAndFeed {
 
     public WebDriver driver;
 
-    public allCourseTab(WebDriver driver) {
+    public allCourseTabAndFeed(WebDriver driver) {
         this.driver = driver;
     }
 

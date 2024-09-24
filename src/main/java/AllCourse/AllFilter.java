@@ -9,11 +9,11 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.xpath;
 
-public class allCourseFilter extends MyCourse_Filters {
+public class AllFilter extends MyCourse_Filters {
 
     public WebDriver driver;
 
-    public allCourseFilter(WebDriver driver) {
+    public AllFilter(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -25,15 +25,15 @@ public class allCourseFilter extends MyCourse_Filters {
         System.out.println ( "Successfully Filter Performed In The All Course Tab" );
 
         //Non Subscribe Course List
-        allCourseFilter nonSibscribrded = new allCourseFilter ( driver );
+        AllFilter nonSibscribrded = new AllFilter ( driver );
         nonSibscribrded.nonSubscribedCourseList ();
 
         //Subscribe Course List
-        allCourseFilter subscribedlist = new allCourseFilter ( driver );
+        AllFilter subscribedlist = new AllFilter ( driver );
         subscribedlist.subscribedCourse ();
 
         //Free Course Which Is Not Subscribed In The All Course List Page
-        allCourseFilter free = new allCourseFilter ( driver );
+        AllFilter free = new AllFilter ( driver );
         free.freeCourse ();
 
     }

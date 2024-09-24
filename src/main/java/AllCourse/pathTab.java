@@ -10,10 +10,10 @@ import java.util.List;
 
 import static org.openqa.selenium.By.xpath;
 
-public class allCoursePath extends CoursePath {
+public class pathTab extends CoursePath {
     WebDriver driver;
 
-    public allCoursePath(WebDriver driver) {
+    public pathTab(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -36,7 +36,7 @@ public class allCoursePath extends CoursePath {
         }
 
         // Creating An Object For The Path List Page Actions
-        allCoursePath pathActions = new allCoursePath ( driver );
+        pathTab pathActions = new pathTab ( driver );
         pathActions.pathListActions ();
     }
 
@@ -57,10 +57,10 @@ public class allCoursePath extends CoursePath {
 
                 // Scroll the current element into view
                 ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , currentElement );
-                Thread.sleep ( 3000 );  // Wait for scrolling to complete
+//                Thread.sleep ( 3000 );  // Wait for scrolling to complete
 
                 // Click the current element in the main path
-                Thread.sleep ( 3000 );
+//                Thread.sleep ( 3000 );
                 wait.until ( ExpectedConditions.elementToBeClickable ( currentElement ) ).click ();
                 System.out.println ( "Successfully clicked The Main Name in the All Course path " );
 
@@ -79,8 +79,10 @@ public class allCoursePath extends CoursePath {
                             Thread.sleep ( 3000 );  // Wait for scrolling to complete
 
                             // Click the current sub-path element
+                            String subPathName = currentSubElement.getText ();
+                            System.out.println ( "Sub Path Name Clicking: " + subPathName );
                             wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
-                            System.out.println ( "Successfully clicked The Current sub element in the path" );
+//                            System.out.println ( "Successfully clicked The Current sub element in the path" );
                         } else {
                             System.out.println ( "Sub Path was not present" );
                         }
@@ -88,11 +90,7 @@ public class allCoursePath extends CoursePath {
                         // Clicking the Sub-Sub-Path In The path page
                         try {
                             // Waiting for the presence of elements
-                            List<WebElement> clickingExamNameSubSubPath = wait.until (
-                                    ExpectedConditions.presenceOfAllElementsLocatedBy (
-                                            xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" )
-                                    )
-                            );
+                            List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
 
                             System.out.println ( "Attempting to click the current sub element in the path." );
 
@@ -106,6 +104,8 @@ public class allCoursePath extends CoursePath {
                                     Thread.sleep ( 3000 );  // Wait for scrolling to complete
 
                                     // Click the current sub-sub-path element
+                                    String subsubPathName = currentSubSubElement.getText ();
+                                    System.out.println ( "Sub-sub-Path Name Clicking: " + subsubPathName );
                                     wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
                                     System.out.println ( "Successfully clicked the current sub-sub element in the path." );
                                 } else {
@@ -113,17 +113,16 @@ public class allCoursePath extends CoursePath {
                                     System.out.println ( "Element is not displayed, skipping to the next element." );
                                 }
                             }
-                        } catch (TimeoutException e) {
+                        } catch (TimeoutException e1) {
                             // Handle the case where no elements are found
                             System.out.println ( "No elements found, skipping this step." );
                         }
 
                     }
-                } catch (TimeoutException e1) {
+                } catch (TimeoutException e) {
                     // Handle the case where no elements are found
-                    System.out.println ( "No elements found, skipping this step." );
+                    System.out.println ( "No elements found In The Sub Path, skipping this step." );
                 }
-
 
 //                // Perform the following actions if the element is displayed
 //                CoursePath patharticle = new CoursePath ( driver );

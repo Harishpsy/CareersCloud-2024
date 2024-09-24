@@ -4,11 +4,11 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
-public class allCoursesActions {
+public class allCourseBase {
 
     public WebDriver driver;
 
-    public allCoursesActions(WebDriver driver) {
+    public allCourseBase(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -69,10 +69,12 @@ public class allCoursesActions {
 //                    detailsPage.details ();
 
                     // Creating Object For The All Course Path
-                    allCoursePath path = new allCoursePath ( driver );
-                    path.allpath ();
+//                    pathTab path = new pathTab ( driver );
+//                    path.allpath ();
 
-                    // Path Calling
+                    // Creating The Object For All Course Free Tab
+                    freeTab freeTab = new freeTab ( driver );
+                    freeTab.free ();
 
                     // Go back to the course list using breadcrumb (if available)
                     try {
@@ -91,7 +93,7 @@ public class allCoursesActions {
                     System.out.println ( "StaleElementReferenceException occurred. Refetching elements." );
                     i--;  // Retry the current element
                 } catch (Exception e) {
-                    System.out.println ( "An error occurred: " + e.getMessage () );
+                    System.out.println ( "An error occurred In The All Course Base " + e.getMessage () );
                 }
             }
 

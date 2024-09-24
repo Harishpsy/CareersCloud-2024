@@ -5,10 +5,10 @@ import org.openqa.selenium.*;
 import java.awt.*;
 import java.time.Duration;
 
-public class allCourseSubscribeActions {
+public class allCourseSubscribeNow {
     WebDriver driver;
 
-    public allCourseSubscribeActions(WebDriver driver) {
+    public allCourseSubscribeNow(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -115,7 +115,7 @@ public class allCourseSubscribeActions {
                 System.out.println ( "Unsubscribed Button Is displayed,So It Is An Free Course So Popup Won't Display, It Get Subscribe Automatically without Payment" );
 
                 //DetailsPage In The all Course
-                allCourseDetails detailsPage = new allCourseDetails ( driver ); // Details Page Object has been created to preforme the actions after the subscribe
+                detailsTab detailsPage = new detailsTab ( driver ); // Details Page Object has been created to preforme the actions after the subscribe
                 detailsPage.details ();
 
                 // Go back to the course list using breadcrumb (if available)
