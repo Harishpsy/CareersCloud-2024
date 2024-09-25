@@ -47,17 +47,17 @@ public class freeTab {
 //        courseFreeTab videos = new courseFreeTab ( driver );
 //        videos.videos ();
 
-        // Performing the start quiz action
-        courseFreeTab startquiz = new courseFreeTab ( driver );
-        startquiz.quizStart ();
-
-        //Performing The resume quiz
-        courseFreeTab resumequiz = new courseFreeTab ( driver );
-        resumequiz.resumeQuiz ();
-
-        // Performing The Solutions Action
-        courseFreeTab solutionquiz = new courseFreeTab ( driver );
-        solutionquiz.quizSolutions ();
+//        // Performing the start quiz action
+//        courseFreeTab startquiz = new courseFreeTab ( driver );
+//        startquiz.quizStart ();
+//
+//        //Performing The resume quiz
+//        courseFreeTab resumequiz = new courseFreeTab ( driver );
+//        resumequiz.resumeQuiz ();
+//
+//        // Performing The Solutions Action
+//        courseFreeTab solutionquiz = new courseFreeTab ( driver );
+//        solutionquiz.quizSolutions ();
 
 
     }

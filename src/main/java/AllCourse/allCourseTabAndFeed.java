@@ -29,12 +29,17 @@ public class allCourseTabAndFeed {
         System.out.println ( "SuccessFully Clicked The All Course Button In The Header" );
 
         //Verifying The Duplicate Course In The all Course List
-//        allCourseTab duplicateCourseName = new allCourseTab ( driver );
-//        duplicateCourseName.verifyingDuplicate ();
-//
-//        //All Course Filter
-//        allCourseFilter allfilter = new allCourseFilter ( driver );
-//        allfilter.filter ();
+        allCourseTabAndFeed duplicateCourseName = new allCourseTabAndFeed ( driver );
+        duplicateCourseName.verifyingDuplicate ();
+
+        //All Course Filter
+        AllFilter allfilter = new AllFilter ( driver );
+        allfilter.filter ();
+
+        //Clicking The Inside The All Course List Page
+        allCourseBase courseclick = new allCourseBase ( driver );
+        courseclick.courseClicking ();
+
     }
 
     private void verifyingDuplicate() throws InterruptedException {

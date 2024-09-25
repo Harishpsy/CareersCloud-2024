@@ -186,9 +186,9 @@ public class baseObjects {
         allCourseTabAndFeed allcourse = new allCourseTabAndFeed ( driver );
         allcourse.allCourse ();
 
-        //Clicking The Inside The All Course List Page
-        allCourseBase courseclick = new allCourseBase ( driver );
-        courseclick.courseClicking ();
+//        //Clicking The Inside The All Course List Page
+//        allCourseBase courseclick = new allCourseBase ( driver );
+//        courseclick.courseClicking ();
 
 
 

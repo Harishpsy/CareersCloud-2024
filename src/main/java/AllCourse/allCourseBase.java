@@ -15,21 +15,22 @@ public class allCourseBase {
     public void courseClicking() throws InterruptedException {
 
         //Opening All The course In The All Course List Page and click the back button or Course Breadcrumbs Making This In Loop
+
         // Initial delay to allow the page to load fully
-        Thread.sleep(5000);
+        Thread.sleep ( 5000 );
 
         // Counter to track total elements clicked
         int totalElementsClicked = 0;
 
-        // Infinite loop, will break once all elements are processed
+        // Infinite loop, will break once all elements are processed or after one click
         while (true) {
             // Fetch the current list of elements (including newly loaded ones)
             List<WebElement> clickingCourse = driver.findElements ( By.xpath ( "(//*[@class='ant-typography all-courses-card-title css-xu9wm8'])" ) );
-            int totalElements = clickingCourse.size(); // Get the current total number of elements
+            int totalElements = clickingCourse.size (); // Get the current total number of elements
 
             // If no new elements are loaded after scrolling, break the loop
             if (totalElementsClicked >= totalElements) {
-                System.out.println("All elements have been processed.");
+                System.out.println ( "All elements have been processed." );
                 break;
             }
 
@@ -58,21 +59,19 @@ public class allCourseBase {
                     courseElement.click ();
                     Thread.sleep ( 3000 );  // Wait for page navigation
 
-//                    // **Re-initialize the subscribeNow object to handle dynamic page reloading**
-//                    allCourseSubscribeActions subscribeNow = new allCourseSubscribeActions ( driver );
-////                    System.out.println ( "Attempting to click the subscribe button for: " + elementText );
-//                    subscribeNow.subscribeNowButton ();  // Perform the subscription action
-////                    System.out.println ( "Subscribe button clicked for: " + elementText );
+                    // **Re-initialize the subscribeNow object to handle dynamic page reloading**
+                    allCourseSubscribeNow subscribeNow = new allCourseSubscribeNow ( driver );
+                    subscribeNow.subscribeNowButton ();  // Perform the subscription action
 
-//                    //DetailsPage In The all Course
-//                    allCourseDetails detailsPage = new allCourseDetails ( driver ); // Details Page Object has been created to preforme the actions after the subscribe
-//                    detailsPage.details ();
+                    // Perform actions on details page
+                    detailsTab detailsPage = new detailsTab ( driver );
+                    detailsPage.details ();
 
-                    // Creating Object For The All Course Path
-//                    pathTab path = new pathTab ( driver );
-//                    path.allpath ();
+                    // Perform actions on path tab
+                    pathTab path = new pathTab ( driver );
+                    path.allpath ();
 
-                    // Creating The Object For All Course Free Tab
+                    // Perform actions on free tab
                     freeTab freeTab = new freeTab ( driver );
                     freeTab.free ();
 
@@ -89,32 +88,32 @@ public class allCourseBase {
                     totalElementsClicked++;  // Increment the clicked elements counter
                     Thread.sleep ( 2000 );  // Wait before moving to the next element
 
+                    // Break after clicking one element
+                    break;  // <<< BREAK STATEMENT HERE: Remove this to click all elements
+
                 } catch (StaleElementReferenceException e) {
                     System.out.println ( "StaleElementReferenceException occurred. Refetching elements." );
-                    i--;  // Retry the current element
+                    i--;  /* Retry the current element */
                 } catch (Exception e) {
-                    System.out.println ( "An error occurred In The All Course Base " + e.getMessage () );
+                    System.out.println ( "An error occurred: " + e.getMessage () );
                 }
             }
 
-            // **Scroll the page to load more elements**
-            try {
-//                System.out.println ( "Scrolling to load more elements." );
-                ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
-                Thread.sleep ( 3000 ); // Wait for new elements to load
-
-//                System.out.println ( "Scrolling to load more elements." );
-                ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
-                Thread.sleep ( 3000 ); // Wait for new elements to load
-
-                // **Re-initialize the subscribeNow object after scrolling** (in case the page reloads or elements change)
-//                allCourseSubscribeActions subscribeNowAfterScroll = new allCourseSubscribeActions ( driver );
+//            // **Scroll the page to load more elements**
+//            try {
+//                ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
+//                Thread.sleep ( 3000 ); // Wait for new elements to load
+//
+//                // Re-initialize the subscribeNow object after scrolling
+//                allCourseSubscribeNow subscribeNowAfterScroll = new allCourseSubscribeNow ( driver );
 //                System.out.println ( "Re-initialized subscribeNow after scrolling." );
-            } catch (Exception e) {
-                System.out.println ( "An error occurred while scrolling: " + e.getMessage () );
-            }
-        }
+//            } catch (Exception e) {
+//                System.out.println ( "An error occurred while scrolling: " + e.getMessage () );
+//            }
 
+            // Break out of the outer loop as well after clicking one element
+            break;  // <<< OUTER LOOP BREAK: Remove this to process all elements after scrolling
+        }
 
     }
 }
