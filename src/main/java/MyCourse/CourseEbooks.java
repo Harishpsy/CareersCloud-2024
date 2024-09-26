@@ -225,7 +225,7 @@ public class CourseEbooks {
             System.out.println ( "Ebook is Not Showing in My-Ebooks" );
         }
         // Clicking My course for the next execution
-        myCourse Mycourse = new myCourse ( driver );
+        myCourseModule Mycourse = new myCourseModule ( driver );
         Mycourse.myCourseClicking ();
 
     }

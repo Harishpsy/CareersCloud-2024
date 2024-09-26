@@ -14,8 +14,8 @@ public class freeTab {
     }
 
     public void free() throws InterruptedException {
-        // Clicking Free Tab In the all course list page
 
+        // Clicking Free Tab In the all course list page
         try {
             WebElement clickingFreeTab = driver.findElement ( By.xpath ( "//*[text()='Free']" ) );
 

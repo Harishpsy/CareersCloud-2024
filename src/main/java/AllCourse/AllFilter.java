@@ -104,7 +104,6 @@ public class AllFilter extends MyCourse_Filters {
     public void freeCourse() {
 
         List<WebElement> freeCourseNonSubscribed = driver.findElements ( xpath ( "//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]/following::*[@class=\"ant-typography all-courses-free-text css-xu9wm8\"]" ) );
-        Set<String> uniquesFreeCourseNonSubscribed = new HashSet<> ();
 
         //Printing The Total Number Of Elements Present For Free
         System.out.println ( "Total number of Courses found In The Free Course which Not Subscribed:" + freeCourseNonSubscribed.size () );

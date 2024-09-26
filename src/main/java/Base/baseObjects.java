@@ -1,7 +1,7 @@
 package Base;
 
-import AllCourse.*;
 import MainPages.Loginpage;
+import MyCourse.myCourseModule;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -90,17 +90,11 @@ public class baseObjects {
 //        Menu_Hireus hireUs = new Menu_Hireus ( driver );
 //        hireUs.Hireus ();
 //
-//        // My Course
-//        myCourse Mycourse = new myCourse ( driver );
-//        Mycourse.myCourseClicking ();
+        // My Course
+        myCourseModule Mycourse = new myCourseModule ( driver );
+        Mycourse.myCourseClicking ();
 //
-//        // My Course > Performing Action In The My Course
-//        myCourse actionInMyCourse = new myCourse ( driver );
-//        actionInMyCourse.performingActionInMyCourse ();
-//
-//        //My Course Filters
-//        MyCourse_Filters filter = new MyCourse_Filters ( driver );
-//        filter.Filter ();
+
 //
 //        // Course Path
 //        CoursePath path = new CoursePath ( driver );
@@ -133,10 +127,6 @@ public class baseObjects {
 //        //Course Ebooks
 //        CourseEbooks ebooks = new CourseEbooks ( driver );
 //        ebooks.Ebooks ();
-//
-//        // Course > FreeTab
-//        courseFreeTab freetab = new courseFreeTab ( driver );
-//        freetab.freeTab ();
 //
 //        //Course Doubts
 //        CourseDoubts doubt = new CourseDoubts ( driver );
@@ -182,9 +172,9 @@ public class baseObjects {
 //        Mypoints myPointsInDoubts = new Mypoints ( driver );
 //        myPointsInDoubts.myPoints ();
 
-        // All Course Tab In Home Feeds
-        allCourseTabAndFeed allcourse = new allCourseTabAndFeed ( driver );
-        allcourse.allCourse ();
+//        // All Course Tab In Home Feeds
+//        allCourseTabAndFeed allcourse = new allCourseTabAndFeed ( driver );
+//        allcourse.allCourse ();
 
 //        //Clicking The Inside The All Course List Page
 //        allCourseBase courseclick = new allCourseBase ( driver );

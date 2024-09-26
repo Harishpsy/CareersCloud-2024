@@ -276,7 +276,7 @@ public class CourseVideos {
             System.out.println ( "Video Is Not Showing In The My Notes" );
         }
         // Clicking My Course Button In the Header
-        myCourse Mycourse = new myCourse ( driver );
+        myCourseModule Mycourse = new myCourseModule ( driver );
         Mycourse.myCourseClicking ();
 
     }

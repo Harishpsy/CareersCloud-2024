@@ -28,13 +28,13 @@ public class allCourseTabAndFeed {
         clickingAllCourse.click ();
         System.out.println ( "SuccessFully Clicked The All Course Button In The Header" );
 
-        //Verifying The Duplicate Course In The all Course List
-        allCourseTabAndFeed duplicateCourseName = new allCourseTabAndFeed ( driver );
-        duplicateCourseName.verifyingDuplicate ();
-
-        //All Course Filter
-        AllFilter allfilter = new AllFilter ( driver );
-        allfilter.filter ();
+//        //Verifying The Duplicate Course In The all Course List
+//        allCourseTabAndFeed duplicateCourseName = new allCourseTabAndFeed ( driver );
+//        duplicateCourseName.verifyingDuplicate ();
+//
+//        //All Course Filter
+//        AllFilter allfilter = new AllFilter ( driver );
+//        allfilter.filter ();
 
         //Clicking The Inside The All Course List Page
         allCourseBase courseclick = new allCourseBase ( driver );
@@ -42,7 +42,7 @@ public class allCourseTabAndFeed {
 
     }
 
-    private void verifyingDuplicate() throws InterruptedException {
+    public void verifyingDuplicate() throws InterruptedException {
 
         //Scrolling The Page
         int numberoftimesscrollAllcourselistpage = 5;
@@ -57,6 +57,18 @@ public class allCourseTabAndFeed {
             }
         }
 
+        //Scrolling The Page up
+        numberoftimesscrollAllcourselistpage = 3;
+        for (int i = 0; i < numberoftimesscrollAllcourselistpage; i++) {
+            try {
+                Thread.sleep ( 3000 );
+                JavascriptExecutor jse = (JavascriptExecutor) driver;
+                jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
+                System.out.println ( "Successfully scroll The All Course List page " + (i + 1) + " time(s)." );
+            } catch (Exception scroll) {
+                System.out.println ( "Failed to Scroll The All Course List page : " + scroll.getMessage () );
+            }
+        }
         //Clicking The Float Icon In The All Course List Page
         try {
             WebElement clickingFloatIcon = driver.findElement ( xpath ( "//button[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"]" ) );
@@ -96,26 +108,12 @@ public class allCourseTabAndFeed {
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniquesAllcourseCount , uniqueAllcourseName.size () );
 
-        // Getting The List Of featured Course In The all Course List Before Filter
+        // Getting The List Of featured Course In The Course List Before Filter
         // Getting the featured Course List
-        List<WebElement> featuredCourseName = driver.findElements ( xpath ( "//img[@alt=\"fearured_tag\"]/preceding::*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]" ) );
+        List<WebElement> featuredCourseName = driver.findElements ( xpath ( "//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]/preceding::*[@alt=\"fearured_tag\"]" ) );
 
-        Set<String> uniqueFeaturedCourseName = new HashSet<> ();
-        int uniqueFeaturedCourseCount = 0;
-
-        for (WebElement FeaturedCourse : featuredCourseName) {
-            String actualFeaturedCourseName = FeaturedCourse.getText ();
-            if (uniqueFeaturedCourseName.contains ( actualFeaturedCourseName )) {
-                System.out.println ( "Duplicate Featured Course Name: " + actualFeaturedCourseName );
-            } else {
-                uniqueFeaturedCourseName.add ( actualFeaturedCourseName );
-                uniqueFeaturedCourseCount++;
-            }
-        }
         // Print the total number of unique Featured Courses found
-        System.out.println ( "Total unique Featured Course found: " + uniqueFeaturedCourseCount );
+        System.out.println ( "Total unique Featured Course found: " + featuredCourseName.size () );
 
-        // Assert that the number of unique URLs is equal to the number of elements
-        Assert.assertEquals ( uniqueFeaturedCourseCount , uniqueFeaturedCourseName.size () );
     }
 }

@@ -28,20 +28,30 @@ public class courseFreeTab {
 
     public void freeTab() throws InterruptedException {
 
-        // Clicking The Course Card In The My Course Page
-        WebElement clickingCourseCard = driver.findElement ( By.xpath ( "(//*[@class=\"my-courses-banner-image\"])[2]" ) );
+        // Clicking Free Tab In the all course list page
+        try {
+            WebElement clickingFreeTab = driver.findElement ( By.xpath ( "//*[text()='Free']" ) );
 
-        clickingCourseCard = driver.findElement ( By.xpath ( "(//*[@class=\"my-courses-banner-image\"])[2]" ) );
-        clickingCourseCard.click ();
-        System.out.println ( "Successfully Clicked The Course card " );
+            if (clickingFreeTab.isSelected ()) {
+                System.out.println ( "Free Tab Is Already Selected, We Are Performing The Below Actions In The Free Tab List Page" );
+            } else if (clickingFreeTab.isDisplayed ()) {
+                clickingFreeTab = driver.findElement ( By.xpath ( "//*[text()='Free']" ) );
+                clickingFreeTab.click ();
+                System.out.println ( "Successfully Clicked The Free Tab, And Performing The action In The " );
+            } else {
+                System.out.println ( "Both The Code Has Not Executed In The All Course Free Tab" );
+            }
 
-        //clicking The Free Tab In The Course List Page
-        WebElement clickingFreeTab = driver.findElement ( By.xpath ( "//*[text()='Free']" ) );
-        clickingFreeTab.click ();
-        System.out.println ( "SuccessFully Clicked The Free Tab In The Course List Page" );
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Error In The All Course Free Tab: " + e.getMessage () );
+        }
+        /* Creating An Free Tab > Article Object, We Are Calling Article Sub-Module */
+        courseFreeTab article = new courseFreeTab ( driver );
+        article.artilces ();
 
-//        courseFreeTab article = new courseFreeTab (driver);
-//        article.artilces ();
+        /* Creating An Free Tab > Ebook Object, We Are Calling Ebook Module */
+        courseFreeTab ebook = new courseFreeTab ( driver );
+        ebook.Ebooks ();
 //
 //        courseFreeTab videos = new courseFreeTab ( driver );
 //        videos.videos ();
@@ -58,8 +68,6 @@ public class courseFreeTab {
 //        courseFreeTab solutionquiz = new courseFreeTab ( driver );
 //        solutionquiz.quizSolutions ();
 
-        courseFreeTab ebook = new courseFreeTab ( driver );
-        ebook.Ebooks ();
 
     }
 
@@ -69,7 +77,6 @@ public class courseFreeTab {
 
         // Check if noRecordFound element is displayed and log the result
         Thread.sleep ( 5000 );
-
 
         boolean ArticleDisplayed = false;
 

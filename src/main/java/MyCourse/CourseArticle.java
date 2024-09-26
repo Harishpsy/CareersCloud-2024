@@ -230,7 +230,7 @@ public class CourseArticle {
         }
 
         // Clicking My Course Button In the Header
-        myCourse Mycourse = new myCourse ( driver );
+        myCourseModule Mycourse = new myCourseModule ( driver );
         Mycourse.myCourseClicking ();
 
     }

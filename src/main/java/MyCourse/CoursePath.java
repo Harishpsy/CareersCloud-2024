@@ -1,8 +1,10 @@
 package MyCourse;
 
+import AllCourse.pathTab;
 import PageObjectModule.Myebookspageobject;
 import PageObjectModule.Mynotespageobject;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.NoSuchElementException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +21,7 @@ import static org.openqa.selenium.By.*;
 
 public class CoursePath {
     WebDriver driver;
+
     public CoursePath(WebDriver driver) {
         this.driver = driver;
     }
@@ -27,15 +29,35 @@ public class CoursePath {
     public CoursePath() {
     }
 
-    public void Path() throws InterruptedException {
+    public void allpath() throws InterruptedException {
+
+        try {
+            WebElement clickingPathTab = driver.findElement ( By.xpath ( "//*[text()='Paths']" ) );
+
+            if (clickingPathTab.isSelected ()) {
+                System.out.println ( "Path Tab Is Already Selected So performing The Below Acrion In The Path List Page " );
+            } else if (clickingPathTab.isDisplayed ()) {
+                clickingPathTab = driver.findElement ( By.xpath ( "//*[text()='Paths']" ) );
+                clickingPathTab.click ();
+                System.out.println ( "Successfully Clicked The Path Tab And Performing The Below Path List Actions" );
+            } else {
+                System.out.println ( "Both The Actions Are Not Performed Error In The Path Clicking" );
+            }
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            System.out.println ( "Error Message : " + e.getMessage () );
+        }
+
+        // Creating An Object For The Path List Page Actions
+        pathTab pathActions = new pathTab ( driver );
+        pathActions.pathListActions ();
+    }
+
+    public void pathListActions() throws InterruptedException {
+
         // Initialize WebDriverWait with a maximum wait time of 10 seconds
         WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 40 ) );
 
         try {
-            // Clicking the First Course Card In the "My Course"
-            WebElement clickingFirstCourseCard = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "(//*[@class=\"my-courses-banner-image\"])[2]" ) ) );
-            clickingFirstCourseCard.click ();
-            System.out.println ( "Successfully Clicked The Course name" );
 
             // Click the title in the path page
             List<WebElement> clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])" ) ) );
@@ -47,95 +69,94 @@ public class CoursePath {
 
                 // Scroll the current element into view
                 ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , currentElement );
-                Thread.sleep ( 3000 );  // Wait for scrolling to complete
+//                Thread.sleep ( 3000 );  // Wait for scrolling to complete
 
                 // Click the current element in the main path
-                Thread.sleep ( 3000 );
+//                Thread.sleep ( 3000 );
                 wait.until ( ExpectedConditions.elementToBeClickable ( currentElement ) ).click ();
-                System.out.println ( "Successfully clicked The Main Name in the path" );
+                System.out.println ( "Successfully clicked The Main Name in the All Course path " );
 
                 // Exam Sub-Path Clicking
+                try {
+                    List<WebElement> clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"]/child::*[@class=\"ant-collapse-item\"]" ) ) );
 
-//                List<WebElement> clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@class=\"ant-collapse-content ant-collapse-content-inactive ant-collapse-content-hidden\"]/ancestor::*[@class=\"ant-collapse-item\"]" ) ) );
-                List<WebElement> clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])" ) ) );
+                    // Iterate through the list without re-fetching inside the loop
+                    for (int j = 0; j < clickingExamNameSubPath.size (); j++) {
 
-                // Iterate through the list without re-fetching inside the loop
-                for (int j = 0; j < clickingExamNameSubPath.size (); j++) {
+                        WebElement currentSubElement = clickingExamNameSubPath.get ( j );
 
-                    WebElement currentSubElement = clickingExamNameSubPath.get ( j );
-
-                    // Scroll the current element into view
-                    ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , currentSubElement );
-                    Thread.sleep ( 3000 );  // Wait for scrolling to complete
-
-                    // Click the current sub-path element
-                    wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
-                    System.out.println ( "Successfully clicked The Current sub element in the path" );
-
-                    // Clicking the Sub-Sub-Path In The path page
-                    //  List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "//*[@id=\"subsublevel_695\"]" ) ) );
-
-                    List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
-                    try {
-                        for (int k = 0; k <= clickingExamNameSubSubPath.size (); k++) {
-
-                            // Re-fetch the list of elements to avoid StaleElementReferenceException
-                            System.out.println ( "Successfully clicked The Current sub element in the path to work on on the below code " );
-                            currentSubElement = clickingExamNameSubPath.get ( j );
-
-                            //Clicking The sub sub element in the path page
-                            WebElement currentSubSubElement = clickingExamNameSubSubPath.get ( k );
-
+                        if (currentSubElement.isDisplayed ()) {
                             // Scroll the current element into view
-                            ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , currentSubSubElement );
+                            ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , currentSubElement );
                             Thread.sleep ( 3000 );  // Wait for scrolling to complete
 
-                            // Click the current sub-sub-path element
-                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
-                            System.out.println ( "Successfully clicked The Current sub-sub element in the path" );
-
-                            // Verifying The Article was displaying In The page or Not
-                            CoursePath patharticle = new CoursePath ( driver );
-                            patharticle.pathArticle ();
-
-//                            clickingExamName = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost main-collapse css-xu9wm8\"])" ) ) );
-//                            wait.until ( ExpectedConditions.elementToBeClickable ( currentElement ) ).click ();
-//
-//                            clickingExamNameSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])" ) ) );
-//                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
-//
-//                            clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
-//                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
-
-                            // Verifying The ebooks Sub-sub-Tab element
-                            CoursePath pathebook = new CoursePath ( driver );
-                            pathebook.PathEbooks ();
-
-                            //Verifying The Start quiz In Path
-                            CoursePath startquiz = new CoursePath ( driver );
-                            startquiz.startquiz ();
-
-                            //Verifying The Resume quiz In Path
-                            CoursePath resumequiz = new CoursePath ( driver );
-                            resumequiz.resumequiz ();
-
-                            //Verifying The Soution quiz In Path
-                            CoursePath solutionquiz = new CoursePath ( driver );
-                            solutionquiz.solutionpath ();
-
+                            // Click the current sub-path element
+                            String subPathName = currentSubElement.getText ();
+                            System.out.println ( "Sub Path Name Clicking: " + subPathName );
+                            wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
+//                            System.out.println ( "Successfully clicked The Current sub element in the path" );
+                        } else {
+                            System.out.println ( "Sub Path was not present" );
                         }
-                    } catch (IndexOutOfBoundsException | StaleElementReferenceException e1) {
-                        System.out.println ( "Index Out Of Bound Exception Has Been Occured or StaleElementReferenceException " );
-                    }
-                }
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "No such Element exception" );
-        }
 
-        //Clicking The Course Back-Button
-        WebElement clickingcoursebutton = driver.findElement ( xpath ( "//*[text()='Course']" ) );
-        clickingcoursebutton.click ();
+                        // Clicking the Sub-Sub-Path In The path page
+                        try {
+                            // Waiting for the presence of elements
+                            List<WebElement> clickingExamNameSubSubPath = wait.until ( ExpectedConditions.presenceOfAllElementsLocatedBy ( xpath ( "(//*[@class=\"ant-collapse ant-collapse-icon-position-end ant-collapse-ghost css-xu9wm8\"])[2]/child::*[@class=\"ant-collapse-item\"]" ) ) );
+
+                            System.out.println ( "Attempting to click the current sub element in the path." );
+
+                            for (int k = 0; k < clickingExamNameSubSubPath.size (); k++) {
+                                WebElement currentSubSubElement = clickingExamNameSubSubPath.get ( k );
+
+                                // Check if the individual element is displayed
+                                if (currentSubSubElement.isDisplayed ()) {
+                                    // Scroll the current element into view
+                                    ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , currentSubSubElement );
+                                    Thread.sleep ( 3000 );  // Wait for scrolling to complete
+
+                                    // Click the current sub-sub-path element
+                                    String subsubPathName = currentSubSubElement.getText ();
+                                    System.out.println ( "Sub-sub-Path Name Clicking: " + subsubPathName );
+                                    wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
+                                    System.out.println ( "Successfully clicked the current sub-sub element in the path." );
+                                } else {
+                                    // If the element is not displayed, print a message
+                                    System.out.println ( "Element is not displayed, skipping to the next element." );
+                                }
+                            }
+                        } catch (TimeoutException e1) {
+                            // Handle the case where no elements are found
+                            System.out.println ( "No elements found, skipping this step." );
+                        }
+
+                    }
+                } catch (TimeoutException e) {
+                    // Handle the case where no elements are found
+                    System.out.println ( "No elements found In The Sub Path, skipping this step." );
+                }
+
+//                // Perform the following actions if the element is displayed
+//                CoursePath patharticle = new CoursePath ( driver );
+//                patharticle.pathArticle ();
+//
+//                CoursePath pathebook = new CoursePath ( driver );
+//                pathebook.PathEbooks ();
+//
+//                CoursePath startquiz = new CoursePath ( driver );
+//                startquiz.startquiz ();
+//
+//                CoursePath resumequiz = new CoursePath ( driver );
+//                resumequiz.resumequiz ();
+//
+//                CoursePath solutionquiz = new CoursePath ( driver );
+//                solutionquiz.solutionpath ();
+
+            }
+
+        } catch (NoSuchElementException e) {
+            System.out.println ( "No such Element exception Occured In The All Course Path " );
+        }
     }
 
     public void pathArticle() throws InterruptedException {

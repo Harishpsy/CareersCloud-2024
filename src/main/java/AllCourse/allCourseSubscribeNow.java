@@ -90,26 +90,38 @@ public class allCourseSubscribeNow {
                 closeIcon.click ();
                 System.out.println ( "Successfully Clicked The Close Icon" );
 
-//            // Clicking The Continue Button In The Payment Popup
-//            driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
-//            WebElement clickingCotinueButton = driver.findElement (By.xpath ( "//button[@class=\"ant-btn css-xu9wm8 ant-btn-default\"]" ));
-//            clickingCotinueButton.click ();
+//                // Clicking The Continue Button In The Payment Popup
+//                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
+//                WebElement clickingCotinueButton = driver.findElement ( By.xpath ( "//button[@class=\"ant-btn css-xu9wm8 ant-btn-default\"]" ) );
+//                clickingCotinueButton.click ();
 //
-//            //Clicking The close Icon In The Razorpay Popup
-//            Thread.sleep ( 10000 );
-//            driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 10 ) );
-//            WebElement clickingcloseicon = driver.findElement ( By.xpath ( "(//*[@class=\"inline-flex h-4 items-center *:h-full \"])[3]" ) );
-//            clickingcloseicon.click ();
+//                Thread.sleep ( 5000 );
+////                WebElement outerIFrame = driver.findElement ( By.xpath ( "//iframe[@cd_frame_id_=\"3542d870cdf5bc4cc985e665d276f45b\"]" ) );
+////                driver.switchTo ().frame (outerIFrame);
 //
-//            //Clicking The Exit Button In The RazorPay Popup
-//            driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 3 ) );
-//            WebElement clickingExit = driver.findElement ( By.xpath ( "//*[@data-testid=\"confirm-positive\"]" ) );
-//            clickingExit.click ();
+//                WebElement innerIFrame = driver.findElement ( By.xpath ( "//*[@id=\"scroll-container\"]" ) );
+//                driver.switchTo ().frame (innerIFrame);
 //
-//            //Clicking The Dismiss Button In The Payment Cancelled Popup
-//            driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 3 ) );
-//            WebElement clickingDismissButton = driver.findElement (By.xpath ( "//*[text()='Dismiss']" ));
-//            clickingDismissButton.click ();
+//                // Getting Text
+//                WebElement text = driver.findElement ( By.xpath ( "data-testid=\"title\"" ) );
+//                String title = text.getText ();
+//                System.out.println ("Title:" + title);
+
+//                //Clicking The close Icon In The Razorpay Popup
+//                Thread.sleep ( 10000 );
+//                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 10 ) );
+//                WebElement clickingcloseicon = driver.findElement ( By.xpath ( "(//*[@class=\"inline-flex h-4 items-center *:h-full \"])[3]" ) );
+//                clickingcloseicon.click ();
+//
+//                //Clicking The Exit Button In The RazorPay Popup
+//                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 3 ) );
+//                WebElement clickingExit = driver.findElement ( By.xpath ( "//*[@data-testid=\"confirm-positive\"]" ) );
+//                clickingExit.click ();
+//
+//                //Clicking The Dismiss Button In The Payment Cancelled Popup
+//                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 3 ) );
+//                WebElement clickingDismissButton = driver.findElement ( By.xpath ( "//*[text()='Dismiss']" ) );
+//                clickingDismissButton.click ();
 
             } else if (unsubscribeButtonDispayed) {
                 System.out.println ( "Unsubscribed Button Is displayed,So It Is An Free Course So Popup Won't Display, It Get Subscribe Automatically without Payment" );

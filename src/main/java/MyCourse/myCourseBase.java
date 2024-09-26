@@ -1,20 +1,21 @@
-package AllCourse;
+package MyCourse;
 
 import org.openqa.selenium.*;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class allCourseBase {
+public class myCourseBase {
+    WebDriver driver;
 
-    public WebDriver driver;
-
-    public allCourseBase(WebDriver driver) {
+    public myCourseBase(WebDriver driver) {
         this.driver = driver;
     }
 
+    @Test
     public void courseClicking() throws InterruptedException {
 
-        //Opening All The course In The All Course List Page and click the back button or Course Breadcrumbs Making This In Loop
+        //Opening All The course In The Course List Page and click the back button or Course Breadcrumbs Making This In Loop
 
         // Initial delay to allow the page to load fully
         Thread.sleep ( 5000 );
@@ -22,7 +23,7 @@ public class allCourseBase {
         // Counter to track total elements clicked
         int totalElementsClicked = 0;
 
-        // Infinite loop, will break once all elements are processed or after one click
+        /* Infinite loop will break once all elements are processed or after one will click */
         while (true) {
             // Fetch the current list of elements (including newly loaded ones)
             List<WebElement> clickingCourse = driver.findElements ( By.xpath ( "(//*[@class='ant-typography all-courses-card-title css-xu9wm8'])" ) );
@@ -53,27 +54,25 @@ public class allCourseBase {
 
                     // Log the text of the element
                     String elementText = courseElement.getText ();
-                    System.out.println ( "Course Name Before Clicking: " + elementText );
+                    System.out.println ( "Course Name WHich Has Been Clicked: " + elementText );
 
                     // Click the element
                     courseElement.click ();
                     Thread.sleep ( 3000 );  // Wait for page navigation
 
-                    // **Re-initialize the subscribeNow object to handle dynamic page reloading**
-                    allCourseSubscribeNow subscribeNow = new allCourseSubscribeNow ( driver );
-                    subscribeNow.subscribeNowButton ();  // Perform the subscription action
+                    // Creating An Object And Performing The Actions Of The Sub-Modules
 
-//                    // Perform actions on details page
-//                    detailsTab detailsPage = new detailsTab ( driver );
-//                    detailsPage.details ();
-//
-//                    /* Perform actions on path tab */
-//                    pathTab path = new pathTab ( driver );
-//                    path.allpath ();
-//
-//                    // Perform actions on free tab
-//                    freeTab freeTab = new freeTab ( driver );
-//                    freeTab.free ();
+                    /* Perform actions on path tab */
+                    CoursePath path = new CoursePath ( driver );
+                    path.allpath ();
+
+                    /* Calling The Free Tab Sub-Module Inside The Base */
+                    courseFreeTab freetab = new courseFreeTab ( driver );
+                    freetab.freeTab ();
+
+                    /* Perform actions on details page */
+                    CourseDetails detailsPage = new CourseDetails ( driver );
+                    detailsPage.details ();
 
                     // Go back to the course list using breadcrumb (if available)
                     try {
@@ -99,21 +98,20 @@ public class allCourseBase {
                 }
             }
 
-//            // **Scroll the page to load more elements**
-//            try {
-//                ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
-//                Thread.sleep ( 3000 ); // Wait for new elements to load
-//
-//                // Re-initialize the subscribeNow object after scrolling
-//                allCourseSubscribeNow subscribeNowAfterScroll = new allCourseSubscribeNow ( driver );
-//                System.out.println ( "Re-initialized subscribeNow after scrolling." );
-//            } catch (Exception e) {
-//                System.out.println ( "An error occurred while scrolling: " + e.getMessage () );
-//            }
+            // **Scroll the page to load more elements**
+            try {
+                ((JavascriptExecutor) driver).executeScript ( "window.scrollBy(0,document.body.scrollHeight)" );
+                Thread.sleep ( 3000 ); // Wait for new elements to load
+            } catch (Exception e) {
+                System.out.println ( "An error occurred while scrolling: " + e.getMessage () );
+            }
 
             // Break out of the outer loop as well after clicking one element
             break;  // <<< OUTER LOOP BREAK: Remove this to process all elements after scrolling
         }
 
     }
+
 }
+
+
