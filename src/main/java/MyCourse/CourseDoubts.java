@@ -19,17 +19,22 @@ public class CourseDoubts {
     }
     public void Doubts() throws InterruptedException, AWTException {
 
-        // Clicking The First Course Card In the My Course
-        Thread.sleep ( 3000 );
-        WebElement clickingFirstCourseCard = driver.findElement ( xpath ( "(//*[@class=\"ant-card-body\"])[1]" ) );
-        clickingFirstCourseCard.click ();
+        // Verifying The Doubts' Sub-Module Was Displaying, if Display Perform The Below Action
+        try {
+            WebElement clickingDoubts = driver.findElement ( xpath ( "(//*[text()='Doubts'])[2]" ) );
 
-        // Clicking the Doubts Tab
-        Thread.sleep ( 5000 );
-        // WebElement clickingDoubts = driver.findElement ( xpath ( "//*[@id=\"rc-tabs-8-tab-8\"]" ) );
-        WebElement clickingDoubts = driver.findElement ( xpath ( "(//*[text()='Doubts'])[2]" ) );
-        clickingDoubts.click ();
-        System.out.println ( "Successfully Clicked The Doubt Tab Inside The Course" );
+            if (clickingDoubts.isSelected ()) {
+                System.out.println ( "Doubts Tab Is Already Selected, We Are Performing The Below Actions In The Doubts Tab List Page" );
+            } else if (clickingDoubts.isDisplayed ()) {
+                clickingDoubts = driver.findElement ( xpath ( "(//*[text()='Doubts'])[2]" ) );
+                clickingDoubts.click ();
+                System.out.println ( "Successfully Clicked The Doubts Tab, And Performing The action In The List Page" );
+            } else {
+                System.out.println ( "Both The Code Has Not Executed In The Course Doubts Tab" );
+            }
+        } catch (java.util.NoSuchElementException e) {
+            System.out.println ( "Doubts Tab Is Not Present In The Current Course" );
+        }
 
         // Scrolling the doubt page
         int numberoftimesscroll = 5;
@@ -59,18 +64,18 @@ public class CourseDoubts {
             }
         }
 
-//        // Clicking Float Icon
-//            try {
-//                WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-content\"]" ) );
-//                if (clickingFloatIcon.isDisplayed ()) {
-//                    Thread.sleep ( 5000 );
-//                    clickingFloatIcon.click ();
-//                } else {
-//                    System.out.println ( "Float Icon Is Not Displayed" );
-//                }
-//            } catch (NoSuchElementException e) {
-//                System.out.println ( "FloatIcon Button Is Not Displayed" );
-//            }
+        // Clicking Float Icon
+        try {
+            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-content\"]" ) );
+            if (clickingFloatIcon.isDisplayed ()) {
+                Thread.sleep ( 5000 );
+                clickingFloatIcon.click ();
+            } else {
+                System.out.println ( "Float Icon Is Not Displayed" );
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println ( "FloatIcon Button Is Not Displayed" );
+        }
 
         /* Clicking the image in the doubt if the image is not there then skip it */
         Thread.sleep ( 5000 );

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -28,16 +29,22 @@ public class CourseQuizzes extends Mynotespageobject {
 
     public void Quizzes() throws InterruptedException {
 
-        // Clicking The Course In the My Course
-        Thread.sleep ( 3000 );
-        WebElement clickingCourseCard = driver.findElement ( xpath ( "(//*[@class=\"ant-card-body\"])[9]" ) );
-        clickingCourseCard.click ();
+        // Verifying The Quizzes Sub-Module Was Displaying, if Display Perform The Below Action
+        try {
+            WebElement clickingQuizzes = driver.findElement ( xpath ( "//div[text()='Quizzes']" ) );
 
-        // Clicking The Quizzes In The Course
-        Thread.sleep ( 3000 );
-        WebElement clickingQuizzes = driver.findElement ( xpath ( "//div[text()='Quizzes']" ) );
-        clickingQuizzes.click ();
-
+            if (clickingQuizzes.isSelected ()) {
+                System.out.println ( "Quizzes Tab Is Already Selected, We Are Performing The Below Actions In The Quizzes Tab List Page" );
+            } else if (clickingQuizzes.isDisplayed ()) {
+                clickingQuizzes = driver.findElement ( xpath ( "//div[text()='Quizzes']" ) );
+                clickingQuizzes.click ();
+                System.out.println ( "Successfully Clicked The Quizzes Tab, And Performing The action In The List Page" );
+            } else {
+                System.out.println ( "Both The Code Has Not Executed In The Course Quizzes Tab" );
+            }
+        } catch (java.util.NoSuchElementException e) {
+            System.out.println ( "Quizzes Tab Is Not Present In The Current Course" );
+        }
 
         // Scrolling The Quizzes List Page to verify data
         int numberOfTimesScrollQuizzes = 10;
@@ -63,7 +70,7 @@ public class CourseQuizzes extends Mynotespageobject {
             System.out.println ( "FloatIcon Button Is Not Displayed" );
         }
 
-        // Verifying the Quiz List was getting duplicating using the unique videos Url
+        // Verifying the Quiz List was getting duplicating using the unique Names
         List<WebElement> quizTitle = driver.findElements ( xpath ( "//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]" ) );
 
         // Create a set to store unique Ebook Titles
@@ -100,8 +107,30 @@ public class CourseQuizzes extends Mynotespageobject {
         //Performing The Solutions Action
         CourseQuizzes solutionquiz = new CourseQuizzes ( driver );
         solutionquiz.quizSolution ();
+
+        // Course > Quizzes > Sub-Sub Tabs
+        CourseQuizzes subSubTabs = new CourseQuizzes ( driver );
+        subSubTabs.quizSubSubTab ();
     }
 
+    @Test
+    public void quizSubSubTab() throws InterruptedException {
+
+        // Course quiz > Paused Sub-Sub Tab
+        CourseQuizzesPausedTab paused = new CourseQuizzesPausedTab ( driver );
+        paused.pausedTab ();
+
+        // Course Quiz > Unattempted Sub-Sub Tab
+        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
+        unattempt.unAttempted ();
+
+        // Course Quiz > Attempted Sub-Sub Tab
+        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
+        attempted.attemptedTab ();
+
+    }
+
+    @Test
     public void quizStart() throws InterruptedException {
 
         // Check if elements are displayed and log the results
@@ -336,6 +365,7 @@ public class CourseQuizzes extends Mynotespageobject {
         }
     }
 
+    @Test
     public void resumeQuiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -541,6 +571,7 @@ public class CourseQuizzes extends Mynotespageobject {
 
     }
 
+    @Test
     public void quizSolution() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -927,10 +958,6 @@ public class CourseQuizzes extends Mynotespageobject {
             Thread.sleep ( 3000 );
             WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
             clickingCancel.click ();
-
-//            // Clicking The report Button
-//            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
-//            clickingReport.click ();
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );

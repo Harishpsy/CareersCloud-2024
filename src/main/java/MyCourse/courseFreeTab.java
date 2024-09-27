@@ -45,6 +45,7 @@ public class courseFreeTab {
         } catch (NoSuchElementException e) {
             System.out.println ( "Error In The All Course Free Tab: " + e.getMessage () );
         }
+
         /* Creating An Free Tab > Article Object, We Are Calling Article Sub-Module */
         courseFreeTab article = new courseFreeTab ( driver );
         article.artilces ();

@@ -21,16 +21,22 @@ public class CourseEbooks {
 
     public void Ebooks() throws InterruptedException {
 
-        // Clicking The Course Card In the My Course
-        Thread.sleep (3000);
-        WebElement clickingCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[2]"));
-        clickingCourseCard.click ();
+        // Verifying The Ebooks Sub-Module Was Displaying, if Display Perform The Below Action
+        try {
+            WebElement clickingEbooksTab = driver.findElement ( xpath ( "//*[text()='Ebooks']" ) );
 
-        // Clicking the Ebooks
-        Thread.sleep (3000);
-        WebElement clickingEbooksTab = driver.findElement (xpath ("//*[text()='Ebooks']"));
-        clickingEbooksTab.click ();
-        System.out.println ( "Successfully Clicked The Ebook Tab Inside The Course" );
+            if (clickingEbooksTab.isSelected ()) {
+                System.out.println ( "Ebooks Tab Is Already Selected, We Are Performing The Below Actions In The Ebooks Tab List Page" );
+            } else if (clickingEbooksTab.isDisplayed ()) {
+                clickingEbooksTab = driver.findElement ( xpath ( "//*[text()='Ebooks']" ) );
+                clickingEbooksTab.click ();
+                System.out.println ( "Successfully Clicked The Ebooks Tab, And Performing The action In The List Page" );
+            } else {
+                System.out.println ( "Both The Code Has Not Executed In The Course Ebooks Tab" );
+            }
+        } catch (java.util.NoSuchElementException e) {
+            System.out.println ( "Ebooks Tab Is Not Present In The Current Course" );
+        }
 
         // Scrolling The page In the ebook list page
         int numberOfTimesScrollEbooks = 5;

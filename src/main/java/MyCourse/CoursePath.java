@@ -73,8 +73,11 @@ public class CoursePath {
 
                 // Click the current element in the main path
 //                Thread.sleep ( 3000 );
+                // Click the current sub-path element
+                String PathName = currentElement.getText ();
+                System.out.println ( "Path Name Clicked : " + PathName );
                 wait.until ( ExpectedConditions.elementToBeClickable ( currentElement ) ).click ();
-                System.out.println ( "Successfully clicked The Main Name in the All Course path " );
+                System.out.println ( "Successfully clicked The Main Name in the Course path " );
 
                 // Exam Sub-Path Clicking
                 try {

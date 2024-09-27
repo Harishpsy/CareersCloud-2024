@@ -7,70 +7,89 @@ import java.util.List;
 
 public class myCourseBase {
     WebDriver driver;
-
     public myCourseBase(WebDriver driver) {
         this.driver = driver;
     }
-
     @Test
     public void courseClicking() throws InterruptedException {
 
-        //Opening All The course In The Course List Page and click the back button or Course Breadcrumbs Making This In Loop
+        /*Opening All The course In The Course List Page and click the back button or Course Breadcrumbs Making This InLoop Initial delay to allow the page to load fully*/
 
-        // Initial delay to allow the page to load fully
         Thread.sleep ( 5000 );
 
-        // Counter to track total elements clicked
+        /* Counter to track total elements clicked */
         int totalElementsClicked = 0;
 
         /* Infinite loop will break once all elements are processed or after one will click */
         while (true) {
-            // Fetch the current list of elements (including newly loaded ones)
+
+            /* Fetch the current list of elements (including newly loaded ones) */
             List<WebElement> clickingCourse = driver.findElements ( By.xpath ( "(//*[@class='ant-typography all-courses-card-title css-xu9wm8'])" ) );
             int totalElements = clickingCourse.size (); // Get the current total number of elements
 
-            // If no new elements are loaded after scrolling, break the loop
+            /* If no new elements are loaded after scrolling, break the loop */
             if (totalElementsClicked >= totalElements) {
                 System.out.println ( "All elements have been processed." );
                 break;
             }
 
-            // Loop through and click the remaining unclicked elements
+            /* Loop through and click the remaining unclicked elements */
             for (int i = totalElementsClicked; i < totalElements; i++) {
+
                 try {
-                    // Refetch the element list before interacting to avoid stale references
+                    /* Refetch the element list before interacting to avoid stale references */
                     clickingCourse = driver.findElements ( By.xpath ( "(//*[@class='ant-typography all-courses-card-title css-xu9wm8'])" ) );
 
-                    // Ensure the index is within bounds to avoid IndexOutOfBoundsException
+                    /* Ensure the index is within bounds to avoid IndexOutOfBoundsException */
                     if (i >= clickingCourse.size ()) {
                         break;
                     }
 
                     WebElement courseElement = clickingCourse.get ( i );
 
-                    // Ensure the element is visible and interactable
+                    /* Ensure the element is visible and interactable */
                     ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , courseElement );
                     Thread.sleep ( 2000 ); // Allow some time for the scroll
 
-                    // Log the text of the element
+                    /* Log the text of the element */
                     String elementText = courseElement.getText ();
                     System.out.println ( "Course Name WHich Has Been Clicked: " + elementText );
 
-                    // Click the element
+                    /* Click the Course element */
                     courseElement.click ();
                     Thread.sleep ( 3000 );  // Wait for page navigation
 
-                    // Creating An Object And Performing The Actions Of The Sub-Modules
+                    /* Creating An Object And Performing The Actions Of The Sub-Modules */
 
                     /* Perform actions on path tab */
                     CoursePath path = new CoursePath ( driver );
                     path.allpath ();
 
-                    /* Calling The Free Tab Sub-Module Inside The Base */
+                    /* Creating An Object For The Article Sub Module, Performing The Actions */
+                    CourseArticle article = new CourseArticle ( driver );
+                    article.Article ();
+
+                    /* Creating An Object For The Videos Sub Module, Performing The Actions */
+                    CourseVideos video = new CourseVideos ( driver );
+                    video.videos ();
+
+                    /* Creating An Object For The Quizzes Sub Module, Performing The Actions */
+                    CourseQuizzes quizzes = new CourseQuizzes ( driver );
+                    quizzes.Quizzes ();
+
+                    /* Creating An Object For The Ebooks Sub Module, Performing The Actions */
+                    CourseEbooks ebooks = new CourseEbooks ( driver );
+                    ebooks.Ebooks ();
+
+                    /* Creating An Object For The Doubts Sub Module, Performing The Actions */
+                    CourseDoubts doubt = new CourseDoubts ( driver );
+                    doubt.Doubts ();
+
+                    /* Creating An Object For The Free Sub Module, Performing The Actions */
                     courseFreeTab freetab = new courseFreeTab ( driver );
                     freetab.freeTab ();
 
-                    /* Perform actions on details page */
+                    /* Creating An Object For The Article, Performing The Actions */
                     CourseDetails detailsPage = new CourseDetails ( driver );
                     detailsPage.details ();
 

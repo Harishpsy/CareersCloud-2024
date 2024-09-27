@@ -22,16 +22,22 @@ public class CourseVideos {
     }
     public void videos() throws InterruptedException {
 
-        // Clicking The Ninth Course Card In the My Course
-        Thread.sleep (3000);
-        WebElement clickingFirstCourseCard = driver.findElement (xpath ("(//*[@class=\"ant-card-body\"])[9]"));
-        clickingFirstCourseCard.click ();
+        // Verifying The Videos Sub-Module Was Displaying, if Display Perform The Below Action
+        try {
+            WebElement clickingVideoTab = driver.findElement ( xpath ( "//*[text()='Videos']" ) );
 
-        // Clicking The Videos
-        Thread.sleep ( 5000 );
-        WebElement clickingVideoTab = driver.findElement ( xpath ( "//*[text()='Videos']" ) );
-        clickingVideoTab.click ();
-        System.out.println ( "SuccessFully Clicked The Video Tan Inside The Course" );
+            if (clickingVideoTab.isSelected ()) {
+                System.out.println ( "Videos Tab Is Already Selected, We Are Performing The Below Actions In The Videos Tab List Page" );
+            } else if (clickingVideoTab.isDisplayed ()) {
+                clickingVideoTab = driver.findElement ( xpath ( "//*[text()='Videos']" ) );
+                clickingVideoTab.click ();
+                System.out.println ( "Successfully Clicked The Videos Tab, And Performing The action In The List Page" );
+            } else {
+                System.out.println ( "Both The Code Has Not Executed In The Course Videos Tab" );
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Videos Tab Is Not Present In The Current Course" );
+        }
 
         // Scrolling The Videos List Page
         int numberOfTimesScrollVideos = 5;

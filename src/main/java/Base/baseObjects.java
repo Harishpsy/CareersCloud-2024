@@ -93,61 +93,7 @@ public class baseObjects {
         // My Course
         myCourseModule Mycourse = new myCourseModule ( driver );
         Mycourse.myCourseClicking ();
-//
 
-//
-//        // Course Path
-//        CoursePath path = new CoursePath ( driver );
-//        path.Path ();
-//
-//        //Course Article
-//        CourseArticle article = new CourseArticle ( driver );
-//        article.Article ();
-//
-//        //Course Videos
-//        CourseVideos video = new CourseVideos ( driver );
-//        video.videos ();
-//
-////        //Course Quizzes
-////        CourseQuizzes quizzes = new CourseQuizzes ( driver );
-////        quizzes.Quizzes ();
-//
-////        // Course quiz > Paused Tab
-////        CourseQuizzesPausedTab paused = new CourseQuizzesPausedTab ( driver );
-////        paused.pausedTab ();
-////
-////        // Course Quiz > Unattempted
-////        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
-////        unattempt.unAttempted ();
-////
-////        // Course Quiz > Attempted
-////        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
-////        attempted.attemptedTab ();
-//
-//        //Course Ebooks
-//        CourseEbooks ebooks = new CourseEbooks ( driver );
-//        ebooks.Ebooks ();
-//
-//        //Course Doubts
-//        CourseDoubts doubt = new CourseDoubts ( driver );
-//        doubt.Doubts ();
-//
-//        // Course Doubt > My Doubt
-//        CourseDoubts myDoubt = new CourseDoubts ( driver );
-//        myDoubt.MyDoubt ();
-//
-//        // Course Doubt > My Answered
-//        CourseDoubts myAnswer = new CourseDoubts ( driver );
-//        myAnswer.MyAnswered ();
-//
-//        // Course Doubt > Followed
-//        CourseDoubts followed = new CourseDoubts ( driver );
-//        followed.Followed ();
-//
-//        //Course Details
-//        CourseDetails details = new CourseDetails ( driver );
-//        details.Details ();
-//
 //        //Doubts Section
 //        Doubts doubts = new Doubts ( driver );
 //        doubts.doubts ();

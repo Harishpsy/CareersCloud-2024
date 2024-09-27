@@ -12,27 +12,34 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
-
 public class CourseArticle {
     WebDriver driver;
 
     public CourseArticle(WebDriver driver) {
-
         this.driver = driver;
     }
 
     public void Article() throws InterruptedException {
 
-        // Clicking The Eigth Course Card In the My Course
-        Thread.sleep ( 5000 );
-        WebElement clickingFirstCourseCard = driver.findElement ( xpath ( "(//*[@class=\"ant-card-body\"])[8]" ) );
-        clickingFirstCourseCard.click ();
+        // Verifying The Article Sub-Module Was Displaying, if Display Perform The Below Action
+        try {
+            WebElement clickingArticleTab = driver.findElement ( xpath ( "//*[text()='Articles']" ) );
 
-        // Clicking The Article
-        WebElement clickingArticleTab = driver.findElement ( xpath ( "//*[text()='Articles']" ) );
-        clickingArticleTab.click ();
-        System.out.println ( "Successfully Clicked The Article Tab" );
+            if (clickingArticleTab.isSelected ()) {
+                System.out.println ( "Article Tab Is Already Selected, We Are Performing The Below Actions In The Article Tab List Page" );
+            } else if (clickingArticleTab.isDisplayed ()) {
+                clickingArticleTab = driver.findElement ( xpath ( "//*[text()='Articles']" ) );
+                clickingArticleTab.click ();
+                System.out.println ( "Successfully Clicked The Article Tab, And Performing The action In The List Page" );
+            } else {
+                System.out.println ( "Both The Code Has Not Executed In The Course Article Tab" );
+            }
 
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Article Tab Is Not Present In The Current Course" );
+        }
+
+        // needs to write in base
         int numberoftimesscrollarticle = 5;
         for (int i = 0; i < numberoftimesscrollarticle; i++) {
             try {
@@ -55,7 +62,7 @@ public class CourseArticle {
         } catch (NoSuchElementException e) {
             System.out.println ( "FloatIcon Button Is Not Displayed" );
         }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Verifying The list of Articles any one of them was getting Duplicate or Not
 
         // Finding All The elements From the Article components
