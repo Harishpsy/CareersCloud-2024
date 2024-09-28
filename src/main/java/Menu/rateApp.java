@@ -8,11 +8,11 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.xpath;
 
-public class Menu_RateApp {
+public class rateApp {
 
     WebDriver driver;
 
-    public Menu_RateApp(WebDriver driver) {
+    public rateApp(WebDriver driver) {
         this.driver = driver;
     }
 

@@ -16,10 +16,10 @@ import java.util.Set;
 import static PageObjectModule.Myebookspageobject.*;
 import static org.openqa.selenium.By.xpath;
 
-public class Menu_MyEbooks {
+public class myEbooks {
     WebDriver driver;
 
-    public Menu_MyEbooks(WebDriver driver) {
+    public myEbooks(WebDriver driver) {
         this.driver = driver;
     }
 

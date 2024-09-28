@@ -9,11 +9,11 @@ import java.util.Set;
 
 import static PageObjectModule.Hireuspageobject.clickingHireUs;
 
-public class Menu_Hireus {
+public class hireus {
 
     WebDriver driver;
 
-    public Menu_Hireus(WebDriver driver) {
+    public hireus(WebDriver driver) {
 
         this.driver = driver;
 

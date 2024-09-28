@@ -5,16 +5,15 @@ import org.openqa.selenium.*;
 import org.testng.Assert;
 
 import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
-public class CourseDoubts {
+public class doubts {
     WebDriver driver;
-    public CourseDoubts(WebDriver driver) {
+
+    public doubts(WebDriver driver) {
         this.driver = driver;
     }
     public void Doubts() throws InterruptedException, AWTException {
@@ -179,43 +178,71 @@ public class CourseDoubts {
         WebElement Enteringtext = driver.findElement ( id ( "teatx-area-id" ) );
         Enteringtext.sendKeys ( "Thanks" );
 
-        // Clicking the upload Buttton
-        Thread.sleep ( 5000 );
-        WebElement clickingupload = driver.findElement ( xpath ( "//*[@alt=\"upload\"]" ) );
-        clickingupload.click ();
+//        // Clicking the upload Buttton
+//        Thread.sleep ( 5000 );
+//        WebElement clickingupload = driver.findElement ( xpath ( "//*[@alt=\"upload\"]" ) );
+//        clickingupload.click ();
+//
+//        try {
+//            // Locate the file input element (adjust the locator to match your file input element)
+//            WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
+//
+//            // Specify the file path you want to upload (without extra quotes)
+//            String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Pic1.jpg";
+//
+//            // Upload the file by sending the file path to the input field
+//            fileInput.sendKeys(filePath);
+//
+//            // Log success message
+//            System.out.println("Image successfully uploaded.");
+//
+//        } catch (NoSuchElementException e) {
+//            System.out.println("File input element not found: " + e.getMessage());
+//        } catch (Exception e) {
+//            System.out.println("An error occurred during the image upload: " + e.getMessage());
+//        }
 
-        // Uploading Image in the Comment text field
-        Thread.sleep ( 3000 );
-        String file = "\"C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Untitled156.png\"";
-        StringSelection selection = new StringSelection ( file );
-        Toolkit.getDefaultToolkit ().getSystemClipboard ().setContents ( selection , null );
-        System.out.println ( "Sucessfully Uploaded The Image" );
+//        try {
+//            // Short delay to ensure the comment text field is ready
+//            Thread.sleep(2000);
+//
+//            // Define the file path and copy it to the clipboard
+//            String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Untitled156.png";
+//            StringSelection selection = new StringSelection(filePath);
+//            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+//            System.out.println("File path copied to clipboard successfully.");
+//
+//            // Initialize Robot instance for keyboard actions
+//            Robot robot = new Robot();
+//
+//            // Small delay before performing keyboard actions
+//            Thread.sleep(1000);
+//
+//            // Simulate CTRL + V to paste the file path
+//            robot.keyPress(KeyEvent.VK_CONTROL);
+//            robot.keyPress(KeyEvent.VK_V);
+//            robot.keyRelease(KeyEvent.VK_V);
+//            robot.keyRelease(KeyEvent.VK_CONTROL);
+//
+//            // Brief pause before pressing ENTER
+//            Thread.sleep(500);
+//
+//            // Press and release ENTER to confirm upload
+//            robot.keyPress(KeyEvent.VK_ENTER);
+//            robot.keyRelease(KeyEvent.VK_ENTER);
+//
+//            System.out.println("Image uploaded successfully.");
+//
+//        } catch (Exception e) {
+//            System.out.println("An error occurred during the image upload: " + e.getMessage());
+//        }
 
-        // Pressing the keyboard button
-        Robot robot = new Robot ();
 
-        //Pressing The Key
-        Thread.sleep ( 3000 );
-        robot.keyPress ( KeyEvent.VK_CONTROL );
-        robot.keyPress ( KeyEvent.VK_V );
-
-        // Releasing the Key
-        Thread.sleep ( 3000 );
-        robot.keyRelease ( KeyEvent.VK_V );
-        robot.keyRelease ( KeyEvent.VK_CONTROL );
-
-        // Clicking The Enter Key
-        Thread.sleep ( 3000 );
-        robot.keyPress ( KeyEvent.VK_ENTER );
-
-        // Releasing The Enter Key
-        Thread.sleep ( 3000 );
-        robot.keyRelease ( KeyEvent.VK_ENTER );
-
-        // Clicking the Send button
-        Thread.sleep ( 3000 );
-        WebElement clickingSendbutton = driver.findElement ( xpath ( "//*[@alt=\"send_doubts\"]" ) );
-        clickingSendbutton.click ();
+//        // Clicking the Send button
+//        Thread.sleep ( 3000 );
+//        WebElement clickingSendbutton = driver.findElement ( xpath ( "//*[@alt=\"send_doubts\"]" ) );
+//        clickingSendbutton.click ();
+//        System.out.println ("Successfully Clicked The Send Button ");
 
         // Clicking The cancel Icon
         Thread.sleep ( 5000 );
@@ -234,7 +261,7 @@ public class CourseDoubts {
 
         //Clicking the cancel button in the in share popup
         Thread.sleep ( 3000 );
-        WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
+        WebElement Cancel_button = driver.findElement ( xpath ( "//*[text() = 'Cancel']" ) );
         Cancel_button.click ();
 
         // Clicking The three Dots in the doubts
@@ -247,14 +274,14 @@ public class CourseDoubts {
         WebElement clickingReport = driver.findElement ( xpath ( "//*[text()='Report']" ) );
         clickingReport.click ();
 
-        //Click the wrong information radio button
-        Thread.sleep ( 3000 );
-        WebElement Wrong_information_radio_button = driver.findElement ( xpath ( "//span[text()='Wrong Information']" ) );
-        Wrong_information_radio_button.click ();
+//        //Click the wrong information radio button
+//        Thread.sleep ( 3000 );
+//        WebElement Wrong_information_radio_button = driver.findElement ( xpath ( "(//*[text()='Wrong Information'])[2]" ) );
+//        Wrong_information_radio_button.click ();
 
         //Entering the text inside the report text field
         Thread.sleep ( 3000 );
-        WebElement Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
+        WebElement Enter_the_report = driver.findElement ( xpath ( "//*[@name=\"reportDescription\"]" ) );
         Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
 
 //        // Click the report button
@@ -277,38 +304,65 @@ public class CourseDoubts {
         WebElement enteringtext = driver.findElement ( xpath ( "(//*[@class=\"ant-input css-xu9wm8\"])[2]" ) );
         enteringtext.sendKeys ( "Where The Course Is Present ?..." );
 
-        // Clicking the upload Buttton
-        Thread.sleep ( 3000 );
-        clickingupload = driver.findElement ( xpath ( "//*[@alt=\"image_upload\"]" ) );
-        clickingupload.click ();
+//        // Clicking the upload Buttton
+//        Thread.sleep ( 3000 );
+//        clickingupload = driver.findElement ( xpath ( "//*[@alt=\"image_upload\"]" ) );
+//        clickingupload.click ();
 
-        // Uploading Image in the Comment text field
-        Thread.sleep ( 3000 );
-        file = "\"C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Untitled156.png\"";
-        selection = new StringSelection ( file );
-        Toolkit.getDefaultToolkit ().getSystemClipboard ().setContents ( selection , null );
-        System.out.println ( "Sucessfully Uploaded The Image" );
+//        try {
+//            // Short delay to ensure the comment text field is ready
+//            Thread.sleep(2000);
+//
+//            // Define the file path and copy it to the clipboard
+//            String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Untitled156.png";
+//            StringSelection selection = new StringSelection(filePath);
+//            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+//            System.out.println("File path copied to clipboard successfully.");
+//
+//            // Initialize Robot instance for keyboard actions
+//            Robot robot = new Robot();
+//
+//            // Small delay before performing keyboard actions
+//            Thread.sleep(1000);
+//
+//            // Simulate CTRL + V to paste the file path
+//            robot.keyPress(KeyEvent.VK_CONTROL);
+//            robot.keyPress(KeyEvent.VK_V);
+//            robot.keyRelease(KeyEvent.VK_V);
+//            robot.keyRelease(KeyEvent.VK_CONTROL);
+//
+//            // Brief pause before pressing ENTER
+//            Thread.sleep(500);
+//
+//            // Press and release ENTER to confirm upload
+//            robot.keyPress(KeyEvent.VK_ENTER);
+//            robot.keyRelease(KeyEvent.VK_ENTER);
+//
+//            System.out.println("Image uploaded successfully.");
+//
+//        } catch (Exception e) {
+//            System.out.println("An error occurred during the image upload: " + e.getMessage());
+//        }
 
-        // Pressing the keyboard button
-        robot = new Robot ();
+//        try {
+//            // Locate the file input element (adjust the locator to match your file input element)
+//            WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
+//
+//            // Specify the file path you want to upload
+//            String filePath = "\"C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Pic1.jpg\"";
+//
+//            // Upload the file by sending the file path to the input field
+//            fileInput.sendKeys(filePath);
+//
+//            // Log success message
+//            System.out.println("Image successfully uploaded.");
+//
+//        } catch (NoSuchElementException e) {
+//            System.out.println("File input element not found: " + e.getMessage());
+//        } catch (Exception e) {
+//            System.out.println("An error occurred during the image upload: " + e.getMessage());
+//        }
 
-        //Pressing The Key
-        Thread.sleep ( 3000 );
-        robot.keyPress ( KeyEvent.VK_CONTROL );
-        robot.keyPress ( KeyEvent.VK_V );
-
-        // Releasing the Key
-        Thread.sleep ( 3000 );
-        robot.keyRelease ( KeyEvent.VK_V );
-        robot.keyRelease ( KeyEvent.VK_CONTROL );
-
-        // Clicking The Enter Key
-        Thread.sleep ( 3000 );
-        robot.keyPress ( KeyEvent.VK_ENTER );
-
-        // Releasing The Enter Key
-        Thread.sleep ( 3000 );
-        robot.keyRelease ( KeyEvent.VK_ENTER );
 
         // Clicking the Send button
 //        Thread.sleep (10000);
@@ -626,7 +680,7 @@ public class CourseDoubts {
 
                 //Clicking the cancel button in the in share popup
                 Thread.sleep ( 5000 );
-                WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
+                WebElement Cancel_button = driver.findElement ( xpath ( "//*[@class=\"ant-btn css-xu9wm8 ant-btn-default ant-btn-lg ant-btn-block quiz-popup-modal-share-footer-button\"]" ) );
                 Cancel_button.click ();
                 System.out.println ( "Successfully Clicked The cancel Button in the Course Doubt" );
 
@@ -733,7 +787,7 @@ public class CourseDoubts {
 
                 //Clicking the cancel button in the in share popup
                 Thread.sleep ( 5000 );
-                WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
+                WebElement Cancel_button = driver.findElement ( xpath ( "//*[@class=\"ant-btn css-xu9wm8 ant-btn-default ant-btn-lg ant-btn-block quiz-popup-modal-share-footer-button\"]" ) );
                 Cancel_button.click ();
 
                 // Clicking The three Dots in the doubts

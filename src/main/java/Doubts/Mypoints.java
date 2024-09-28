@@ -1,6 +1,6 @@
 package Doubts;
 
-import Menu.Menu_MyPoints;
+import Menu.myPoints;
 import PageObjectModule.Mypointspageobject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -11,7 +11,7 @@ import static PageObjectModule.Mypointspageobject.*;
 public class Mypoints {
 
     WebDriver driver;
-    Menu_MyPoints Mypoints;
+    myPoints Mypoints;
 
     public Mypoints(WebDriver driver) {
         this.driver = driver;
@@ -22,7 +22,7 @@ public class Mypoints {
         PageFactory.initElements ( driver , Mypointspageobject.class );
 
         // Clicking My Points
-        Mypoints = new Menu_MyPoints (driver);
+        Mypoints = new myPoints ( driver );
 
         try {
             Thread.sleep (5000);

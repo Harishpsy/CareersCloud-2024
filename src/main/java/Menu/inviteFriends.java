@@ -7,11 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 import static PageObjectModule.InviteFriendspageobject.clickingHomeButton;
 import static PageObjectModule.InviteFriendspageobject.clickingInviteFriends;
 
-public class Menu_InviteFriends {
+public class inviteFriends {
 
     WebDriver driver;
 
-    public Menu_InviteFriends(WebDriver driver) {
+    public inviteFriends(WebDriver driver) {
         this.driver = driver;
     }
 

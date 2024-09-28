@@ -1,62 +1,43 @@
 package MyCourse;
 
-import PageObjectModule.Mynotespageobject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.By.*;
 
-public class CourseQuizzes extends Mynotespageobject {
+public class quizzesPausedSubModule {
     WebDriver driver;
-    public CourseQuizzes(WebDriver driver) {
+
+    public quizzesPausedSubModule(WebDriver driver) {
         this.driver = driver;
     }
 
-    public CourseQuizzes() {
-    }
+    public void pausedTab() throws InterruptedException {
 
-    public void Quizzes() throws InterruptedException {
-
-        // Verifying The Quizzes Sub-Module Was Displaying, if Display Perform The Below Action
-        try {
-            WebElement clickingQuizzes = driver.findElement ( xpath ( "//div[text()='Quizzes']" ) );
-
-            if (clickingQuizzes.isSelected ()) {
-                System.out.println ( "Quizzes Tab Is Already Selected, We Are Performing The Below Actions In The Quizzes Tab List Page" );
-            } else if (clickingQuizzes.isDisplayed ()) {
-                clickingQuizzes = driver.findElement ( xpath ( "//div[text()='Quizzes']" ) );
-                clickingQuizzes.click ();
-                System.out.println ( "Successfully Clicked The Quizzes Tab, And Performing The action In The List Page" );
-            } else {
-                System.out.println ( "Both The Code Has Not Executed In The Course Quizzes Tab" );
-            }
-        } catch (java.util.NoSuchElementException e) {
-            System.out.println ( "Quizzes Tab Is Not Present In The Current Course" );
-        }
+        WebElement clickingThePausedTab = driver.findElement ( xpath ( "//*[text()='Paused']" ) );
+        clickingThePausedTab.click ();
+        System.out.println ( "SuccessFully Clicked The Paused Tab In The QUiz List Page" );
 
         // Scrolling The Quizzes List Page to verify data
-        int numberOfTimesScrollQuizzes = 10;
+        int numberOfTimesScrollQuizzes = 5;
 
         for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
             try {
                 Thread.sleep ( 5000 );
                 JavascriptExecutor jse = (JavascriptExecutor) driver;
                 jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The page " + (i + 1) + " time(s)." );
+                System.out.println ( "Successfully scroll The page In The Paused Tab  " + (i + 1) + " time(s)." );
             } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll : " + scroll.getMessage () );
+                System.out.println ( "Failed to Scroll The Page In The Paused Tab : " + scroll.getMessage () );
             }
         }
 
@@ -70,7 +51,7 @@ public class CourseQuizzes extends Mynotespageobject {
             System.out.println ( "FloatIcon Button Is Not Displayed" );
         }
 
-        // Verifying the Quiz List was getting duplicating using the unique Names
+        // Verifying the Quiz List was getting duplicating using the unique videos Url
         List<WebElement> quizTitle = driver.findElements ( xpath ( "//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]" ) );
 
         // Create a set to store unique Ebook Titles
@@ -81,294 +62,26 @@ public class CourseQuizzes extends Mynotespageobject {
             String actualquizTitle = uniqueTitle.getText ();
 
             if (uniqueQuizTitles.contains ( actualquizTitle )) {
-                System.out.println ( "Duplicate found --> " + actualquizTitle );
+                System.out.println ( "Duplicate found In The Paused Tab--> " + actualquizTitle );
             } else {
                 uniqueQuizTitles.add ( actualquizTitle );
                 uniqueQuizCount++;
-//                System.out.println ( "Found: " + uniqueQuizCount + " --> " + actualquizTitle );
-//                System.out.println ( "-------------------------------------------------------------------------" );
             }
         }
 
         // Print the total number of unique URLs found
-        System.out.println ( "Total unique Quiz Name found: " + uniqueQuizCount );
+        System.out.println ( "Total unique Quiz Name found In The Paused Tab: " + uniqueQuizCount );
 
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniqueQuizCount , uniqueQuizTitles.size () );
 
-        // Performing the start quiz action
-        CourseQuizzes startquiz = new CourseQuizzes ( driver );
-        startquiz.quizStart ();
-
-        //Performing The resume quiz
-        CourseQuizzes resumequiz = new CourseQuizzes ( driver );
-        resumequiz.resumeQuiz ();
-
-        //Performing The Solutions Action
-        CourseQuizzes solutionquiz = new CourseQuizzes ( driver );
-        solutionquiz.quizSolution ();
-
-        // Course > Quizzes > Sub-Sub Tabs
-        CourseQuizzes subSubTabs = new CourseQuizzes ( driver );
-        subSubTabs.quizSubSubTab ();
-    }
-
-    @Test
-    public void quizSubSubTab() throws InterruptedException {
-
-        // Course quiz > Paused Sub-Sub Tab
-        CourseQuizzesPausedTab paused = new CourseQuizzesPausedTab ( driver );
-        paused.pausedTab ();
-
-        // Course Quiz > Unattempted Sub-Sub Tab
-        CourseQuizzesUnattempted unattempt = new CourseQuizzesUnattempted ( driver );
-        unattempt.unAttempted ();
-
-        // Course Quiz > Attempted Sub-Sub Tab
-        CourseQuizAttempted attempted = new CourseQuizAttempted ( driver );
-        attempted.attemptedTab ();
+        // Performing The Resume quiz Action
+        quizzesPausedSubModule resume = new quizzesPausedSubModule ( driver );
+        resume.resumeQuizs ();
 
     }
 
-    @Test
-    public void quizStart() throws InterruptedException {
-
-        // Check if elements are displayed and log the results
-        Thread.sleep ( 5000 );
-
-        // Initialize flags to track the visibility of different elements
-        boolean noRecordfoundDisplayedInQuizListPage = false;
-        boolean quizStartDisplayed = false;
-
-        try {
-            WebElement noRecordFound = driver.findElement ( xpath ( "//*[text()='No Records Found.']" ) );
-            noRecordfoundDisplayedInQuizListPage = noRecordFound.isDisplayed ();
-        } catch (NoSuchElementException e) {
-            System.out.println ( "noRecordFound element not found In All QUiz Page." );
-        }
-
-        try {
-            WebElement startquizDispayed = driver.findElement ( xpath ( "(//*[@class=\"ant-btn css-xu9wm8 ant-btn-ghost ant-btn-block quiz-attempt0-button\"]/child::*[text()=' Start Quiz '])[1]" ) );
-            quizStartDisplayed = startquizDispayed.isDisplayed ();
-        } catch (NoSuchElementException e) {
-            System.out.println ( "StartQuiz element not found In The Quiz List Page." );
-        }
-
-        // Log the visibility status of each element
-        System.out.println ( "noRecordFound displayed In My Notes: " + noRecordfoundDisplayedInQuizListPage );
-        System.out.println ( "StartQuiz displayed In My Notes: " + quizStartDisplayed );
-
-        // Perform actions based on which element is visible
-        if (noRecordfoundDisplayedInQuizListPage) {
-            WebElement clickingPausedTab = driver.findElement ( xpath ( "//*[text()='Paused']" ) );
-            clickingPausedTab.click ();
-            System.out.println ( "No records found message is displayed In All Quiz List Page, Navigating to The Paused Tab" );
-        } else if (quizStartDisplayed) {
-            Thread.sleep ( 5000 );
-            WebElement startquizDispayed = driver.findElement ( xpath ( "(//*[@class=\"ant-btn css-xu9wm8 ant-btn-ghost ant-btn-block quiz-attempt0-button\"]/child::*[text()=' Start Quiz '])[1]" ) );
-            startquizDispayed.click ();
-            System.out.println ( "Successfully clicked the Start button in The All Tab In The quiz Module." );
-
-            //Windows Handeling
-            Set<String> windows = driver.getWindowHandles ();
-            Iterator<String> it = windows.iterator ();
-            String parent = it.next ();
-            String child = it.next ();
-            driver.switchTo ().window ( child );
-
-            // Clicking the close icon in the quiz instruction
-            Thread.sleep ( 30000 );
-            WebElement Close_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
-            Close_icon.click ();
-            System.out.println ( "SuccessFully Clicked The CloseIcon" );
-
-            // Getting The Quiz Name For Verify In The Paused Tab From The All Tab
-            Thread.sleep ( 3000 );
-            WebElement gettingQuizTitle = driver.findElement ( xpath ( "//span[@class=\"title\"]" ) );
-            String QuizTitle = gettingQuizTitle.getText ();
-            System.out.println ( "Quiz Title Name From The All Tab: " + QuizTitle );
-
-            //Windows mazimize
-            WebDriverWait waitForWindowsMaximize;
-            waitForWindowsMaximize = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
-            driver.manage ().window ().maximize ();
-
-            //Clicking the Instruction Button
-            Thread.sleep ( 10000 );
-            WebElement clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
-            clickingTheInstructionIcon.click ();
-            System.out.println ( "SuccessFully Clicked The InstructionIcon" );
-
-            // Again Clicking the close icon in the quiz instruction
-            Thread.sleep ( 3000 );
-            WebElement againClose_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
-            againClose_icon.click ();
-            System.out.println ( "SuccessFully Clicked The Close_icon again " );
-
-            // Clicking The FullScreen Button
-            Thread.sleep ( 3000 );
-            WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
-            clickingTheFullScreenButton.click ();
-            System.out.println ( "SuccessFully Clicked The Full Screen Button " );
-
-            // Clicking the BookMark-icon
-            try {
-                WebElement bookmarkIcon = driver.findElement ( By.xpath ( "//*[@class='bookmark-icon']" ) );
-                if (bookmarkIcon.isDisplayed ()) {
-                    bookmarkIcon.click ();
-                    System.out.println ( "Successfully Clicked The Bookmark Icon" );
-                }
-            } catch (NoSuchElementException e1) {
-                try {
-                    WebElement bookmarkedIcon = driver.findElement ( By.xpath ( "//*[@class='bookmarked-icon']" ) );
-                    if (bookmarkedIcon.isDisplayed ()) {
-                        bookmarkedIcon.click ();
-                        System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
-                    }
-                } catch (NoSuchElementException e2) {
-                    System.out.println ( "Both The Code Has Not Executed" );
-                }
-            }
-
-            // Define the options to be clicked
-            String[] options = new String[]{"A" , "B" , "C" , "D" , "E" , "A" , "B" , "C" , "D" , "E" , "A" , "B" , "C" , "D" , "E" ,};
-
-            // Locate the Save & Next button
-            WebElement saveAndNextButton = driver.findElement ( By.xpath ( "//div[text()='Save & Next']" ) );
-
-            // Clicking the options and Save & Next button in a loop
-            for (String option : options) {
-                Thread.sleep ( 3000 );
-                WebElement optionElement = driver.findElement ( By.xpath ( "//div[text()='" + option + "']" ) );
-                optionElement.click ();
-                System.out.println ( "Successfully Clicked The Option: " + option );
-
-                Thread.sleep ( 3000 );
-                saveAndNextButton.click ();
-                System.out.println ( "Successfully Clicked The Save & Next Button" );
-            }
-
-            // Clicking options again after navigating back
-            for (int i = 0; i < options.length - 2; i++) {
-                Thread.sleep ( 3000 );
-                WebElement optionElement = driver.findElement ( By.xpath ( "//div[text()='" + options[i] + "']" ) );
-                optionElement.click ();
-                System.out.println ( "Successfully Clicked The Option: " + options[i] );
-
-                Thread.sleep ( 3000 );
-                WebElement numberOnRightSide = driver.findElement ( By.xpath ( "//Span[text()='" + (16 + i) + "']" ) );
-                numberOnRightSide.click ();
-                System.out.println ( "Successfully Clicked The Number: " + (16 + i) );
-            }
-
-            // Clicking the Previous Button
-            Thread.sleep ( 3000 );
-            WebElement clickingThePreviousButton = driver.findElement ( By.xpath ( "//div[text()='Previous']" ) );
-            clickingThePreviousButton.click ();
-
-            // Clicking The Pause Button
-            Thread.sleep ( 3000 );
-            WebElement clickingThePauseButton = driver.findElement ( xpath ( "//*[@class=\"pause-icon\"]" ) );
-            clickingThePauseButton.click ();
-
-            // Clicking The Cancel Button In The Pause popup
-            Thread.sleep ( 3000 );
-            WebElement clickingCancelButtonInPopup = driver.findElement ( xpath ( "//*[text()=' Cancel ']" ) );
-            clickingCancelButtonInPopup.click ();
-
-            // Getting The User Answered Count
-            Thread.sleep ( 3000 );
-            WebElement gettingAnswerCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgb(46, 212, 122); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(46, 212, 122); font-weight: 900;\"]" ) );
-            String AnswerCountBeforepause = gettingAnswerCountBeforepause.getText ();
-            System.out.println ( "Answered Question Count Before Pause : " + AnswerCountBeforepause );
-
-            // Getting The Unanswered Count
-            Thread.sleep ( 3000 );
-            WebElement gettingUnAnsweredCountBeforepause = driver.findElement ( xpath ( "//*[@style=\"border: 1px solid rgba(90, 114, 200, 0.2); border-radius: 7px; width: 40px; height: 35px; margin: auto; display: flex; justify-content: center; align-items: center; color: rgb(0, 0, 0); font-weight: 900;\"]" ) );
-            String UnAnswerCountBeforepause = gettingUnAnsweredCountBeforepause.getText ();
-            System.out.println ( "User Unanswered Count Before Pause : " + UnAnswerCountBeforepause );
-
-            // Getting The quiz Time
-            Thread.sleep ( 3000 );
-            WebElement getGettingQUizTimeBeforepause = driver.findElement ( xpath ( "//span[@class=\"text\"]" ) );
-            String QuizTimeBeforepause = getGettingQUizTimeBeforepause.getText ();
-            System.out.println ( "quiz Time Before pause: " + QuizTimeBeforepause );
-
-            // Again Clicking The Pause Button leaves the quiz
-            Thread.sleep ( 3000 );
-            clickingThePauseButton = driver.findElement ( xpath ( "//*[@class=\"pause-icon\"]" ) );
-            clickingThePauseButton.click ();
-
-            // Clicking The Leave button In the Pause Popup
-            Thread.sleep ( 3000 );
-            WebElement clickingLeaveButtonInPopup = driver.findElement ( xpath ( "//span[text()=\" Leave \"]" ) );
-            clickingLeaveButtonInPopup.click ();
-
-            // Changing The Child Windows To Parent Window
-            driver.switchTo ().window ( parent );
-
-            // Click the paused Tab
-            WebElement clickingPausedTab = driver.findElement ( xpath ( "//*[text()='Paused']" ) );
-            clickingPausedTab.click ();
-            System.out.println ( "Successfully clicked The Paused Tab " );
-
-            // Scrolling The Paused Tab
-            int numberOfTimesScrollQuizzes = 5;
-
-            for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
-                try {
-                    Thread.sleep ( 5000 );
-                    JavascriptExecutor jse = (JavascriptExecutor) driver;
-                    jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                    System.out.println ( "Successfully scroll The page In The paused Tab " + (i + 1) + " time(s)." );
-                } catch (Exception scroll) {
-                    System.out.println ( "Failed to Scroll The Paused Tab: " + scroll.getMessage () );
-                }
-            }
-
-            // Clicking Float Icon
-            try {
-                WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-                if (clickingFloatIcon.isDisplayed ()) {
-                    clickingFloatIcon.click ();
-                }
-            } catch (NoSuchElementException e) {
-                System.out.println ( "FloatIcon Button Is Not Displayed" );
-            }
-
-            // Getting the Quiz Title Name to check whether completed quiz from paused was showing in Attempted or not
-
-            // Find all elements matching the XPath and store them in a list
-            List<WebElement> gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
-            Thread.sleep ( 5000 );
-
-            // Iterate through the list and print the text of each element
-            boolean matchFound = false;
-            for (WebElement quizTitle : gettingQuizTitles) {
-                String quiztitleText = quizTitle.getText ();
-
-                // Verifying the All Tab quiz was showing or not in the Paused Tab
-                if (QuizTitle.equals ( quiztitleText )) {
-                    matchFound = true;
-                    System.out.println ( "Verification Passed: Quiz Title In Paused (" + QuizTitle + ") matches Quiz Title In Attempted Tabs (" + quiztitleText + ")" );
-                }
-            }
-            // Verifying That the Both the Titles are equal
-            Assert.assertTrue ( matchFound , "No matching quiz title found in the attempted list." );
-
-            //Performing The resume quiz
-            CourseQuizzes resumequiz = new CourseQuizzes ( driver );
-            resumequiz.resumeQuiz ();
-
-        } else {
-            System.out.println ( "No matching condition was found in the Start quiz My Notes." );
-        }
-    }
-
-    @Test
-    public void resumeQuiz() throws InterruptedException {
-
-        PageFactory.initElements ( driver , Mynotespageobject.class );
+    private void resumeQuizs() throws InterruptedException {
 
         System.out.println ( "----------------------Resume Quiz---------------------------" );
         boolean noRecordfoundDisplayedInQuizListPage = false;
@@ -409,11 +122,11 @@ public class CourseQuizzes extends Mynotespageobject {
             driver.switchTo ().window ( child );
 
             //Windows mazimize
-            new WebDriverWait ( driver , Duration.ofSeconds ( 60 ) );
+            new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
             driver.manage ().window ().maximize ();
 
             //Clicking the Instruction Button
-            driver.manage ().timeouts ().implicitlyWait ( 60 , TimeUnit.SECONDS );
+            Thread.sleep ( 30000 );
             WebElement clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
             clickingTheInstructionIcon.click ();
             System.out.println ( "Sucessfully clicked instruction icon" );
@@ -428,10 +141,24 @@ public class CourseQuizzes extends Mynotespageobject {
             WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
             clickingTheFullScreenButton.click ();
 
-            // Clicking the BookMark-icon
-                /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-                 WebElement bookMarkicon = driver.findElement(className ("bookmark-icon"));
-                 bookMarkicon.click ();*/
+            // Clicking or Unclicking the BookMark-icon By using try catch method
+            try {
+                WebElement bookmarkIcon = driver.findElement ( xpath ( "//*[@class='bookmark-icon']" ) );
+                if (bookmarkIcon.isDisplayed ()) {
+                    bookmarkIcon.click ();
+                    System.out.println ( "Successfully Clicked The Bookmark Icon" );
+                }
+            } catch (NoSuchElementException e1) {
+                try {
+                    WebElement bookmarkedIcon = driver.findElement ( xpath ( "//*[@class='bookmarked-icon']" ) );
+                    if (bookmarkedIcon.isDisplayed ()) {
+                        bookmarkedIcon.click ();
+                        System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                    }
+                } catch (NoSuchElementException e2) {
+                    System.out.println ( "Both The Code Has Not Executed" );
+                }
+            }
 
             // Define the options to be clicked
             String[] options = new String[]{"A" , "A" , "B" , "D" , "E" , "C" , "C" , "A" , "D" , "E" , "A" , "E" , "A" , "C" , "E" ,};
@@ -532,6 +259,7 @@ public class CourseQuizzes extends Mynotespageobject {
                     System.out.println ( "Failed to Scroll The Page In The Attempted: " + scroll.getMessage () );
                 }
             }
+
             // Clicking Float Icon
             try {
                 WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
@@ -558,38 +286,28 @@ public class CourseQuizzes extends Mynotespageobject {
                     System.out.println ( "Verification Passed: Quiz Title In Paused (" + QuizTitle + ") matches Quiz Title In Attempted Tabs (" + quiztitleText + ")" );
                 }
             }
+
             // Verifying That the Both the Titles are equal
             Assert.assertTrue ( matchFound , "No matching quiz title found in the attempted list." );
 
-            //Performing The Solutions Action
-            CourseQuizzes solutionquiz = new CourseQuizzes ( driver );
-            solutionquiz.quizSolution ();
+            // Performing The Solution Action Here
+            quizzesPausedSubModule solution = new quizzesPausedSubModule ( driver );
+            solution.quizSolutions ();
 
         } else {
             System.out.println ( "No matching condition was found in the Resume quiz In The quiz List Page." );
         }
-
     }
 
-    @Test
-    public void quizSolution() throws InterruptedException {
-
-        PageFactory.initElements ( driver , Mynotespageobject.class );
+    private void quizSolutions() throws InterruptedException {
 
         System.out.println ( "-----------------------Solutions---------------------------" );
+
         // Check if elements are displayed and log the results
         Thread.sleep ( 5000 );
 
         // Initialize flags to track the visibility of different elements
-        boolean noRecordfoundDisplayedInAllQuiz = false;
         boolean quizsolutionDisplayedInAllQuiz = false;
-
-        try {
-            WebElement noRecordFound = driver.findElement ( xpath ( "//*[text()='No Records Found.']" ) );
-            noRecordfoundDisplayedInAllQuiz = noRecordFound.isDisplayed ();
-        } catch (NoSuchElementException e) {
-            System.out.println ( "noRecordFound element not found In The quiz List Page." );
-        }
 
         try {
             WebElement quizsolution = driver.findElement ( xpath ( "(//*[@class=\"ant-btn css-xu9wm8 ant-btn-default ant-btn-background-ghost ant-btn-block quiz-attempt1-solution-button\"]/child::*[text()=' Solution '])[1]" ) );
@@ -599,19 +317,9 @@ public class CourseQuizzes extends Mynotespageobject {
         }
 
         // Log the visibility status of each element
-        System.out.println ( "noRecordFound displayed In The quiz List Page: " + noRecordfoundDisplayedInAllQuiz );
         System.out.println ( "Solution button displayed In The quiz List Page: " + quizsolutionDisplayedInAllQuiz );
 
-        if (noRecordfoundDisplayedInAllQuiz) {
-
-            // Clicking The All Quiz Tab
-            WebElement clickingAllQuiz = driver.findElement ( xpath ( "//*[text()='All Quizzes']" ) );
-            clickingAllQuiz.click ();
-            System.out.println ( "No Record Found is Displayed, So Page was Navigating to the All Quiz" );
-
-        } else if (quizsolutionDisplayedInAllQuiz) {
-
-            //Clicking The Solution Button
+        if (quizsolutionDisplayedInAllQuiz) {
             WebElement quizsolution = driver.findElement ( xpath ( "(//*[@class=\"ant-btn css-xu9wm8 ant-btn-default ant-btn-background-ghost ant-btn-block quiz-attempt1-solution-button\"]/child::*[text()=' Solution '])[1]" ) );
             quizsolution.click ();
             System.out.println ( "Successfully clicked the Solution button In The quiz List Page." );
@@ -959,6 +667,10 @@ public class CourseQuizzes extends Mynotespageobject {
             WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
             clickingCancel.click ();
 
+//            // Clicking The report Button
+//            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
+//            clickingReport.click ();
+
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
@@ -973,5 +685,5 @@ public class CourseQuizzes extends Mynotespageobject {
             System.out.println ( "No matching condition was found in the Solution quiz In The quiz List Page." );
         }
     }
-}
 
+}

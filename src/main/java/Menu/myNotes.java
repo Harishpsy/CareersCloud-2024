@@ -18,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 import static PageObjectModule.Mynotespageobject.*;
 import static org.openqa.selenium.By.*;
 
-public class Menu_MyNotes {
+public class myNotes {
     WebDriver driver;
 
-    public Menu_MyNotes(WebDriver driver) {
+    public myNotes(WebDriver driver) {
         this.driver = driver;
     }
 

@@ -8,10 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import static PageObjectModule.Mypurchasepageobject.clickingHomeButton;
 import static PageObjectModule.Mypurchasepageobject.clickingMyPurchase;
 
-public class Menu_MyPurchase {
+public class myPurchase {
     WebDriver driver;
 
-    public Menu_MyPurchase(WebDriver driver) {
+    public myPurchase(WebDriver driver) {
         this.driver = driver;
     }
 

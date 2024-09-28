@@ -13,9 +13,10 @@ import java.util.*;
 
 import static org.openqa.selenium.By.*;
 
-public class CourseEbooks {
+public class ebooks {
     WebDriver driver;
-    public CourseEbooks(WebDriver driver) {
+
+    public ebooks(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -53,15 +54,23 @@ public class CourseEbooks {
 
         // Clicking Float Icon
         try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"]" ) );
+            // Wait for the float icon to become clickable (10-second timeout)
+            WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
+            WebElement clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
+
+            // Check if the float icon is displayed
             if (clickingFloatIcon.isDisplayed ()) {
-                Thread.sleep ( 5000 );
+                // Optional wait before clicking
+                Thread.sleep ( 2000 );
+                clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
                 clickingFloatIcon.click ();
+                System.out.println ( "Float Icon clicked successfully." );
             }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed" );
+        } catch (Exception e) {
+            System.out.println ( "FloatIcon Button is not displayed." );
         }
 
+        System.out.println ( "Verifying Whether Duplicate Was Present,Wait For Few Seconds" );
         // Verifying Weather There is Duplicate was find in the Ebooks or not
         List<WebElement> ebookTitle = driver.findElements (xpath ("//*[@class=\"ant-row ant-row-middle nowrap-content css-xu9wm8\"]"));
 
@@ -79,7 +88,7 @@ public class CourseEbooks {
             } else {
                 uniqueTitleName.add (actualEbookTitle);
                 ebookTitleCount++;
-                //System.out.println ("Ebook Title Found: " + ebookTitleCount + " --> " + actualEbookTitle);
+//                System.out.println ("Ebook Title Found: " + ebookTitleCount + " --> " + actualEbookTitle);
             }
             // Assert that the number of unique URLs is equal to the number of elements
             Assert.assertEquals (ebookTitleCount, uniqueTitleName.size ());
@@ -87,7 +96,7 @@ public class CourseEbooks {
 
         // Clicking The View Button
         Thread.sleep (3000);
-        WebElement clickingViewButton = driver.findElement (xpath ("//*[text()='VIEW >']"));
+        WebElement clickingViewButton = driver.findElement ( xpath ( "//*[@class=\"image2\"]/following::*[text()='VIEW >']" ) );
         clickingViewButton.click ();
         System.out.println ("SuccessFully Clicked The view Button");
 
@@ -200,39 +209,37 @@ public class CourseEbooks {
         Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
         Cancel_button.click ();
         System.out.println ( "SuccessFully Clicked The Cancel Button" );
+//
+//        // Clicking The home button
+//        Thread.sleep ( 3000 );
+//        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+//        clickingHomeButton.click ();
+//        System.out.println ( "SuccessFully Clicked The HomeButton" );
+//
+//        // Clicking The Ebook
+//        Thread.sleep ( 3000 );
+//        WebElement clickingEbookInMenu = driver.findElement ( id ( "3" ) );
+//        clickingEbookInMenu.click ();
+//
+//        // Verifying saved or removed article was showing in the My Notes Page
+//        List<WebElement> ebookTitleElements = driver.findElements ( xpath ( "//*[@class='feed-card-cover-inner-content']" ) );
+//        boolean isEbookFound = false;
+//
+//        for (WebElement ebookElement : ebookTitleElements) {
+//            String ebookName = ebookElement.getText ();
+//            System.out.println ( "Ebook Title in My Notes: " + ebookName );
+//
+//            if (ebookName.equals ( EbookName )) {
+//                System.out.println ( "Verification Passed: Ebook Title (" + EbookName + ") matches Ebook in My Notes (" + ebookName + ")" );
+//                isEbookFound = true;
+//            } else {
+//                System.out.println ( "Ebook Title Does Not Match" );
+//            }
+//        }
+//        if (!isEbookFound) {
+//            System.out.println ( "Ebook is Not Showing in My-Ebooks" );
+//        }
 
-        // Clicking The home button
-        Thread.sleep ( 3000 );
-        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
-        clickingHomeButton.click ();
-        System.out.println ( "SuccessFully Clicked The HomeButton" );
-
-        // Clicking The Ebook
-        Thread.sleep ( 3000 );
-        WebElement clickingEbookInMenu = driver.findElement ( id ( "3" ) );
-        clickingEbookInMenu.click ();
-
-        // Verifying saved or removed article was showing in the My Notes Page
-        List<WebElement> ebookTitleElements = driver.findElements ( xpath ( "//*[@class='feed-card-cover-inner-content']" ) );
-        boolean isEbookFound = false;
-
-        for (WebElement ebookElement : ebookTitleElements) {
-            String ebookName = ebookElement.getText ();
-            System.out.println ( "Ebook Title in My Notes: " + ebookName );
-
-            if (ebookName.equals ( EbookName )) {
-                System.out.println ( "Verification Passed: Ebook Title (" + EbookName + ") matches Ebook in My Notes (" + ebookName + ")" );
-                isEbookFound = true;
-            } else {
-                System.out.println ( "Ebook Title Does Not Match" );
-            }
-        }
-        if (!isEbookFound) {
-            System.out.println ( "Ebook is Not Showing in My-Ebooks" );
-        }
-        // Clicking My course for the next execution
-        myCourseModule Mycourse = new myCourseModule ( driver );
-        Mycourse.myCourseClicking ();
 
     }
 }

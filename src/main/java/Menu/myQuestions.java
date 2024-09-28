@@ -14,10 +14,10 @@ import java.util.List;
 import static PageObjectModule.Myquestionpageobject.*;
 import static org.openqa.selenium.By.xpath;
 
-public class Menu_MyQuestions {
+public class myQuestions {
     WebDriver driver;
 
-    public Menu_MyQuestions(WebDriver driver) {
+    public myQuestions(WebDriver driver) {
         this.driver = driver;
     }
 

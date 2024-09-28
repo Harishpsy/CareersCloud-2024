@@ -13,12 +13,12 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
-public class CourseQuizAttempted {
+public class quizAttemptedSubModule {
 
     // Creating a Constructor
     WebDriver driver;
 
-    public CourseQuizAttempted(WebDriver driver) {
+    public quizAttemptedSubModule(WebDriver driver) {
         this.driver = driver;
     }
     public void attemptedTab() throws InterruptedException {
@@ -77,7 +77,7 @@ public class CourseQuizAttempted {
         Assert.assertEquals ( uniqueQuizCount , uniqueQuizTitles.size () );
 
         // Performing The Solution Actions
-        CourseQuizAttempted solution = new CourseQuizAttempted ( driver );
+        quizAttemptedSubModule solution = new quizAttemptedSubModule ( driver );
         solution.quizSolution ();
     }
 

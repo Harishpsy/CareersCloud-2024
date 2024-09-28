@@ -12,11 +12,11 @@ import java.util.Set;
 import static PageObjectModule.Mycoinpageobject.*;
 import static PageObjectModule.Myebookspageobject.clickingHomeButton;
 
-public class Menu_MyCoins {
+public class myCoins {
 
     WebDriver driver;
 
-    public Menu_MyCoins(WebDriver driver) {
+    public myCoins(WebDriver driver) {
         this.driver = driver;
     }
 

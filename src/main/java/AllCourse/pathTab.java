@@ -1,6 +1,6 @@
 package AllCourse;
 
-import MyCourse.CoursePath;
+import MyCourse.path;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.openqa.selenium.By.xpath;
 
-public class pathTab extends CoursePath {
+public class pathTab extends path {
     WebDriver driver;
 
     public pathTab(WebDriver driver) {

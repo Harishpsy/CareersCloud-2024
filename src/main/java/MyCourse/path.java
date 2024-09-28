@@ -19,14 +19,14 @@ import static PageObjectModule.Myebookspageobject.*;
 import static PageObjectModule.Mynotespageobject.clickingSolutionquiz;
 import static org.openqa.selenium.By.*;
 
-public class CoursePath {
+public class path {
     WebDriver driver;
 
-    public CoursePath(WebDriver driver) {
+    public path(WebDriver driver) {
         this.driver = driver;
     }
 
-    public CoursePath() {
+    public path() {
     }
 
     public void allpath() throws InterruptedException {

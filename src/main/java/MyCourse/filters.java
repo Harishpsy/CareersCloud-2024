@@ -6,15 +6,15 @@ import org.openqa.selenium.WebElement;
 
 import static org.openqa.selenium.By.xpath;
 
-public class MyCourse_Filters {
+public class filters {
 
     WebDriver driver;
 
-    public MyCourse_Filters(WebDriver driver) {
+    public filters(WebDriver driver) {
         this.driver = driver;
     }
 
-    public MyCourse_Filters() {
+    public filters() {
     }
     public void Filter() throws InterruptedException {
 

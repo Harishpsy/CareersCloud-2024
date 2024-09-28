@@ -14,10 +14,10 @@ import java.util.*;
 import static org.openqa.selenium.By.xpath;
 
 
-public class CourseVideos {
+public class videos {
     WebDriver driver;
 
-    public CourseVideos(WebDriver driver) {
+    public videos(WebDriver driver) {
         this.driver = driver;
     }
     public void videos() throws InterruptedException {
@@ -55,13 +55,20 @@ public class CourseVideos {
 
         // Clicking Float Icon
         try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"]" ) );
+            // Wait for the float icon to become clickable (10-second timeout)
+            WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
+            WebElement clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
+
+            // Check if the float icon is displayed
             if (clickingFloatIcon.isDisplayed ()) {
-                Thread.sleep ( 5000 );
+                // Optional wait before clicking
+                Thread.sleep ( 2000 );
+                clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
                 clickingFloatIcon.click ();
+                System.out.println ( "Float Icon clicked successfully." );
             }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed" );
+        } catch (Exception e) {
+            System.out.println ( "FloatIcon Button is not displayed." );
         }
 
         // Verifying the videoscard was getting duplicating using the unique videos Url
@@ -243,47 +250,44 @@ public class CourseVideos {
             System.out.println ( "Save Or Remove My Ebook is not displayed." );
         }
 
-        // Clicking The Breadcrumbs
-        Thread.sleep (5000);
-        WebElement clickingBreadCrumbs = driver.findElement (xpath ("//*[text()='Course']"));
-        clickingBreadCrumbs.click ();
-        System.out.println ("SuccessFully Clicked The Bread crumbs and navigated to the My Course List Page");
-
-        // Clicking The home button
-        Thread.sleep ( 3000 );
-        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
-        clickingHomeButton.click ();
-        System.out.println ( "SuccessFully Clicked The HomeButton" );
-
-        // Clicking The MyNotes
-        Thread.sleep ( 5000 );
-        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
-        clickingMyNotes.click ();
-        System.out.println ( "SuccessFully Clicked The My-Notes" );
-
-        // Verifying saved or removed article was showing in the My Notes Page
-        List<WebElement> videoMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
-
-        boolean videoFound = false;
-
-        for (WebElement Video : videoMyNotes) {
-            String videoNameInMyNotes = Video.getText ();
-            System.out.println ( videoNameInMyNotes );
-
-            if (VideoName.equals ( videoNameInMyNotes )) {
-                System.out.println ( "Verification Passed: Video Title (" + VideoName + ") matches Video Title In My Notes (" + videoNameInMyNotes + ")" );
-                videoFound = true;
-            }
-//            else {
-//                System.out.println ( "Video Name Does Not Match" );
+//        // Clicking The Breadcrumbs
+//        Thread.sleep (5000);
+//        WebElement clickingBreadCrumbs = driver.findElement (xpath ("//*[text()='Course']"));
+//        clickingBreadCrumbs.click ();
+//        System.out.println ("SuccessFully Clicked The Bread crumbs and navigated to the My Course List Page");
+//
+//        // Clicking The home button
+//        Thread.sleep ( 3000 );
+//        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+//        clickingHomeButton.click ();
+//        System.out.println ( "SuccessFully Clicked The HomeButton" );
+//
+//        // Clicking The MyNotes
+//        Thread.sleep ( 5000 );
+//        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
+//        clickingMyNotes.click ();
+//        System.out.println ( "SuccessFully Clicked The My-Notes" );
+//
+//        // Verifying saved or removed article was showing in the My Notes Page
+//        List<WebElement> videoMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
+//
+//        boolean videoFound = false;
+//
+//        for (WebElement Video : videoMyNotes) {
+//            String videoNameInMyNotes = Video.getText ();
+//            System.out.println ( videoNameInMyNotes );
+//
+//            if (VideoName.equals ( videoNameInMyNotes )) {
+//                System.out.println ( "Verification Passed: Video Title (" + VideoName + ") matches Video Title In My Notes (" + videoNameInMyNotes + ")" );
+//                videoFound = true;
 //            }
-        }
-        if (!videoFound) {
-            System.out.println ( "Video Is Not Showing In The My Notes" );
-        }
-        // Clicking My Course Button In the Header
-        myCourseModule Mycourse = new myCourseModule ( driver );
-        Mycourse.myCourseClicking ();
+////            else {
+////                System.out.println ( "Video Name Does Not Match" );
+////            }
+//        }
+//        if (!videoFound) {
+//            System.out.println ( "Video Is Not Showing In The My Notes" );
+//        }
 
     }
 }

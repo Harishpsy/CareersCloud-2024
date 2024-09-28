@@ -1,9 +1,7 @@
 package MyCourse;
 
-import PageObjectModule.Mynotespageobject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,11 +15,11 @@ import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.By.*;
 
-public class CourseQuizzesUnattempted {
+public class quizzesUnattemptedSubModule {
 
     WebDriver driver;
 
-    public CourseQuizzesUnattempted(WebDriver driver) {
+    public quizzesUnattemptedSubModule(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -80,15 +78,15 @@ public class CourseQuizzesUnattempted {
         Assert.assertEquals ( uniqueQuizCount , uniqueQuizTitles.size () );
 
         // Performing The Start Quiz Action
-        CourseQuizzesUnattempted startquiz = new CourseQuizzesUnattempted ( driver );
+        quizzesUnattemptedSubModule startquiz = new quizzesUnattemptedSubModule ( driver );
         startquiz.quizStart ();
 
         // Performing The Resume quiz Action
-        CourseQuizzesUnattempted Quizresume = new CourseQuizzesUnattempted ( driver );
+        quizzesUnattemptedSubModule Quizresume = new quizzesUnattemptedSubModule ( driver );
         Quizresume.resumeQuiz ();
 
         // Performing The Solution Action
-        CourseQuizzesUnattempted solutionQuiz = new CourseQuizzesUnattempted ( driver );
+        quizzesUnattemptedSubModule solutionQuiz = new quizzesUnattemptedSubModule ( driver );
         solutionQuiz.quizSolution ();
 
     }
@@ -319,7 +317,7 @@ public class CourseQuizzesUnattempted {
             Assert.assertTrue ( matchFound , "No matching quiz title found in the attempted list." );
 
             //Performing The resume quiz
-            CourseQuizzes resumequiz = new CourseQuizzes ( driver );
+            quizzes resumequiz = new quizzes ( driver );
             resumequiz.resumeQuiz ();
 
         } else {
@@ -523,7 +521,7 @@ public class CourseQuizzesUnattempted {
             Assert.assertTrue ( matchFound , "No matching quiz title found in the attempted list." );
 
             //Performing The Solutions Action
-            CourseQuizzes solutionquiz = new CourseQuizzes ( driver );
+            quizzes solutionquiz = new quizzes ( driver );
             solutionquiz.quizSolution ();
 
         } else {

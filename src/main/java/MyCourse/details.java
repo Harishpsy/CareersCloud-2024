@@ -19,10 +19,10 @@ import java.util.Set;
 import static org.openqa.selenium.By.name;
 import static org.openqa.selenium.By.xpath;
 
-public class CourseDetails {
+public class details {
     WebDriver driver;
 
-    public CourseDetails(WebDriver driver) {
+    public details(WebDriver driver) {
         this.driver = driver;
     }
 

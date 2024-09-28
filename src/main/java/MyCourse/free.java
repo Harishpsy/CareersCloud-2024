@@ -17,11 +17,11 @@ import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.By.*;
 
-public class courseFreeTab {
+public class free {
 
     WebDriver driver;
 
-    public courseFreeTab(WebDriver driver) {
+    public free(WebDriver driver) {
 
         this.driver = driver;
     }
@@ -39,20 +39,20 @@ public class courseFreeTab {
                 clickingFreeTab.click ();
                 System.out.println ( "Successfully Clicked The Free Tab, And Performing The action In The " );
             } else {
-                System.out.println ( "Both The Code Has Not Executed In The All Course Free Tab" );
+                System.out.println ( "Both The Code Has Not Executed In The Course Free Tab" );
             }
 
         } catch (NoSuchElementException e) {
-            System.out.println ( "Error In The All Course Free Tab: " + e.getMessage () );
+            System.out.println ( "Free Tab Is Not Present In The The Current Course Feed " );
         }
 
         /* Creating An Free Tab > Article Object, We Are Calling Article Sub-Module */
-        courseFreeTab article = new courseFreeTab ( driver );
-        article.artilces ();
+//        free article = new free ( driver );
+//        article.artilces ();
 
         /* Creating An Free Tab > Ebook Object, We Are Calling Ebook Module */
-        courseFreeTab ebook = new courseFreeTab ( driver );
-        ebook.Ebooks ();
+//        free ebook = new free ( driver );
+//        ebook.Ebooks ();
 //
 //        courseFreeTab videos = new courseFreeTab ( driver );
 //        videos.videos ();
@@ -855,7 +855,7 @@ public class courseFreeTab {
             }
 
             //Performing The resume quiz
-            CourseQuizzes resumequiz = new CourseQuizzes ( driver );
+            quizzes resumequiz = new quizzes ( driver );
             resumequiz.resumeQuiz ();
 
         } else {
@@ -1087,7 +1087,7 @@ public class courseFreeTab {
             }
 
             //Performing The Solutions Action
-            CourseQuizzes solutionquiz = new CourseQuizzes ( driver );
+            quizzes solutionquiz = new quizzes ( driver );
             solutionquiz.quizSolution ();
 
         } else {

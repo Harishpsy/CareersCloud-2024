@@ -8,10 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import static PageObjectModule.Mypointspageobject.*;
 
-public class Menu_MyPoints {
+public class myPoints {
     WebDriver driver;
 
-    public Menu_MyPoints(WebDriver driver) {
+    public myPoints(WebDriver driver) {
         this.driver = driver;
     }
 

@@ -1,6 +1,6 @@
 package AllCourse;
 
-import MyCourse.MyCourse_Filters;
+import MyCourse.filters;
 import org.openqa.selenium.*;
 
 import java.util.HashSet;
@@ -9,7 +9,7 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.xpath;
 
-public class AllFilter extends MyCourse_Filters {
+public class AllFilter extends filters {
 
     public WebDriver driver;
 
@@ -20,7 +20,7 @@ public class AllFilter extends MyCourse_Filters {
     public void filter() throws InterruptedException {
 
         //Performing The Same action From The My Course to The All Course For The Filter
-        MyCourse_Filters filter = new MyCourse_Filters ( driver );
+        filters filter = new filters ( driver );
         filter.Filter ();
         System.out.println ( "Successfully Filter Performed In The All Course Tab" );
 

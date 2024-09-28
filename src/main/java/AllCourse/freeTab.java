@@ -1,6 +1,6 @@
 package AllCourse;
 
-import MyCourse.courseFreeTab;
+import MyCourse.free;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -36,11 +36,11 @@ public class freeTab {
         // Calling The Object From My Course Free Tab TO Performe The Action In The All Course List Page
 
         // Performing The Article
-        courseFreeTab article = new courseFreeTab ( driver );
+        free article = new free ( driver );
         article.artilces ();
 
         //Performing The Ebook
-        courseFreeTab ebook = new courseFreeTab ( driver );
+        free ebook = new free ( driver );
         ebook.Ebooks ();
 
 //        // Performing The Videos

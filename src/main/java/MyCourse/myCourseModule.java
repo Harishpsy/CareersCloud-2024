@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.time.Duration;
 
 import static org.openqa.selenium.By.xpath;
@@ -18,7 +19,7 @@ public class myCourseModule {
     }
 
     @Test
-    public void myCourseClicking() throws InterruptedException {
+    public void myCourseClicking() throws InterruptedException, AWTException {
 
         // Clicking My Course Button
         driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 30 ) );

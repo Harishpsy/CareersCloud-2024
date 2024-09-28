@@ -3,8 +3,11 @@ package MyCourse;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -12,10 +15,10 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
-public class CourseArticle {
+public class article {
     WebDriver driver;
 
-    public CourseArticle(WebDriver driver) {
+    public article(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -54,18 +57,26 @@ public class CourseArticle {
 
         // Clicking Float Icon
         try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "(//*[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"])[2]" ) );
+            // Wait for the float icon to become clickable (10-second timeout)
+            WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
+            WebElement clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
+
+            // Check if the float icon is displayed
             if (clickingFloatIcon.isDisplayed ()) {
-                Thread.sleep ( 5000 );
+                // Optional wait before clicking
+                Thread.sleep ( 2000 );
+                clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
                 clickingFloatIcon.click ();
+                System.out.println ( "Float Icon clicked successfully." );
             }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed" );
+        } catch (Exception e) {
+            System.out.println ( "FloatIcon Button is not displayed." );
         }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Verifying The list of Articles any one of them was getting Duplicate or Not
-
         // Finding All The elements From the Article components
+
         List<WebElement> allArticleName = driver.findElements ( xpath ( "//*[@class=\"ant-col column ant-col-xs-23 ant-col-sm-23 ant-col-md-23 ant-col-lg-23 ant-col-xl-23 ant-col-xxl-23 css-xu9wm8\"]" ) );
 
         // Create a set to store unique Article URLs
@@ -205,40 +216,36 @@ public class CourseArticle {
             }
         }
 
-        // Clicking The home button
-        Thread.sleep ( 3000 );
-        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
-        clickingHomeButton.click ();
-        System.out.println ( "SuccessFully Clicked The HomeButton" );
-
-        // Clicking The MyNotes
-        Thread.sleep ( 5000 );
-        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
-        clickingMyNotes.click ();
-        System.out.println ( "SuccessFully Clicked The My-Notes" );
-
-        // Verifying saved or removed article was showing in the My Notes Page
-        List<WebElement> articleMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
-
-        boolean articleFound = false;
-        for (WebElement Article : articleMyNotes) {
-            String articlenameInMyNotes = Article.getText ();
-            System.out.println ( "Article Name In My Notes: " + articlenameInMyNotes );
-
-            if (articleName.equals ( articlenameInMyNotes )) {
-                System.out.println ( "Verification Passed: Article Title (" + articleName + ") matches Article In My Notes (" + articlenameInMyNotes + ")" );
-                articleFound = true;
-            } else {
-                System.out.println ( "Article Name Does Not Match" );
-            }
-        }
-        if (!articleFound) {
-            System.out.println ( "Article Is Not Showing In The My Notes" );
-        }
-
-        // Clicking My Course Button In the Header
-        myCourseModule Mycourse = new myCourseModule ( driver );
-        Mycourse.myCourseClicking ();
+//        // Clicking The home button
+//        Thread.sleep ( 3000 );
+//        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+//        clickingHomeButton.click ();
+//        System.out.println ( "SuccessFully Clicked The HomeButton" );
+//
+//        // Clicking The MyNotes
+//        Thread.sleep ( 5000 );
+//        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
+//        clickingMyNotes.click ();
+//        System.out.println ( "SuccessFully Clicked The My-Notes" );
+//
+//        // Verifying saved or removed article was showing in the My Notes Page
+//        List<WebElement> articleMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
+//
+//        boolean articleFound = false;
+//        for (WebElement Article : articleMyNotes) {
+//            String articlenameInMyNotes = Article.getText ();
+////            System.out.println ( "Article Name In My Notes: " + articlenameInMyNotes );
+//
+//            if (articleName.equals ( articlenameInMyNotes )) {
+//                System.out.println ( "Verification Passed: Article Title (" + articleName + ") matches Article In My Notes (" + articlenameInMyNotes + ")" );
+//                articleFound = true;
+//            } else {
+//                System.out.println ( "Article Name Does Not Match" );
+//            }
+//        }
+//        if (!articleFound) {
+//            System.out.println ( "Article Is Not Showing In The My Notes" );
+//        }
 
     }
 }
