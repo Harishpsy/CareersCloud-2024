@@ -4,14 +4,17 @@ import MainPages.Loginpage;
 import MyCourse.myCourseModule;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.awt.*;
 
 public class baseObjects {
     public static void main(String[] args) throws InterruptedException, AWTException {
 
-        // Web Driver
-        WebDriver driver = new ChromeDriver ();
+        /* Calling The Chrome Browser */
+        ChromeOptions options = new ChromeOptions ();
+        options.addArguments ( "--incognito" );
+        WebDriver driver = new ChromeDriver ( options );
         //WebDriver driver = new FirefoxDriver ();
 
         // Login Page
@@ -73,10 +76,6 @@ public class baseObjects {
 //        //Clicking The Inside The All Course List Page
 //        allCourseBase courseclick = new allCourseBase ( driver );
 //        courseclick.courseClicking ();
-
-
-
-
 
     }
 }

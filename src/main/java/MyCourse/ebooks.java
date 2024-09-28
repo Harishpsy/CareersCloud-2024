@@ -11,7 +11,8 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.*;
 
-import static org.openqa.selenium.By.*;
+import static org.openqa.selenium.By.name;
+import static org.openqa.selenium.By.xpath;
 
 public class ebooks {
     WebDriver driver;
@@ -35,9 +36,7 @@ public class ebooks {
             } else {
                 System.out.println ( "Both The Code Has Not Executed In The Course Ebooks Tab" );
             }
-        } catch (java.util.NoSuchElementException e) {
-            System.out.println ( "Ebooks Tab Is Not Present In The Current Course" );
-        }
+
 
         // Scrolling The page In the ebook list page
         int numberOfTimesScrollEbooks = 5;
@@ -240,6 +239,9 @@ public class ebooks {
 //            System.out.println ( "Ebook is Not Showing in My-Ebooks" );
 //        }
 
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Ebooks Tab Is Not Present In The Current Course" );
+        }
 
     }
 }

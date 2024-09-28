@@ -3,6 +3,7 @@ package MyCourse;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
 import static org.openqa.selenium.By.xpath;
 
@@ -16,6 +17,8 @@ public class filters {
 
     public filters() {
     }
+
+    @Test
     public void Filter() throws InterruptedException {
 
         //Scrolling Down Function

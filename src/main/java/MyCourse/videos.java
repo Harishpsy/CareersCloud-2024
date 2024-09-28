@@ -35,9 +35,6 @@ public class videos {
             } else {
                 System.out.println ( "Both The Code Has Not Executed In The Course Videos Tab" );
             }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "Videos Tab Is Not Present In The Current Course" );
-        }
 
         // Scrolling The Videos List Page
         int numberOfTimesScrollVideos = 5;
@@ -289,6 +286,9 @@ public class videos {
 //            System.out.println ( "Video Is Not Showing In The My Notes" );
 //        }
 
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Videos Tab Is Not Present In The Current Course" );
+        }
     }
 }
 

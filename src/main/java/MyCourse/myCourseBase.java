@@ -74,32 +74,32 @@ public class myCourseBase {
 //                    path.allpath ();
 
                     /* Creating An Object For The Article Sub Module, Performing The Actions */
-//                    article article = new article ( driver );
-//                    article.Article ();
+                    article article = new article ( driver );
+                    article.Article ();
 
                     /* Creating An Object For The Videos Sub Module, Performing The Actions */
-//                    videos video = new videos ( driver );
-//                    video.videos ();
+                    videos video = new videos ( driver );
+                    video.videos ();
 
                     /* Creating An Object For The Quizzes Sub Module, Performing The Actions */
-                   /* quizzes quizzes = new quizzes ( driver );
-                    quizzes.Quizzes (); /*
+                    quizzes quizzes = new quizzes ( driver );
+                    quizzes.Quizzes ();
 
                     /* Creating An Object For The Ebooks Sub Module, Performing The Actions */
-//                    ebooks ebooks = new ebooks ( driver );
-//                    ebooks.Ebooks ();
+                    ebooks ebooks = new ebooks ( driver );
+                    ebooks.Ebooks ();
 
                     /* Creating An Object For The Doubts Sub Module, Performing The Actions */
-                    doubts doubt = new doubts ( driver );
-                    doubt.Doubts ();
-
-                    /* Creating An Object For The Free Sub Module, Performing The Actions */
-                    free freetab = new free ( driver );
-                    freetab.freeTab ();
-
-                    /* Creating An Object For The Article, Performing The Actions */
-                    details detailsPage = new details ( driver );
-                    detailsPage.details ();
+                    doubts doubtPage = new doubts ( driver );
+                    doubtPage.doubtbase ();
+//
+//                    /* Creating An Object For The Free Sub Module, Performing The Actions */
+//                    free freetab = new free ( driver );
+//                    freetab.freeTab ();
+//
+//                    /* Creating An Object For The Article, Performing The Actions */
+//                    details detailsPage = new details ( driver );
+//                    detailsPage.details ();
 
                     // Go back to the course list using breadcrumb (if available)
                     try {

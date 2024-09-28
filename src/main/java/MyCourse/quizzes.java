@@ -20,7 +20,6 @@ import static org.openqa.selenium.By.*;
 
 public class quizzes extends Mynotespageobject {
     WebDriver driver;
-
     public quizzes(WebDriver driver) {
         this.driver = driver;
     }
@@ -28,6 +27,7 @@ public class quizzes extends Mynotespageobject {
     public quizzes() {
     }
 
+    @Test
     public void Quizzes() throws InterruptedException {
 
         // Verifying The Quizzes Sub-Module Was Displaying, if Display Perform The Below Action
@@ -43,9 +43,7 @@ public class quizzes extends Mynotespageobject {
             } else {
                 System.out.println ( "Both The Code Has Not Executed In The Course Quizzes Tab" );
             }
-        } catch (java.util.NoSuchElementException e) {
-            System.out.println ( "Quizzes Tab Is Not Present In The Current Course" );
-        }
+
 
         // Scrolling The Quizzes List Page to verify data
         int numberOfTimesScrollQuizzes = 10;
@@ -120,6 +118,9 @@ public class quizzes extends Mynotespageobject {
         // Course > Quizzes > Sub-Sub Tabs
         quizzes subSubTabs = new quizzes ( driver );
         subSubTabs.quizSubSubTab ();
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Quizzes Tab Is Not Present In The Current Course" );
+        }
     }
 
     @Test

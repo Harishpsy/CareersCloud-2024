@@ -38,9 +38,16 @@ public class article {
                 System.out.println ( "Both The Code Has Not Executed In The Course Article Tab" );
             }
 
+            // Creating an Object For Article Actions
+            article articleAction = new article ( driver );
+            articleAction.articleActions ();
+
         } catch (NoSuchElementException e) {
             System.out.println ( "Article Tab Is Not Present In The Current Course" );
         }
+    }
+
+    public void articleActions() throws InterruptedException {
 
         // needs to write in base
         int numberoftimesscrollarticle = 5;
@@ -246,6 +253,7 @@ public class article {
 //        if (!articleFound) {
 //            System.out.println ( "Article Is Not Showing In The My Notes" );
 //        }
+
 
     }
 }

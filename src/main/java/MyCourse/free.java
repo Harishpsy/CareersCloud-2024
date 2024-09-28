@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -18,14 +19,12 @@ import java.util.concurrent.TimeUnit;
 import static org.openqa.selenium.By.*;
 
 public class free {
-
     WebDriver driver;
-
     public free(WebDriver driver) {
-
         this.driver = driver;
     }
 
+    @Test
     public void freeTab() throws InterruptedException {
 
         // Clicking Free Tab In the all course list page
@@ -42,9 +41,7 @@ public class free {
                 System.out.println ( "Both The Code Has Not Executed In The Course Free Tab" );
             }
 
-        } catch (NoSuchElementException e) {
-            System.out.println ( "Free Tab Is Not Present In The The Current Course Feed " );
-        }
+
 
         /* Creating An Free Tab > Article Object, We Are Calling Article Sub-Module */
 //        free article = new free ( driver );
@@ -69,9 +66,12 @@ public class free {
 //        courseFreeTab solutionquiz = new courseFreeTab ( driver );
 //        solutionquiz.quizSolutions ();
 
-
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Free Tab Is Not Present In The The Current Course Feed " );
+        }
     }
 
+    @Test
     public void artilces() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -250,6 +250,7 @@ public class free {
         }
     }
 
+    @Test
     public void Ebooks() throws InterruptedException {
 
         Thread.sleep ( 5000 ); // Waiting For The Element Visible
@@ -388,6 +389,7 @@ public class free {
             }
     }
 
+    @Test
     public void videos() throws InterruptedException {
 
         // Check if noRecordFound element is displayed and log the result
@@ -621,6 +623,7 @@ public class free {
         }
     }
 
+    @Test
     public void quizStart() throws InterruptedException {
 
         // Check if elements are displayed and log the results
@@ -863,6 +866,7 @@ public class free {
         }
     }
 
+    @Test
     public void resumeQuiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -1096,6 +1100,7 @@ public class free {
 
     }
 
+    @Test
     public void quizSolutions() throws InterruptedException {
 
         System.out.println ( "-----------------------Solutions---------------------------" );

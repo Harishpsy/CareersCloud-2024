@@ -41,23 +41,23 @@ public class details {
                 clickingDetails.click ();
                 System.out.println ( "Successfully clicked the Details page." );
             }
+
+            // Creating The Object For The Support > Email
+//            detailsTab email = new detailsTab ( driver );
+//            email.emialIcon ();
+
+            // Creating The Object For The Support > phone
+            detailsTab phone = new detailsTab ( driver );
+            phone.phoneIcon ();
+
+            //Creating The Object For The Support > WhatsApp Chat
+            detailsTab whatappchat = new detailsTab ( driver );
+            whatappchat.whatsAppChat ();
+
         } catch (NoSuchElementException e) {
             // Handle a case when the "Details" tab is not found
             System.out.println ( "Details Page is not found in the Course List, skipping to the next module." );
         }
-
-
-        // Creating The Object For The Support > Email
-        detailsTab email = new detailsTab ( driver );
-        email.emialIcon ();
-
-        // Creating The Object For The Support > phone
-        detailsTab phone = new detailsTab ( driver );
-        phone.phoneIcon ();
-
-        //Creating The Object For The Support > WhatsApp Chat
-        detailsTab whatappchat = new detailsTab ( driver );
-        whatappchat.whatsAppChat ();
     }
 
     @Test

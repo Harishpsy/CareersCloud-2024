@@ -4,15 +4,18 @@ import AllCourse.pathTab;
 import PageObjectModule.Myebookspageobject;
 import PageObjectModule.Mynotespageobject;
 import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static PageObjectModule.Myebookspageobject.*;
@@ -29,6 +32,7 @@ public class path {
     public path() {
     }
 
+    @Test
     public void allpath() throws InterruptedException {
 
         try {
@@ -43,15 +47,17 @@ public class path {
             } else {
                 System.out.println ( "Both The Actions Are Not Performed Error In The Path Clicking" );
             }
+
+            // Creating An Object For The Path List Page Actions
+            pathTab pathActions = new pathTab ( driver );
+            pathActions.pathListActions ();
+
         } catch (org.openqa.selenium.NoSuchElementException e) {
             System.out.println ( "Error Message : " + e.getMessage () );
         }
-
-        // Creating An Object For The Path List Page Actions
-        pathTab pathActions = new pathTab ( driver );
-        pathActions.pathListActions ();
     }
 
+    @Test
     public void pathListActions() throws InterruptedException {
 
         // Initialize WebDriverWait with a maximum wait time of 10 seconds
@@ -162,6 +168,7 @@ public class path {
         }
     }
 
+    @Test
     public void pathArticle() throws InterruptedException {
 
         // Check if noRecordFound element is displayed and log the result
@@ -344,6 +351,7 @@ public class path {
         }
     }
 
+    @Test
     public void PathEbooks() throws InterruptedException {
 
         PageFactory.initElements ( driver , Myebookspageobject.class );
@@ -435,6 +443,7 @@ public class path {
         }
     }
 
+    @Test
     public void startquiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -1101,6 +1110,7 @@ public class path {
         }
     }
 
+    @Test
     public void resumequiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -1433,6 +1443,7 @@ public class path {
         }
     }
 
+    @Test
     public void solutionpath() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
