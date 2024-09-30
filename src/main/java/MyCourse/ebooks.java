@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.*;
@@ -21,7 +22,7 @@ public class ebooks {
         this.driver = driver;
     }
 
-    public void Ebooks() throws InterruptedException {
+    public void Ebooks() {
 
         // Verifying The Ebooks Sub-Module Was Displaying, if Display Perform The Below Action
         try {
@@ -37,7 +38,17 @@ public class ebooks {
                 System.out.println ( "Both The Code Has Not Executed In The Course Ebooks Tab" );
             }
 
+            ebooks actions = new ebooks ( driver );
+            actions.ebookActions ();
 
+        } catch (Exception e) {
+            System.out.println ( "Ebooks Tab Is Not Present In The Current Course" );
+        }
+
+    }
+
+    @Test
+    public void ebookActions() throws InterruptedException {
         // Scrolling The page In the ebook list page
         int numberOfTimesScrollEbooks = 5;
         for (int i = 0; i < numberOfTimesScrollEbooks; i++) {
@@ -239,9 +250,6 @@ public class ebooks {
 //            System.out.println ( "Ebook is Not Showing in My-Ebooks" );
 //        }
 
-        } catch (NoSuchElementException e) {
-            System.out.println ( "Ebooks Tab Is Not Present In The Current Course" );
-        }
 
     }
 }

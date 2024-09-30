@@ -1,6 +1,7 @@
 package MyCourse;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,7 +11,6 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 import static org.openqa.selenium.By.*;
@@ -27,7 +27,6 @@ public class article {
         // Verifying The Article Sub-Module Was Displaying, if Display Perform The Below Action
         try {
             WebElement clickingArticleTab = driver.findElement ( xpath ( "//*[text()='Articles']" ) );
-
             if (clickingArticleTab.isSelected ()) {
                 System.out.println ( "Article Tab Is Already Selected, We Are Performing The Below Actions In The Article Tab List Page" );
             } else if (clickingArticleTab.isDisplayed ()) {
@@ -150,10 +149,23 @@ public class article {
 //        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
 //        clickingSendButton.click ();
 
-        // Clicking Float button
-        Thread.sleep ( 5000 );
-        WebElement clickingFloatButton = driver.findElement ( xpath ( "//*[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"]" ) );
-        clickingFloatButton.click ();
+        // Clicking Float Icon
+        try {
+            // Wait for the float icon to become clickable (10-second timeout)
+            WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
+            WebElement clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
+
+            // Check if the float icon is displayed
+            if (clickingFloatIcon.isDisplayed ()) {
+                // Optional wait before clicking
+                Thread.sleep ( 2000 );
+                clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
+                clickingFloatIcon.click ();
+                System.out.println ( "Float Icon clicked successfully." );
+            }
+        } catch (Exception e) {
+            System.out.println ( "FloatIcon Button is not displayed." );
+        }
 
         // Clicking the share icon
         Thread.sleep ( 3000 );

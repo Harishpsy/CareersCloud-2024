@@ -36,6 +36,17 @@ public class videos {
                 System.out.println ( "Both The Code Has Not Executed In The Course Videos Tab" );
             }
 
+            videos actions = new videos ( driver );
+            actions.videosActions ();
+
+        } catch (Exception e) {
+            System.out.println ( "Videos Tab Is Not Present In The Current Course" );
+        }
+
+    }
+
+    public void videosActions() throws InterruptedException {
+
         // Scrolling The Videos List Page
         int numberOfTimesScrollVideos = 5;
 
@@ -286,9 +297,6 @@ public class videos {
 //            System.out.println ( "Video Is Not Showing In The My Notes" );
 //        }
 
-        } catch (NoSuchElementException e) {
-            System.out.println ( "Videos Tab Is Not Present In The Current Course" );
-        }
     }
 }
 

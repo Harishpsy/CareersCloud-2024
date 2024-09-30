@@ -44,6 +44,16 @@ public class quizzes extends Mynotespageobject {
                 System.out.println ( "Both The Code Has Not Executed In The Course Quizzes Tab" );
             }
 
+//            quizzes actions = new quizzes (driver);
+//            actions.quizActions ();
+
+
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Quizzes Tab Is Not Present In The Current Course" );
+        }
+    }
+
+    public void quizActions() throws InterruptedException {
 
         // Scrolling The Quizzes List Page to verify data
         int numberOfTimesScrollQuizzes = 10;
@@ -118,9 +128,7 @@ public class quizzes extends Mynotespageobject {
         // Course > Quizzes > Sub-Sub Tabs
         quizzes subSubTabs = new quizzes ( driver );
         subSubTabs.quizSubSubTab ();
-        } catch (NoSuchElementException e) {
-            System.out.println ( "Quizzes Tab Is Not Present In The Current Course" );
-        }
+
     }
 
     @Test

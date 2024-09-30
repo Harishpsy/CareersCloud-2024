@@ -70,8 +70,8 @@ public class myCourseBase {
                     // Perform actions on the sub-modules as per your code (articles, videos, quizzes, ebooks, etc.)
 
                     /* Perform actions on path tab */
-//                    path path = new path ( driver );
-//                    path.allpath ();
+                    path path = new path ( driver );
+                    path.allpath ();
 
                     /* Creating An Object For The Article Sub Module, Performing The Actions */
                     article article = new article ( driver );
@@ -92,14 +92,14 @@ public class myCourseBase {
                     /* Creating An Object For The Doubts Sub Module, Performing The Actions */
                     doubts doubtPage = new doubts ( driver );
                     doubtPage.doubtbase ();
-//
-//                    /* Creating An Object For The Free Sub Module, Performing The Actions */
-//                    free freetab = new free ( driver );
-//                    freetab.freeTab ();
-//
-//                    /* Creating An Object For The Article, Performing The Actions */
-//                    details detailsPage = new details ( driver );
-//                    detailsPage.details ();
+
+                    /* Creating An Object For The Free Sub Module, Performing The Actions */
+                    free freetab = new free ( driver );
+                    freetab.freeTab ();
+
+                    /* Creating An Object For The Article, Performing The Actions */
+                    details detailsPage = new details ( driver );
+                    detailsPage.details ();
 
                     // Go back to the course list using breadcrumb (if available)
                     try {

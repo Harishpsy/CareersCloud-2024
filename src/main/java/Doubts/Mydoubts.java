@@ -23,7 +23,7 @@ public class Mydoubts {
         // Clicking My Doubts
 
         Thread.sleep (4000);
-        WebElement clickingMyDoubts = driver.findElement (By.xpath ("//*[text()='My Doubts']"));
+        WebElement clickingMyDoubts = driver.findElement ( By.xpath ( "(//*[text()='My Doubts'])" ) );
         clickingMyDoubts.click ();
 
         try {

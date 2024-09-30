@@ -1,6 +1,5 @@
 package MyCourse;
 
-import AllCourse.pathTab;
 import PageObjectModule.Myebookspageobject;
 import PageObjectModule.Mynotespageobject;
 import org.openqa.selenium.*;
@@ -48,12 +47,12 @@ public class path {
                 System.out.println ( "Both The Actions Are Not Performed Error In The Path Clicking" );
             }
 
-            // Creating An Object For The Path List Page Actions
-            pathTab pathActions = new pathTab ( driver );
-            pathActions.pathListActions ();
+//            // Creating An Object For The Path List Page Actions
+//            pathTab pathActions = new pathTab ( driver );
+//            pathActions.pathListActions ();
 
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            System.out.println ( "Error Message : " + e.getMessage () );
+        } catch (NoSuchElementException e) {
+            System.out.println ( "Path Error Message : " + e.getMessage () );
         }
     }
 
@@ -145,21 +144,21 @@ public class path {
                     System.out.println ( "No elements found In The Sub Path, skipping this step." );
                 }
 
-//                // Perform the following actions if the element is displayed
-//                CoursePath patharticle = new CoursePath ( driver );
-//                patharticle.pathArticle ();
-//
-//                CoursePath pathebook = new CoursePath ( driver );
-//                pathebook.PathEbooks ();
-//
-//                CoursePath startquiz = new CoursePath ( driver );
-//                startquiz.startquiz ();
-//
-//                CoursePath resumequiz = new CoursePath ( driver );
-//                resumequiz.resumequiz ();
-//
-//                CoursePath solutionquiz = new CoursePath ( driver );
-//                solutionquiz.solutionpath ();
+                // Perform the following actions if the element is displayed
+                path patharticle = new path ( driver );
+                patharticle.pathArticle ();
+
+                path pathebook = new path ( driver );
+                pathebook.PathEbooks ();
+
+                path startquiz = new path ( driver );
+                startquiz.startquiz ();
+
+                path resumequiz = new path ( driver );
+                resumequiz.resumequiz ();
+
+                path solutionquiz = new path ( driver );
+                solutionquiz.solutionpath ();
 
             }
 

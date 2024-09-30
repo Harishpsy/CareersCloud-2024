@@ -205,11 +205,18 @@ public class doubts {
                 WebElement clickingAnswericon = driver.findElement ( id ( "comments-icon" ) );
                 clickingAnswericon.click ();
                 System.out.println ( "Successfully Clicked The Answer Icon" );
+                try {
+                    WebElement Enteringtext = driver.findElement ( id ( "teatx-area-id" ) );
+                    if (Enteringtext.isDisplayed ()) {
 
-                // Entering the text
-                WebElement Enteringtext = driver.findElement ( id ( "teatx-area-id" ) );
-                Enteringtext.sendKeys ( "Thanks" );
-                System.out.println ( "Successfully Entered The Text" );
+                        // Entering the text
+                        Enteringtext = driver.findElement ( id ( "teatx-area-id" ) );
+                        Enteringtext.sendKeys ( "Thanks" );
+                        System.out.println ( "Successfully Entered The Text" );
+                    }
+                } catch (NoSuchElementException e) {
+                    System.out.println ( "Text Field Is Not Displayed " );
+                }
 
 //        // Clicking the upload Buttton
 //        Thread.sleep ( 5000 );
@@ -480,16 +487,26 @@ public class doubts {
                 clickingAnswericon.click ();
                 System.out.println ( "Successfully Clicked The Answer icon in the My Doubts " );
 
-                // Entering the text
-                Thread.sleep ( 2000 );
-                WebElement Enteringtext = driver.findElement ( id ( "teatx-area-id" ) );
-                Enteringtext.sendKeys ( "Thanks" );
+                try {
+                    WebElement Enteringtext = driver.findElement ( id ( "teatx-area-id" ) );
 
-                // Clicking the Send button
-                Thread.sleep ( 3000 );
-                WebElement clickingSendbutton = driver.findElement ( xpath ( "(//*[@alt=\"send_doubts\"])[1]" ) );
-                clickingSendbutton.click ();
-                System.out.println ( "Successfully Clicked The Send in the My Doubts " );
+                    if (Enteringtext.isDisplayed ()) {
+                        // Entering the text
+                        Thread.sleep ( 2000 );
+                        Enteringtext = driver.findElement ( id ( "teatx-area-id" ) );
+                        Enteringtext.sendKeys ( "Thanks" );
+
+                        // Clicking the Send button
+                        Thread.sleep ( 3000 );
+                        WebElement clickingSendbutton = driver.findElement ( xpath ( "(//*[@alt=\"send_doubts\"])[1]" ) );
+                        clickingSendbutton.click ();
+                        System.out.println ( "Successfully Clicked The Send in the My Doubts " );
+                    } else {
+                        System.out.println ( "" );
+                    }
+                } catch (NoSuchElementException e) {
+                    System.out.println ( "Text Field Was Not present, Doubt was Solved, So Skipping The Action" );
+                }
 
                 // Clicking the Reply button
                 WebElement clickingReplyButton = driver.findElement ( xpath ( "//*[text()=' Reply']" ) );
@@ -512,9 +529,9 @@ public class doubts {
 
                 // There is an issue in the button
                 // Clicking The Mark As Best Answer
-                //        Thread.sleep (3000);
-                //        WebElement clickBestAnswer = driver.findElement (xpath ("//*[@alt=\"award\"]"));
-                //        clickBestAnswer.click ();
+                //Thread.sleep (3000);
+                //WebElement clickBestAnswer = driver.findElement (xpath ("//*[@alt=\"award\"]"));
+                //clickBestAnswer.click ();
 
                 // Clicking The Close Icon
 //        Thread.sleep (3000);
