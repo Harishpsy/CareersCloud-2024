@@ -24,7 +24,7 @@ public class free {
         this.driver = driver;
     }
 
-    @Test
+    @Test(enabled = false)
     public void freeTab() throws InterruptedException {
 
         // Clicking Free Tab In the all course list page
@@ -41,37 +41,35 @@ public class free {
                 System.out.println ( "Both The Code Has Not Executed In The Course Free Tab" );
             }
 
-
-
         /* Creating An Free Tab > Article Object, We Are Calling Article Sub-Module */
-//        free article = new free ( driver );
-//        article.artilces ();
+            free article = new free ( driver );
+            article.artilces ();
 
         /* Creating An Free Tab > Ebook Object, We Are Calling Ebook Module */
-//        free ebook = new free ( driver );
-//        ebook.Ebooks ();
-//
-//        courseFreeTab videos = new courseFreeTab ( driver );
-//        videos.videos ();
-//
-//        // Performing the start quiz action
-//        courseFreeTab startquiz = new courseFreeTab ( driver );
-//        startquiz.quizStart ();
-//
-//        //Performing The resume quiz
-//        courseFreeTab resumequiz = new courseFreeTab ( driver );
-//        resumequiz.resumeQuiz ();
+            free ebook = new free ( driver );
+            ebook.Ebooks ();
+
+            free videos = new free ( driver );
+            videos.videos ();
+
+            // Performing the start quiz action
+            free startquiz = new free ( driver );
+            startquiz.quizStart ();
+
+            //Performing The resume quiz
+            free resumequiz = new free ( driver );
+            resumequiz.resumeQuiz ();
 
         //Performing The Solutions Action
-//        courseFreeTab solutionquiz = new courseFreeTab ( driver );
-//        solutionquiz.quizSolutions ();
+            free solutionquiz = new free ( driver );
+            solutionquiz.quizSolutions ();
 
         } catch (NoSuchElementException e) {
             System.out.println ( "Free Tab Is Not Present In The The Current Course Feed " );
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void artilces() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -250,7 +248,7 @@ public class free {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void Ebooks() throws InterruptedException {
 
         Thread.sleep ( 5000 ); // Waiting For The Element Visible
@@ -389,7 +387,7 @@ public class free {
             }
     }
 
-    @Test
+    @Test(enabled = false)
     public void videos() throws InterruptedException {
 
         // Check if noRecordFound element is displayed and log the result
@@ -623,7 +621,7 @@ public class free {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void quizStart() throws InterruptedException {
 
         // Check if elements are displayed and log the results
@@ -866,7 +864,7 @@ public class free {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void resumeQuiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -1100,7 +1098,7 @@ public class free {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void quizSolutions() throws InterruptedException {
 
         System.out.println ( "-----------------------Solutions---------------------------" );

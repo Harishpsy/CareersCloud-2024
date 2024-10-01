@@ -27,7 +27,7 @@ public class quizzes extends Mynotespageobject {
     public quizzes() {
     }
 
-    @Test
+    @Test(enabled = false)
     public void Quizzes() throws InterruptedException {
 
         // Verifying The Quizzes Sub-Module Was Displaying, if Display Perform The Below Action
@@ -47,12 +47,12 @@ public class quizzes extends Mynotespageobject {
 //            quizzes actions = new quizzes (driver);
 //            actions.quizActions ();
 
-
         } catch (NoSuchElementException e) {
             System.out.println ( "Quizzes Tab Is Not Present In The Current Course" );
         }
     }
 
+    @Test(enabled = false)
     public void quizActions() throws InterruptedException {
 
         // Scrolling The Quizzes List Page to verify data
@@ -131,7 +131,7 @@ public class quizzes extends Mynotespageobject {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void quizSubSubTab() throws InterruptedException {
 
         // Course quiz > Paused Sub-Sub Tab
@@ -148,7 +148,7 @@ public class quizzes extends Mynotespageobject {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void quizStart() throws InterruptedException {
 
         // Check if elements are displayed and log the results
@@ -383,7 +383,7 @@ public class quizzes extends Mynotespageobject {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void resumeQuiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -589,7 +589,7 @@ public class quizzes extends Mynotespageobject {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void quizSolution() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );

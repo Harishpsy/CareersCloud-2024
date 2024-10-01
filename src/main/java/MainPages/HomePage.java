@@ -204,6 +204,7 @@ public class HomePage {
         }
     }
 
+    @Test
     public void footerSection() throws InterruptedException {
 
         // Clicking The About us In The Footer Section
@@ -293,6 +294,7 @@ public class HomePage {
         }
     }
 
+    @Test
     public void verifyingDuplicate() {
 
         // Verifying The list of Images In Home Page, any one of them was getting Duplicate or Not
@@ -480,6 +482,7 @@ public class HomePage {
 //        }
     }
 
+    @Test
     public void ArticleandCourse() throws InterruptedException {
 
         // Clicking the list of elements present in the form of Article and Course

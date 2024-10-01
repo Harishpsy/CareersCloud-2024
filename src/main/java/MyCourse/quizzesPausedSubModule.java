@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -16,11 +17,11 @@ import static org.openqa.selenium.By.*;
 
 public class quizzesPausedSubModule {
     WebDriver driver;
-
     public quizzesPausedSubModule(WebDriver driver) {
         this.driver = driver;
     }
 
+    @Test
     public void pausedTab() throws InterruptedException {
 
         WebElement clickingThePausedTab = driver.findElement ( xpath ( "//*[text()='Paused']" ) );
@@ -81,6 +82,7 @@ public class quizzesPausedSubModule {
 
     }
 
+    @Test
     private void resumeQuizs() throws InterruptedException {
 
         System.out.println ( "----------------------Resume Quiz---------------------------" );
@@ -299,6 +301,7 @@ public class quizzesPausedSubModule {
         }
     }
 
+    @Test
     private void quizSolutions() throws InterruptedException {
 
         System.out.println ( "-----------------------Solutions---------------------------" );

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.*;
@@ -16,10 +17,11 @@ import static org.openqa.selenium.By.xpath;
 
 public class videos {
     WebDriver driver;
-
     public videos(WebDriver driver) {
         this.driver = driver;
     }
+
+    @Test
     public void videos() throws InterruptedException {
 
         // Verifying The Videos Sub-Module Was Displaying, if Display Perform The Below Action
@@ -45,6 +47,7 @@ public class videos {
 
     }
 
+    @Test
     public void videosActions() throws InterruptedException {
 
         // Scrolling The Videos List Page

@@ -290,32 +290,27 @@ public class myNotes {
             System.out.println ( "Comment Added Sucessfully" );
 
 //            // Clicking The send Button
-//
 //            Thread.sleep ( 3000 );
 //            WebElement clickingSendButton = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-send\"]" ) );
 //            clickingSendButton.click ();
 
             // Clicking the share icon
-
             Thread.sleep ( 5000 );
             WebElement clickingshareicon = driver.findElement ( xpath ( "//*[@class=\"share\"]" ) );
             clickingshareicon.click ();
 
             //click the copy link in the share popup
-
             Thread.sleep ( 5000 );
             WebElement Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
             Copy_link.click ();
 
             //Clicking the cancel button in the in share popup
-
             Thread.sleep ( 3000 );
             WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             Cancel_button.click ();
             System.out.println ( "Clicked cancel button" );
 
             // Clicking The Pause Button In The Viedos
-
             driver.switchTo ().frame ( 0 );
             Thread.sleep ( 3000 );
             WebElement clickingPauseButton = driver.findElement ( xpath ( "//*[@title=\"Pause (k)\"]" ) );
@@ -323,41 +318,34 @@ public class myNotes {
             System.out.println ( "SucessFully Clicked Paused button" );
 
             // Click the mute button in the video
-
             WebElement clickingMuteButton = driver.findElement ( xpath ( "//*[@title=\"Mute (m)\"]" ) );
             clickingMuteButton.click ();
             System.out.println ( "SucessFully Clicked Mute button" );
 
             // Clicking The Caption button
-
             WebElement clickingCaptionButton = driver.findElement ( xpath ( "//*[@title=\"Subtitles/closed captions (c)\"]" ) );
             clickingCaptionButton.click ();
             System.out.println ( "SucessFully Clicked Caption (ON) button" );
 
             // Clicking the Full screen Button
-
             Thread.sleep ( 3000 );
             WebElement clickingFullScreenButton = driver.findElement ( xpath ( "//*[@title=\"Full screen (f)\"]" ) );
             clickingFullScreenButton.click ();
             System.out.println ( "SucessFully Clicked The Full Screen Button" );
 
             // Clicking the Exit The Full-screen Button
-
             Thread.sleep ( 3000 );
             WebElement clickingExitFullScreenButton = driver.findElement ( xpath ( "//*[@title=\"Exit full screen (f)\"]" ) );
             clickingExitFullScreenButton.click ();
             System.out.println ( "SucessFully Clicked The Exit Full Screen Button" );
 
-
             // Clicking the YouTube Logo It will navigate to YouTube or new windows
-
             Thread.sleep ( 3000 );
             WebElement clickingYouTubeLogo = driver.findElement ( xpath ( "//*[@title=\"Watch on YouTube\"]" ) );
             clickingYouTubeLogo.click ();
             System.out.println ( "SucessFully Clicked The YouTube Logo " );
 
             // Windows Handeling
-
             Set<String> windows = driver.getWindowHandles ();
             Iterator<String> it = windows.iterator ();
             String parent = it.next ();
@@ -369,20 +357,16 @@ public class myNotes {
             driver.close ();
 
             // Switching Windows to Parent
-
             driver.switchTo ().window ( parent );
 
             // Another Method for verifying Duplicate In The Wep page Using HashSet
-
             List<WebElement> recentVideos = driver.findElements ( xpath ( "//*[@class=\"ant-list-items\"]/child::*" ) );
 
             // Create a set to store unique Recent Videos
-
             Set<String> uniqueurl = new HashSet<> ();
             int uniquevideosurlcount = 0;
 
             // Iterate through the list of elements
-
             for (WebElement recentVideo : recentVideos) {
                 String actualUrls = recentVideo.getAttribute ( "href" );
 

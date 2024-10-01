@@ -2,6 +2,7 @@ package Doubts;
 
 import Menu.myPoints;
 import PageObjectModule.Mypointspageobject;
+import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +18,7 @@ public class Mypoints {
         this.driver = driver;
     }
 
+    @Test
     public void myPoints() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mypointspageobject.class );

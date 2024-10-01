@@ -26,7 +26,7 @@ public class details {
         this.driver = driver;
     }
 
-    @Test
+    @Test(enabled = false)
     public void details() throws InterruptedException, AWTException {
         try {
             WebElement clickingDetails = driver.findElement ( By.xpath ( "//*[text()='Details']" ) );
@@ -43,8 +43,8 @@ public class details {
             }
 
             // Creating The Object For The Support > Email
-//            detailsTab email = new detailsTab ( driver );
-//            email.emialIcon ();
+            detailsTab email = new detailsTab ( driver );
+            email.emialIcon ();
 
             // Creating The Object For The Support > phone
             detailsTab phone = new detailsTab ( driver );
@@ -60,7 +60,7 @@ public class details {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void emialIcon() throws InterruptedException, AWTException {
 
         //Checking The Email Icon Is Displaying Or Not, If it displayed Performing The Actions, If It is Not Displayed Skipping The Action
@@ -135,7 +135,7 @@ public class details {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void phoneIcon() throws InterruptedException {
 
         //Checking The Email Icon Is Displaying Or Not, If it displayed Performing The Actions, If It is Not Displayed Skipping The Action
@@ -164,7 +164,7 @@ public class details {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void whatsAppChat() throws InterruptedException {
 
         //Checking The WhatsApp Chat Icon Is Displaying Or Not If it displayed Performing The Actions, If It is Not Displayed Skipping The Action

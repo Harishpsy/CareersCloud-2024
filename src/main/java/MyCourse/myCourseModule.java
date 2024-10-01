@@ -18,7 +18,7 @@ public class myCourseModule {
         this.driver = driver;
     }
 
-    @Test
+    @Test(enabled = false)
     public void myCourseClicking() throws InterruptedException, AWTException {
 
         // Clicking My Course Button

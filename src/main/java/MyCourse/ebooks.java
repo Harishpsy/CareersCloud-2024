@@ -91,10 +91,10 @@ public class ebooks {
         // Iterate through the list of elements
         for (WebElement ebooksTitleName : ebookTitle) {
             String actualEbookTitle = ebooksTitleName.getText ();
-            //System.out.println ("Original Ebook Name:" + actualEbookTitle);
+            System.out.println ( "Original Ebook Name:" + actualEbookTitle );
 
             if (uniqueTitleName.contains (actualEbookTitle)) {
-                System.out.println ("Duplicate Found ---> " + actualEbookTitle);
+                System.out.println ( "Duplicate Found In The Ebooks---> " + actualEbookTitle );
             } else {
                 uniqueTitleName.add (actualEbookTitle);
                 ebookTitleCount++;

@@ -4,14 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 public class menuBase {
-
     WebDriver driver;
-
     public menuBase(WebDriver driver) {
         this.driver = driver;
     }
 
-    @Test
+    @Test(enabled = false)
     public void menu() throws InterruptedException {
 
         // My Notes

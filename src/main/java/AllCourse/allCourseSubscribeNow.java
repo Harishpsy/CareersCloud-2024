@@ -1,6 +1,7 @@
 package AllCourse;
 
 import org.openqa.selenium.*;
+import org.testng.annotations.Test;
 
 import java.awt.*;
 import java.time.Duration;
@@ -12,6 +13,7 @@ public class allCourseSubscribeNow {
         this.driver = driver;
     }
 
+    @Test
     public void subscribeNowButton() throws InterruptedException, AWTException {
 
 

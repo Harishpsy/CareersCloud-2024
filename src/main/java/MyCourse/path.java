@@ -31,7 +31,7 @@ public class path {
     public path() {
     }
 
-    @Test
+    @Test(enabled = false)
     public void allpath() throws InterruptedException {
 
         try {
@@ -56,7 +56,7 @@ public class path {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void pathListActions() throws InterruptedException {
 
         // Initialize WebDriverWait with a maximum wait time of 10 seconds
@@ -167,7 +167,7 @@ public class path {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void pathArticle() throws InterruptedException {
 
         // Check if noRecordFound element is displayed and log the result
@@ -350,7 +350,7 @@ public class path {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void PathEbooks() throws InterruptedException {
 
         PageFactory.initElements ( driver , Myebookspageobject.class );
@@ -442,7 +442,7 @@ public class path {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void startquiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -1109,7 +1109,7 @@ public class path {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void resumequiz() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );
@@ -1442,7 +1442,7 @@ public class path {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void solutionpath() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mynotespageobject.class );

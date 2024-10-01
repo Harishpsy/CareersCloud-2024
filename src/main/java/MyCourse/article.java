@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -17,11 +18,11 @@ import static org.openqa.selenium.By.*;
 
 public class article {
     WebDriver driver;
-
     public article(WebDriver driver) {
         this.driver = driver;
     }
 
+    @Test
     public void Article() throws InterruptedException {
 
         // Verifying The Article Sub-Module Was Displaying, if Display Perform The Below Action
@@ -46,6 +47,7 @@ public class article {
         }
     }
 
+    @Test
     public void articleActions() throws InterruptedException {
 
         // needs to write in base

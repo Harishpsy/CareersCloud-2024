@@ -4,6 +4,7 @@ import MyCourse.path;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
@@ -17,6 +18,7 @@ public class pathTab extends path {
         this.driver = driver;
     }
 
+    @Test
     public void allpath() throws InterruptedException {
 
         try {
@@ -40,6 +42,7 @@ public class pathTab extends path {
         pathActions.pathListActions ();
     }
 
+    @Test
     public void pathListActions() throws InterruptedException {
 
         // Initialize WebDriverWait with a maximum wait time of 10 seconds

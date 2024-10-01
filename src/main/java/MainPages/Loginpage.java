@@ -2,12 +2,11 @@ package MainPages;
 
 
 import PageObjectModule.Loginpageobject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.Iterator;
@@ -18,14 +17,13 @@ import static PageObjectModule.Loginpageobject.*;
 public class Loginpage {
 
     public WebDriver driver;
-    public String Orginalusername;
-    public String username;
     // Constructor to set the WebDriver instance
     public Loginpage(WebDriver driver) {
         this.driver = driver;
     }
 
     // Method to perform login
+    @Test
     public void login() throws InterruptedException {
         // Navigate to the URL and maximize the window
         driver.get ("https://careerscloud.in/home-feed");
@@ -63,13 +61,9 @@ public class Loginpage {
         Continuebutton.click ();
         System.out.println ( "SuccessFully Clicked The Continue Button" );
         switchToParentWindow ();
-
-        // Get and print the username for verification
-        username ();
-        String username = getUsername ();
-        System.out.println ("OrginalUserName: " + username);
     }
 
+    @Test
     // Method to switch to the child window
     private void switchToChildWindow() {
         Set<String> windows = driver.getWindowHandles ();
@@ -80,6 +74,7 @@ public class Loginpage {
     }
 
     // Method to switch back to the parent window
+    @Test
     private void switchToParentWindow() {
         Set<String> windows = driver.getWindowHandles ();
         Iterator<String> it = windows.iterator ();
@@ -88,6 +83,7 @@ public class Loginpage {
         driver.switchTo ().window (parent);
     }
 
+    @Test
     // Method to enter password
     private void enterPassword() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (40));
@@ -96,19 +92,5 @@ public class Loginpage {
         Thread.sleep (2000);
         Nextbutton.click ();
         System.out.println ( "SuccessFully Clicked The Next Button" );
-    }
-
-    // Method to get the username for verification
-    public String username() throws InterruptedException {
-
-        Thread.sleep ( 5000 );
-        WebElement usernameElement = driver.findElement (By.xpath ("//*[@style=\"text-overflow: ellipsis; white-space: nowrap; text-transform: capitalize; font-size: 12px; color: rgb(11, 100, 157); font-weight: 900;\"]"));
-        Orginalusername = usernameElement.getText ();
-        System.out.println ("SuccessFully Get The User Name");
-        return null;
-    }
-
-    public String getUsername() {
-        return Orginalusername;
     }
 }

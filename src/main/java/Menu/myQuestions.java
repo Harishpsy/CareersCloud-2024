@@ -78,7 +78,7 @@ public class myQuestions {
                 // clickingUnBookmarkIcon.click ();
 
                 // Clicking The Quiz BackButton
-                Thread.sleep ( 3000 );
+                Thread.sleep ( 5000 );
                 quizBackButton.click ();
 
                 // Click The BookMarked Question

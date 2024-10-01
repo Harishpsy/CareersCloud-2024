@@ -1,5 +1,6 @@
 package Base;
 
+import AllCourse.allCourseModule;
 import MainPages.Loginpage;
 import MyCourse.myCourseModule;
 import org.openqa.selenium.WebDriver;
@@ -45,6 +46,10 @@ public class baseObjects {
         myCourseModule Mycourse = new myCourseModule ( driver );
         Mycourse.myCourseClicking ();
 
+        // All Course Tab In Home Feeds
+        allCourseModule allcourse = new allCourseModule ( driver );
+        allcourse.allCourse ();
+
 //        //Doubts Section
 //        Doubts doubts = new Doubts ( driver );
 //        doubts.doubts ();
@@ -69,13 +74,6 @@ public class baseObjects {
 //        Mypoints myPointsInDoubts = new Mypoints ( driver );
 //        myPointsInDoubts.myPoints ();
 
-//        // All Course Tab In Home Feeds
-//        allCourseTabAndFeed allcourse = new allCourseTabAndFeed ( driver );
-//        allcourse.allCourse ();
-
-//        //Clicking The Inside The All Course List Page
-//        allCourseBase courseclick = new allCourseBase ( driver );
-//        courseclick.courseClicking ();
 
     }
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -17,10 +18,11 @@ public class quizAttemptedSubModule {
 
     // Creating a Constructor
     WebDriver driver;
-
     public quizAttemptedSubModule(WebDriver driver) {
         this.driver = driver;
     }
+
+    @Test
     public void attemptedTab() throws InterruptedException {
 
         //Clicking The Attempted Tab
@@ -81,6 +83,7 @@ public class quizAttemptedSubModule {
         solution.quizSolution ();
     }
 
+    @Test
     private void quizSolution() throws InterruptedException {
 
         System.out.println ( "-----------------------Solutions---------------------------" );

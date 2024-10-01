@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.Iterator;
@@ -23,6 +24,7 @@ public class myEbooks {
         this.driver = driver;
     }
 
+    @Test
     public void MyEbooks() throws InterruptedException {
 
         PageFactory.initElements ( driver , Myebookspageobject.class );
@@ -32,7 +34,6 @@ public class myEbooks {
         clickingTheMyEbooks.click ();
 
         //Verifying there is content is present if not there navigate to the next module
-
         //Check if "No Records Found." element is displayed
         WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
 
@@ -41,7 +42,6 @@ public class myEbooks {
 
         try {
             // Check if noRecordFound element is displayed and log the result
-
             boolean noRecordFoundDisplayed = false;
             boolean threedotsDisplayed = false;
 
@@ -204,14 +204,15 @@ public class myEbooks {
 
                     // Click the back button on the Ebook page
                     clickingBackButton.click ();
+
                 } else {
-                    System.out.println ( "Both are not presented" );
+                    System.out.println ( "Both are not presented In The My Ebook Page " );
                 }
             } else {
                 System.out.println ( "Neither noRecordFound nor Threedots are displayed." );
             }
         } catch (Exception e) {
-            System.out.println ( "An error occurred: " + e.getMessage () );
+            System.out.println ( "An error occurred In The My Ebook Page: " + e.getMessage () );
             e.printStackTrace ();
         }
     }

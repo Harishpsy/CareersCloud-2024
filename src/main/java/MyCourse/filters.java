@@ -8,16 +8,12 @@ import org.testng.annotations.Test;
 import static org.openqa.selenium.By.xpath;
 
 public class filters {
-
     WebDriver driver;
-
     public filters(WebDriver driver) {
         this.driver = driver;
     }
-
     public filters() {
     }
-
     @Test
     public void Filter() throws InterruptedException {
 

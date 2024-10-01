@@ -5,22 +5,25 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
-public class allCourseTabAndFeed {
+public class allCourseModule {
 
     public WebDriver driver;
 
-    public allCourseTabAndFeed(WebDriver driver) {
+    public allCourseModule(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void allCourse() throws InterruptedException {
+    @Test
+    public void allCourse() throws InterruptedException, AWTException {
 
         //Clicking The All Course Button In the Header
         Thread.sleep ( 3000 );
@@ -28,13 +31,13 @@ public class allCourseTabAndFeed {
         clickingAllCourse.click ();
         System.out.println ( "SuccessFully Clicked The All Course Button In The Header" );
 
-//        //Verifying The Duplicate Course In The all Course List
-//        allCourseTabAndFeed duplicateCourseName = new allCourseTabAndFeed ( driver );
-//        duplicateCourseName.verifyingDuplicate ();
-//
-//        //All Course Filter
-//        AllFilter allfilter = new AllFilter ( driver );
-//        allfilter.filter ();
+        //Verifying The Duplicate Course In The all Course List
+        allCourseModule duplicateCourseName = new allCourseModule ( driver );
+        duplicateCourseName.verifyingDuplicate ();
+
+        //All Course Filter
+        AllFilter allfilter = new AllFilter ( driver );
+        allfilter.filter ();
 
         //Clicking The Inside The All Course List Page
         allCourseBase courseclick = new allCourseBase ( driver );
@@ -42,6 +45,7 @@ public class allCourseTabAndFeed {
 
     }
 
+    @Test
     public void verifyingDuplicate() throws InterruptedException {
 
         //Scrolling The Page

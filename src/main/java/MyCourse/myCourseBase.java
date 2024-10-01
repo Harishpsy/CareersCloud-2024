@@ -15,6 +15,9 @@ public class myCourseBase {
         this.driver = driver;
     }
 
+    public myCourseBase() {
+    }
+
     @Test
     public void courseClicking() throws InterruptedException, AWTException {
 
@@ -61,7 +64,9 @@ public class myCourseBase {
                     Thread.sleep ( 2000 ); // Allow some time for the scroll
 
                     // Log the text of the element
+                    System.out.println ( ">****************************************************************>" );
                     System.out.println ( "Course Name Which Has Been Clicked: " + elementText );
+                    System.out.println ( ">****************************************************************>" );
 
                     // Click the Course element
                     courseElement.click ();

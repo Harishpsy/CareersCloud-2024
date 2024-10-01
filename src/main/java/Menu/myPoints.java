@@ -5,16 +5,17 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
 import static PageObjectModule.Mypointspageobject.*;
 
 public class myPoints {
     WebDriver driver;
-
     public myPoints(WebDriver driver) {
         this.driver = driver;
     }
 
+    @Test
     public void MyPoints() throws InterruptedException {
 
         PageFactory.initElements ( driver , Mypointspageobject.class );

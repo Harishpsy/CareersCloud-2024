@@ -6,22 +6,20 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class Mydoubts {
-
     WebDriver driver;
     public Mydoubts(WebDriver driver) {
-
         this.driver = driver;
-
     }
 
+    @Test
     public void myDoubts() throws InterruptedException {
 
         // Clicking My Doubts
-
         Thread.sleep (4000);
         WebElement clickingMyDoubts = driver.findElement ( By.xpath ( "(//*[text()='My Doubts'])" ) );
         clickingMyDoubts.click ();
