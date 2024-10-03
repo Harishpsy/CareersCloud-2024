@@ -1,7 +1,6 @@
 package MyCourse;
 
 import AllCourse.allCourseModule;
-import Base.MainObjects.BaseObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -11,7 +10,9 @@ import java.time.Duration;
 
 import static org.openqa.selenium.By.xpath;
 
-public class myCourseModule extends BaseObjects {
+public class myCourseModule {
+
+    WebDriver driver;
 
     public myCourseModule(WebDriver driver) {
         this.driver = driver;
