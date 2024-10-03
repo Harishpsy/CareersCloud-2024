@@ -9,12 +9,11 @@ public class doubtsModule {
     WebDriver driver;
 
     public doubtsModule(WebDriver driver) {
-
         this.driver = driver;
     }
     public void doubts() throws InterruptedException {
 
-        // Click The Doubts Button In The Header
+        // Click The Doubts Button In The Header Section
         Thread.sleep ( 5000 ); // Waiting for element visible
         WebElement clickingDoubtsButton = driver.findElement (By.xpath ("//*[text()='Doubts']"));
         clickingDoubtsButton.click ();

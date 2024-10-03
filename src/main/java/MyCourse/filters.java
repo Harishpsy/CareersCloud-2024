@@ -12,8 +12,6 @@ public class filters {
     public filters(WebDriver driver) {
         this.driver = driver;
     }
-    public filters() {
-    }
     @Test
     public void Filter() throws InterruptedException {
 

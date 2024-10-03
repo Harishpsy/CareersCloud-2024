@@ -3,7 +3,6 @@ package MyCourse;
 import Doubts.MyAnswered;
 import Doubts.Mydoubts;
 import Doubts.Myfollowed;
-import MainPages.Loginpage;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;

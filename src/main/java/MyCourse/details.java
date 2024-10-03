@@ -40,6 +40,8 @@ public class details {
                 System.out.println ( "Details Page is displayed, clicking to select it." );
                 clickingDetails.click ();
                 System.out.println ( "Successfully clicked the Details page." );
+            } else {
+                System.out.println ( "Both The Action Not Working In The Details Page" );
             }
 
             // Creating The Object For The Support > Email
@@ -60,7 +62,7 @@ public class details {
         }
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void emialIcon() throws InterruptedException, AWTException {
 
         //Checking The Email Icon Is Displaying Or Not, If it displayed Performing The Actions, If It is Not Displayed Skipping The Action
@@ -135,7 +137,7 @@ public class details {
         }
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void phoneIcon() throws InterruptedException {
 
         //Checking The Email Icon Is Displaying Or Not, If it displayed Performing The Actions, If It is Not Displayed Skipping The Action
@@ -164,7 +166,7 @@ public class details {
 
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void whatsAppChat() throws InterruptedException {
 
         //Checking The WhatsApp Chat Icon Is Displaying Or Not If it displayed Performing The Actions, If It is Not Displayed Skipping The Action

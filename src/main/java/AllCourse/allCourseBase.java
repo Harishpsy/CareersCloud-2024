@@ -1,11 +1,11 @@
 package AllCourse;
 
-import MyCourse.myCourseBase;
+import MyCourse.myCourseInnerActions;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
 
-public class allCourseBase extends myCourseBase {
+public class allCourseBase extends myCourseInnerActions {
 
     public WebDriver driver;
 
@@ -60,9 +60,9 @@ public class allCourseBase extends myCourseBase {
 ////                    courseElement.click ();
 ////                    Thread.sleep ( 3000 );  // Wait for page navigation
 ////
-////                    // **Re-initialize the subscribeNow object to handle dynamic page reloading**
-////                    allCourseSubscribeNow subscribeNow = new allCourseSubscribeNow ( driver );
-////                    subscribeNow.subscribeNowButton ();  // Perform the subscription action
+//                   // **Re-initialize the subscribeNow object to handle dynamic page reloading**
+//                   allCourseSubscribeNow subscribeNow = new allCourseSubscribeNow ( driver );
+//                   subscribeNow.subscribeNowButton ();  // Perform the subscription action
 ////
 ////                    // Perform actions on details page
 ////                    detailsTab detailsPage = new detailsTab ( driver );
@@ -116,9 +116,7 @@ public class allCourseBase extends myCourseBase {
 ////            break;  // <<< OUTER LOOP BREAK: Remove this to process all elements after scrolling
 //        }
 
-        // Creating An Object For My Course Base, From This Object We Can Access All The Sub-Modules Inside The Course
-        myCourseBase courseClick = new myCourseBase ( driver );
-        courseClick.courseClicking ();
+
     }
 }
 

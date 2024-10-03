@@ -1,21 +1,20 @@
 package MyCourse;
 
+import Base.MyCourse.BaseMyCourse;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
 import java.awt.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class myCourseBase {
+public class myCourseInnerActions {
     WebDriver driver;
 
-    public myCourseBase(WebDriver driver) {
+    public myCourseInnerActions(WebDriver driver) {
         this.driver = driver;
     }
 
-    public myCourseBase() {
+    public myCourseInnerActions() {
     }
 
     @Test
@@ -72,39 +71,9 @@ public class myCourseBase {
                     courseElement.click ();
                     Thread.sleep ( 3000 ); // Wait for page navigation
 
-                    // Perform actions on the sub-modules as per your code (articles, videos, quizzes, ebooks, etc.)
-
-                    /* Perform actions on path tab */
-                    path path = new path ( driver );
-                    path.allpath ();
-
-                    /* Creating An Object For The Article Sub Module, Performing The Actions */
-                    article article = new article ( driver );
-                    article.Article ();
-
-                    /* Creating An Object For The Videos Sub Module, Performing The Actions */
-                    videos video = new videos ( driver );
-                    video.videos ();
-
-                    /* Creating An Object For The Quizzes Sub Module, Performing The Actions */
-                    quizzes quizzes = new quizzes ( driver );
-                    quizzes.Quizzes ();
-
-                    /* Creating An Object For The Ebooks Sub Module, Performing The Actions */
-                    ebooks ebooks = new ebooks ( driver );
-                    ebooks.Ebooks ();
-
-                    /* Creating An Object For The Doubts Sub Module, Performing The Actions */
-                    doubts doubtPage = new doubts ( driver );
-                    doubtPage.doubtbase ();
-
-                    /* Creating An Object For The Free Sub Module, Performing The Actions */
-                    free freetab = new free ( driver );
-                    freetab.freeTab ();
-
-                    /* Creating An Object For The Article, Performing The Actions */
-                    details detailsPage = new details ( driver );
-                    detailsPage.details ();
+                    // Creating An Objects For The Sub Module It Can Perform All The Actions
+                    BaseMyCourse subModules = new BaseMyCourse ( driver );
+                    subModules.myCourseSubModules ();
 
                     // Go back to the course list using breadcrumb (if available)
                     try {
@@ -119,8 +88,8 @@ public class myCourseBase {
                     totalElementsClicked++; // Increment the clicked elements counter
                     Thread.sleep ( 2000 ); // Wait before moving to the next element
 
-//                    // Break after clicking one element
-//                    break; // <<< BREAK STATEMENT HERE: Remove this to click all elements
+                    // Break after clicking one element
+                    break; // <<< BREAK STATEMENT HERE: Remove this to click all elements
 
                 } catch (StaleElementReferenceException e) {
                     System.out.println ( "StaleElementReferenceException occurred. Refetching elements." );
@@ -140,9 +109,9 @@ public class myCourseBase {
             } catch (Exception e) {
                 System.out.println ( "An error occurred while scrolling: " + e.getMessage () );
             }
-//
-//            // Remove this break if you want to keep processing all elements
-//            break; // <<< OUTER LOOP BREAK: Remove this to process all elements after scrolling
+
+            // Remove this break if you want to keep processing all elements
+            break; // <<< OUTER LOOP BREAK: Remove this to process all elements after scrolling
         }
 
 

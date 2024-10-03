@@ -1,13 +1,18 @@
 package Doubts;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
 import java.util.List;
 import java.util.*;
 
@@ -333,10 +338,10 @@ public class AllDoubts {
         // Iterate through the list of elements
         for (WebElement doubtUrlElement : allDoubtImageURL) {
             String actualDoubtImageUrl = doubtUrlElement.getAttribute ("src");
-            System.out.println (actualDoubtImageUrl);
+//            System.out.println ( "Original Doubt Inage: " + actualDoubtImageUrl);
 
             if (uniqueDoubtUrls.contains (actualDoubtImageUrl)) {
-                System.out.println ("Duplicate found --> " + actualDoubtImageUrl);
+                System.out.println ( "Duplicate Doubt Images found --> " + actualDoubtImageUrl );
             } else {
                 uniqueDoubtUrls.add (actualDoubtImageUrl);
                 uniqueDoubtUrlCount++;
@@ -383,39 +388,25 @@ public class AllDoubts {
         clickingCourseBreadcrumbs.click ();
         System.out.println ("SuccessFully Navigated To the Doubts Page");
 
-        // Clicking The Search On the Left side Filter
-        Thread.sleep (5000);
-        clickingSearch = driver.findElement (xpath ("//*[@name=\"comments2\"]"));
-        clickingSearch.sendKeys ("Mock");
+        // Clicking the search on the left side filter with WebDriverWait for better stability
+        WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
+        WebElement searchField = wait.until ( ExpectedConditions.visibilityOfElementLocated ( xpath ( "//*[@name='comments2']" ) ) );
+        searchField.sendKeys ( "Mock" );
 
-        // Pressing The KeyBoard Action
-        robot = new Robot ();
+        // Create an instance of Actions class to handle keyboard interactions
+        Actions actions = new Actions ( driver );
 
-        // clicking The Enter Button
-        Thread.sleep (3000);
-        robot.keyPress (KeyEvent.VK_ENTER);
+        // Press the Enter key
+        actions.sendKeys ( Keys.ENTER ).perform ();
 
-        // Releasing The Enter Button
-        Thread.sleep (3000);
-        robot.keyRelease (KeyEvent.VK_ENTER);
-
-        // Set the number of times to perform the action
-        int numberOfTimesClickingBack = 4;
-
-        // Creating a Loop to performe this action multiple times
-        for (int i = 0; i < numberOfTimesClickingBack; i++) {
-            robot.keyPress (KeyEvent.VK_BACK_SPACE);
-
-            // Releasing the BackSpace
-            robot.keyRelease (KeyEvent.VK_BACK_SPACE);
+        // Perform multiple backspace actions
+        int numberOfTimesBackspace = 4;
+        for (int i = 0; i < numberOfTimesBackspace; i++) {
+            actions.sendKeys ( Keys.BACK_SPACE ).perform ();
         }
 
-        // Pressing The Enter Button In The Keyboard
-        Thread.sleep (3000);
-        robot.keyPress (KeyEvent.VK_ENTER);
-
-        // Releassing The Enter Button In The Keyboard
-        robot.keyRelease (KeyEvent.VK_ENTER);
+        // Press Enter again
+        actions.sendKeys ( Keys.ENTER ).perform ();
 
         // Clicking The Course For Filter The Doubts
         int clickingCoursetwotimes = 2;
@@ -429,16 +420,13 @@ public class AllDoubts {
                 System.out.println ("Course SuccessFully Clicked ");
             } catch (Exception Clicking) {
                 System.out.println ("Course was Not Found");
-
             }
-
         }
 
         // Clicking The Subject In the Doubt Filter
         Thread.sleep (5000);
         WebElement clickingSubject = driver.findElement (xpath ("//*[text() = 'Subjects']"));
         clickingSubject.click ();
-
 
         // Getting the text From The Filter and Verifying
         Thread.sleep (3000);

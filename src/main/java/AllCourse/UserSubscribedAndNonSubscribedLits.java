@@ -1,43 +1,37 @@
 package AllCourse;
 
-import MyCourse.filters;
 import org.openqa.selenium.*;
+import org.testng.annotations.Test;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.openqa.selenium.By.xpath;
 
-public class AllFilter extends filters {
+public class UserSubscribedAndNonSubscribedLits {
 
     public WebDriver driver;
 
-    public AllFilter(WebDriver driver) {
+    public UserSubscribedAndNonSubscribedLits(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void filter() throws InterruptedException {
 
-        //Performing The Same action From The My Course to The All Course For The Filter
-        filters filter = new filters ( driver );
-        filter.Filter ();
-        System.out.println ( "Successfully Filter Performed In The All Course Tab" );
+    @Test
+    public void UserSubscribedAndNoSubscribed() throws InterruptedException {
 
         //Non Subscribe Course List
-        AllFilter nonSibscribrded = new AllFilter ( driver );
-        nonSibscribrded.nonSubscribedCourseList ();
+        UserSubscribedAndNonSubscribedLits nonSubscribed = new UserSubscribedAndNonSubscribedLits ( driver );
+        nonSubscribed.nonSubscribedCourseList ();
 
         //Subscribe Course List
-        AllFilter subscribedlist = new AllFilter ( driver );
+        UserSubscribedAndNonSubscribedLits subscribedlist = new UserSubscribedAndNonSubscribedLits ( driver );
         subscribedlist.subscribedCourse ();
 
         //Free Course Which Is Not Subscribed In The All Course List Page
-        AllFilter free = new AllFilter ( driver );
+        UserSubscribedAndNonSubscribedLits free = new UserSubscribedAndNonSubscribedLits ( driver );
         free.freeCourse ();
 
     }
-
     public void nonSubscribedCourseList() throws InterruptedException {
 
         //Scrolling The Page
@@ -67,18 +61,9 @@ public class AllFilter extends filters {
         // Getting the non-subscribed Course List
         List<WebElement> nonSubscribedCourseName = driver.findElements ( By.xpath ( "//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]/following::*[@class=\"ant-typography all-courses-special-price css-xu9wm8\"]" ) );
 
-        Set<String> uniquenonSubscribedCourseName = new HashSet<> ();
-
         // Print the total number of elements found by the XPath
         System.out.println ( "Total number of Courses found In The Non-Subscribed List: " + nonSubscribedCourseName.size () );
 
-        for (WebElement FeaturedCourse : nonSubscribedCourseName) {
-            String actualFeaturedCourseName = FeaturedCourse.getText ();
-            System.out.println ( "Course Name:" + actualFeaturedCourseName );
-            if (!uniquenonSubscribedCourseName.contains ( actualFeaturedCourseName )) {
-                uniquenonSubscribedCourseName.add ( actualFeaturedCourseName );
-            }
-        }
     }
 
     public void subscribedCourse() {
@@ -87,18 +72,9 @@ public class AllFilter extends filters {
         //  <WebElement> subscribedCourseName = driver.findElements ( By.xpath ( "//*[@class=\"ant-typography all-courses-subscribed-text css-xu9wm8\"]" ) );
         List<WebElement> subscribedCourseName = driver.findElements ( By.xpath ( "//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]/following::*[@class=\"ant-typography all-courses-subscribed-text css-xu9wm8\"]" ) );
 
-        Set<String> uniqueSubscribedCourseName = new HashSet<> ();
-
         // Print the total number of elements found by the XPath
         System.out.println ( "Total number of Courses found In The Subscribed List: " + subscribedCourseName.size () );
 
-        for (WebElement subscribedCourse : subscribedCourseName) {
-            String actualSubscribedCourseName = subscribedCourse.getText ();
-            System.out.println ( "Course Name:" + actualSubscribedCourseName );
-            if (!uniqueSubscribedCourseName.contains ( actualSubscribedCourseName )) {
-                uniqueSubscribedCourseName.add ( actualSubscribedCourseName );
-            }
-        }
     }
 
     public void freeCourse() {

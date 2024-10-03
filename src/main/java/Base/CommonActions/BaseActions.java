@@ -1,4 +1,4 @@
-package Base;
+package Base.CommonActions;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -23,7 +23,6 @@ public class BaseActions {
 
     @Test(enabled = true)
     public void Scroll() {
-
         // Scrolling The Quizzes List Page to verify data
         int numberOfTimesScrollQuizzes = 5;
 
@@ -59,9 +58,9 @@ public class BaseActions {
     }
 
     @Test(enabled = true)
-    public void imdentifingDuplicaye() {
-        // Verifying The list of Articles any one of them was getting Duplicate or Not
-        // Finding All The elements From the Article components
+    public void identifingDuplicate() {
+
+        // Finding All The elements Based On The Xpath (Ebooks, Article, Videos, Quiz, My Courses, All Courses)
         List<WebElement> allName = driver.findElements ( xpath ( "//*[@class=\"ant-col column ant-col-xs-23 ant-col-sm-23 ant-col-md-23 ant-col-lg-23 ant-col-xl-23 ant-col-xxl-23 css-xu9wm8\"]" ) );
 
         // Create a set to store unique Article URLs
@@ -82,13 +81,11 @@ public class BaseActions {
             }
         }
         // Print the total number of unique URLs found
-        System.out.println ( "Total unique Article Name found: " + uniquesCount );
+        System.out.println ( "Total unique Counts found: " + uniquesCount );
 
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniquesCount , uniqueName.size () );
 
 
     }
-
-
 }

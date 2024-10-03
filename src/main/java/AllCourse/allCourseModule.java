@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.openqa.selenium.By.*;
+import static org.openqa.selenium.By.xpath;
 
 public class allCourseModule {
 
@@ -30,18 +30,6 @@ public class allCourseModule {
         WebElement clickingAllCourse = driver.findElement ( xpath ( "//*[text()='All Course']" ) );
         clickingAllCourse.click ();
         System.out.println ( "SuccessFully Clicked The All Course Button In The Header" );
-
-        //Verifying The Duplicate Course In The all Course List
-        allCourseModule duplicateCourseName = new allCourseModule ( driver );
-        duplicateCourseName.verifyingDuplicate ();
-
-        //All Course Filter
-        AllFilter allfilter = new AllFilter ( driver );
-        allfilter.filter ();
-
-        //Clicking The Inside The All Course List Page
-        allCourseBase courseclick = new allCourseBase ( driver );
-        courseclick.courseClicking ();
 
     }
 

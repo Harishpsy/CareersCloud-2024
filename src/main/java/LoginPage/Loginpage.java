@@ -1,6 +1,6 @@
-package MainPages;
+package LoginPage;
 
-
+import Base.MainObjects.BaseObjects;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -14,19 +14,20 @@ import java.util.Set;
 
 import static PageObjectModule.Loginpageobject.*;
 
-public class Loginpage {
+public class Loginpage extends BaseObjects {
+    WebDriver driver;
 
-    public WebDriver driver;
     // Constructor to set the WebDriver instance
     public Loginpage(WebDriver driver) {
         this.driver = driver;
     }
 
     // Method to perform login
-    @Test
+    @Test(enabled = true)
     public void login() throws InterruptedException {
+
         // Navigate to the URL and maximize the window
-        driver.get ("https://careerscloud.in/home-feed");
+        driver.get ( "https://careerscloud.in" );
         driver.manage ().window ().maximize ();
 
         // Clear cookies to avoid issues with corrupted data
@@ -49,7 +50,6 @@ public class Loginpage {
         // Enter email ID and click next
         Thread.sleep ( 5000 );
         Entering_mailID.sendKeys ( "harishpsy12@gmail.com" );
-//        Entering_mailID.sendKeys ("harishpoker8@gmail.com");
         Nextbutton.click ();
         System.out.println ( "SuccessFully Clicked The Next Button" );
 
@@ -63,7 +63,7 @@ public class Loginpage {
         switchToParentWindow ();
     }
 
-    @Test
+    @Test(enabled = true)
     // Method to switch to the child window
     private void switchToChildWindow() {
         Set<String> windows = driver.getWindowHandles ();
@@ -74,7 +74,7 @@ public class Loginpage {
     }
 
     // Method to switch back to the parent window
-    @Test
+    @Test(enabled = true)
     private void switchToParentWindow() {
         Set<String> windows = driver.getWindowHandles ();
         Iterator<String> it = windows.iterator ();
@@ -83,7 +83,7 @@ public class Loginpage {
         driver.switchTo ().window (parent);
     }
 
-    @Test
+    @Test(enabled = true)
     // Method to enter password
     private void enterPassword() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (40));

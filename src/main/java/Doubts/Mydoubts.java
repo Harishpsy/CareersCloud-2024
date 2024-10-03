@@ -1,11 +1,9 @@
 package Doubts;
 
-import MainPages.Loginpage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -60,12 +58,6 @@ public class Mydoubts {
                 for (WebElement myDoubtsUserName : doubtsCardTitles) {
                     String userNameDoubt = myDoubtsUserName.getText ();
                     System.out.println ("UserName : " + userNameDoubt);
-
-                    // Calling The UserName Constructor to verify that OriginalUser name is equal to Myanswer-username
-                    Loginpage login_page = new Loginpage ( driver );
-                    String username = login_page.username;
-                    System.out.println ("OriginalUserName :" + username);
-                    Assert.assertEquals (username, userNameDoubt.length ());
                 }
 
             } else {

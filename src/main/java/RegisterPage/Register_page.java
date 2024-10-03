@@ -1,4 +1,4 @@
-package MainPages;
+package RegisterPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

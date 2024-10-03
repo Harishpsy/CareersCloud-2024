@@ -1,16 +1,19 @@
-package Menu;
+package Base.Menu;
 
+import Menu.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-public class menuBase {
+public class BaseMenu {
     WebDriver driver;
-    public menuBase(WebDriver driver) {
+
+    //Creating A Constructor For The Base Menu
+    public BaseMenu(WebDriver driver) {
         this.driver = driver;
     }
 
-    @Test(enabled = false)
-    public void menu() throws InterruptedException {
+    @Test
+    public void menuModule() throws InterruptedException {
 
         // My Notes
         myNotes myNotes = new myNotes ( driver );
@@ -67,6 +70,7 @@ public class menuBase {
         // Hire Us
         hireus hireUs = new hireus ( driver );
         hireUs.Hireus ();
+
 
     }
 

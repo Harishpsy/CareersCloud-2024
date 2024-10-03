@@ -1,17 +1,10 @@
 package Doubts;
 
-import MainPages.Loginpage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
-import java.util.List;
 
 public class MyAnswered {
 
@@ -110,7 +103,7 @@ public class MyAnswered {
                     // Needs to write this in loop There is an issue in that once it fix we can move further
                     //Clicking The Answer
                     Thread.sleep ( 4000 );
-                    WebElement clickingAnswerbutton = driver.findElement ( By.xpath ( "(//span[text()='Answer'])[22]" ) );
+                    WebElement clickingAnswerbutton = driver.findElement ( By.xpath ( "(//*[text()='Answer'])[150]" ) );
                     clickingAnswerbutton.click ();
 
                     // Retreving The Username From the Doubt Answer
