@@ -52,7 +52,7 @@ public class myQuestions {
                 if (clickingMyQuestion.isSelected ()) {
 
                     System.out.println ( "SucessFully My coin is selected 1" );
-                    Thread.sleep ( 5000 );
+                    Thread.sleep ( 10000 );
                     clickBookMarkQuestion.click ();
                     System.out.println ( "SucessFully clicked the clicking My Question " );
 
@@ -63,8 +63,7 @@ public class myQuestions {
 
                     // Clicking The Bookmarked Question
                     if (clickingMyQuestion.isEnabled ()) {
-
-                        Thread.sleep ( 5000 );
+                        Thread.sleep ( 10000 );
                         clickBookMarkQuestion.click ();
                         System.out.println ( "Sucessfully Clicked the My Question Page " );
                     } else {

@@ -150,7 +150,6 @@ public class myEbooks {
                     Enterthereport.sendKeys ( "Checking The text was Entering In The Report Text Field" );
 
                     // Click the report button (currently commented out)
-
                     // Thread.sleep(3000);
                     // Reportbutton.click();
 
@@ -159,11 +158,11 @@ public class myEbooks {
                     CANCELbutton.click ();
 
                     // Click the course name in My ebook Card
-                    Thread.sleep ( 3000 );
+                    Thread.sleep ( 5000 );
                     ClickingCourseName.click ();
 
                     // Click the breadcrumbs to navigate backward to My ebook page
-                    Thread.sleep ( 3000 );
+                    Thread.sleep ( 5000 );
                     ClickingCoursebreadcrums.click ();
 
                     // Click the like button

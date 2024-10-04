@@ -21,7 +21,6 @@ import static org.openqa.selenium.By.*;
 /**
  * The myNotes class is responsible for automating interactions with the "My Notes" section of a web application.
  * It provides methods to interact with notes, articles, videos, quizzes and their solutions.
- *
  * Fields:
  * - driver: WebDriver instance to control browser actions.
  *
@@ -43,11 +42,9 @@ public class myNotes {
 
         //Then click the MyNote
         PageFactory.initElements ( driver , Mynotespageobject.class );
-
         Thread.sleep ( 5000 );
         MyNotes.click ();
         System.out.println ( "Successfully CLicked The My Notes Button" );
-
     }
 
     /**
@@ -191,7 +188,7 @@ public class myNotes {
             Assert.assertEquals ( uniquerecentArticlelCount , uniquerecentArticleUrls.size () );
 
             // Click the BackButton In The Article
-            Thread.sleep ( 5000 );
+            Thread.sleep ( 7000 );
             WebElement clickingBackButton = driver.findElement ( xpath ( "//*[@class=\"ant-breadcrumb-link\"]" ) );
             clickingBackButton.click ();
             System.out.println ( "Navigated To My Notes List Page" );
