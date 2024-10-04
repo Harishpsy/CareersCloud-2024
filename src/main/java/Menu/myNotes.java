@@ -18,6 +18,14 @@ import java.util.concurrent.TimeUnit;
 import static PageObjectModule.Mynotespageobject.*;
 import static org.openqa.selenium.By.*;
 
+/**
+ * The myNotes class is responsible for automating interactions with the "My Notes" section of a web application.
+ * It provides methods to interact with notes, articles, videos, quizzes and their solutions.
+ *
+ * Fields:
+ * - driver: WebDriver instance to control browser actions.
+ *
+ */
 public class myNotes {
     WebDriver driver;
 
@@ -25,10 +33,15 @@ public class myNotes {
         this.driver = driver;
     }
 
+    /**
+     * Navigates to the "My Notes" section and clicks on the "My Notes" button.
+     * Initializes the elements of the "Mynotespageobject" class using PageFactory.
+     *
+     * @throws InterruptedException if the thread is interrupted while sleeping
+     */
     public void MyNotes() throws InterruptedException {
 
         //Then click the MyNote
-
         PageFactory.initElements ( driver , Mynotespageobject.class );
 
         Thread.sleep ( 5000 );
@@ -37,6 +50,27 @@ public class myNotes {
 
     }
 
+    /**
+     * Handles actions in the "My Notes" section when articles are present or absent.
+     *
+     * Depending on the presence of specific elements:
+     * - If no records are found in "My Notes", navigates to the "My Question" page.
+     * - If an article is found in "My Notes", performs various actions:
+     *      - Clicking on the article.
+     *      - Liking or unliking the article.
+     *      - Adding a comment to the article.
+     *      - Sharing the article and handling the share popup.
+     *      - Verifying recent articles for duplicates.
+     *      - Navigating back to the "My Notes" list page.
+     *      - Handling the "more" options (three dots) in the course card.
+     *      - Reporting the article and providing feedback.
+     *      - Removing the article from "My Notes".
+     *
+     * The method logs the results of each action and includes various sleep intervals
+     * to simulate real-time user interactions.
+     *
+     * @throws InterruptedException if the thread is interrupted while sleeping.
+     */
     public void artilce() throws InterruptedException {
 
         // Check if noRecordFound element is displayed and log the result
@@ -228,6 +262,21 @@ public class myNotes {
         }
     }
 
+    /**
+     * This method performs a series of UI interactions on a web page involving videos.
+     * It checks for the presence of certain elements, clicks on various buttons,
+     * and logs the results of these actions. The interactions include:
+     *
+     * 1. Checking if a "No Record Found" message is displayed and navigating to the "My Question" page if true.
+     * 2. Verifying if videos are displayed and if so, performing actions like clicking the video, liking/unliking, commenting, sharing, and various video controls (pause, mute
+     * , captions, fullscreen).
+     * 3. Handling popups and switching between windows.
+     * 4. Navigating video URLs and verifying duplicates using a HashSet.
+     * 5. Clicking back arrows and navigating back to the course card.
+     * 6. Interacting with the share and report options in the course card dropdown.
+     *
+     * @throws InterruptedException if any thread has interrupted the current thread.
+     */
     public void videos() throws InterruptedException {
 
         // Check if noRecordFound element is displayed and log the result
@@ -452,6 +501,22 @@ public class myNotes {
             System.out.println ( "Both are was not executed for videos in my notes" );
         }
     }
+    /**
+     * This method handles the initiation and management of a quiz session including various UI interaction.
+     * It checks if specific elements are displayed, logs their statuses, and performs actions accordingly.
+     *
+     * @throws InterruptedException if any thread sleep operation is interrupted.
+     *
+     * The method performs the following steps:
+     * 1. Checks the visibility of elements indicating "No Record Found", "Start Quiz", and "Quiz Solution" in "My Notes".
+     * 2. Based on the visibility checks, it either navigates to the "My Question" page or starts the quiz.
+     * 3. If the quiz is started, it switches to the quiz window, handles quiz-related instructions and buttons, including close and maximize actions.
+     * 4. Clicks quiz options and the "Save & Next" button in a loop.
+     * 5. Handles quiz navigation, including clicking options again after navigating back, and interacting with buttons such as "Previous" and "Pause".
+     * 6. Manages the pause functionality, including clicking the cancel and leave buttons on the pause popup.
+     * 7. Switches between parent and child windows and resumes the quiz.
+     * 8. Repeats certain interactions in the resumed quiz session.
+     */
     public void Startquiz() throws InterruptedException {
 
         // Check if elements are displayed and log the results
@@ -1165,6 +1230,13 @@ public class myNotes {
         }
     }
 
+    /**
+     * Resumes a quiz by determining if necessary elements to proceed are present.
+     * Handles various stages of quiz resumption, including clicking through quiz questions,
+     * managing browser window state, and interacting with UI elements to proceed with the quiz.
+     *
+     * @throws InterruptedException if any thread has interrupted the current thread while sleeping.
+     */
     public void resumequiz() throws InterruptedException {
         System.out.println ( "----------------------Resume Quiz---------------------------" );
         boolean noRecordfoundDisplayedInMyNotes = false;
@@ -1732,6 +1804,39 @@ public class myNotes {
         }
     }
 
+    /**
+     * This method performs several UI-related actions including checking the visibility of web elements, clicking on buttons, entering text into input fields,
+     * scrolling to certain elements, handling popups, and navigating through a list of selectable options.
+     *
+     * Functionalities covered in this method:
+     *
+     * <ol>
+     *     <li>Logging visibility status of specific elements "noRecordfoundMyNotes" and "clickingSolutionquiz".</li>
+     *     <li>If "noRecordfoundMyNotes" is visible, clicking "clickingMyQuestion".</li>
+     *     <li>If "clickingSolutionquiz" is visible, clicking it and performing a series of interactions such as:
+     *         <ul>
+     *             <li>Scrolling and clicking the report icon.</li>
+     *             <li>Choosing "Translations Error" in the report popup and entering a description.</li>
+     *             <li>Clicking the "CANCEL" and "REPORT" buttons in the report popup.</li>
+     *         </ul>
+     *     </li>
+     *     <li>Handling a "reattempt" button, retrying clicks with error handling for various exceptions.</li>
+     *     <li>Selecting options from a predefined array and clicking the "Save & Next" button.</li>
+     *     <li>Navigating back through options and interacting with new elements based on iteration indices.</li>
+     *     <li>Performing several other UI interactions such as clicking the "Previous" button, handling "Translation Error" selection, entering text in the report description, and
+     *  sharing using a share icon and copy link functionality.</li>
+     * </ol>
+     *
+     * Prerequisites:
+     *
+     * - Instances of `WebDriver`, `WebElement`, `Actions`, and other related variables must be initialized before invoking this method.
+     *
+     * Exceptions:
+     *
+     * - Throws `InterruptedException` due to usage of `Thread.sleep()` calls within the method.
+     * - Catches and handles `NoSuchElementException`, `TimeoutException`, and generic `Exception` to ensure smooth execution even if some web elements are not found or actionable
+     * .
+     */
     public void solution() throws InterruptedException {
         System.out.println ( "-----------------------Solutions---------------------------" );
         // Check if elements are displayed and log the results

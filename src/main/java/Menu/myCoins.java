@@ -19,6 +19,22 @@ public class myCoins {
         this.driver = driver;
     }
 
+    /**
+     * This test method navigates and performs operations on the "My Coins" page.
+     *
+     * The method includes the following steps:
+     * - Initializes the page elements using PageFactory.
+     * - Clicks on the "My Coin" menu item and verifies its selection.
+     * - Interacts with the "Coin Earning" text if the "My Coin" menu item is either selected or displayed.
+     * - Clicks the close button on the coin page.
+     * - Scrolls the page backward and forward.
+     * - Clicks the "Google Play" button and handles window switching to and from the child window.
+     * - Finally, clicks the home button to exit the "My Coin" section.
+     *
+     * In case any element is not found, an exception is caught and an error message is printed.
+     *
+     * @throws InterruptedException when a thread is interrupted during sleep.
+     */
     @Test
     public void MyCoins() throws InterruptedException {
 

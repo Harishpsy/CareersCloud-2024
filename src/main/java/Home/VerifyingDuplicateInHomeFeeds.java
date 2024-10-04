@@ -19,6 +19,17 @@ public class VerifyingDuplicateInHomeFeeds {
         this.driver = driver;
     }
 
+    /**
+     * Test method to verify the absence of duplicate images and course names on the Home Page.
+     *
+     * This method performs the following verifications:
+     * 1. Checks for duplicate image URLs in the "article feed images" section.
+     * 2. Checks for duplicate image URLs in the "ebook cover images" section.
+     * 3. Checks for duplicate course names in the right-side list.
+     *
+     * Assertions are used to ensure the number of unique elements matches the total number of elements found.
+     * Printed output is provided to indicate the results of each verification step.
+     */
     @Test
     public void verifyingDuplicate() {
 

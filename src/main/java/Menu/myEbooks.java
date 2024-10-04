@@ -24,6 +24,20 @@ public class myEbooks {
         this.driver = driver;
     }
 
+    /**
+     * Test method that automates the navigation and interaction with the "My Ebooks" section.
+     *
+     * The method performs the following actions:
+     * - Initializes web elements for the "My Ebooks" page.
+     * - Clicks on the "My Ebooks" section.
+     * - Checks for the presence of content in the "My Ebooks" section.
+     * - If no content is found, navigates to the "My Coin" page.
+     * - If content is found, interacts with various elements such as three dots menu, share icons, report buttons, comments, etc.
+     * - Logs various activities and interactions, handling cases where certain elements are not found.
+     * - Includes several sleep times to wait for elements to appear and actions to complete.
+     *
+     * @throws InterruptedException when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted.
+     */
     @Test
     public void MyEbooks() throws InterruptedException {
 

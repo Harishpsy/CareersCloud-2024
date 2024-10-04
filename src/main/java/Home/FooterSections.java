@@ -18,6 +18,27 @@ public class FooterSections {
         this.driver = driver;
     }
 
+    /**
+     * Tests various interaction elements within the footer section of a web page.
+     *
+     * This method performs the following actions:
+     * - Clicks the "About Us" link in the footer section, waits for a few seconds, and reports success.
+     * - Clicks the "Authors" link in the footer section, waits for a few seconds, and reports success.
+     * - Clicks the "Contact Us" link in the footer section, waits for a few seconds, and reports success.
+     * - Enters text into the "Contact Us" query text field.
+     * - Clicks the close icon in a modal dialog that appears.
+     * - Clicks the "FAQ" link in the footer section, waits for a few seconds, and reports success.
+     * - Clicks the "Terms and Conditions" link in the footer section, waits for a few seconds, and reports success.
+     * - Scrolls to the bottom of the page.
+     * - Clicks the "Privacy Policy" link in the footer section, waits for a few seconds, and reports success.
+     * - Scrolls to the bottom of the page.
+     * - Clicks the "Careers" link in the footer section, waits for a second, and reports success.
+     * - Scrolls to the bottom of the page.
+     * - Clicks the "Sitemap" link in the footer section, waits for a second, and reports success.
+     * - Clicks the floating icon if it is displayed, waits for a few seconds, and reports success or failure.
+     *
+     * @throws InterruptedException if the thread sleep is interrupted
+     */
     @Test
     public void footerSection() throws InterruptedException {
 

@@ -22,6 +22,22 @@ public class HomeFeedActions {
         this.driver = driver;
     }
 
+    /**
+     * Automates various actions on the home page including clicking buttons, scrolling, and handling windows.
+     * It performs the following actions in sequence:
+     * - Initializes page elements for the homepage.
+     * - Clicks the preference, railway, and bank & insurance buttons with delays.
+     * - Adds preferences by clicking corresponding buttons and scrolling the page.
+     * - Saves preferences and interacts with the UPSC button.
+     * - Handles right arrow clicks for home feed navigation.
+     * - Interacts with banners in the home feed and Course BreadCrumbs to return.
+     * - Clicks and interacts with the Google Play button.
+     * - Manages window handles to switch between parent and child windows and back.
+     * - Scrolls the homepage a specified number of times.
+     * - Clicks a floating icon if it is displayed, with handling for exceptions.
+     *
+     * @throws InterruptedException if any thread.sleep() operations are interrupted.
+     */
     @Test
     public void homePageActions() throws InterruptedException {
 

@@ -13,6 +13,19 @@ public class ArticleEbooksandCourseActions {
         this.driver = driver;
     }
 
+    /**
+     * Test method for interacting with articles, ebooks, and courses on the home feed.
+     *
+     * <ul>
+     * <li>Finds elements with the class 'feed-card-body'.</li>
+     * <li>Iterates through the list of elements, ensuring the list is re-fetched during each iteration to avoid StaleElementReferenceException.</li>
+     * <li>Scrolls each element into view and clicks it.</li>
+     * <li>Attempts to click a breadcrumb link if present; if not, attempts to click a back button.</li>
+     * <li>Logs success or failure of finding breadcrumb or back button.</li>
+     * </ul>
+     *
+     * @throws InterruptedException if the thread is interrupted during sleep intervals.
+     */
     @Test
     public void ArticleEbooksandCourse() throws InterruptedException {
 

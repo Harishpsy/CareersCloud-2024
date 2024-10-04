@@ -14,6 +14,15 @@ public class inviteFriends {
         this.driver = driver;
     }
 
+    /**
+     * Tests the Invite Friends feature of the application.
+     *
+     * This method automates the process of clicking the "Invite Friends" button
+     * and then navigating back to the home screen. It utilizes the Page Object
+     * Model for element initialization.
+     *
+     * @throws InterruptedException if the thread is interrupted while sleeping
+     */
     @Test
     public void InviteFriends() throws InterruptedException {
 
@@ -27,6 +36,5 @@ public class inviteFriends {
         // Clicking The Home Button
         Thread.sleep ( 5000 );
         clickingHomeButton.click ();
-
     }
 }

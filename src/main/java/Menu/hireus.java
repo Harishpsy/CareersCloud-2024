@@ -10,6 +10,10 @@ import java.util.Set;
 
 import static PageObjectModule.Hireuspageobject.clickingHireUs;
 
+/**
+ * The hireus class provides functionality to interact with the "Hire Us" feature in a web application.
+ * It uses the Page Object Model (POM) to interact with web elements and handle windows for navigation.
+ */
 public class hireus {
     WebDriver driver;
     public hireus(WebDriver driver) {

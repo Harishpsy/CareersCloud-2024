@@ -14,14 +14,32 @@ import java.util.Set;
 
 import static PageObjectModule.Loginpageobject.*;
 
-public class Loginpage extends BaseObjects {
+public class Loginpage  {
+    /**
+     * The WebDriver instance used to interact with the web browser.
+     * This variable is initialized via the Loginpage constructor and is utilized by various methods
+     * to perform actions such as navigating to URLs, interacting with web elements, and managing browser windows.
+     */
     WebDriver driver;
 
+    /**
+     * Constructor to set the WebDriver instance.
+     *
+     * @param driver the WebDriver instance to be used by this page
+     */
     // Constructor to set the WebDriver instance
     public Loginpage(WebDriver driver) {
         this.driver = driver;
     }
 
+    /**
+     * This method performs the login functionality.
+     * It navigates to the specified URL, maximizes the browser window,
+     * clears cookies, waits for elements to be visible, and interacts
+     * with various elements on the login page to authenticate the user.
+     *
+     * @throws InterruptedException if the thread is interrupted while waiting
+     */
     // Method to perform login
     @Test(enabled = true)
     public void login() throws InterruptedException {
@@ -63,6 +81,11 @@ public class Loginpage extends BaseObjects {
         switchToParentWindow ();
     }
 
+    /**
+     * Switches the WebDriver context to a child window.
+     * This method assumes that there are exactly two windows, the parent and the child,
+     * and switches to the child window for further operations.
+     */
     @Test(enabled = true)
     // Method to switch to the child window
     private void switchToChildWindow() {
@@ -73,6 +96,11 @@ public class Loginpage extends BaseObjects {
         driver.switchTo ().window (child);
     }
 
+    /**
+     * Switches the WebDriver context back to the parent window.
+     * This method is typically used after navigating to a child window
+     * to perform operations and then returning to the parent window.
+     */
     // Method to switch back to the parent window
     @Test(enabled = true)
     private void switchToParentWindow() {
@@ -83,6 +111,11 @@ public class Loginpage extends BaseObjects {
         driver.switchTo ().window (parent);
     }
 
+    /**
+     * This method enters the password into the password field of the login page and clicks the 'Next' button.
+     *
+     * @throws InterruptedException if the thread is interrupted while waiting
+     */
     @Test(enabled = true)
     // Method to enter password
     private void enterPassword() throws InterruptedException {
