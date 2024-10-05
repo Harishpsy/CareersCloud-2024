@@ -96,7 +96,7 @@ public class BaseObjects {
      * @throws InterruptedException if the thread is interrupted.
      * @throws AWTException if an abstract window toolkit exception occurs.
      */
-    @Test(priority = 4, enabled = false)
+    @Test(priority = 4, enabled = true)
     public void myCourseModuleTest() throws InterruptedException, AWTException {
 
         // Creating The Base For My Course Module
