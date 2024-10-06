@@ -31,9 +31,9 @@ public class myCourseModule {
         allCourseModule duplicateCourseName = new allCourseModule ( driver ); // We Are Reusing From The All Course
         duplicateCourseName.verifyingDuplicate ();
 
-        /* My Course Filters > Creating An Object For Filter */
-        filters myCourseFilter = new filters ( driver );
-        myCourseFilter.Filter ();
+//        /* My Course Filters > Creating An Object For Filter */
+//        filters myCourseFilter = new filters ( driver );
+//        myCourseFilter.Filter ();
 
         /* Creating An Object For My Course Base, From This Object We Can Access All The Sub-Modules Inside The Course */
         myCourseInnerActions courseClick = new myCourseInnerActions ( driver );

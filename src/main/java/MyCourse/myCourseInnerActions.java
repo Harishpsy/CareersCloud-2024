@@ -78,7 +78,7 @@ public class myCourseInnerActions {
                     // Go back to the course list using breadcrumb (if available)
                     try {
                         WebElement breadcrumbLink = driver.findElement ( By.xpath ( "(//*[@class='ant-breadcrumb-link'])[1]" ) );
-                        Thread.sleep ( 3000 ); // Wait for the page to load
+                        Thread.sleep ( 5000 ); // Wait for the page to load
                         breadcrumbLink.click ();
                         Thread.sleep ( 3000 ); // Wait for the course list to reload
                     } catch (NoSuchElementException e1) {

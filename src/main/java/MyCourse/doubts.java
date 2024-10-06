@@ -25,11 +25,14 @@ public class doubts {
 
         try {
             // Verifying The Doubts' Sub-Module Was Displaying, if Display Perform The Below Action
+            Thread.sleep(3000);
             boolean doubtsModuleDisplayed = false;
 
             try {
+                Thread.sleep(5000);
                 WebElement clickingDoubts = driver.findElement ( xpath ( "(//*[text()='Doubts'])[2]" ) );
                 doubtsModuleDisplayed = clickingDoubts.isDisplayed ();
+                clickingDoubts.click();
             } catch (NoSuchElementException e) {
                 System.out.println ( "Doubts Sub Module Is Not Displayed" );
             }
@@ -63,7 +66,7 @@ public class doubts {
         try {
 
             // Storing The Web Element
-            WebElement clickingAllDoubts = driver.findElement ( xpath ( "//*[text()='All Doubts']" ) );
+            WebElement clickingAllDoubts = driver.findElement ( xpath ( "//*[@class=\"ant-radio-button ant-radio-button-checked\"]" ) );
 
             // Using If else statement to handle
             if (clickingAllDoubts.isDisplayed ()) {
@@ -294,7 +297,7 @@ public class doubts {
 
                 //Clicking the cancel button in the in share popup
                 Thread.sleep ( 3000 );
-                WebElement Cancel_button = driver.findElement ( xpath ( "//*[text() = 'Cancel']" ) );
+                WebElement Cancel_button = driver.findElement ( xpath ( "(//*[text() = 'Cancel'])[2]" ) );
                 Cancel_button.click ();
 
                 // Clicking The three Dots in the doubts
@@ -304,7 +307,7 @@ public class doubts {
 
                 // Clicking The report Icon in the dropdown
                 Thread.sleep ( 3000 );
-                WebElement clickingReport = driver.findElement ( xpath ( "//*[text()='Report']" ) );
+                WebElement clickingReport = driver.findElement ( xpath ( "(//*[text()='Report'])[3]" ) );
                 clickingReport.click ();
 
 //        //Click the wrong information radio button
@@ -314,7 +317,7 @@ public class doubts {
 
                 //Entering the text inside the report text field
                 Thread.sleep ( 3000 );
-                WebElement Enter_the_report = driver.findElement ( xpath ( "//*[@name=\"reportDescription\"]" ) );
+                WebElement Enter_the_report = driver.findElement ( xpath ( "(//*[@name=\"reportDescription\"])[2]" ) );
                 Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
 
 //        // Click the report button
@@ -324,7 +327,7 @@ public class doubts {
 
                 // Clicking The Cancel Button
                 Thread.sleep ( 5000 );
-                Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
+                Cancel_button = driver.findElement ( xpath ( "(//span[text()='CANCEL'])[2]" ) );
                 Cancel_button.click ();
 
                 // Clicking The Create Button
@@ -334,7 +337,7 @@ public class doubts {
 
                 // Entering the text inside the create doubt text field
                 Thread.sleep ( 5000 );
-                WebElement enteringtext = driver.findElement ( xpath ( "(//*[@class=\"ant-input css-xu9wm8\"])[2]" ) );
+                WebElement enteringtext = driver.findElement ( xpath ( "(//*[@class=\"ant-input css-xu9wm8\"])[3]" ) );
                 enteringtext.sendKeys ( "Where The Course Is Present ?..." );
 
 //        // Clicking the upload Buttton

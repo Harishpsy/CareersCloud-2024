@@ -1,5 +1,6 @@
 package MyCourse;
 
+import Base.CommonActions.BaseActions;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -50,65 +51,18 @@ public class article {
     @Test
     public void articleActions() throws InterruptedException {
 
-        // needs to write in base
-        int numberoftimesscrollarticle = 5;
-        for (int i = 0; i < numberoftimesscrollarticle; i++) {
-            try {
-                Thread.sleep ( 5000 );
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The Article List Page" + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll The Article List Page : " + scroll.getMessage () );
-            }
-        }
+        // Scrollingv The Page In The Article
+        BaseActions scroll = new BaseActions(driver);
+        scroll.Scroll();
 
         // Clicking Float Icon
-        try {
-            // Wait for the float icon to become clickable (10-second timeout)
-            WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
-            WebElement clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
+        BaseActions floatIcon = new BaseActions(driver);
+        floatIcon.floatButton();
 
-            // Check if the float icon is displayed
-            if (clickingFloatIcon.isDisplayed ()) {
-                // Optional wait before clicking
-                Thread.sleep ( 2000 );
-                clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
-                clickingFloatIcon.click ();
-                System.out.println ( "Float Icon clicked successfully." );
-            }
-        } catch (Exception e) {
-            System.out.println ( "FloatIcon Button is not displayed." );
-        }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Verifying The list of Articles any one of them was getting Duplicate or Not
         // Finding All The elements From the Article components
-
-        List<WebElement> allArticleName = driver.findElements ( xpath ( "//*[@class=\"ant-col column ant-col-xs-23 ant-col-sm-23 ant-col-md-23 ant-col-lg-23 ant-col-xl-23 ant-col-xxl-23 css-xu9wm8\"]" ) );
-
-        // Create a set to store unique Article URLs
-        Set<String> uniqueArticleUrl = new HashSet<> ();
-        int uniquesArticleCount = 0;
-
-        // Iterate through the list of elements
-        for (WebElement articleElementUrl : allArticleName) {
-            String actualArticleName = articleElementUrl.getText ();
-            //    System.out.println ( "Original Article Name: " + actualArticleName );
-            if (uniqueArticleUrl.contains ( actualArticleName )) {
-                System.out.println ( "Duplicate Article found --> " + actualArticleName );
-            } else {
-                uniqueArticleUrl.add ( actualArticleName );
-                uniquesArticleCount++;
-                // System.out.println ( "Article Found: " + uniquesArticleCount + " --> " + actualArticleName );
-                //  System.out.println ( "-------------------------------------------------------------------------" );
-            }
-        }
-        // Print the total number of unique URLs found
-        System.out.println ( "Total unique Article Name found: " + uniquesArticleCount );
-
-        // Assert that the number of unique URLs is equal to the number of elements
-        Assert.assertEquals ( uniquesArticleCount , uniqueArticleUrl.size () );
+        BaseActions duplicatefinding =  new BaseActions(driver);
+        duplicatefinding.identifingDuplicate();
 
         // Clicking the view Article
         Thread.sleep ( 5000 );
@@ -214,7 +168,7 @@ public class article {
         Assert.assertEquals ( uniquerecentArticlelCount , uniquerecentArticleUrls.size () );
 
         // Click the BackButton In The Article
-        Thread.sleep ( 5000 );
+        Thread.sleep ( 10000 );
         WebElement clickingBackButton = driver.findElement ( xpath ( "//*[@class=\"ant-breadcrumb-link\"]" ) );
         clickingBackButton.click ();
         System.out.println ( "Navigated To Article List Page" );

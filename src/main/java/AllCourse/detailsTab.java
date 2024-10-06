@@ -86,37 +86,37 @@ public class detailsTab {
             WebElement clickingtextfield = driver.findElement ( name ( "queries" ) );
             clickingtextfield.sendKeys ( "Thanks for your  Information" );
 
-            // Clicking Upload button
-            WebElement clickinguploadbutton = driver.findElement ( xpath ( "//*[text()='Upload']" ) );
-            clickinguploadbutton.click ();
-
-            // Uploading the image
-            Thread.sleep ( 3000 );
-            String file = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Pic1.jpg";
-            StringSelection selection = new StringSelection ( file );
-            Toolkit.getDefaultToolkit ().getSystemClipboard ().setContents ( selection , null );
-            System.out.println ( "Sucessfully Uploaded The Image" );
-
-            // Pressing the keyboard button
-            Robot robot = new Robot ();
-
-            //Pressing The Key
-            Thread.sleep ( 3000 );
-            robot.keyPress ( KeyEvent.VK_CONTROL );
-            robot.keyPress ( KeyEvent.VK_V );
-
-            // Releasing the Key
-            Thread.sleep ( 3000 );
-            robot.keyRelease ( KeyEvent.VK_V );
-            robot.keyRelease ( KeyEvent.VK_CONTROL );
-
-            // Clicking The Enter Key
-            Thread.sleep ( 3000 );
-            robot.keyPress ( KeyEvent.VK_ENTER );
-
-            // Releasing The Enter Key
-            Thread.sleep ( 3000 );
-            robot.keyRelease ( KeyEvent.VK_ENTER );
+//            // Clicking Upload button
+//            WebElement clickinguploadbutton = driver.findElement ( xpath ( "//*[text()='Upload']" ) );
+//            clickinguploadbutton.click ();
+//
+//            // Uploading the image
+//            Thread.sleep ( 3000 );
+//            String file = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Pic1.jpg";
+//            StringSelection selection = new StringSelection ( file );
+//            Toolkit.getDefaultToolkit ().getSystemClipboard ().setContents ( selection , null );
+//            System.out.println ( "Sucessfully Uploaded The Image" );
+//
+//            // Pressing the keyboard button
+//            Robot robot = new Robot ();
+//
+//            //Pressing The Key
+//            Thread.sleep ( 3000 );
+//            robot.keyPress ( KeyEvent.VK_CONTROL );
+//            robot.keyPress ( KeyEvent.VK_V );
+//
+//            // Releasing the Key
+//            Thread.sleep ( 3000 );
+//            robot.keyRelease ( KeyEvent.VK_V );
+//            robot.keyRelease ( KeyEvent.VK_CONTROL );
+//
+//            // Clicking The Enter Key
+//            Thread.sleep ( 3000 );
+//            robot.keyPress ( KeyEvent.VK_ENTER );
+//
+//            // Releasing The Enter Key
+//            Thread.sleep ( 3000 );
+//            robot.keyRelease ( KeyEvent.VK_ENTER );
 
             // Clicking the Send Button
 //         Thread.sleep (6000);

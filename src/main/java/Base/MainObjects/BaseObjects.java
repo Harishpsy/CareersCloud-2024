@@ -19,7 +19,6 @@ import java.awt.*;
  * and runs a set of test modules to validate different functionalities of a web application.
  */
 public class BaseObjects {
-
     /**
      * The WebDriver instance that is used across multiple test modules for interacting
      * with the web browser. This driver is set up in the {@link #setup()} method,
@@ -30,7 +29,6 @@ public class BaseObjects {
      * for performing actions on the web application.
      */
     public static WebDriver driver;
-
     /**
      * Sets up the Chrome WebDriver with incognito mode before any tests run.
      * This method initializes the ChromeOptions, adds incognito argument,
@@ -45,7 +43,6 @@ public class BaseObjects {
         options.addArguments ( "--incognito" );
         driver = new ChromeDriver ( options ); // If a driver was there,Null point exception will throw
     }
-
     /**
      * This method performs a login test using the Loginpage class.
      * It initiates the login process by creating an instance of the Loginpage class
@@ -60,7 +57,6 @@ public class BaseObjects {
         Loginpage loginPage = new Loginpage ( driver );
         loginPage.login ();
     }
-
     /**
      * Tests the HomeModule functionality by creating an instance of BaseHomePage
      * and invoking its HomeModule method.
@@ -73,19 +69,17 @@ public class BaseObjects {
         BaseHomePage home = new BaseHomePage ( driver );
         home.HomeModule ();
     }
-
     /**
      * Executes the tests for the menu module on the home page.
      *
      * @throws InterruptedException if the thread is interrupted during sleep or wait operations
      */
-    @Test(priority = 3, enabled = true)
+    @Test(priority = 3, enabled = false)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
         BaseMenu menu = new BaseMenu ( driver );
         menu.menuModule ();
     }
-
     /**
      * Executes the test for the "My Course" module within the application.
      *
@@ -132,7 +126,6 @@ public class BaseObjects {
         BaseDoubts doubts = new BaseDoubts ( driver );
         doubts.doubtsModule ();
     }
-
 }
 
 

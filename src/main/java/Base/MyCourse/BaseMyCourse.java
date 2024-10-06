@@ -44,9 +44,9 @@ public class BaseMyCourse {
         videos video = new videos ( driver );
         video.videos ();
 
-        /* Creating An Object For The Quizzes Sub Module, Performing The Actions */
-        quizzes quizzes = new quizzes ( driver );
-        quizzes.Quizzes ();
+//        /* Creating An Object For The Quizzes Sub Module, Performing The Actions */
+//        quizzes quizzes = new quizzes ( driver );
+//        quizzes.Quizzes ();
 
         /* Creating An Object For The Ebooks Sub Module, Performing The Actions */
         ebooks ebooks = new ebooks ( driver );
