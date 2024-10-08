@@ -1,5 +1,6 @@
 package MyCourse;
 
+import Base.General.CoreFunctionality;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,52 +31,18 @@ public class quizzesUnattemptedSubModule {
         System.out.println ( "Successfully Clicked The UnAttempted Tab" );
 
         // Scrolling The Quizzes List Page to verify data
-        int numberOfTimesScrollQuizzes = 10;
-
-        for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
-            try {
-                Thread.sleep ( 5000 );
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The page In The UnAttempted" + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll The page In The UnAttempted: " + scroll.getMessage () );
-            }
-        }
+        // Scrolling The page In the ebook list page
+        CoreFunctionality scroll = new CoreFunctionality ( driver );
+        scroll.Scroll ();
 
         // Clicking Float Icon
-        try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-            if (clickingFloatIcon.isDisplayed ()) {
-                clickingFloatIcon.click ();
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed" );
-        }
+        CoreFunctionality floatIcon = new CoreFunctionality ( driver );
+        floatIcon.floatButton ();
+        System.out.println ( "Verifying Whether Duplicate Was Present,Wait For Few Seconds" );
 
-        // Verifying the Quiz List was getting duplicating using the unique videos Url
-        List<WebElement> quizTitle = driver.findElements ( xpath ( "//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]" ) );
-
-        // Create a set to store unique Ebook Titles
-        Set<String> uniqueQuizTitles = new HashSet<> ();
-        int uniqueQuizCount = 0;
-
-        for (WebElement uniqueTitle : quizTitle) {
-            String actualquizTitle = uniqueTitle.getText ();
-
-            if (uniqueQuizTitles.contains ( actualquizTitle )) {
-                System.out.println ( "Duplicate found --> " + actualquizTitle );
-            } else {
-                uniqueQuizTitles.add ( actualquizTitle );
-                uniqueQuizCount++;
-            }
-        }
-
-        // Print the total number of unique URLs found
-        System.out.println ( "Total unique Quiz Name found: " + uniqueQuizCount );
-
-        // Assert that the number of unique URLs is equal to the number of elements
-        Assert.assertEquals ( uniqueQuizCount , uniqueQuizTitles.size () );
+        // Verifying the Quiz List was getting duplicating Or Not
+        CoreFunctionality duplicatefinding = new CoreFunctionality ( driver );
+        duplicatefinding.identifingDuplicate ();
 
         // Performing The Start Quiz Action
         quizzesUnattemptedSubModule startquiz = new quizzesUnattemptedSubModule ( driver );
@@ -88,7 +55,6 @@ public class quizzesUnattemptedSubModule {
         // Performing The Solution Action
         quizzesUnattemptedSubModule solutionQuiz = new quizzesUnattemptedSubModule ( driver );
         solutionQuiz.quizSolution ();
-
     }
 
     @Test
@@ -274,31 +240,14 @@ public class quizzesUnattemptedSubModule {
             System.out.println ( "Successfully clicked The Paused Tab " );
 
             // Scrolling The Paused Tab
-            int numberOfTimesScrollQuizzes = 5;
-
-            for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
-                try {
-                    Thread.sleep ( 5000 );
-                    JavascriptExecutor jse = (JavascriptExecutor) driver;
-                    jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                    System.out.println ( "Successfully scroll The page In The paused Tab " + (i + 1) + " time(s)." );
-                } catch (Exception scroll) {
-                    System.out.println ( "Failed to Scroll The Paused Tab: " + scroll.getMessage () );
-                }
-            }
+            CoreFunctionality scroll = new CoreFunctionality ( driver );
+            scroll.Scroll ();
 
             // Clicking Float Icon
-            try {
-                WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-                if (clickingFloatIcon.isDisplayed ()) {
-                    clickingFloatIcon.click ();
-                }
-            } catch (NoSuchElementException e) {
-                System.out.println ( "FloatIcon Button Is Not Displayed" );
-            }
+            CoreFunctionality floatIcon = new CoreFunctionality ( driver );
+            floatIcon.floatButton ();
 
             // Getting the Quiz Title Name to check whether completed quiz from paused was showing in Attempted or not
-
             // Find all elements matching the XPath and store them in a list
             List<WebElement> gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
             Thread.sleep ( 5000 );
@@ -480,28 +429,12 @@ public class quizzesUnattemptedSubModule {
             System.out.println ( "Successfully clicked The attempted Tab" );
 
             // Scrolling The Attempted Tab
-            int numberOfTimesScrollQuizzes = 5;
-
-            for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
-                try {
-                    Thread.sleep ( 5000 );
-                    JavascriptExecutor jse = (JavascriptExecutor) driver;
-                    jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                    System.out.println ( "Successfully scroll The page In the Attempted" + (i + 1) + " time(s)." );
-                } catch (Exception scroll) {
-                    System.out.println ( "Failed to Scroll The Page In The Attempted: " + scroll.getMessage () );
-                }
-            }
+            CoreFunctionality scroll = new CoreFunctionality ( driver );
+            scroll.Scroll ();
 
             // Clicking Float Icon
-            try {
-                WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-                if (clickingFloatIcon.isDisplayed ()) {
-                    clickingFloatIcon.click ();
-                }
-            } catch (NoSuchElementException e) {
-                System.out.println ( "FloatIcon Button Is Not Displayed" );
-            }
+            CoreFunctionality floatIcon = new CoreFunctionality ( driver );
+            floatIcon.floatButton ();
 
             // Find all elements matching the XPath and store them in a list
             List<WebElement> gettingQuizTitles = driver.findElements ( By.xpath ( "//*[@class='ant-row ant-row-center nowrap-content css-xu9wm8']" ) );
@@ -920,8 +853,6 @@ public class quizzesUnattemptedSubModule {
             System.out.println ( "No matching condition was found in the Solution quiz In The quiz List Page." );
         }
     }
-
-
 }
 
 

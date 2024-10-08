@@ -1,16 +1,14 @@
 package MyCourse;
 
+import Base.General.CoreFunctionality;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
@@ -31,52 +29,16 @@ public class quizAttemptedSubModule {
         System.out.println ( "SuccessFully Clicked The Attempted Tab" );
 
         // Scrolling The Quizzes List Page to verify data
-        int numberOfTimesScrollQuizzes = 10;
-
-        for (int i = 0; i < numberOfTimesScrollQuizzes; i++) {
-            try {
-                Thread.sleep ( 5000 );
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The page In The Attempted Tab" + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll The page In The Attempted Tab: " + scroll.getMessage () );
-            }
-        }
+        CoreFunctionality scroll = new CoreFunctionality ( driver );
+        scroll.Scroll ();
 
         // Clicking Float Icon
-        try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-            if (clickingFloatIcon.isDisplayed ()) {
-                clickingFloatIcon.click ();
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed" );
-        }
+        CoreFunctionality floatIcon = new CoreFunctionality ( driver );
+        floatIcon.floatButton ();
 
-        // Verifying the Quiz List was getting duplicating using the unique videos Url
-        List<WebElement> quizTitle = driver.findElements ( xpath ( "//*[@class=\"ant-row ant-row-center nowrap-content css-xu9wm8\"]" ) );
-
-        // Create a set to store unique Ebook Titles
-        Set<String> uniqueQuizTitles = new HashSet<> ();
-        int uniqueQuizCount = 0;
-
-        for (WebElement uniqueTitle : quizTitle) {
-            String actualquizTitle = uniqueTitle.getText ();
-
-            if (uniqueQuizTitles.contains ( actualquizTitle )) {
-                System.out.println ( "Duplicate found --> " + actualquizTitle );
-            } else {
-                uniqueQuizTitles.add ( actualquizTitle );
-                uniqueQuizCount++;
-            }
-        }
-
-        // Print the total number of unique URLs found
-        System.out.println ( "Total unique Quiz Name found: " + uniqueQuizCount );
-
-        // Assert that the number of unique URLs is equal to the number of elements
-        Assert.assertEquals ( uniqueQuizCount , uniqueQuizTitles.size () );
+        // Verifying the Quiz List was getting duplicating
+        CoreFunctionality duplicatefinding = new CoreFunctionality ( driver );
+        duplicatefinding.identifingDuplicate ();
 
         // Performing The Solution Actions
         quizAttemptedSubModule solution = new quizAttemptedSubModule ( driver );

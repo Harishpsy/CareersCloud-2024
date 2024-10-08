@@ -1,6 +1,6 @@
 package MyCourse;
 
-import org.openqa.selenium.JavascriptExecutor;
+import Base.General.CoreFunctionality;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,36 +51,12 @@ public class videos {
     public void videosActions() throws InterruptedException {
 
         // Scrolling The Videos List Page
-        int numberOfTimesScrollVideos = 5;
-
-        for (int i = 0; i < numberOfTimesScrollVideos; i++) {
-            try {
-                Thread.sleep (5000);
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
-                System.out.println ( "Successfully scroll The Video List page " + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll The Video List Page: " + scroll.getMessage () );
-            }
-        }
+        CoreFunctionality scroll = new CoreFunctionality ( driver );
+        scroll.Scroll ();
 
         // Clicking Float Icon
-        try {
-            // Wait for the float icon to become clickable (10-second timeout)
-            WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
-            WebElement clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
-
-            // Check if the float icon is displayed
-            if (clickingFloatIcon.isDisplayed ()) {
-                // Optional wait before clicking
-                Thread.sleep ( 2000 );
-                clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
-                clickingFloatIcon.click ();
-                System.out.println ( "Float Icon clicked successfully." );
-            }
-        } catch (Exception e) {
-            System.out.println ( "FloatIcon Button is not displayed." );
-        }
+        CoreFunctionality floatIcon = new CoreFunctionality ( driver );
+        floatIcon.floatButton ();
 
         // Verifying the videoscard was getting duplicating using the unique videos Url
         List<WebElement> cards = driver.findElements (xpath ("//*[@class=\"video-iframe\"]"));
@@ -226,7 +202,7 @@ public class videos {
             String actualUrls = recentVideo.getAttribute ("href");
 
             if (uniqueurl.contains (actualUrls)) {
-                System.out.println ("Duplicate found --> " + actualUrls);
+                System.out.println ( "Duplicate found Recent Videos--> " + actualUrls );
             } else {
                 uniqueurl.add (actualUrls);
                 uniquevideosurlcount++;

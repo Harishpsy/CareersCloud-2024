@@ -46,7 +46,7 @@ public class myCourseInnerActions {
 
                 try {
                     // Refetch the element list before interacting to avoid stale references
-                    clickingCourse = driver.findElements ( By.xpath ( "(//*[@class='ant-typography all-courses-card-title css-xu9wm8'])" ) );
+                    clickingCourse = driver.findElements ( By.xpath ( "(//*[@class='ant-typography all-courses-card-title css-xu9wm8'])[2]" ) );
 
                     // Ensure the index is within bounds to avoid IndexOutOfBoundsException
                     if (i >= clickingCourse.size ()) {

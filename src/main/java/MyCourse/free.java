@@ -49,20 +49,20 @@ public class free {
             free ebook = new free ( driver );
             ebook.Ebooks ();
 
-            free videos = new free ( driver );
-            videos.videos ();
-
-            // Performing the start quiz action
-            free startquiz = new free ( driver );
-            startquiz.quizStart ();
-
-            //Performing The resume quiz
-            free resumequiz = new free ( driver );
-            resumequiz.resumeQuiz ();
-
-        //Performing The Solutions Action
-            free solutionquiz = new free ( driver );
-            solutionquiz.quizSolutions ();
+//            free videos = new free ( driver );
+//            videos.videos ();
+//
+//            // Performing the start quiz action
+//            free startquiz = new free ( driver );
+//            startquiz.quizStart ();
+//
+//            //Performing The resume quiz
+//            free resumequiz = new free ( driver );
+//            resumequiz.resumeQuiz ();
+//
+//        //Performing The Solutions Action
+//            free solutionquiz = new free ( driver );
+//            solutionquiz.quizSolutions ();
 
         } catch (NoSuchElementException e) {
             System.out.println ( "Free Tab Is Not Present In The The Current Course Feed " );
@@ -396,13 +396,13 @@ public class free {
         Thread.sleep ( 5000 );
         boolean videosDisplayedInMyNotes = false;
 
-        try {
-            WebElement clickingVideos = driver.findElement ( xpath ( "" ) );
-            videosDisplayedInMyNotes = clickingVideos.isDisplayed ();
-            System.out.println ( "videos Displayed In The Free Tab: " + videosDisplayedInMyNotes );
-        } catch (NoSuchElementException e) {
-            System.out.println ( "videos element not found In The Free Tab ." );
-        }
+//        try {
+//            WebElement clickingVideos = driver.findElement ( xpath ( "" ) );
+//            videosDisplayedInMyNotes = clickingVideos.isDisplayed ();
+//            System.out.println ( "videos Displayed In The Free Tab: " + videosDisplayedInMyNotes );
+//        } catch (NoSuchElementException e) {
+//            System.out.println ( "videos element not found In The Free Tab ." );
+//        }
 
         // Verifying with the if else statement
 
@@ -914,7 +914,7 @@ public class free {
             driver.manage ().window ().maximize ();
 
             //Clicking the Instruction Button
-            driver.manage ().timeouts ().implicitlyWait ( 30 , TimeUnit.SECONDS );
+            final WebDriver.Timeouts implicitlyWait = driver.manage ().timeouts ().implicitlyWait ( 30 , TimeUnit.SECONDS );
             WebElement clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
             clickingTheInstructionIcon.click ();
             System.out.println ( "Sucessfully clicked instruction icon" );

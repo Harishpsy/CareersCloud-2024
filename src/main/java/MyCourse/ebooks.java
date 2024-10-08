@@ -1,16 +1,17 @@
 package MyCourse;
 
-import org.openqa.selenium.JavascriptExecutor;
+import Base.General.CoreFunctionality;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.*;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Set;
 
 import static org.openqa.selenium.By.name;
 import static org.openqa.selenium.By.xpath;
@@ -49,60 +50,19 @@ public class ebooks {
 
     @Test
     public void ebookActions() throws InterruptedException {
+
         // Scrolling The page In the ebook list page
-        int numberOfTimesScrollEbooks = 5;
-        for (int i = 0; i < numberOfTimesScrollEbooks; i++) {
-            try {
-                Thread.sleep (5000);
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
-                System.out.println ("Successfully scroll The page " + (i + 1) + " time(s).");
-            } catch (Exception scroll) {
-                System.out.println ("Failed to Scroll : " + scroll.getMessage ());
-            }
-        }
+        CoreFunctionality scroll = new CoreFunctionality ( driver );
+        scroll.Scroll ();
 
         // Clicking Float Icon
-        try {
-            // Wait for the float icon to become clickable (10-second timeout)
-            WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
-            WebElement clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
-
-            // Check if the float icon is displayed
-            if (clickingFloatIcon.isDisplayed ()) {
-                // Optional wait before clicking
-                Thread.sleep ( 2000 );
-                clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
-                clickingFloatIcon.click ();
-                System.out.println ( "Float Icon clicked successfully." );
-            }
-        } catch (Exception e) {
-            System.out.println ( "FloatIcon Button is not displayed." );
-        }
-
+        CoreFunctionality floatIcon = new CoreFunctionality ( driver );
+        floatIcon.floatButton ();
         System.out.println ( "Verifying Whether Duplicate Was Present,Wait For Few Seconds" );
+
         // Verifying Weather There is Duplicate was find in the Ebooks or not
-        List<WebElement> ebookTitle = driver.findElements (xpath ("//*[@class=\"ant-row ant-row-middle nowrap-content css-xu9wm8\"]"));
-
-        // Create a set to store unique Ebook Titles
-        Set<String> uniqueTitleName = new HashSet<> ();
-        int ebookTitleCount = 0;
-
-        // Iterate through the list of elements
-        for (WebElement ebooksTitleName : ebookTitle) {
-            String actualEbookTitle = ebooksTitleName.getText ();
-            System.out.println ( "Original Ebook Name:" + actualEbookTitle );
-
-            if (uniqueTitleName.contains (actualEbookTitle)) {
-                System.out.println ( "Duplicate Found In The Ebooks---> " + actualEbookTitle );
-            } else {
-                uniqueTitleName.add (actualEbookTitle);
-                ebookTitleCount++;
-//                System.out.println ("Ebook Title Found: " + ebookTitleCount + " --> " + actualEbookTitle);
-            }
-            // Assert that the number of unique URLs is equal to the number of elements
-            Assert.assertEquals (ebookTitleCount, uniqueTitleName.size ());
-        }
+        CoreFunctionality duplicatefinding = new CoreFunctionality ( driver );
+        duplicatefinding.identifingDuplicate ();
 
         // Clicking The View Button
         Thread.sleep (3000);

@@ -1,7 +1,6 @@
 package MyCourse;
 
-import Base.CommonActions.BaseActions;
-import org.openqa.selenium.JavascriptExecutor;
+import Base.General.CoreFunctionality;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -52,16 +51,16 @@ public class article {
     public void articleActions() throws InterruptedException {
 
         // Scrollingv The Page In The Article
-        BaseActions scroll = new BaseActions(driver);
+        CoreFunctionality scroll = new CoreFunctionality ( driver );
         scroll.Scroll();
 
         // Clicking Float Icon
-        BaseActions floatIcon = new BaseActions(driver);
+        CoreFunctionality floatIcon = new CoreFunctionality ( driver );
         floatIcon.floatButton();
 
         // Verifying The list of Articles any one of them was getting Duplicate or Not
         // Finding All The elements From the Article components
-        BaseActions duplicatefinding =  new BaseActions(driver);
+        CoreFunctionality duplicatefinding = new CoreFunctionality ( driver );
         duplicatefinding.identifingDuplicate();
 
         // Clicking the view Article

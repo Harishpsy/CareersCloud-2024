@@ -1,5 +1,6 @@
 package MyCourse;
 
+import Base.General.CoreFunctionality;
 import Doubts.MyAnswered;
 import Doubts.Mydoubts;
 import Doubts.Myfollowed;
@@ -73,31 +74,13 @@ public class doubts {
                 System.out.println ( "All Doubt Has Displayed SuccessFully,And Performing The Below action In The List Page" );
 
                 // Scrolling the doubt page
-                int numberoftimesscroll = 5;
-
-                for (int i = 0; i < numberoftimesscroll; i++) {
-                    try {
-                        Thread.sleep ( 3000 );
-                        JavascriptExecutor jse = (JavascriptExecutor) driver;
-                        jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                        System.out.println ( "Successfully scroll The Doubt List page InSide The Course" + (i + 1) + " time(s)." );
-                    } catch (Exception scroll) {
-                        System.out.println ( "Failed to Scroll : " + scroll.getMessage () );
-                    }
-                }
+                // Scrolling The Quizzes List Page to verify data
+                CoreFunctionality scroll = new CoreFunctionality ( driver );
+                scroll.Scroll ();
 
                 // Clicking Float Icon
-                try {
-                    WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-content\"]" ) );
-                    if (clickingFloatIcon.isDisplayed ()) {
-                        Thread.sleep ( 5000 );
-                        clickingFloatIcon.click ();
-                    } else {
-                        System.out.println ( "Float Icon Is Not Displayed" );
-                    }
-                } catch (NoSuchElementException e) {
-                    System.out.println ( "FloatIcon Button Is Not Displayed" );
-                }
+                CoreFunctionality floatbutton = new CoreFunctionality ( driver );
+                floatbutton.floatButton ();
 
                 try {
                     /* Clicking the image in the doubt if the image is not there then skip it */

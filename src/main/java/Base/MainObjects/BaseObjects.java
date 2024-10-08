@@ -32,9 +32,8 @@ public class BaseObjects {
     /**
      * Sets up the Chrome WebDriver with incognito mode before any tests run.
      * This method initializes the ChromeOptions, adds incognito argument,
-     * and creates a new instance of ChromeDriver with the specified options.
-     *
-     * Note: If a previous driver instance exists, a NullPointerException might be thrown.
+     * and creates a new instance of ChromeDriver with the specified options.*
+     * Note: If InterruptedException a previous driver instance exists, a NullPointerException might be thrown.
      */
     @BeforeClass
     public void setup() {
@@ -48,7 +47,7 @@ public class BaseObjects {
      * It initiates the login process by creating an instance of the Loginpage class
      * and calls the login method from this instance.
      *
-     * @throws InterruptedException if the thread is interrupted during sleep
+     * @throws InterruptedException the thread is interrupted during sleep
      */
     @Test(priority = 1, enabled = true)
     public void loginTest() throws InterruptedException {
@@ -61,7 +60,7 @@ public class BaseObjects {
      * Tests the HomeModule functionality by creating an instance of BaseHomePage
      * and invoking its HomeModule method.
      *
-     * @throws InterruptedException if the thread is interrupted during the sleep intervals.
+     * @throws InterruptedException the thread is interrupted during the sleep intervals.
      */
     @Test(priority = 2, enabled =false)
     public void homeModuleTest() throws InterruptedException {
@@ -71,10 +70,8 @@ public class BaseObjects {
     }
     /**
      * Executes the tests for the menu module on the home page.
-     *
-     * @throws InterruptedException if the thread is interrupted during sleep or wait operations
      */
-    @Test(priority = 3, enabled = false)
+    @Test(priority = 3, enabled = true)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
         BaseMenu menu = new BaseMenu ( driver );
@@ -82,13 +79,12 @@ public class BaseObjects {
     }
     /**
      * Executes the test for the "My Course" module within the application.
-     *
      * This method initializes the base object for the My Course module and
      * triggers the main functionality defined in the module.
      * It is currently disabled and set to run with a priority of 4.
      *
-     * @throws InterruptedException if the thread is interrupted.
-     * @throws AWTException if an abstract window toolkit exception occurs.
+     * @throws InterruptedException the thread is interrupted.
+     * @throws AWTException an abstract window toolkit exception occurs.
      */
     @Test(priority = 4, enabled = true)
     public void myCourseModuleTest() throws InterruptedException, AWTException {
@@ -102,10 +98,10 @@ public class BaseObjects {
      * This test method verifies the functionality of the "All Courses" module in the application.
      * It creates an instance of the BaseAllCourse class and invokes the allCourseModule method.
      *
-     * @throws InterruptedException if the thread is interrupted during the test execution
-     * @throws AWTException if there is an issue with the abstract window toolkit (e.g., for handling GUI automation)
+     * @throws InterruptedException the thread is interrupted.
+     * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(priority = 5, enabled = false)
+    @Test(priority = 5, enabled = true)
     public void allCoursesModuleTest() throws InterruptedException, AWTException {
 
         // Creating The Base For All Course Module
@@ -117,10 +113,10 @@ public class BaseObjects {
      * Test method for validating the functionality of the Doubts Module.
      * This method is currently disabled and will not be executed during test runs.
      *
-     * @throws InterruptedException if the thread is interrupted while waiting
-     * @throws AWTException if a problem occurs while using the AWT Robot class
+     * @throws InterruptedException the thread is interrupted while waiting
+     * @throws AWTException a problem occurs while using the AWT Robot class
      */
-    @Test(priority = 6, enabled = false)
+    @Test(priority = 6, enabled = true)
     public void doubtsModuleTest() throws InterruptedException, AWTException {
         // Creating The Base For Doubts Module
         BaseDoubts doubts = new BaseDoubts ( driver );

@@ -83,87 +83,48 @@ public class myEbooks {
                 // Handle the case when no records are found
             } else if (threedotsDisplayed) {
 
-                // Click the three-dot menu and perform actions
-                Thread.sleep ( 9000 );
-                Threedots.click ();
-                System.out.println ( "Successfully Clicked Three Dots " );
-
-                // Clicking the remove My ebook icon in dropdown
-                Thread.sleep ( 3000 );
-                Remove_My_ebook.click ();
-
-                // Check if noRecordFound element is displayed and log the result
-                Thread.sleep ( 10000 );
-                boolean noRecordFoundDisplayedAfterRemove = false;
-                boolean threedotsDisplayedAfterRemove = false;
-
-                try {
-                    noRecordFoundDisplayedAfterRemove = noRecordFound.isDisplayed ();
-                } catch (NoSuchElementException e) {
-                    System.out.println ( "noRecordFound element not found." );
-                }
-
-                try {
-                    threedotsDisplayedAfterRemove = Threedots.isDisplayed ();
-                } catch (NoSuchElementException e) {
-                    System.out.println ( "Threedots element not found." );
-                }
-
-                System.out.println ( "noRecordFound displayed In My Ebooks: " + noRecordFoundDisplayedAfterRemove );
-                System.out.println ( "Threedots displayed In My Ebooks: " + threedotsDisplayedAfterRemove );
-
-                if (noRecordFoundDisplayedAfterRemove) {
-                    // Clicking My coins
-                    Thread.sleep ( 5000 );
-                    clickingMycoin.click ();
-                    System.out.println ( "No records found message is displayed In My Ebooks,So navigating to My Coin page." );
-
-                } else if (threedotsDisplayedAfterRemove) {
-                    // Click the three dots again
-                    Thread.sleep ( 5000 );
-                    Threedots.click ();
-
-                    // Click the share icon in My Ebook
-                    Thread.sleep ( 3000 );
-                    Share_icon.click ();
-
-                    // Click the copy link in the share popup
-                    Thread.sleep ( 3000 );
-                    Copy_link.click ();
-
-                    // Click the cancel button in the share popup
-                    wait.until ( ExpectedConditions.elementToBeClickable ( Cancelbutton ) ).click ();
-
-                    // Click the three dots again
-                    Thread.sleep ( 3000 );
-                    Threedots.click ();
-
-                    // Click the report icon
-                    Thread.sleep ( 1000 );
-                    Reporticon.click ();
-
-                    // Click the wrong information radio button
-                    Thread.sleep ( 1000 );
-                    Wronginformationradiobutton.click ();
-
-                    // Enter text inside the report text field
-                    Enterthereport.sendKeys ( "Checking The text was Entering In The Report Text Field" );
-
-                    // Click the report button (currently commented out)
-                    // Thread.sleep(3000);
-                    // Reportbutton.click();
-
-                    // Click the cancel button
-                    Thread.sleep ( 3000 );
-                    CANCELbutton.click ();
+//                // Check if noRecordFound element is displayed and log the result
+//                Thread.sleep ( 10000 );
+//                boolean noRecordFoundDisplayedAfterRemove = false;
+//                boolean threedotsDisplayedAfterRemove = false;
+//
+//                try {
+//                    noRecordFoundDisplayedAfterRemove = noRecordFound.isDisplayed ();
+//                } catch (NoSuchElementException e) {
+//                    System.out.println ( "noRecordFound element not found." );
+//                }
+//
+//                try {
+//                    threedotsDisplayedAfterRemove = Threedots.isDisplayed ();
+//                } catch (NoSuchElementException e) {
+//                    System.out.println ( "Threedots element not found." );
+//                }
+//
+//                System.out.println ( "noRecordFound displayed In My Ebooks: " + noRecordFoundDisplayedAfterRemove );
+//                System.out.println ( "Threedots displayed In My Ebooks: " + threedotsDisplayedAfterRemove );
+//
+//                if (noRecordFoundDisplayedAfterRemove) {
+//                    // Clicking My coins
+//                    Thread.sleep ( 5000 );
+//                    clickingMycoin.click ();
+//                    System.out.println ( "No records found message is displayed In My Ebooks,So navigating to My Coin page." );
+//
+//                } else if (threedotsDisplayedAfterRemove) {
 
                     // Click the course name in My ebook Card
                     Thread.sleep ( 5000 );
                     ClickingCourseName.click ();
+                System.out.println ( "Successfully CLicked The Course Name" );
 
                     // Click the breadcrumbs to navigate backward to My ebook page
                     Thread.sleep ( 5000 );
                     ClickingCoursebreadcrums.click ();
+                System.out.println ( "Successfully CLicked The Breadcrumbs" );
+
+                // Click the ebook
+                Thread.sleep ( 5000 );
+                WebElement clickingEbook = driver.findElement ( xpath ( "(//*[@class=\"ebook-cover-image\"])[1]" ) );
+                clickingEbook.click ();
 
                     // Click the like button
                     Thread.sleep ( 3000 );
@@ -172,10 +133,6 @@ public class myEbooks {
                     // Click the unlike button
                     Thread.sleep ( 3000 );
                     clickingUnlikeButton.click ();
-
-                    // Click the ebook
-                    WebElement clickingEbook = driver.findElement ( xpath ( "//*[@class='ebook-cover-image-container']" ) );
-                    clickingEbook.click ();
 
                     // Click the comment icon
                     Thread.sleep ( 3000 );
@@ -218,9 +175,56 @@ public class myEbooks {
                     // Click the back button on the Ebook page
                     clickingBackButton.click ();
 
-                } else {
-                    System.out.println ( "Both are not presented In The My Ebook Page " );
-                }
+                // Click the three-dot menu and perform actions
+                Thread.sleep ( 9000 );
+                Threedots.click ();
+                System.out.println ( "Successfully Clicked Three Dots " );
+
+                // Click the share icon in My Ebook
+                Thread.sleep ( 3000 );
+                Share_icon.click ();
+
+                // Click the copy link in the share popup
+                Thread.sleep ( 3000 );
+                Copy_link.click ();
+
+                // Click the cancel button in the share popup
+                wait.until ( ExpectedConditions.elementToBeClickable ( Cancelbutton ) ).click ();
+
+                // Click the three dots again
+                Thread.sleep ( 3000 );
+                Threedots.click ();
+
+                // Click the report icon
+                Thread.sleep ( 1000 );
+                Reporticon.click ();
+
+                // Click the wrong information radio button
+                Thread.sleep ( 1000 );
+                Wronginformationradiobutton.click ();
+
+                // Enter text inside the report text field
+                Enterthereport.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+
+                // Click the report button (currently commented out)
+                // Thread.sleep(3000);
+                // Reportbutton.click();
+
+                // Click the cancel button
+                Thread.sleep ( 3000 );
+                CANCELbutton.click ();
+
+                // Click the three dots again
+                Thread.sleep ( 3000 );
+                Threedots.click ();
+
+                // Clicking the remove My ebook icon in dropdown
+                Thread.sleep ( 3000 );
+                Remove_My_ebook.click ();
+
+//                } else {
+//                    System.out.println ( "Both are not presented In The My Ebook Page " );
+//                }
             } else {
                 System.out.println ( "Neither noRecordFound nor Threedots are displayed." );
             }

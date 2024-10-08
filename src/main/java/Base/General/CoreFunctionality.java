@@ -1,4 +1,4 @@
-package Base.CommonActions;
+package Base.General;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -14,10 +14,10 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.xpath;
 
-public class BaseActions {
+public class CoreFunctionality {
     WebDriver driver;
 
-    public BaseActions(WebDriver driver) {
+    public CoreFunctionality(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -61,7 +61,7 @@ public class BaseActions {
     public void identifingDuplicate() {
 
         // Finding All The elements Based On The Xpath (Ebooks, Article, Videos, Quiz, My Courses, All Courses)
-        List<WebElement> allName = driver.findElements ( xpath ( "//*[@class=\"ant-col column ant-col-xs-23 ant-col-sm-23 ant-col-md-23 ant-col-lg-23 ant-col-xl-23 ant-col-xxl-23 css-xu9wm8\"]" ) );
+        List<WebElement> allName = driver.findElements ( xpath ( "//*[@class=\"ant-row ant-row-middle nowrap-content css-xu9wm8\"]" ) );
 
         // Create a set to store unique Article URLs
         Set<String> uniqueName = new HashSet<> ();
@@ -70,22 +70,22 @@ public class BaseActions {
         // Iterate through the list of elements
         for (WebElement articleElementUrl : allName) {
             String actualCardsName = articleElementUrl.getText ();
-            //    System.out.println ( "Original Article Name: " + actualArticleName );
+            //System.out.println ( "Original Article Name: " + actualArticleName );
             if (uniqueName.contains ( actualCardsName )) {
                 System.out.println ( "Duplicate In The List Page found --> " + actualCardsName );
             } else {
                 uniqueName.add ( actualCardsName );
                 uniquesCount++;
-                // System.out.println ( "Article Found: " + uniquesArticleCount + " --> " + actualArticleName );
-                //  System.out.println ( "-------------------------------------------------------------------------" );
+//              System.out.println ( "Article Found: " + uniquesArticleCount + " --> " + actualArticleName );
+//              System.out.println ( "-------------------------------------------------------------------------" );
             }
         }
-        // Print the total number of unique URLs found
-        System.out.println ( "Total unique Counts found: " + uniquesCount );
 
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniquesCount , uniqueName.size () );
 
+        // Print the total number of unique URLs found
+        System.out.println ( "Total unique Counts found: " + uniquesCount );
 
     }
 }
