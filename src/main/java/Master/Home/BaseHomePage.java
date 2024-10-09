@@ -1,4 +1,4 @@
-package Base.Home;
+package Master.Home;
 
 import Home.ArticleEbooksandCourseActions;
 import Home.FooterSections;

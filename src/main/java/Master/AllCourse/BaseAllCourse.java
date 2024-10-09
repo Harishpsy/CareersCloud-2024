@@ -1,4 +1,4 @@
-package Base.AllCourse;
+package Master.AllCourse;
 
 import AllCourse.UserSubscribedAndNonSubscribedLits;
 import AllCourse.allCourseModule;

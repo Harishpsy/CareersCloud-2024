@@ -1,6 +1,8 @@
 package Menu;
 
+import Master.Base.CoreFunctionality;
 import PageObjectModule.Myquestionpageobject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +28,7 @@ public class myQuestions {
         PageFactory.initElements ( driver , Myquestionpageobject.class );
 
         // Clicking The My Questions
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         clickingMyQuestion.click ();
         System.out.println ( "Succesfully Clicked The My Question" );
 
@@ -51,38 +53,96 @@ public class myQuestions {
 
                 if (clickingMyQuestion.isSelected ()) {
 
+                    // Scrolling The Page
+                    CoreFunctionality scroll = new CoreFunctionality ( driver );
+                    scroll.Scroll ();
+
+                    // Clicking The Float Button
+                    CoreFunctionality floatbutton = new CoreFunctionality ( driver );
+                    floatbutton.floatButton ();
+
+                    System.out.println ( "Verifying Wheather There is duplicate Is Present Or Not" );
+                    // Getting The List Of Question Present In My Question Feeds
+                    CoreFunctionality Duplicate = new CoreFunctionality ( driver );
+                    Duplicate.identifingDuplicate ();
+
                     System.out.println ( "SucessFully My coin is selected 1" );
                     Thread.sleep ( 10000 );
                     clickBookMarkQuestion.click ();
                     System.out.println ( "SucessFully clicked the clicking My Question " );
 
                 } else if (clickingMyQuestion.isDisplayed ()) {
-                    System.out.println ( "SucessFully My Question Is Displayed" );
+
                     Thread.sleep ( 5000 );
                     clickingMyQuestion.click ();
 
                     // Clicking The Bookmarked Question
                     if (clickingMyQuestion.isEnabled ()) {
-                        Thread.sleep ( 10000 );
+
+                        // Scrolling The Page
+                        CoreFunctionality scroll = new CoreFunctionality ( driver );
+                        scroll.Scroll ();
+
+                        // Clicking The Float Button
+                        CoreFunctionality floatbutton = new CoreFunctionality ( driver );
+                        floatbutton.floatButton ();
+
+                        System.out.println ( "Verifying Wheather There is duplicate Is Present Or Not" );
+                        // Getting The List Of Question Present In My Question Feeds
+                        CoreFunctionality Duplicate = new CoreFunctionality ( driver );
+                        Duplicate.identifingDuplicate ();
+
+                        Thread.sleep ( 5000 );
                         clickBookMarkQuestion.click ();
-                        System.out.println ( "Sucessfully Clicked the My Question Page " );
                     } else {
                         System.out.println ( "Error occured " );
                     }
                 } else {
                     System.out.println ( "Both has been not excecuted" );
                 }
-                // Click The UnBookMark Icon
-                // Thread.sleep (3000);
-                // clickingUnBookmarkIcon.click ();
 
                 // Clicking The Quiz BackButton
                 Thread.sleep ( 5000 );
                 quizBackButton.click ();
 
+//                // Retrieve the list of elements matching the provided XPath
+//                Thread.sleep ( 3000 );
+//                List<WebElement> questionNamesInList = driver.findElements(xpath("//div[@class=\"ant-card-body\"]"));
+//                // Iterate through the list and print the text of each element
+//                for (WebElement questionTitle : questionNamesInList) {
+//                    String name = questionTitle.getText();
+//                    System.out.println("Name: " + name);
+//                }
+
                 // Click The BookMarked Question
                 Thread.sleep ( 5000 );
                 clickBookMarkQuestion.click ();
+
+                // Clicking the BookMark-icon
+                try {
+                    WebElement bookmarkIcon = driver.findElement ( By.xpath ( "//*[@class='bookmark-icon']" ) );
+                    if (bookmarkIcon.isDisplayed ()) {
+                        bookmarkIcon.click ();
+                        System.out.println ( "Successfully Clicked The Bookmark Icon" );
+                    }
+                } catch (NoSuchElementException e1) {
+                    try {
+                        WebElement bookmarkedIcon = driver.findElement ( By.xpath ( "//*[@class='bookmarked-icon']" ) );
+                        if (bookmarkedIcon.isDisplayed ()) {
+                            bookmarkedIcon.click ();
+                            System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                        }
+                    } catch (NoSuchElementException e2) {
+                        System.out.println ( "Both The Code Has Not Executed" );
+                    }
+                }
+
+                // Storing The Unbookmarked Question Name to verify that was showing in the list page
+                WebElement questionName = driver.findElement ( xpath ( "//*[@class=\"bookmark-icon\"]/following::*[@class=\"question-name\"]" ) );
+                String storingQuestionName = questionName.getText ();
+                System.out.println ( "Un Bookmarked Question Name: " + storingQuestionName );
+
+
 
                 // Define the options to be clicked
                 String[] options = new String[]{"B" , "A" , "E" , "C"};
@@ -188,6 +248,21 @@ public class myQuestions {
                 Thread.sleep ( 4000 );
                 quizBackButton.click ();
 
+                // Verifying That The Unbookmared Question was showing In The List Page
+                Thread.sleep ( 3000 );
+                List<WebElement> questionNamesInList = driver.findElements ( xpath ( "//*[@class=\"ant-card-body\"]" ) );
+                for (WebElement MyQuestion : questionNamesInList) {
+                    String MyQuestionName = MyQuestion.getText ();
+//                    System.out.println ( "My Question Bookmarked Names: " + MyQuestionName);
+
+                    if (storingQuestionName.equals ( MyQuestionName )) {
+                        System.out.println ( "Verification Passed: My Question Name Title (" + storingQuestionName + ") matches Question Name In The My Question List Name (" + MyQuestionName + ")" );
+                    } else {
+                        System.out.println ( "My Question Name Was Not Showing In The List Page Because It Was Get Unbookmarked,Unbookmarked question won't show in List Page " );
+                        break;
+                    }
+
+                }
             } else {
                 System.out.println ( "Both the code was Executed In The My Question " );
             }

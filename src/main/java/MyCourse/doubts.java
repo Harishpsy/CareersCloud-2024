@@ -1,6 +1,6 @@
 package MyCourse;
 
-import Base.General.CoreFunctionality;
+import Master.Base.CoreFunctionality;
 import Doubts.MyAnswered;
 import Doubts.Mydoubts;
 import Doubts.Myfollowed;

@@ -1,4 +1,4 @@
-package Base.Doubt;
+package Master.Doubt;
 
 import Doubts.*;
 import org.openqa.selenium.WebDriver;

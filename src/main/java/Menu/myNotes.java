@@ -26,7 +26,7 @@ import static org.openqa.selenium.By.*;
  *
  */
 public class myNotes {
-    WebDriver driver;
+    static WebDriver driver;
 
     public myNotes(WebDriver driver) {
         this.driver = driver;
@@ -49,7 +49,6 @@ public class myNotes {
 
     /**
      * Handles actions in the "My Notes" section when articles are present or absent.
-     *
      * Depending on the presence of specific elements:
      * - If no records are found in "My Notes", navigates to the "My Question" page.
      * - If an article is found in "My Notes", performs various actions:

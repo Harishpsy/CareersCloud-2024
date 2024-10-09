@@ -1,10 +1,10 @@
-package Base.MainObjects;
+package Master.MainObjects;
 
-import Base.AllCourse.BaseAllCourse;
-import Base.Doubt.BaseDoubts;
-import Base.Home.BaseHomePage;
-import Base.Menu.BaseMenu;
-import Base.MyCourse.BaseMyCourse;
+import Master.AllCourse.BaseAllCourse;
+import Master.Doubt.BaseDoubts;
+import Master.Home.BaseHomePage;
+import Master.Menu.BaseMenu;
+import Master.MyCourse.BaseMyCourse;
 import LoginPage.Loginpage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,6 +29,7 @@ public class BaseObjects {
      * for performing actions on the web application.
      */
     public static WebDriver driver;
+    BaseMenu baseMenu;
     /**
      * Sets up the Chrome WebDriver with incognito mode before any tests run.
      * This method initializes the ChromeOptions, adds incognito argument,
@@ -75,7 +76,7 @@ public class BaseObjects {
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
         BaseMenu menu = new BaseMenu ( driver );
-        menu.menuModule ();
+        menu.menuModuleTest ();
     }
     /**
      * Executes the test for the "My Course" module within the application.
@@ -88,10 +89,9 @@ public class BaseObjects {
      */
     @Test(priority = 4, enabled = true)
     public void myCourseModuleTest() throws InterruptedException, AWTException {
-
         // Creating The Base For My Course Module
         BaseMyCourse myCourse = new BaseMyCourse ( driver );
-        myCourse.myCourseModule ();
+        BaseMyCourse.myCourseModule ();
     }
 
     /**

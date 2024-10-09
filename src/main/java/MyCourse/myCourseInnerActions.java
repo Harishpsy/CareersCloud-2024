@@ -1,6 +1,6 @@
 package MyCourse;
 
-import Base.MyCourse.BaseMyCourse;
+import Master.MyCourse.BaseMyCourse;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 

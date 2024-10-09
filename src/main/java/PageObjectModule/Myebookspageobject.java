@@ -58,7 +58,7 @@ public class Myebookspageobject {
     public static WebElement ClickingCourseName;
 
     //Clicking the breadcrums to navigate backward to My ebook page
-    @FindBy(xpath = "(//*[@class=\"ant-breadcrumb-link\"])[1]")
+    @FindBy(xpath = "//*[text()='Course']")
     public static WebElement ClickingCoursebreadcrums;
 
     // Clicking the like button

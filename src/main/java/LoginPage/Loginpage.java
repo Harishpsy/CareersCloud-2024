@@ -1,6 +1,5 @@
 package LoginPage;
 
-import Base.MainObjects.BaseObjects;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

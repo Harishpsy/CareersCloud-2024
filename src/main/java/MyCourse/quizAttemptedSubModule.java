@@ -1,6 +1,6 @@
 package MyCourse;
 
-import Base.General.CoreFunctionality;
+import Master.Base.CoreFunctionality;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
