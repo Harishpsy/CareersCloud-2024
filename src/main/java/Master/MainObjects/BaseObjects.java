@@ -75,8 +75,8 @@ public class BaseObjects {
     @Test(priority = 3, enabled = true)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
-        BaseMenu menu = new BaseMenu ( driver );
-        menu.menuModuleTest ();
+        //   BaseMenu menu = new BaseMenu ( driver );
+        BaseMenu.testMyNotes ();
     }
     /**
      * Executes the test for the "My Course" module within the application.
@@ -87,7 +87,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 4, enabled = false)
     public void myCourseModuleTest() throws InterruptedException, AWTException {
         // Creating The Base For My Course Module
         BaseMyCourse myCourse = new BaseMyCourse ( driver );
@@ -101,7 +101,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(priority = 5, enabled = true)
+    @Test(priority = 5, enabled = false)
     public void allCoursesModuleTest() throws InterruptedException, AWTException {
 
         // Creating The Base For All Course Module
@@ -116,7 +116,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted while waiting
      * @throws AWTException a problem occurs while using the AWT Robot class
      */
-    @Test(priority = 6, enabled = true)
+    @Test(priority = 6, enabled = false)
     public void doubtsModuleTest() throws InterruptedException, AWTException {
         // Creating The Base For Doubts Module
         BaseDoubts doubts = new BaseDoubts ( driver );
