@@ -14,7 +14,7 @@ public class BaseMyCourse extends BaseObjects {
 
     // Creating A Constructor For My Course Mobules
     public BaseMyCourse(WebDriver driver) {
-        this.driver = driver;
+        BaseMyCourse.driver = driver;
     }
 
     @Test

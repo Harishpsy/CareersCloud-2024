@@ -108,9 +108,9 @@ public class myEbooks {
                 if (clickAction.isDisplayed ()) {
                     clickAction.click ();
                     if (clickAction.getAttribute ( "class" ).contains ( "unlike" )) {
-                        System.out.println ( "Un Liked Successfully" );
-                    } else {
                         System.out.println ( "Liked Successfully" );
+                    } else {
+                        System.out.println ( "Un Liked Successfully" );
                     }
                 }
 

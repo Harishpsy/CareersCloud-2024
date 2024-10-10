@@ -29,7 +29,6 @@ public class BaseObjects {
      * for performing actions on the web application.
      */
     public static WebDriver driver;
-    BaseMenu baseMenu;
     /**
      * Sets up the Chrome WebDriver with incognito mode before any tests run.
      * This method initializes the ChromeOptions, adds incognito argument,
@@ -75,8 +74,21 @@ public class BaseObjects {
     @Test(priority = 3, enabled = true)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
-        //   BaseMenu menu = new BaseMenu ( driver );
+        BaseMenu menu = new BaseMenu ( driver );
         BaseMenu.testMyNotes ();
+        BaseMenu.testMyNotesArticle ();
+        BaseMenu.testMyNotesVideos ();
+        BaseMenu.testMyNotesStartQuiz ();
+        BaseMenu.testMyNotesResumeQuiz ();
+        BaseMenu.testMyNotesQuizSolution ();
+        BaseMenu.testMyQuestions ();
+        BaseMenu.testMyEbooks ();
+        BaseMenu.testMyCoins ();
+        BaseMenu.testMyPoints ();
+        BaseMenu.testInviteFriends ();
+        BaseMenu.testRateApp ();
+        BaseMenu.testMyPurchase ();
+        BaseMenu.testHireUs ();
     }
     /**
      * Executes the test for the "My Course" module within the application.
