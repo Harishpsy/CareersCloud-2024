@@ -14,6 +14,8 @@ import org.testng.annotations.Test;
 
 import java.awt.*;
 
+import static Master.Menu.BaseMenu.*;
+
 /**
  * The BaseObjects class sets up the WebDriver for Chrome browser in incognito mode
  * and runs a set of test modules to validate different functionalities of a web application.
@@ -62,7 +64,7 @@ public class BaseObjects {
      *
      * @throws InterruptedException the thread is interrupted during the sleep intervals.
      */
-    @Test(priority = 2, enabled =false)
+    @Test(priority = 2, enabled = true)
     public void homeModuleTest() throws InterruptedException {
         // Creating The Base For Home Page Module
         BaseHomePage home = new BaseHomePage ( driver );
@@ -71,24 +73,24 @@ public class BaseObjects {
     /**
      * Executes the tests for the menu module on the home page.
      */
-    @Test(priority = 3, enabled = true)
+    @Test(priority = 3, enabled = false)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
         BaseMenu menu = new BaseMenu ( driver );
-        BaseMenu.testMyNotes ();
-        BaseMenu.testMyNotesArticle ();
-        BaseMenu.testMyNotesVideos ();
-        BaseMenu.testMyNotesStartQuiz ();
-        BaseMenu.testMyNotesResumeQuiz ();
-        BaseMenu.testMyNotesQuizSolution ();
-        BaseMenu.testMyQuestions ();
-        BaseMenu.testMyEbooks ();
-        BaseMenu.testMyCoins ();
-        BaseMenu.testMyPoints ();
-        BaseMenu.testInviteFriends ();
-        BaseMenu.testRateApp ();
-        BaseMenu.testMyPurchase ();
-        BaseMenu.testHireUs ();
+        testMyNotes ();
+        testMyNotesArticle ();
+        testMyNotesVideos ();
+        testMyNotesStartQuiz ();
+        testMyNotesResumeQuiz ();
+        testMyNotesQuizSolution ();
+        testMyQuestions ();
+        testMyEbooks ();
+        testMyCoins ();
+        testMyPoints ();
+        testInviteFriends ();
+        testRateApp ();
+        testMyPurchase ();
+        testHireUs ();
     }
     /**
      * Executes the test for the "My Course" module within the application.
