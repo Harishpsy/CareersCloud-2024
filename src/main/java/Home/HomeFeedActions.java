@@ -1,10 +1,9 @@
 package Home;
 
+import Master.Base.CoreFunctionality;
 import PageObjectModule.Homepageobject;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
@@ -12,7 +11,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 import static PageObjectModule.Homepageobject.*;
-import static org.openqa.selenium.By.xpath;
 
 public class HomeFeedActions {
 
@@ -45,7 +43,7 @@ public class HomeFeedActions {
         PageFactory.initElements ( driver , Homepageobject.class );
 
         // clicking Preference Button
-        Thread.sleep ( 10000 );
+        Thread.sleep ( 15000 );
         clickingPreferenceButton.click ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
@@ -89,7 +87,7 @@ public class HomeFeedActions {
         System.out.println ( "SuccessFully Clicked The Save Preference Button" );
 
         // clicking Preference Button
-        Thread.sleep ( 20000 );
+        Thread.sleep ( 40000 );
         clickingPreferenceButton.click ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
@@ -192,32 +190,12 @@ public class HomeFeedActions {
         driver.switchTo ().window ( parent );
 
         // Scrolling the HomePage page
-        int numberoftimesscroll = 10;
-
-        for (int i = 0; i < numberoftimesscroll; i++) {
-            try {
-                Thread.sleep ( 3000 );
-                jse = (JavascriptExecutor) driver;
-                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The Home page" + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll The Home Page: " + scroll.getMessage () );
-            }
-        }
+        CoreFunctionality scroll = new CoreFunctionality ( driver );
+        scroll.Scroll ();
 
         // Clicking Float Icon
-        try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-body\"]" ) );
-            if (clickingFloatIcon.isDisplayed ()) {
-                Thread.sleep ( 5000 );
-                clickingFloatIcon.click ();
-                System.out.println ( "SuccessFully Clicked The Float Icon" );
-            } else {
-                System.out.println ( "Float Icon Is Not Displayed" );
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "Float Icon Button Is Not Displayed" );
-        }
+        CoreFunctionality floatButton = new CoreFunctionality ( driver );
+        floatButton.floatButton ();
     }
 
 

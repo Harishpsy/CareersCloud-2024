@@ -10,7 +10,7 @@ public class BaseHomePage {
 
     WebDriver driver;
 
-    // Creating A Constructor For Home Base We Can Access All The Action Through Here Itself
+    // Creating A Constructor For Home Base, We Can Access All The Action Through Here Itself
     public BaseHomePage(WebDriver driver) {
         this.driver = driver;
     }

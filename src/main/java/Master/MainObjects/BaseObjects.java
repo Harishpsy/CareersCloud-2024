@@ -1,11 +1,12 @@
 package Master.MainObjects;
 
+import LoginPage.Loginpage;
+import LoginPage.TestLoginPage;
 import Master.AllCourse.BaseAllCourse;
 import Master.Doubt.BaseDoubts;
 import Master.Home.BaseHomePage;
 import Master.Menu.BaseMenu;
 import Master.MyCourse.BaseMyCourse;
-import LoginPage.Loginpage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -51,20 +52,27 @@ public class BaseObjects {
      *
      * @throws InterruptedException the thread is interrupted during sleep
      */
-    @Test(priority = 1, enabled = true)
+    @Test(enabled = false)
     public void loginTest() throws InterruptedException {
-
         // Login Module
         Loginpage loginPage = new Loginpage ( driver );
         loginPage.login ();
     }
+
+    @Test(enabled = true, priority = 1)
+    public void testlogin() throws InterruptedException {
+        // Login Page for Test Domian
+        TestLoginPage login = new TestLoginPage ( driver );
+        login.testLogin ();
+    }
+
     /**
      * Tests the HomeModule functionality by creating an instance of BaseHomePage
      * and invoking its HomeModule method.
      *
      * @throws InterruptedException the thread is interrupted during the sleep intervals.
      */
-    @Test(priority = 2, enabled = true)
+    @Test(enabled = true, priority = 2)
     public void homeModuleTest() throws InterruptedException {
         // Creating The Base For Home Page Module
         BaseHomePage home = new BaseHomePage ( driver );
@@ -73,7 +81,7 @@ public class BaseObjects {
     /**
      * Executes the tests for the menu module on the home page.
      */
-    @Test(priority = 3, enabled = false)
+    @Test(enabled = true, priority = 3)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
         BaseMenu menu = new BaseMenu ( driver );
@@ -101,7 +109,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(priority = 4, enabled = false)
+    @Test(enabled = true, priority = 4)
     public void myCourseModuleTest() throws InterruptedException, AWTException {
         // Creating The Base For My Course Module
         BaseMyCourse myCourse = new BaseMyCourse ( driver );
@@ -115,7 +123,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(priority = 5, enabled = false)
+    @Test(enabled = true, priority = 5)
     public void allCoursesModuleTest() throws InterruptedException, AWTException {
 
         // Creating The Base For All Course Module
@@ -130,7 +138,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted while waiting
      * @throws AWTException a problem occurs while using the AWT Robot class
      */
-    @Test(priority = 6, enabled = false)
+    @Test(enabled = true, priority = 6)
     public void doubtsModuleTest() throws InterruptedException, AWTException {
         // Creating The Base For Doubts Module
         BaseDoubts doubts = new BaseDoubts ( driver );

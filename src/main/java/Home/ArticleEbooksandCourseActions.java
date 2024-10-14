@@ -60,7 +60,7 @@ public class ArticleEbooksandCourseActions {
                     System.out.println ( "Successfully clicked the breadcrumb link" );
                 } catch (NoSuchElementException e1) {
 
-                    // If breadcrumb is not found, try to click the Back button
+                    // If a breadcrumb is not found, try to click the Back button
                     try {
                         WebElement backButton = driver.findElement ( By.xpath ( "//*[text()='Back']" ) );
                         Thread.sleep ( 5000 ); // Wait for the page to load

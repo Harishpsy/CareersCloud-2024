@@ -58,7 +58,7 @@ public class VerifyingDuplicateInHomeFeeds {
             }
         }
         // Print the total number of unique URLs found
-        System.out.println ( "Total Home Page Images URLs found: " + uniqueshomePageImagescount );
+        System.out.println ( "Total Home Page Article Images URLs found: " + uniqueshomePageImagescount );
 
         // Assert that the number of unique URLs is equal to the number of elements
         try {
@@ -100,7 +100,7 @@ public class VerifyingDuplicateInHomeFeeds {
         }
 
 
-        // Verifying The duplicate present on the right side List
+        // Verifying The duplicate present on the right side List, a list of course name will display
         List<WebElement> coursename = driver.findElements ( xpath ( "//*[@class=\"ant-list-item\"]/ancestor::*[@class=\"ant-list ant-list-lg ant-list-split ant-list-bordered feed-ads-list css-xu9wm8\"]" ) );
 
         //Creat a set to store unique coursename displaying in the list
@@ -112,7 +112,7 @@ public class VerifyingDuplicateInHomeFeeds {
             String actualCourseName = coursesNameList.getText ();
             System.out.println ( "Original Course Name List:" + actualCourseName );
             if (uniqueCourseName.contains ( actualCourseName )) {
-                System.out.println ( "Duplicate Course Name Found In The Home Page List:" + actualCourseName );
+                System.out.println ( "Duplicate Course Name Found In The Home Page List Right Side:" + actualCourseName );
             } else {
                 uniqueCourseName.add ( actualCourseName );
                 uniqueCourseNameCount++;
@@ -125,99 +125,15 @@ public class VerifyingDuplicateInHomeFeeds {
                 System.out.println ( "Verification Failed can't Able to verify The Course List In The Home-Page" );
             }
         }
-
-//        // Verifying The quiz in the home page list for the start quiz
-//
-//        try {
-//            List<WebElement> startQuizListHomePage = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]/preceding::*[@class=\"start-quiz-content\"]" ) );
-//
-//            //Create a set to store the unique Quiz Name displaying In The List
-//            Set<String> uniqueStartQuizName = new HashSet<> ();
-//            int uniqueStartQuizNameCount = 0;
-//
-//            // Using for each loop for the itreation to find the element
-//            for (WebElement startQuiz : startQuizListHomePage) {
-//                String actualStartQuizName = startQuiz.getText ();
-//                System.out.println ( "Start Quiz Name In The Home Page List:" + actualStartQuizName );
-//                if (uniqueStartQuizName.contains ( actualStartQuizName )) {
-//                    System.out.println ( "Duplicate Start quiz Name Found In The Home Page List:" + actualStartQuizName );
-//                } else {
-//                    uniqueCourseName.add ( actualStartQuizName );
-//                    uniqueStartQuizNameCount++;
-//                }
-//            }
-//
-//            // Verifying the using Assertion
-//            try {
-//                Assert.assertEquals ( uniqueStartQuizNameCount , uniqueStartQuizName.size () );
-//            } catch (AssertionError e) {
-//                System.out.println ( "Verification Failed,can't Able to verify The Start Quiz List In The Home-Page " );
-//            }
-//        }catch (NoSuchElementException e){
-//            System.out.println ("Start Quiz Is Not Found In the Home Page");
-//        }
-//
-//
-//        // Verifying The quiz in the home page list for the Solution quiz
-//        try {
-//            List<WebElement> completedQuizListHomePage = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]/preceding::*[@class=\"solution-quiz-content\"]" ) );
-//
-//            //Create a set to store the unique Quiz Name displaying In The List
-//            Set<String> uniqueCompletedQuizName = new HashSet<> ();
-//            int uniqueCompletedQuizNameCount = 0;
-//
-//            // Using for each loop for the itreation to find the element
-//            for (WebElement Completedquiz : completedQuizListHomePage) {
-//                String actualCompletedQuizName = Completedquiz.getText ();
-//                System.out.println ( "Start Quiz Name In The Home Page List:" + actualCompletedQuizName );
-//                if (uniqueCompletedQuizName.contains ( actualCompletedQuizName )) {
-//                    System.out.println ( "Duplicate Start quiz Name Found In The Home Page List:" + actualCompletedQuizName );
-//                } else {
-//                    uniqueCourseName.add ( actualCompletedQuizName );
-//                    uniqueCompletedQuizNameCount++;
-//                }
-//            }
-//
-//            // Verifying the using Assertion
-//            try {
-//                Assert.assertEquals ( uniqueCompletedQuizNameCount , uniqueCompletedQuizName.size () );
-//            } catch (AssertionError e) {
-//                System.out.println ( "Verification Failed,can't Able to verify The Completed Quiz List In The Home-Page " );
-//            }
-//        }catch (NoSuchElementException e){
-//            System.out.println ("Completed Quiz Is Not Found In the Home Page");
-//        }
-
-//        // Verifying The quiz in the home page list for the Solution quiz
-//        try {
-//            List<WebElement> resumeQuizListHomePage = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]/preceding::*[@class=\"resume-quiz-content\"]" ) );
-//
-//            //Create a set to store the unique Quiz Name displaying In The List
-//            Set<String> uniqueResumeQuizName = new HashSet<> ();
-//            int uniqueResumeQuizNameCount = 0;
-//
-//            // Using for each loop for the itreation to find the element
-//            for (WebElement Resumequiz : resumeQuizListHomePage) {
-//                String actualResumeQuizName = Resumequiz.getText ();
-//                System.out.println ( "Start Quiz Name In The Home Page List:" + actualResumeQuizName );
-//                if (uniqueResumeQuizName.contains ( actualResumeQuizName )) {
-//                    System.out.println ( "Duplicate Resume quiz Name Found In The Home Page List:" + actualResumeQuizName );
-//                } else {
-//                    uniqueCourseName.add ( actualResumeQuizName );
-//                    uniqueResumeQuizNameCount++;
-//                }
-//            }
-//
-//            // Verifying the using Assertion
-//            try {
-//                Assert.assertEquals ( uniqueResumeQuizNameCount , uniqueResumeQuizName.size () );
-//            } catch (AssertionError e) {
-//                System.out.println ( "Verification Failed,can't Able to verify The Resume Quiz List In The Home-Page " );
-//            }
-//        }catch (NoSuchElementException e){
-//            System.out.println ("Resume Quiz Is Not Found In the Home Page");
-//        }
     }
 
+    // Verifying the Duplicate present in the quiz list showing in the home feed
+    @Test
+    public void verifyingDuplicateStart() {
+
+        WebElement VerifyStartQuiz = driver.findElement ( xpath ( "" ) );
+
+
+    }
 
 }

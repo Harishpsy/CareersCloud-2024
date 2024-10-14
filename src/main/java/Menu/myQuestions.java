@@ -139,7 +139,7 @@ public class myQuestions {
 
                 // Storing The Unbookmarked Question Name to verify that was showing in the list page
                 Thread.sleep ( 3000 );
-                WebElement questionName = driver.findElement ( xpath ( "//*[@alt=\"quiz_bookmarked\"]/following::*[@class=\"question-name\"]" ) );
+                WebElement questionName = driver.findElement ( xpath ( "//*[@alt=\"quiz_bookmark\"]/following::*[@class=\"question-name\"]" ) );
                 String storingQuestionName = questionName.getText ();
                 System.out.println ( "Un Bookmarked Question Name: " + storingQuestionName );
 
