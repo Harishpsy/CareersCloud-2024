@@ -10,9 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import static PageObjectModule.Mypointspageobject.*;
 
 public class Mypoints {
-
     WebDriver driver;
-    myPoints Mypoints;
 
     public Mypoints(WebDriver driver) {
         this.driver = driver;
@@ -24,7 +22,7 @@ public class Mypoints {
         PageFactory.initElements ( driver , Mypointspageobject.class );
 
         // Clicking My Points
-        Mypoints = new myPoints ( driver );
+        myPoints Mypoints = new myPoints ( driver );
 
         try {
             Thread.sleep (5000);

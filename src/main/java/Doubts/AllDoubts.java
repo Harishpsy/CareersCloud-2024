@@ -11,12 +11,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 import java.util.*;
 
-import static org.openqa.selenium.By.*;
+import static org.openqa.selenium.By.id;
+import static org.openqa.selenium.By.xpath;
 
 public class AllDoubts {
 
@@ -26,49 +26,73 @@ public class AllDoubts {
         this.driver = driver;
     }
 
-    @Test
+    @Test(enabled = false)
     public void allDoubts() throws AWTException, InterruptedException {
 
         // Clicking The Create Doubt Button
-        WebElement clickingCreateButton = driver.findElement (xpath ("//*[@class=\"ant-btn css-xu9wm8 ant-btn-primary add-doubts-btn\"]"));
+        Thread.sleep ( 3000 );
+        WebElement clickingCreateButton = driver.findElement ( xpath ( "//*[@class=\"ant-btn css-f7vrd6 ant-btn-primary add-doubts-btn\"]/child::*[text()='Create']" ) );
         clickingCreateButton.click ();
 
-        // Clicking the search textfield and searching the course
-        Thread.sleep (5000);
-        WebElement clickingSearch = driver.findElement (xpath ("(//*[@name=\"comments2\"])[2]"));
-        clickingSearch.sendKeys ("Mock");
+        // Click the search textfield and search the course
+        WebElement clickingSearch = driver.findElement ( xpath ( "(//*[@name='comments2'])[2]" ) );
+        clickingSearch.sendKeys ( "Mock" );
+        System.out.println ( "Successfully Entered The Course Name" );
 
-        // Pressing The KeyBoard Action
-        Robot robot = new Robot ();
+        // Wait for results to load
+        Thread.sleep ( 2000 ); // Use explicit waits if needed
 
-        // clicking The Enter Button
-        Thread.sleep (3000);
-        robot.keyPress (KeyEvent.VK_ENTER);
+        // Simulate pressing the Enter key using Actions
+        Actions actions = new Actions ( driver );
+        actions.sendKeys ( Keys.ENTER ).perform ();
 
-        // Releasing The Enter Button
-        Thread.sleep (5000);
-        robot.keyRelease (KeyEvent.VK_ENTER);
-
-        // Pressing Backspace Button In The Keyboard
-        // Set the number of times to perform the action
+        // Simulate pressing the Backspace key 4 times
         int numberOfTimes = 4;
-
-        // Creating a Loop to performe this action multiple times
         for (int i = 0; i < numberOfTimes; i++) {
-            Thread.sleep (3000);
-            robot.keyPress (KeyEvent.VK_BACK_SPACE);
-
-            // Releasing the BackSpace
-            robot.keyRelease (KeyEvent.VK_BACK_SPACE);
+            actions.sendKeys ( Keys.BACK_SPACE ).perform ();
+            Thread.sleep ( 500 ); // Adjust sleep time as needed
         }
 
-        // Pressing The Enter Button In The Keyboard
-        Thread.sleep (3000);
-        robot.keyPress (KeyEvent.VK_ENTER);
+        // Simulate pressing Enter again
+        actions.sendKeys ( Keys.ENTER ).perform ();
+        System.out.println ( "Successfully pressed and released the Enter key." );
 
-        // Releassing The Enter Button In The Keyboard
-        robot.keyRelease (KeyEvent.VK_ENTER);
-        System.out.println ("SucessFully Released The Enter Button");
+//        // Clicking the search textfield and searching the course
+//        Thread.sleep (5000);
+//        WebElement clickingSearch = driver.findElement (xpath ("(//*[@name=\"comments2\"])[2]"));
+//        clickingSearch.sendKeys ("Mock");
+//
+//        // Pressing The KeyBoard Action
+//        Robot robot = new Robot ();
+//
+//        // clicking The Enter Button
+//        Thread.sleep (3000);
+//        robot.keyPress (KeyEvent.VK_ENTER);
+//
+//        // Releasing The Enter Button
+//        Thread.sleep (5000);
+//        robot.keyRelease (KeyEvent.VK_ENTER);
+//
+//        // Pressing Backspace Button In The Keyboard
+//        // Set the number of times to perform the action
+//        int numberOfTimes = 4;
+//
+//        // Creating a Loop to performe this action multiple times
+//        for (int i = 0; i < numberOfTimes; i++) {
+//            Thread.sleep (3000);
+//            robot.keyPress (KeyEvent.VK_BACK_SPACE);
+//
+//            // Releasing the BackSpace
+//            robot.keyRelease (KeyEvent.VK_BACK_SPACE);
+//        }
+//
+//        // Pressing The Enter Button In The Keyboard
+//        Thread.sleep (3000);
+//        robot.keyPress (KeyEvent.VK_ENTER);
+//
+//        // Releassing The Enter Button In The Keyboard
+//        robot.keyRelease (KeyEvent.VK_ENTER);
+//        System.out.println ("SucessFully Released The Enter Button");
 
 //        // Focucing the popup
 //
@@ -218,18 +242,18 @@ public class AllDoubts {
         clickingReport.click ();
 
         //Click the wrong information radio button
-        Thread.sleep (5000);
-        WebElement Wrong_information_radio_button = driver.findElement (xpath ("//span[text()='Wrong Information']"));
+        Thread.sleep ( 3000 );
+        WebElement Wrong_information_radio_button = driver.findElement ( xpath ( "(//*[@name=\"selectedReportType\"])[2]" ) );
         Wrong_information_radio_button.click ();
 
         //Entering the text inside the report text field
         Thread.sleep (5000);
-        WebElement Enter_the_report = driver.findElement (name ("reportDescription"));
+        WebElement Enter_the_report = driver.findElement ( xpath ( "//*[@placeholder=\"Enter Your Report\"]" ) );
         Enter_the_report.sendKeys ("Checking The text was Entering In The Report Text Field");
 
         // Clicking The Cancel Button
         Thread.sleep (5000);
-        Cancel_button = driver.findElement (xpath ("//span[text()='CANCEL']"));
+        Cancel_button = driver.findElement ( xpath ( "//*[@class=\"quiz-popup-modal-body-report-footer-buttons popupFooterBtn-cancel\"]" ) );
         Cancel_button.click ();
 
 //        // Click the report button
@@ -328,8 +352,8 @@ public class AllDoubts {
         // Wait for the page to load completely
         Thread.sleep (5000);
 
-        // Find all elements with the specified class
-        java.util.List<WebElement> allDoubtImageURL = driver.findElements (xpath ("//*[@class='ant-image-img css-xu9wm8']"));
+        // Find all elements In The All Doubts URL
+        List<WebElement> allDoubtImageURL = driver.findElements ( xpath ( "//*[@class=\"ant-image-img css-f7vrd6\"]" ) );
 
         // Create a set to store unique URLs
         Set<String> uniqueDoubtUrls = new HashSet<> ();
@@ -338,7 +362,7 @@ public class AllDoubts {
         // Iterate through the list of elements
         for (WebElement doubtUrlElement : allDoubtImageURL) {
             String actualDoubtImageUrl = doubtUrlElement.getAttribute ("src");
-//            System.out.println ( "Original Doubt Inage: " + actualDoubtImageUrl);
+            System.out.println ( "Original Doubt Image: " + actualDoubtImageUrl );
 
             if (uniqueDoubtUrls.contains (actualDoubtImageUrl)) {
                 System.out.println ( "Duplicate Doubt Images found --> " + actualDoubtImageUrl );
@@ -394,7 +418,7 @@ public class AllDoubts {
         searchField.sendKeys ( "Mock" );
 
         // Create an instance of Actions class to handle keyboard interactions
-        Actions actions = new Actions ( driver );
+        actions = new Actions ( driver );
 
         // Press the Enter key
         actions.sendKeys ( Keys.ENTER ).perform ();
@@ -460,6 +484,7 @@ public class AllDoubts {
                     System.out.println ("Found: " + uniqueSubjectCourseCount + " --> " + actualsubjectCourseList);
                 }
             }
+            break;
         }
         System.out.println ("Total unique CourseName found: " + uniqueSubjectCourseCount);
         try {

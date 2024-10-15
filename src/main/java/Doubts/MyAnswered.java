@@ -75,19 +75,22 @@ public class MyAnswered {
 
                     // Clicking The Share Button In the MyAnswered
                     Thread.sleep (5000);
-                    WebElement clickingShareButtonInDoubt = driver.findElement (By.xpath ("//ul[@class=\"ant-dropdown-menu ant-dropdown-menu-root ant-dropdown-menu-vertical ant-dropdown-menu-light css-xu9wm8\"]//preceding-sibling::li"));
+                    WebElement clickingShareButtonInDoubt = driver.findElement ( By.xpath ( "(//*[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
+                    //WebElement clickingShareButtonInDoubt = driver.findElement (By.xpath ("//ul[@class=\"ant-dropdown-menu ant-dropdown-menu-root ant-dropdown-menu-vertical ant-dropdown-menu-light css-xu9wm8\"]//preceding-sibling::li"));
                     clickingShareButtonInDoubt.click ();
                     System.out.println ("Successfully CLicked The Share Button ");
 
                     // Clicking The CopyLink Button In The Share
                     Thread.sleep (5000);
-                    WebElement clickingCopyLink = driver.findElement (By.xpath ("//*[@class=\"ant-btn css-xu9wm8 ant-btn-link quiz-popup-modal-share-copy-url-button\"]"));
+
+                    //  WebElement clickingCopyLink = driver.findElement (By.xpath ("//*[@class=\"ant-btn css-xu9wm8 ant-btn-link quiz-popup-modal-share-copy-url-button\"]"));
+                    WebElement clickingCopyLink = driver.findElement ( By.xpath ( "//*[text()='COPY LINK']" ) );
                     clickingCopyLink.click ();
                     System.out.println ("Successfully CLicked The Copylink Button ");
 
                     // Clicking The cancel Button In The Share Popup
                     Thread.sleep (5000);
-                    WebElement clickingCancelButtonInPopup = driver.findElement (By.xpath ("//*[@class=\"ant-btn css-xu9wm8 ant-btn-default ant-btn-lg ant-btn-block quiz-popup-modal-share-footer-button\"]"));
+                    WebElement clickingCancelButtonInPopup = driver.findElement ( By.xpath ( "//*[@class=\"ant-btn css-f7vrd6 ant-btn-default ant-btn-lg ant-btn-block quiz-popup-modal-share-footer-button\"]" ) );
                     clickingCancelButtonInPopup.click ();
                     System.out.println ("Successfully CLicked The Cancel Button ");
 

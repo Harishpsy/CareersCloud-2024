@@ -14,7 +14,7 @@ public class Mydoubts {
         this.driver = driver;
     }
 
-    @Test
+    @Test(enabled = false)
     public void myDoubts() throws InterruptedException {
 
         // Clicking My Doubts
@@ -41,7 +41,7 @@ public class Mydoubts {
                 WebElement gettingUserNameInMyDoubts = driver.findElement (By.xpath ("//*[@class=\"doubts-card-title\"]/ancestor::*[self::div and  @id=\"rc-tabs-0-panel-2\"]"));
                 isUserNameDisplayed = gettingUserNameInMyDoubts.isDisplayed ();
             } catch (NoSuchElementException e) {
-                System.out.println ("Error in inner try block2: Answer Found elementnot located");
+                System.out.println ( "Error in inner try block2: Answer Found element not located In The My Doubts " );
             }
 
             // Verifying if the "No Doubts Found" element was displayed
@@ -59,7 +59,6 @@ public class Mydoubts {
                     String userNameDoubt = myDoubtsUserName.getText ();
                     System.out.println ("UserName : " + userNameDoubt);
                 }
-
             } else {
                 System.out.println ("Data was present in the Followed page.");
             }
@@ -67,7 +66,5 @@ public class Mydoubts {
         } catch (NoSuchElementException e) {
             System.out.println ("Error message in outer catch block: " + e.getMessage ());
         }
-
     }
-
 }

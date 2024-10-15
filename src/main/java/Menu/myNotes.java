@@ -94,6 +94,7 @@ public class myNotes {
             Thread.sleep ( 3000 );
             clickingMyQuestion.click ();
             System.out.println ( "No records found message is displayed In My Notes, navigating to My Question page." );
+
         } else if (ArticleDisplayedInMyNotes) {
             Thread.sleep ( 3000 );
             clickingArticle.click ();
@@ -107,7 +108,6 @@ public class myNotes {
             if (clickAction.isDisplayed ()) {
                 clickAction.click ();
 
-
                 if (clickAction.getAttribute ( "class" ).contains ( "unlike" )) {
                     System.out.println ( "Un Liked Successfully" );
                 } else {
@@ -116,55 +116,46 @@ public class myNotes {
             }
 
             // Clicking The Comment Icon
-
             Thread.sleep ( 5000 );
             WebElement clickingCommentIcon = driver.findElement ( id ( "comments-icon" ) );
             clickingCommentIcon.click ();
 
             // Entering The comments
-
             Thread.sleep ( 5000 );
             WebElement enteringComments = driver.findElement ( name ( "comments1" ) );
             enteringComments.sendKeys ( "Thanks For the update" );
             System.out.println ( "Comment Added Sucessfully" );
 
 //        // Clicking The send Button
-//
 //        Thread.sleep (3000);
 //        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
 //        clickingSendButton.click ();
 
             // Clicking Float button
-
             Thread.sleep ( 5000 );
             WebElement clickingFloatButton = driver.findElement ( xpath ( "//*[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"]" ) );
             clickingFloatButton.click ();
 
             // Clicking the share icon
-
             Thread.sleep ( 3000 );
             WebElement clickingshareicon = driver.findElement ( xpath ( "//*[@class=\"share\"]" ) );
             clickingshareicon.click ();
 
             //click the copy link in the share popup
-
             Thread.sleep ( 3000 );
             WebElement Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
             Copy_link.click ();
 
             //Clicking the cancel button in the in share popup
-
             Thread.sleep ( 3000 );
             WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             Cancel_button.click ();
             System.out.println ( "Clicked cancel button" );
 
             // Verifying the Recent article in the webpage
-
             List<WebElement> recentArticle = driver.findElements ( xpath ( "//*[@class=\"ant-list-items\"]/child::*" ) );
 
             // Create a set to store unique URLs
-
             Set<String> uniquerecentArticleUrls = new HashSet<> ();
             int uniquerecentArticlelCount = 0;
 
@@ -253,7 +244,6 @@ public class myNotes {
             clickingRemoveMyNotes.click ();
 
         } else {
-
             System.out.println ( "Both The Code Has Not Executed In The My Notes for article " );
         }
     }

@@ -120,15 +120,19 @@ public class myQuestions {
 
                 // Clicking the BookMark-icon
                 try {
+                    Thread.sleep ( 3000 );
                     WebElement bookmarkIcon = driver.findElement ( By.xpath ( "//*[@class='bookmark-icon']" ) );
                     if (bookmarkIcon.isDisplayed ()) {
+                        Thread.sleep ( 3000 );
                         bookmarkIcon.click ();
                         System.out.println ( "Successfully Clicked The Bookmark Icon" );
                     }
                 } catch (NoSuchElementException e1) {
                     try {
+                        Thread.sleep ( 3000 );
                         WebElement bookmarkedIcon = driver.findElement ( By.xpath ( "//*[@class='bookmarked-icon']" ) );
                         if (bookmarkedIcon.isDisplayed ()) {
+                            Thread.sleep ( 3000 );
                             bookmarkedIcon.click ();
                             System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
                         }
