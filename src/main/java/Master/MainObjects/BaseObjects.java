@@ -52,14 +52,14 @@ public class BaseObjects {
      *
      * @throws InterruptedException the thread is interrupted during sleep
      */
-    @Test(enabled = false)
+    @Test(enabled = true, priority = 1)
     public void loginTest() throws InterruptedException {
         // Login Module
         Loginpage loginPage = new Loginpage ( driver );
         loginPage.login ();
     }
 
-    @Test(enabled = true, priority = 1)
+    @Test(enabled = false, priority = 1)
     public void testlogin() throws InterruptedException {
         // Login Page for Test Domian
         TestLoginPage login = new TestLoginPage ( driver );
@@ -109,11 +109,12 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(enabled = false, priority = 4)
+    @Test(enabled = true, priority = 4)
     public void myCourseModuleTest() throws InterruptedException, AWTException {
+
         // Creating The Base For My Course Module
-        BaseMyCourse myCourse = new BaseMyCourse ( driver );
-        BaseMyCourse.myCourseModule ();
+        BaseMyCourse course = new BaseMyCourse ( driver );
+        course.myCourseModule ();
     }
 
     /**
@@ -123,7 +124,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(enabled = false, priority = 5)
+    @Test(enabled = true, priority = 5)
     public void allCoursesModuleTest() throws InterruptedException, AWTException {
 
         // Creating The Base For All Course Module

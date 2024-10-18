@@ -90,7 +90,7 @@ public class MyAnswered {
 
                     // Clicking The cancel Button In The Share Popup
                     Thread.sleep (5000);
-                    WebElement clickingCancelButtonInPopup = driver.findElement ( By.xpath ( "//*[@class=\"ant-btn css-f7vrd6 ant-btn-default ant-btn-lg ant-btn-block quiz-popup-modal-share-footer-button\"]" ) );
+                    WebElement clickingCancelButtonInPopup = driver.findElement ( By.xpath ( "//*[text()='Cancel']" ) );
                     clickingCancelButtonInPopup.click ();
                     System.out.println ("Successfully CLicked The Cancel Button ");
 

@@ -15,6 +15,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.*;
 
+import static java.lang.Thread.sleep;
 import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
 
@@ -30,8 +31,8 @@ public class AllDoubts {
     public void allDoubts() throws AWTException, InterruptedException {
 
         // Clicking The Create Doubt Button
-        Thread.sleep ( 3000 );
-        WebElement clickingCreateButton = driver.findElement ( xpath ( "//*[@class=\"ant-btn css-f7vrd6 ant-btn-primary add-doubts-btn\"]/child::*[text()='Create']" ) );
+        sleep ( 3000 );
+        WebElement clickingCreateButton = driver.findElement ( xpath ( "//*[text()='Create']" ) );
         clickingCreateButton.click ();
 
         // Click the search textfield and search the course
@@ -40,7 +41,7 @@ public class AllDoubts {
         System.out.println ( "Successfully Entered The Course Name" );
 
         // Wait for results to load
-        Thread.sleep ( 2000 ); // Use explicit waits if needed
+        sleep ( 2000 ); // Use explicit waits if needed
 
         // Simulate pressing the Enter key using Actions
         Actions actions = new Actions ( driver );
@@ -50,7 +51,7 @@ public class AllDoubts {
         int numberOfTimes = 4;
         for (int i = 0; i < numberOfTimes; i++) {
             actions.sendKeys ( Keys.BACK_SPACE ).perform ();
-            Thread.sleep ( 500 ); // Adjust sleep time as needed
+            sleep ( 500 ); // Adjust sleep time as needed
         }
 
         // Simulate pressing Enter again
@@ -108,17 +109,17 @@ public class AllDoubts {
 //        System.out.println ("SucessFully Released The Enter Button");
 
         // Clicking the Course to Create the Doubt
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingCourse = driver.findElement (xpath ("(//*[@class=\"doubt2\"])[1]"));
         clickingCourse.click ();
 
         // Clicking the post-Doubts
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingPostDoubts = driver.findElement (xpath ("//*[text()=\"Post Doubts\"]"));
         clickingPostDoubts.click ();
 
         // Entering The Text
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement enteringText = driver.findElement (xpath ("//*[@placeholder=\"Write your Doubts & Just paste(Ctrl+v) your cropped image here\"]"));
         enteringText.sendKeys ("Where Can I Buy The Crack Current Affairs");
 
@@ -155,7 +156,7 @@ public class AllDoubts {
 //        robot.keyRelease (KeyEvent.VK_ENTER);
 
         // Clicking the close Button
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingCancelButton = driver.findElement (xpath ("(//*[@alt=\"Close\"])[2]"));
         clickingCancelButton.click ();
 
@@ -165,7 +166,7 @@ public class AllDoubts {
 //        clickingSendButton.click();
 
         // Clicking the Follow Icon
-        Thread.sleep (3000);
+        sleep ( 3000 );
         WebElement followIcon = driver.findElement (xpath ("//*[@alt=\"followed\"]"));
         WebElement unfollowIcon = driver.findElement (xpath ("//*[@alt=\"followed\"]"));
 
@@ -212,48 +213,48 @@ public class AllDoubts {
 //        clickingLikeButton.click ();
 
         // Clicking the close Button
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingCloseButton = driver.findElement (xpath ("(//img[@alt=\"Close\"])[3]"));
         clickingCloseButton.click ();
 
         // Clicking The share Icon
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingshareicon = driver.findElement (xpath ("//*[@alt=\"share\"]"));
         clickingshareicon.click ();
 
         //click the copy link in the share popup
-        Thread.sleep (3000);
+        sleep ( 3000 );
         WebElement Copy_link = driver.findElement (xpath ("//span[text()='COPY LINK']"));
         Copy_link.click ();
 
         //Clicking the cancel button in the in share popup
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement Cancel_button = driver.findElement (xpath ("//span[text()='Cancel']"));
         Cancel_button.click ();
 
         // Clicking The three Dots in the doubts
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingThreeDots = driver.findElement (xpath ("//*[@class=\"doubts-Menu\"]"));
         clickingThreeDots.click ();
 
         // Clicking The report Icon in the dropdown
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingReport = driver.findElement (xpath ("//*[text()='Report']"));
         clickingReport.click ();
 
         //Click the wrong information radio button
-        Thread.sleep ( 3000 );
+        sleep ( 3000 );
         WebElement Wrong_information_radio_button = driver.findElement ( xpath ( "(//*[@name=\"selectedReportType\"])[2]" ) );
         Wrong_information_radio_button.click ();
 
         //Entering the text inside the report text field
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement Enter_the_report = driver.findElement ( xpath ( "//*[@placeholder=\"Enter Your Report\"]" ) );
         Enter_the_report.sendKeys ("Checking The text was Entering In The Report Text Field");
 
         // Clicking The Cancel Button
-        Thread.sleep (5000);
-        Cancel_button = driver.findElement ( xpath ( "//*[@class=\"quiz-popup-modal-body-report-footer-buttons popupFooterBtn-cancel\"]" ) );
+        sleep ( 5000 );
+        Cancel_button = driver.findElement ( xpath ( "//*[text()='CANCEL']" ) );
         Cancel_button.click ();
 
 //        // Click the report button
@@ -262,7 +263,7 @@ public class AllDoubts {
 //        Report_button.click ();
 
         // Clicking The Doubt card Publish
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingdoubtname = driver.findElement (xpath ("(//*[@class=\"anticon anticon-right\"])[2]"));
         clickingdoubtname.click ();
         System.out.println ("SucessFully clicked");
@@ -271,7 +272,7 @@ public class AllDoubts {
 
         for (int i = 0; i < numberoftimeclickingarrow; i++) {
             try {
-                Thread.sleep (5000);
+                sleep ( 5000 );
                 clickingdoubtname = driver.findElement (xpath ("(//*[@class=\"anticon anticon-right\"])[2]"));
                 clickingdoubtname.click ();
                 System.out.println ("Successfully clicked on element " + (i + 1) + " time(s).");
@@ -285,7 +286,7 @@ public class AllDoubts {
 
         for (int i = 0; i < numberoftimesscroll; i++) {
             try {
-                Thread.sleep (3000);
+                sleep ( 3000 );
                 JavascriptExecutor jse = (JavascriptExecutor) driver;
                 jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
                 System.out.println ("Successfully scroll The page " + (i + 1) + " time(s).");
@@ -295,12 +296,12 @@ public class AllDoubts {
         }
 
         // clicking the Float button
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingFloatButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-vertical-align-top\"]"));
         clickingFloatButton.click ();
 
         /* Clicking the image in the doubt if the image is not there then skip it */
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingDoubtImage = driver.findElement (xpath ("(//*[@class=\"ant-image-mask\"])[1]"));
 
         // Check if the element is found before clicking
@@ -309,37 +310,37 @@ public class AllDoubts {
             System.out.println ("Doubt Image Clicked SucessFully");
 
             // Clicking The Flip Button in the Y axis
-            Thread.sleep ( 5000 );
+            sleep ( 5000 );
             WebElement clickingFlipButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipY\"]" ) );
             clickingFlipButton.click ();
 
             // Clicking The Flip Button in the X axis
-            Thread.sleep ( 5000 );
+            sleep ( 5000 );
             WebElement clickingFlipButtonXAxis = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipX\"]" ) );
             clickingFlipButtonXAxis.click ();
 
             // Clicking The Rotated Left Button In Doubt Image
-            Thread.sleep ( 5000 );
+            sleep ( 5000 );
             WebElement clickingRotateLeftButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateLeft\"]" ) );
             clickingRotateLeftButton.click ();
 
             // Clicking The Rotated Right Button In Doubt Image
-            Thread.sleep ( 5000 );
+            sleep ( 5000 );
             WebElement clickingRotateRightButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateRight\"]" ) );
             clickingRotateRightButton.click ();
 
             // Clicking The ZoomIn Button
-            Thread.sleep ( 5000 );
+            sleep ( 5000 );
             WebElement clickingZoomInButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomIn\"]" ) );
             clickingZoomInButton.click ();
 
             // Click The Zoom Out Button
-            Thread.sleep ( 5000 );
+            sleep ( 5000 );
             WebElement clickingZoomOutButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomOut\"]" ) );
             clickingZoomOutButton.click ();
 
             // Clicking The Cancel Button
-            Thread.sleep ( 3000 );
+            sleep ( 3000 );
             WebElement clickingTheCancelButton = driver.findElement ( xpath ( "//button[@class=\"ant-image-preview-close\"]" ) );
             clickingTheCancelButton.click ();
 
@@ -350,7 +351,7 @@ public class AllDoubts {
         /* Getting The Value of the User Asked Doubt */
 
         // Wait for the page to load completely
-        Thread.sleep (5000);
+        sleep ( 5000 );
 
         // Find all elements In The All Doubts URL
         List<WebElement> allDoubtImageURL = driver.findElements ( xpath ( "//*[@class=\"ant-image-img css-f7vrd6\"]" ) );
@@ -381,12 +382,12 @@ public class AllDoubts {
         Assert.assertEquals (uniqueDoubtUrlCount, uniqueDoubtUrls.size ());
 
       // Clicking The Googleplay Button
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingGooglePlayButton = driver.findElement (xpath ("//a[@href=\"https://play.google.com/store/apps/details?id=com.affairscloud\"]"));
         clickingGooglePlayButton.click ();
 
         // Windows Handeling
-        Thread.sleep (3000);
+        sleep ( 3000 );
         Set<String> windows = driver.getWindowHandles ();
         Iterator<String> it = windows.iterator ();
         String parent = it.next ();
@@ -394,20 +395,20 @@ public class AllDoubts {
         driver.switchTo ().window (child);
 
         // Closing the current tab
-        Thread.sleep (5000);
+        sleep ( 5000 );
         driver.close ();
 
         // Changing the current focus to Parent
         driver.switchTo ().window (parent);
 
         // Clicking The course In the OverFlow on The right Side
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingCourseOnRightside = driver.findElement (xpath ("//*[@alt=\"cc69e8a3b3440463929f5f59e45f3175.webp\"]"));
         clickingCourseOnRightside.click ();
         System.out.println ("SuccessFully Navigated To the course");
 
         // Clicking The Breadcrumbs to Navigate
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingCourseBreadcrumbs = driver.findElement (xpath ("//*[text()=\"Course\"]"));
         clickingCourseBreadcrumbs.click ();
         System.out.println ("SuccessFully Navigated To the Doubts Page");
@@ -438,7 +439,7 @@ public class AllDoubts {
         for (int i = 0; i < clickingCoursetwotimes; i++) {
 
             try {
-                Thread.sleep (5000);
+                sleep ( 5000 );
                 WebElement clickingCourseForFilter = driver.findElement (xpath ("(//*[@class=\"doubt-left-sidebar-course-body\"])[2]"));
                 clickingCourseForFilter.click ();
                 System.out.println ("Course SuccessFully Clicked ");
@@ -448,12 +449,12 @@ public class AllDoubts {
         }
 
         // Clicking The Subject In the Doubt Filter
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingSubject = driver.findElement (xpath ("//*[text() = 'Subjects']"));
         clickingSubject.click ();
 
         // Getting the text From The Filter and Verifying
-        Thread.sleep (3000);
+        sleep ( 3000 );
         WebElement printingTheSubjectFilter = driver.findElement (id ("doubt-sidebar-body"));
         String subjectCourse = printingTheSubjectFilter.getText ();
         System.out.println ("List Of Subject Course are Below While Filtering");
@@ -495,12 +496,12 @@ public class AllDoubts {
         System.out.println ("-------------------------------------------------------");
 
         // Clicking The Exams In The Doubt Filter..............
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement clickingExamFilter = driver.findElement (xpath ("//*[text() = 'Exams']"));
         clickingExamFilter.click ();
 
         // Getting the text From The Exam Filter and Verifying
-        Thread.sleep (5000);
+        sleep ( 5000 );
         WebElement printingTheExamFilter = driver.findElement (id ("doubt-sidebar-body"));
         String examText = printingTheExamFilter.getText ();
         System.out.println ("List Of Exam Course are Below While Filtering");
@@ -545,7 +546,7 @@ public class AllDoubts {
         clickingAllFilter.click ();
 
         // Getting the text From The All Filter and Verifying there is any duplicate present
-        Thread.sleep (5000);
+        sleep ( 5000 );
 
         // Fetching the text from the doubt-sidebar-body element
         WebElement printingTheAllFilter = driver.findElement (id ("doubt-sidebar-body"));

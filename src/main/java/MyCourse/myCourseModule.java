@@ -1,6 +1,5 @@
 package MyCourse;
 
-import AllCourse.allCourseModule;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -27,9 +26,9 @@ public class myCourseModule {
         clickingMyCourseButton.click ();
         System.out.println ( "Successfully Clicked The My Course" );
 
-        /* Verifying The Duplicate Course In My Course List And All Course List // Creating An Object */
-        allCourseModule duplicateCourseName = new allCourseModule ( driver ); // We Are Reusing From The All Course
-        duplicateCourseName.verifyingDuplicate ();
+//        /* Verifying The Duplicate Course In My Course List And All Course List // Creating An Object */
+//        allCourseModule duplicateCourseName = new allCourseModule ( driver ); // We Are Reusing From The All Course
+//        duplicateCourseName.verifyingDuplicate ();
 
 //        /* My Course Filters > Creating An Object For Filter */
 //        filters myCourseFilter = new filters ( driver );

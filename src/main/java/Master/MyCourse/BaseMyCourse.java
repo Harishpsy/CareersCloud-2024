@@ -17,8 +17,11 @@ public class BaseMyCourse extends BaseObjects {
         BaseMyCourse.driver = driver;
     }
 
+    public BaseMyCourse() {
+    }
+
     @Test
-    public static void myCourseModule() throws InterruptedException, AWTException {
+    public void myCourseModule() throws InterruptedException, AWTException {
 
         /* Clicking My Course Module In The Header Section */
         myCourseModule Mycourse = new myCourseModule ( driver );
@@ -28,29 +31,29 @@ public class BaseMyCourse extends BaseObjects {
 
     // Perform actions on the submodules as per your code (articles, videos, quizzes, ebooks, etc.)
     @Test(enabled = true, dependsOnMethods = "myCourseModule")
-    public static void myCourseSubModules() throws InterruptedException, AWTException {
+    public void myCourseSubModules() throws InterruptedException, AWTException {
 
         // **Re-initialize the subscribeNow object to handle dynamic page reloading**
         allCourseSubscribeNow subscribeNow = new allCourseSubscribeNow ( driver );
         subscribeNow.subscribeNowButton ();  // Perform the subscription action
     }
 
-    @Test(enabled = true, dependsOnMethods = "myCourseModule")
-    public static void path() throws InterruptedException {
+    @Test(enabled = true)
+    public void path() throws InterruptedException {
         /* Perform actions on path tab */
         path path = new path ( driver );
         path.allpath ();
     }
 
-    @Test(enabled = true, dependsOnMethods = "myCourseModule")
-    public static void article() throws InterruptedException {
+    @Test(enabled = true)
+    public void article() throws InterruptedException {
         /* Creating An Object For The Article Sub Module, Performing The Actions */
         article article = new article ( driver );
         article.Article ();
     }
 
-    @Test(enabled = true, dependsOnMethods = "myCourseModule")
-    public static void videos() throws InterruptedException {
+    @Test(enabled = true)
+    public void videos() throws InterruptedException {
         /* Creating An Object For The Videos Sub Module, Performing The Actions */
         videos video = new videos ( driver );
         video.videos ();
@@ -59,33 +62,31 @@ public class BaseMyCourse extends BaseObjects {
 //        /* Creating An Object For The Quizzes Sub Module, Performing The Actions */
 //        quizzes quizzes = new quizzes ( driver );
 //        quizzes.Quizzes ();
-
-    @Test(enabled = true, dependsOnMethods = "myCourseModule")
-    public static void ebooks() {
+@Test(enabled = true)
+public void ebooks() {
         /* Creating An Object For The Ebooks Sub Module, Performing The Actions */
         ebooks ebooks = new ebooks ( driver );
         ebooks.Ebooks ();
     }
 
-    @Test(enabled = true, dependsOnMethods = "myCourseModule")
-    public static void doubtbase() throws InterruptedException, AWTException {
+    @Test(enabled = true)
+    public void doubtbase() throws InterruptedException, AWTException {
         /* Creating An Object For The Doubts Sub Module, Performing The Actions */
         doubts doubtPage = new doubts ( driver );
         doubtPage.doubtbase ();
     }
 
-    @Test(enabled = true, dependsOnMethods = "myCourseModule")
-    public static void freetab() throws InterruptedException {
+    @Test(enabled = true)
+    public void freetab() throws InterruptedException {
         /* Creating An Object For The Free Sub Module, Performing The Actions */
         free freetab = new free ( driver );
         freetab.freeTab ();
     }
 
-    @Test(enabled = true, dependsOnMethods = "myCourseModule")
-    public static void details() throws InterruptedException, AWTException {
+    @Test(enabled = true)
+    public void details() throws InterruptedException, AWTException {
         /* Creating An Object For The Article, Performing The Actions */
         details detailsPage = new details ( driver );
         detailsPage.details ();
     }
-
 }

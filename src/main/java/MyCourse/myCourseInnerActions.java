@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.util.List;
 
-public class myCourseInnerActions {
+public class myCourseInnerActions extends BaseMyCourse {
     WebDriver driver;
 
     public myCourseInnerActions(WebDriver driver) {
@@ -72,8 +72,26 @@ public class myCourseInnerActions {
                     Thread.sleep ( 3000 ); // Wait for page navigation
 
                     // Creating An Objects For The Sub Module It Can Perform All The Actions
-                    BaseMyCourse subModules = new BaseMyCourse ( driver );
-                    subModules.myCourseSubModules ();
+                    myCourseInnerActions path = new myCourseInnerActions ( driver );
+                    path.path ();
+
+                    myCourseInnerActions article = new myCourseInnerActions ( driver );
+                    article.article ();
+
+                    myCourseInnerActions vedios = new myCourseInnerActions ( driver );
+                    vedios.videos ();
+
+                    myCourseInnerActions ebook = new myCourseInnerActions ( driver );
+                    ebook.ebooks ();
+
+                    myCourseInnerActions doubt = new myCourseInnerActions ( driver );
+                    doubt.doubtbase ();
+
+                    myCourseInnerActions free = new myCourseInnerActions ( driver );
+                    free.freetab ();
+
+                    myCourseInnerActions details = new myCourseInnerActions ( driver );
+                    details.details ();
 
                     // Go back to the course list using breadcrumb (if available)
                     try {

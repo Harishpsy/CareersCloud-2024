@@ -15,6 +15,7 @@ import java.util.Set;
 import static org.openqa.selenium.By.xpath;
 
 public class CoreFunctionality {
+
     WebDriver driver;
 
     public CoreFunctionality(WebDriver driver) {

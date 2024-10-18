@@ -4,7 +4,7 @@
     <test verbose="2" preserve-order="true"
           name="C:/Users/Lenovo Desktop 03/IdeaProjects/RegisterPage/src/main/java/RegisterPage/Menu.java">
         <classes>
-            <class name="RegisterPage.Menu">
+            <class name="RegisterPage.Register_page">
                 <methods>
                     <include name="setup"/>
                 </methods>

@@ -17,7 +17,9 @@ import java.util.Set;
 import static org.openqa.selenium.By.*;
 
 public class article {
+
     WebDriver driver;
+
     public article(WebDriver driver) {
         this.driver = driver;
     }

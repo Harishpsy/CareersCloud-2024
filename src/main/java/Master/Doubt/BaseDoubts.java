@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 
 public class BaseDoubts {
+
     WebDriver driver;
 
     public BaseDoubts(WebDriver driver) {

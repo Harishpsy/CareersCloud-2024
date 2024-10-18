@@ -16,7 +16,7 @@ import static org.openqa.selenium.By.xpath;
 
 public class allCourseModule {
 
-    public WebDriver driver;
+    WebDriver driver;
 
     public allCourseModule(WebDriver driver) {
         this.driver = driver;
