@@ -197,64 +197,9 @@ public class doubts {
                     System.out.println ( "Text Field Is Not Displayed " );
                 }
 
-//        // Clicking the upload Buttton
-//        Thread.sleep ( 5000 );
-//        WebElement clickingupload = driver.findElement ( xpath ( "//*[@alt=\"upload\"]" ) );
-//        clickingupload.click ();
-//
-//        try {
-//            // Locate the file input element (adjust the locator to match your file input element)
-//            WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
-//
-//            // Specify the file path you want to upload (without extra quotes)
-//            String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Pic1.jpg";
-//
-//            // Upload the file by sending the file path to the input field
-//            fileInput.sendKeys(filePath);
-//
-//            // Log success message
-//            System.out.println("Image successfully uploaded.");
-//
-//        } catch (NoSuchElementException e) {
-//            System.out.println("File input element not found: " + e.getMessage());
-//        } catch (Exception e) {
-//            System.out.println("An error occurred during the image upload: " + e.getMessage());
-//        }
-
-//        try {
-//            // Short delay to ensure the comment text field is ready
-//            Thread.sleep(2000);
-//
-//            // Define the file path and copy it to the clipboard
-//            String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Untitled156.png";
-//            StringSelection selection = new StringSelection(filePath);
-//            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
-//            System.out.println("File path copied to clipboard successfully.");
-//
-//            // Initialize Robot instance for keyboard actions
-//            Robot robot = new Robot();
-//
-//            // Small delay before performing keyboard actions
-//            Thread.sleep(1000);
-//
-//            // Simulate CTRL + V to paste the file path
-//            robot.keyPress(KeyEvent.VK_CONTROL);
-//            robot.keyPress(KeyEvent.VK_V);
-//            robot.keyRelease(KeyEvent.VK_V);
-//            robot.keyRelease(KeyEvent.VK_CONTROL);
-//
-//            // Brief pause before pressing ENTER
-//            Thread.sleep(500);
-//
-//            // Press and release ENTER to confirm upload
-//            robot.keyPress(KeyEvent.VK_ENTER);
-//            robot.keyRelease(KeyEvent.VK_ENTER);
-//
-//            System.out.println("Image uploaded successfully.");
-//
-//        } catch (Exception e) {
-//            System.out.println("An error occurred during the image upload: " + e.getMessage());
-//        }
+                // Creating An Object for Uploading Image
+                CoreFunctionality upload = new CoreFunctionality ( driver );
+                upload.uploadImage ();
 
 //        // Clicking the Send button
 //        Thread.sleep ( 3000 );
@@ -323,64 +268,9 @@ public class doubts {
                 WebElement enteringtext = driver.findElement ( xpath ( "(//*[@class=\"ant-input css-xu9wm8\"])[3]" ) );
                 enteringtext.sendKeys ( "Where The Course Is Present ?..." );
 
-//        // Clicking the upload Buttton
-//        Thread.sleep ( 3000 );
-//        clickingupload = driver.findElement ( xpath ( "//*[@alt=\"image_upload\"]" ) );
-//        clickingupload.click ();
-
-//        try {
-//            // Short delay to ensure the comment text field is ready
-//            Thread.sleep(2000);
-//
-//            // Define the file path and copy it to the clipboard
-//            String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Untitled156.png";
-//            StringSelection selection = new StringSelection(filePath);
-//            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
-//            System.out.println("File path copied to clipboard successfully.");
-//
-//            // Initialize Robot instance for keyboard actions
-//            Robot robot = new Robot();
-//
-//            // Small delay before performing keyboard actions
-//            Thread.sleep(1000);
-//
-//            // Simulate CTRL + V to paste the file path
-//            robot.keyPress(KeyEvent.VK_CONTROL);
-//            robot.keyPress(KeyEvent.VK_V);
-//            robot.keyRelease(KeyEvent.VK_V);
-//            robot.keyRelease(KeyEvent.VK_CONTROL);
-//
-//            // Brief pause before pressing ENTER
-//            Thread.sleep(500);
-//
-//            // Press and release ENTER to confirm upload
-//            robot.keyPress(KeyEvent.VK_ENTER);
-//            robot.keyRelease(KeyEvent.VK_ENTER);
-//
-//            System.out.println("Image uploaded successfully.");
-//
-//        } catch (Exception e) {
-//            System.out.println("An error occurred during the image upload: " + e.getMessage());
-//        }
-
-//        try {
-//            // Locate the file input element (adjust the locator to match your file input element)
-//            WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
-//
-//            // Specify the file path you want to upload
-//            String filePath = "\"C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Pic1.jpg\"";
-//
-//            // Upload the file by sending the file path to the input field
-//            fileInput.sendKeys(filePath);
-//
-//            // Log success message
-//            System.out.println("Image successfully uploaded.");
-//
-//        } catch (NoSuchElementException e) {
-//            System.out.println("File input element not found: " + e.getMessage());
-//        } catch (Exception e) {
-//            System.out.println("An error occurred during the image upload: " + e.getMessage());
-//        }
+                // Creating An Object for Uploading Image
+                upload = new CoreFunctionality ( driver );
+                upload.uploadImage ();
 
                 // Clicking the Send button
 //        Thread.sleep (5000);

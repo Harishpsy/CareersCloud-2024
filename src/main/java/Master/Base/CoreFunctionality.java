@@ -133,7 +133,20 @@ public class CoreFunctionality {
         } catch (NoSuchElementException e1) {
             System.out.println ( "My Question Name elements were not found." );
         }
-
-
     }
+
+    public void uploadImage() {
+
+        // Locate the file input element and use sendKeys to upload the file
+        try {
+            WebElement fileInput = driver.findElement ( xpath ( "//input[@type='file']" ) );
+            String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\download.jpg";
+            fileInput.sendKeys ( filePath );
+
+            System.out.println ( "File uploaded: " + filePath );
+        } catch (Exception e) {
+            System.err.println ( "File upload failed: " + e.getMessage () );
+        }
+    }
+
 }

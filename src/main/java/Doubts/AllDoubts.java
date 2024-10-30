@@ -1,5 +1,6 @@
 package Doubts;
 
+import Master.Base.CoreFunctionality;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 import java.util.*;
@@ -27,86 +30,39 @@ public class AllDoubts {
         this.driver = driver;
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void allDoubts() throws AWTException, InterruptedException {
 
-        // Clicking The Create Doubt Button
-        sleep ( 3000 );
-        WebElement clickingCreateButton = driver.findElement ( xpath ( "//*[text()='Create']" ) );
-        clickingCreateButton.click ();
+        // Initialize WebDriverWait for explicit waits
+        WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) ); // 10-second timeout
 
-        // Click the search textfield and search the course
-        WebElement clickingSearch = driver.findElement ( xpath ( "(//*[@name='comments2'])[2]" ) );
-        clickingSearch.sendKeys ( "Mock" );
-        System.out.println ( "Successfully Entered The Course Name" );
+        // Click the "Create" button
+        WebElement createButton = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[text()='Create']" ) ) );
+        createButton.click ();
+        System.out.println ( "Successfully clicked the 'Create' button." );
 
-        // Wait for results to load
-        sleep ( 2000 ); // Use explicit waits if needed
+        // Locate the search field and enter the course name
+        WebElement searchField = wait.until ( ExpectedConditions.visibilityOfElementLocated ( xpath ( "(//*[@name='comments2'])[2]" ) ) );
+        String courseName = "Mock";
+        searchField.sendKeys ( courseName );
+        System.out.println ( "Successfully entered the course name." );
 
-        // Simulate pressing the Enter key using Actions
+        // Get the length of the entered text to dynamically press BACK_SPACE for each character
+        int textLength = courseName.length ();
         Actions actions = new Actions ( driver );
-        actions.sendKeys ( Keys.ENTER ).perform ();
+        actions.sendKeys ( Keys.ENTER )
+                .pause ( 500 ); // Short pause between actions
 
-        // Simulate pressing the Backspace key 4 times
-        int numberOfTimes = 4;
-        for (int i = 0; i < numberOfTimes; i++) {
-            actions.sendKeys ( Keys.BACK_SPACE ).perform ();
-            sleep ( 500 ); // Adjust sleep time as needed
+        // Press BACK_SPACE based on text length
+        for (int i = 0; i < textLength; i++) {
+            actions.sendKeys ( Keys.BACK_SPACE );
         }
 
-        // Simulate pressing Enter again
-        actions.sendKeys ( Keys.ENTER ).perform ();
-        System.out.println ( "Successfully pressed and released the Enter key." );
-
-//        // Clicking the search textfield and searching the course
-//        Thread.sleep (5000);
-//        WebElement clickingSearch = driver.findElement (xpath ("(//*[@name=\"comments2\"])[2]"));
-//        clickingSearch.sendKeys ("Mock");
-//
-//        // Pressing The KeyBoard Action
-//        Robot robot = new Robot ();
-//
-//        // clicking The Enter Button
-//        Thread.sleep (3000);
-//        robot.keyPress (KeyEvent.VK_ENTER);
-//
-//        // Releasing The Enter Button
-//        Thread.sleep (5000);
-//        robot.keyRelease (KeyEvent.VK_ENTER);
-//
-//        // Pressing Backspace Button In The Keyboard
-//        // Set the number of times to perform the action
-//        int numberOfTimes = 4;
-//
-//        // Creating a Loop to performe this action multiple times
-//        for (int i = 0; i < numberOfTimes; i++) {
-//            Thread.sleep (3000);
-//            robot.keyPress (KeyEvent.VK_BACK_SPACE);
-//
-//            // Releasing the BackSpace
-//            robot.keyRelease (KeyEvent.VK_BACK_SPACE);
-//        }
-//
-//        // Pressing The Enter Button In The Keyboard
-//        Thread.sleep (3000);
-//        robot.keyPress (KeyEvent.VK_ENTER);
-//
-//        // Releassing The Enter Button In The Keyboard
-//        robot.keyRelease (KeyEvent.VK_ENTER);
-//        System.out.println ("SucessFully Released The Enter Button");
-
-//        // Focucing the popup
-//
-//        WebElement foucsingPopup = driver.findElement (By.xpath (""));
-//        foucsingPopup.click ();
-//
-//       // Scroll The Page Using Java Executer
-//
-//        System.out.println ("Entering Scroll ");
-//        Thread.sleep (3000);
-//        JavascriptExecutor jse = (JavascriptExecutor) driver;
-//        jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
-//        System.out.println ("SucessFully Released The Enter Button");
+        // Complete the action chain by pressing ENTER again
+        actions.pause ( 500 )
+                .sendKeys ( Keys.ENTER )
+                .perform ();
+        System.out.println ( "Successfully completed all actions with dynamic BACK_SPACE based on text length." );
 
         // Clicking the Course to Create the Doubt
         sleep ( 5000 );
@@ -123,37 +79,9 @@ public class AllDoubts {
         WebElement enteringText = driver.findElement (xpath ("//*[@placeholder=\"Write your Doubts & Just paste(Ctrl+v) your cropped image here\"]"));
         enteringText.sendKeys ("Where Can I Buy The Crack Current Affairs");
 
-//        // Clicking the upload Buttton
-//        WebElement clickingupload = driver.findElement (xpath ("//*[@alt=\"image_upload\"]"));
-//        clickingupload.click ();
-//
-//        // Uploading Image in the Comment text field
-//        Thread.sleep (3000);
-//        String file = "\"C:\\Users\\Lenovo Desktop 03\\Downloads\\Telegram Desktop\\Blank log.png\"";
-//        StringSelection selection = new StringSelection (file);
-//        Toolkit.getDefaultToolkit ().getSystemClipboard ().setContents (selection, null);
-//        System.out.println (file);
-//
-//        // Pressing the keyboard button
-//        robot = new Robot ();
-//
-//        //Pressing The Key
-//        Thread.sleep (3000);
-//        robot.keyPress (KeyEvent.VK_CONTROL);
-//        robot.keyPress (KeyEvent.VK_V);
-//
-//        // Releasing the Key
-//        Thread.sleep (3000);
-//        robot.keyRelease (KeyEvent.VK_V);
-//        robot.keyRelease (KeyEvent.VK_CONTROL);
-//
-//        // Clicking The Enter Key
-//        Thread.sleep (3000);
-//        robot.keyPress (KeyEvent.VK_ENTER);
-//
-//        // Releasing The Enter Key
-//        Thread.sleep (3000);
-//        robot.keyRelease (KeyEvent.VK_ENTER);
+        // Creating An Object for Uploading Image
+        CoreFunctionality upload = new CoreFunctionality ( driver );
+        upload.uploadImage ();
 
         // Clicking the close Button
         sleep ( 5000 );
@@ -282,18 +210,8 @@ public class AllDoubts {
         }
 
         // Scrolling the doubt page
-        int numberoftimesscroll = 5;
-
-        for (int i = 0; i < numberoftimesscroll; i++) {
-            try {
-                sleep ( 3000 );
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ("window.scrollTo(0,document.body.scrollHeight)");
-                System.out.println ("Successfully scroll The page " + (i + 1) + " time(s).");
-            } catch (Exception scroll) {
-                System.out.println ("Failed to Scroll : " + scroll.getMessage ());
-            }
-        }
+        CoreFunctionality scrollPage = new CoreFunctionality ( driver );
+        scrollPage.Scroll ();
 
         // clicking the Float button
         sleep ( 5000 );
@@ -354,7 +272,7 @@ public class AllDoubts {
         sleep ( 5000 );
 
         // Find all elements In The All Doubts URL
-        List<WebElement> allDoubtImageURL = driver.findElements ( xpath ( "//*[@class=\"ant-image-img css-f7vrd6\"]" ) );
+        List<WebElement> allDoubtImageURL = driver.findElements ( xpath ( "//*[@class=\"ant-image-img css-xu9wm8\"]" ) );
 
         // Create a set to store unique URLs
         Set<String> uniqueDoubtUrls = new HashSet<> ();
@@ -370,7 +288,7 @@ public class AllDoubts {
             } else {
                 uniqueDoubtUrls.add (actualDoubtImageUrl);
                 uniqueDoubtUrlCount++;
-                System.out.println ("Found: " + uniqueDoubtUrlCount + " --> " + actualDoubtImageUrl);
+//                System.out.println ("Found: " + uniqueDoubtUrlCount + " --> " + actualDoubtImageUrl);
                 System.out.println ("-------------------------------------------------------------------------");
             }
         }
@@ -414,20 +332,21 @@ public class AllDoubts {
         System.out.println ("SuccessFully Navigated To the Doubts Page");
 
         // Clicking the search on the left side filter with WebDriverWait for better stability
-        WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
-        WebElement searchField = wait.until ( ExpectedConditions.visibilityOfElementLocated ( xpath ( "//*[@name='comments2']" ) ) );
-        searchField.sendKeys ( "Mock" );
+        WebDriverWait waits = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
+        searchField = wait.until ( ExpectedConditions.visibilityOfElementLocated ( xpath ( "//*[@name='comments2']" ) ) );
+        String course = "Mock";
+        searchField.sendKeys ( course );
+        System.out.println ( "Successfully entered the course name." );
 
-        // Create an instance of Actions class to handle keyboard interactions
-        actions = new Actions ( driver );
+        // Get the length of the entered text to dynamically press BACK_SPACE for each character
+        textLength = course.length ();
+        Actions action = new Actions ( driver );
+        actions.sendKeys ( Keys.ENTER )
+                .pause ( 500 ); // Short pause between actions
 
-        // Press the Enter key
-        actions.sendKeys ( Keys.ENTER ).perform ();
-
-        // Perform multiple backspace actions
-        int numberOfTimesBackspace = 4;
-        for (int i = 0; i < numberOfTimesBackspace; i++) {
-            actions.sendKeys ( Keys.BACK_SPACE ).perform ();
+        // Press BACK_SPACE based on text length
+        for (int i = 0; i < textLength; i++) {
+            actions.sendKeys ( Keys.BACK_SPACE );
         }
 
         // Press Enter again

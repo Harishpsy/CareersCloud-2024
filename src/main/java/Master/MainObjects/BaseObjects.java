@@ -72,7 +72,7 @@ public class BaseObjects {
      *
      * @throws InterruptedException the thread is interrupted during the sleep intervals.
      */
-    @Test(enabled = false, priority = 2)
+    @Test(enabled = true, priority = 2)
     public void homeModuleTest() throws InterruptedException {
         // Creating The Base For Home Page Module
         BaseHomePage home = new BaseHomePage ( driver );
@@ -81,7 +81,7 @@ public class BaseObjects {
     /**
      * Executes the tests for the menu module on the home page.
      */
-    @Test(enabled = false, priority = 3)
+    @Test(enabled = true, priority = 3)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
         BaseMenu menu = new BaseMenu ( driver );
