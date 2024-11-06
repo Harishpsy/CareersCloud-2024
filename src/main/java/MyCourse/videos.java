@@ -24,6 +24,10 @@ public class videos {
     @Test
     public void videos() throws InterruptedException {
 
+        // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
+        myCourseModule courseclick = new myCourseModule ( driver );
+        courseclick.courseClicking ();
+
         // Verifying The Videos Sub-Module Was Displaying, if Display Perform The Below Action
         try {
             WebElement clickingVideoTab = driver.findElement ( xpath ( "//*[text()='Videos']" ) );
@@ -237,44 +241,50 @@ public class videos {
             System.out.println ( "Save Or Remove My Ebook is not displayed." );
         }
 
-//        // Clicking The Breadcrumbs
-//        Thread.sleep (5000);
-//        WebElement clickingBreadCrumbs = driver.findElement (xpath ("//*[text()='Course']"));
-//        clickingBreadCrumbs.click ();
-//        System.out.println ("SuccessFully Clicked The Bread crumbs and navigated to the My Course List Page");
-//
-//        // Clicking The home button
-//        Thread.sleep ( 3000 );
-//        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
-//        clickingHomeButton.click ();
-//        System.out.println ( "SuccessFully Clicked The HomeButton" );
-//
-//        // Clicking The MyNotes
-//        Thread.sleep ( 5000 );
-//        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
-//        clickingMyNotes.click ();
-//        System.out.println ( "SuccessFully Clicked The My-Notes" );
-//
-//        // Verifying saved or removed article was showing in the My Notes Page
-//        List<WebElement> videoMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
-//
-//        boolean videoFound = false;
-//
-//        for (WebElement Video : videoMyNotes) {
-//            String videoNameInMyNotes = Video.getText ();
-//            System.out.println ( videoNameInMyNotes );
-//
-//            if (VideoName.equals ( videoNameInMyNotes )) {
-//                System.out.println ( "Verification Passed: Video Title (" + VideoName + ") matches Video Title In My Notes (" + videoNameInMyNotes + ")" );
-//                videoFound = true;
+        // Clicking The Breadcrumbs
+        Thread.sleep ( 5000 );
+        WebElement clickingBreadCrumbs = driver.findElement ( xpath ( "//*[text()='Course']" ) );
+        clickingBreadCrumbs.click ();
+        System.out.println ( "SuccessFully Clicked The Bread crumbs and navigated to the My Course List Page" );
+
+        // Clicking The home button
+        Thread.sleep ( 3000 );
+        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+        clickingHomeButton.click ();
+        System.out.println ( "SuccessFully Clicked The HomeButton" );
+
+        // Clicking The MyNotes
+        Thread.sleep ( 5000 );
+        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
+        clickingMyNotes.click ();
+        System.out.println ( "SuccessFully Clicked The My-Notes" );
+
+        // Verifying saved or removed article was showing in the My Notes Page
+        List<WebElement> videoMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
+
+        boolean videoFound = false;
+
+        for (WebElement Video : videoMyNotes) {
+            String videoNameInMyNotes = Video.getText ();
+            System.out.println ( videoNameInMyNotes );
+
+            if (VideoName.equals ( videoNameInMyNotes )) {
+                System.out.println ( "Verification Passed: Video Title (" + VideoName + ") matches Video Title In My Notes (" + videoNameInMyNotes + ")" );
+                videoFound = true;
+            }
+//            else {
+//                System.out.println ( "Video Name Does Not Match" );
 //            }
-////            else {
-////                System.out.println ( "Video Name Does Not Match" );
-////            }
-//        }
-//        if (!videoFound) {
-//            System.out.println ( "Video Is Not Showing In The My Notes" );
-//        }
+        }
+        if (!videoFound) {
+            System.out.println ( "Video Is Not Showing In The My Notes" );
+        }
+
+        // Clicking The home button
+        Thread.sleep ( 3000 );
+        clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+        clickingHomeButton.click ();
+        System.out.println ( "SuccessFully Clicked The HomeButton" );
 
     }
 }

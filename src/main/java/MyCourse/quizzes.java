@@ -30,6 +30,10 @@ public class quizzes extends Mynotespageobject {
     @Test(enabled = false)
     public void Quizzes() throws InterruptedException {
 
+        // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
+        myCourseModule courseclick = new myCourseModule ( driver );
+        courseclick.courseClicking ();
+
         // Verifying The Quizzes Sub-Module Was Displaying, if Display Perform The Below Action
         try {
             WebElement clickingQuizzes = driver.findElement ( xpath ( "//div[text()='Quizzes']" ) );
@@ -44,8 +48,8 @@ public class quizzes extends Mynotespageobject {
                 System.out.println ( "Both The Code Has Not Executed In The Course Quizzes Tab" );
             }
 
-//            quizzes actions = new quizzes (driver);
-//            actions.quizActions ();
+            quizzes actions = new quizzes ( driver );
+            actions.quizActions ();
 
         } catch (NoSuchElementException e) {
             System.out.println ( "Quizzes Tab Is Not Present In The Current Course" );
@@ -67,21 +71,52 @@ public class quizzes extends Mynotespageobject {
         CoreFunctionality duplicate = new CoreFunctionality ( driver );
         duplicate.identifingDuplicate ();
 
-        // Performing the start quiz action
-        quizzes startquiz = new quizzes ( driver );
-        startquiz.quizStart ();
+        // Clicking the three Dots in the CourseCard
+        Thread.sleep ( 5000 );
+        WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
+        clickingThreeDots.click ();
 
-        //Performing The resume quiz
-        quizzes resumequiz = new quizzes ( driver );
-        resumequiz.resumeQuiz ();
+        // Clicking The save My Notes or Remove my notes
+        Thread.sleep ( 5000 );
+        WebElement clickMyNote = driver.findElement ( xpath ( "//*[contains(text(), 'Save to My Notes') or contains(text(), 'Remove My  Notes')]" ) );
 
-        //Performing The Solutions Action
-        quizzes solutionquiz = new quizzes ( driver );
-        solutionquiz.quizSolution ();
+        if (clickMyNote.isDisplayed ()) {
+            clickMyNote.click ();
+            if (clickMyNote.getText ().contains ( "Remove My  Notes" )) {
+                System.out.println ( "Successfully -  Remove - Article" );
+            } else {
+                System.out.println ( "Successfully -  saved - Article" );
+            }
+        }
 
-        // Course > Quizzes > Sub-Sub Tabs
-        quizzes subSubTabs = new quizzes ( driver );
-        subSubTabs.quizSubSubTab ();
+        // Clicking The home button
+        Thread.sleep ( 3000 );
+        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+        clickingHomeButton.click ();
+        System.out.println ( "SuccessFully Clicked The HomeButton" );
+
+        // Clicking The MyNotes
+        Thread.sleep ( 5000 );
+        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
+        clickingMyNotes.click ();
+        System.out.println ( "SuccessFully Clicked The My-Notes" );
+
+
+//        // Performing the start quiz action
+//        quizzes startquiz = new quizzes ( driver );
+//        startquiz.quizStart ();
+//
+//        //Performing The resume quiz
+//        quizzes resumequiz = new quizzes ( driver );
+//        resumequiz.resumeQuiz ();
+//
+//        //Performing The Solutions Action
+//        quizzes solutionquiz = new quizzes ( driver );
+//        solutionquiz.quizSolution ();
+//
+//        // Course > Quizzes > Sub-Sub Tabs
+//        quizzes subSubTabs = new quizzes ( driver );
+//        subSubTabs.quizSubSubTab ();
 
     }
 

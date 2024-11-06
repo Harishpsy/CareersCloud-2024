@@ -18,7 +18,6 @@ public class doubtsModule {
         WebElement clickingDoubtsButton = driver.findElement (By.xpath ("//*[text()='Doubts']"));
         clickingDoubtsButton.click ();
         System.out.println ("SuccessFully Clicked The Doubts Button");
-
     }
 
 }

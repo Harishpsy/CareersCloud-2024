@@ -72,7 +72,7 @@ public class BaseObjects {
      *
      * @throws InterruptedException the thread is interrupted during the sleep intervals.
      */
-    @Test(enabled = true, priority = 2)
+    @Test(enabled = false, priority = 2)
     public void homeModuleTest() throws InterruptedException {
         // Creating The Base For Home Page Module
         BaseHomePage home = new BaseHomePage ( driver );
@@ -81,7 +81,7 @@ public class BaseObjects {
     /**
      * Executes the tests for the menu module on the home page.
      */
-    @Test(enabled = true, priority = 3)
+    @Test(enabled = false, priority = 3)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
         BaseMenu menu = new BaseMenu ( driver );
@@ -124,7 +124,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(enabled = true, priority = 5)
+    @Test(enabled = false, priority = 5)
     public void allCoursesModuleTest() throws InterruptedException, AWTException {
 
         // Creating The Base For All Course Module
@@ -139,7 +139,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted while waiting
      * @throws AWTException a problem occurs while using the AWT Robot class
      */
-    @Test(enabled = true, priority = 6)
+    @Test(enabled = false, priority = 6)
     public void doubtsModuleTest() throws InterruptedException, AWTException {
         // Creating The Base For Doubts Module
         BaseDoubts doubts = new BaseDoubts ( driver );

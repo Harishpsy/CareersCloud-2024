@@ -27,6 +27,10 @@ public class article {
     @Test
     public void Article() throws InterruptedException {
 
+        // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
+        myCourseModule courseclick = new myCourseModule ( driver );
+        courseclick.courseClicking ();
+
         // Verifying The Article Sub-Module Was Displaying, if Display Perform The Below Action
         try {
             WebElement clickingArticleTab = driver.findElement ( xpath ( "//*[text()='Articles']" ) );
@@ -56,9 +60,23 @@ public class article {
         CoreFunctionality scroll = new CoreFunctionality ( driver );
         scroll.Scroll();
 
+//        // Clicking Float Icon
+//        CoreFunctionality floatIcon = new CoreFunctionality ( driver );
+//        floatIcon.floatButton();
+
         // Clicking Float Icon
-        CoreFunctionality floatIcon = new CoreFunctionality ( driver );
-        floatIcon.floatButton();
+        try {
+            WebElement clickingFloatIcons = driver.findElement ( xpath ( "(//*[@class=\"ant-float-btn-content\"])[2]" ) );
+            if (clickingFloatIcons.isDisplayed ()) {
+                Thread.sleep ( 5000 );
+                clickingFloatIcons.click ();
+                System.out.println ( "Successfully Clicked The Float Icon" );
+            } else {
+                System.out.println ( "Float Icon Is Not Displayed" );
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println ( "FloatIcon Button Is Not Displayed" );
+        }
 
         // Verifying The list of Articles any one of them was getting Duplicate or Not
         // Finding All The elements From the Article components
@@ -192,37 +210,43 @@ public class article {
             }
         }
 
-//        // Clicking The home button
-//        Thread.sleep ( 3000 );
-//        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
-//        clickingHomeButton.click ();
-//        System.out.println ( "SuccessFully Clicked The HomeButton" );
-//
-//        // Clicking The MyNotes
-//        Thread.sleep ( 5000 );
-//        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
-//        clickingMyNotes.click ();
-//        System.out.println ( "SuccessFully Clicked The My-Notes" );
-//
-//        // Verifying saved or removed article was showing in the My Notes Page
-//        List<WebElement> articleMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
-//
-//        boolean articleFound = false;
-//        for (WebElement Article : articleMyNotes) {
-//            String articlenameInMyNotes = Article.getText ();
-////            System.out.println ( "Article Name In My Notes: " + articlenameInMyNotes );
-//
-//            if (articleName.equals ( articlenameInMyNotes )) {
-//                System.out.println ( "Verification Passed: Article Title (" + articleName + ") matches Article In My Notes (" + articlenameInMyNotes + ")" );
-//                articleFound = true;
-//            } else {
+        // Clicking The home button
+        Thread.sleep ( 3000 );
+        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+        clickingHomeButton.click ();
+        System.out.println ( "SuccessFully Clicked The HomeButton" );
+
+        // Clicking The MyNotes
+        Thread.sleep ( 5000 );
+        WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
+        clickingMyNotes.click ();
+        System.out.println ( "SuccessFully Clicked The My-Notes" );
+
+        // Verifying saved or removed article was showing in the My Notes Page
+        List<WebElement> articleMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
+
+        boolean articleFound = false;
+        for (WebElement Article : articleMyNotes) {
+            String articlenameInMyNotes = Article.getText ();
+//            System.out.println ( "Article Name In My Notes: " + articlenameInMyNotes );
+
+            if (articleName.equals ( articlenameInMyNotes )) {
+                System.out.println ( "Verification Passed: Article Title (" + articleName + ") matches Article In My Notes (" + articlenameInMyNotes + ")" );
+                articleFound = true;
+            }
+//            else {
 //                System.out.println ( "Article Name Does Not Match" );
 //            }
-//        }
-//        if (!articleFound) {
-//            System.out.println ( "Article Is Not Showing In The My Notes" );
-//        }
+        }
+        if (!articleFound) {
+            System.out.println ( "Article Is Not Showing In The My Notes" );
+        }
 
+        // Clicking The home button
+        Thread.sleep ( 3000 );
+        clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+        clickingHomeButton.click ();
+        System.out.println ( "SuccessFully Clicked The HomeButton" );
 
     }
 }

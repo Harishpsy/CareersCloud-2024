@@ -48,7 +48,7 @@ public class HomeFeedActions {
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Railway Button
-        Thread.sleep ( 5000 );
+        Thread.sleep ( 10000 );
         clickingRailwayButton.click ();
         System.out.println ( "SuccessFully Clicked The Railway Button" );
 
@@ -87,12 +87,12 @@ public class HomeFeedActions {
         System.out.println ( "SuccessFully Clicked The Save Preference Button" );
 
         // clicking Preference Button
-        Thread.sleep ( 40000 );
+        Thread.sleep ( 10000 );
         clickingPreferenceButton.click ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
-        Thread.sleep ( 40000 );
+        Thread.sleep ( 10000 );
         clickingAddPreferencebutton.click ();
         System.out.println ( "SuccessFully Clicked The Add Preference" );
 
@@ -101,7 +101,7 @@ public class HomeFeedActions {
         jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
 
         // clicking UPSC Button
-        Thread.sleep ( 3000 );
+        Thread.sleep ( 5000 );
         clickingUPSCButton.click ();
         System.out.println ( "SuccessFully Clicked The UPSC Button" );
 

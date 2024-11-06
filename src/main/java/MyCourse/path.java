@@ -1,5 +1,6 @@
 package MyCourse;
 
+import AllCourse.pathTab;
 import PageObjectModule.Myebookspageobject;
 import PageObjectModule.Mynotespageobject;
 import org.openqa.selenium.*;
@@ -34,6 +35,10 @@ public class path {
     @Test(enabled = false)
     public void allpath() throws InterruptedException {
 
+        // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
+        myCourseModule courseclick = new myCourseModule ( driver );
+        courseclick.courseClicking ();
+
         try {
             WebElement clickingPathTab = driver.findElement ( By.xpath ( "//*[text()='Paths']" ) );
 
@@ -47,9 +52,9 @@ public class path {
                 System.out.println ( "Both The Actions Are Not Performed Error In The Path Clicking" );
             }
 
-//            // Creating An Object For The Path List Page Actions
-//            pathTab pathActions = new pathTab ( driver );
-//            pathActions.pathListActions ();
+            // Creating An Object For The Path List Page Actions
+            pathTab pathActions = new pathTab ( driver );
+            pathActions.pathListActions ();
 
         } catch (NoSuchElementException e) {
             System.out.println ( "Path Error Message : " + e.getMessage () );
@@ -133,35 +138,36 @@ public class path {
                                     System.out.println ( "Element is not displayed, skipping to the next element." );
                                 }
                             }
+                            break;
                         } catch (TimeoutException e1) {
                             // Handle the case where no elements are found
                             System.out.println ( "No elements found, skipping this step." );
                         }
 
                     }
+                    break;
                 } catch (TimeoutException e) {
                     // Handle the case where no elements are found
                     System.out.println ( "No elements found In The Sub Path, skipping this step." );
                 }
 
-                // Perform the following actions if the element is displayed
-                path patharticle = new path ( driver );
-                patharticle.pathArticle ();
-
-                path pathebook = new path ( driver );
-                pathebook.PathEbooks ();
-
-                path startquiz = new path ( driver );
-                startquiz.startquiz ();
-
-                path resumequiz = new path ( driver );
-                resumequiz.resumequiz ();
-
-                path solutionquiz = new path ( driver );
-                solutionquiz.solutionpath ();
+//                // Perform the following actions if the element is displayed
+//                path patharticle = new path ( driver );
+//                patharticle.pathArticle ();
+//
+//                path pathebook = new path ( driver );
+//                pathebook.PathEbooks ();
+//
+//                path startquiz = new path ( driver );
+//                startquiz.startquiz ();
+//
+//                path resumequiz = new path ( driver );
+//                resumequiz.resumequiz ();
+//
+//                path solutionquiz = new path ( driver );
+//                solutionquiz.solutionpath ();
 
             }
-
         } catch (NoSuchElementException e) {
             System.out.println ( "No such Element exception Occured In The All Course Path " );
         }

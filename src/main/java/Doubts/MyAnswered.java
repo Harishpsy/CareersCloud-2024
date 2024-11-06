@@ -106,7 +106,7 @@ public class MyAnswered {
                     // Needs to write this in loop There is an issue in that once it fix we can move further
                     //Clicking The Answer
                     Thread.sleep ( 4000 );
-                    WebElement clickingAnswerbutton = driver.findElement ( By.xpath ( "(//*[@class=\"ant-btn css-xu9wm8 ant-btn-primary btn-answer\"])[15]" ) );
+                    WebElement clickingAnswerbutton = driver.findElement ( By.xpath ( "(//*[@class=\"ant-btn css-xu9wm8 ant-btn-primary btn-answer\"])[16]" ) );
                     clickingAnswerbutton.click ();
 
                     // Retreving The Username From the Doubt Answer

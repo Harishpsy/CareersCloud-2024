@@ -10,11 +10,11 @@ public class Homepageobject {
     public static WebElement clickingPreferenceButton;
 
     // Clicking The Railway Button
-    @FindBy(xpath = "//div[text()='Railway']")
+    @FindBy(xpath = "(//*[@class=\"ant-select-item ant-select-item-option\"])[2]")
     public static WebElement clickingRailwayButton;
 
     // Clicking The Bank&Insurance Button
-    @FindBy(xpath = "//div[text()='Bank & Insurance']")
+    @FindBy(xpath = "(//*[@class=\"ant-select-item ant-select-item-option\"])[1]")
     public static WebElement clickingBankandInsuranceButton;
 
     // Clicking The Add Preference
@@ -22,7 +22,7 @@ public class Homepageobject {
     public static WebElement clickingAddPreferencebutton;
 
     // clicking UPSC Button
-    @FindBy(xpath = "//div[text()='UPSC']")
+    @FindBy(xpath = "(//*[@class=\"ant-col ant-col-xs-16 ant-col-sm-16 ant-col-md-18 ant-col-lg-18 ant-col-xl-18 ant-col-xxl-18 css-xu9wm8\"])[4]")
     public static WebElement clickingUPSCButton;
 
     // Clicking Save Preference

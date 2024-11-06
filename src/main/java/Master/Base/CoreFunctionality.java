@@ -1,13 +1,9 @@
 package Master.Base;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -41,14 +37,21 @@ public class CoreFunctionality {
     }
 
     @Test(enabled = true)
-    public void floatButton() {
+    public void floatButton() throws InterruptedException {
 
         // Clicking Float Icon
         try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//*[@class=\"ant-float-btn-content\"]" ) );
-            if (clickingFloatIcon.isDisplayed ()) {
-                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 30 ) );// using implicity wait
-                clickingFloatIcon.click ();
+//            WebElement clickingFloatIcon = driver.findElement ( xpath ( "(//*[@class=\"ant-float-btn-content\"])[2]" ) );
+            WebElement clickingFloatIcons = driver.findElement ( xpath ( "(//*[@class=\"ant-float-btn-content\"])" ) );
+//            if (clickingFloatIcon.isDisplayed ()) {
+////                driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 30 ) );// using implicity wait
+//                Thread.sleep ( 5000 );
+//                clickingFloatIcon.click ();
+//                System.out.println ( "Successfully Clicked The Float Icon" );
+//            }else
+            if (clickingFloatIcons.isDisplayed ()) {
+                Thread.sleep ( 5000 );
+                clickingFloatIcons.click ();
                 System.out.println ( "Successfully Clicked The Float Icon" );
             } else {
                 System.out.println ( "Float Icon Is Not Displayed" );
@@ -130,7 +133,7 @@ public class CoreFunctionality {
                 // Print the total number of unique names found
                 System.out.println ( "Total unique counts found: " + uniqueCount );
             }
-        } catch (NoSuchElementException e1) {
+        } catch (NoSuchElementException | StaleElementReferenceException e) {
             System.out.println ( "My Question Name elements were not found." );
         }
     }
