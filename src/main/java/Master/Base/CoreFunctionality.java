@@ -143,7 +143,8 @@ public class CoreFunctionality {
         // Locate the file input element and use sendKeys to upload the file
         try {
             WebElement fileInput = driver.findElement ( xpath ( "//input[@type='file']" ) );
-            String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\download.jpg";
+        //    String filePath = "C:\\Users\\Lenovo Desktop 03\\Downloads\\download.jpg";
+            String filePath = "\"C:\\Users\\Harish\\OneDrive\\Documents\\Personal Details\\WhatsApp Image 2024-09-22 at 11.31.58_2ed6114f.jpg\"";
             fileInput.sendKeys ( filePath );
 
             System.out.println ( "File uploaded: " + filePath );

@@ -11,6 +11,7 @@ public class doubtsModule {
     public doubtsModule(WebDriver driver) {
         this.driver = driver;
     }
+
     public void doubts() throws InterruptedException {
 
         // Click The Doubts Button In The Header Section

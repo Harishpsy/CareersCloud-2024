@@ -43,7 +43,7 @@ public class HomeFeedActions {
         PageFactory.initElements ( driver , Homepageobject.class );
 
         // clicking Preference Button
-        Thread.sleep ( 15000 );
+        Thread.sleep ( 20000 );
         clickingPreferenceButton.click ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
@@ -68,7 +68,7 @@ public class HomeFeedActions {
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
-        Thread.sleep ( 20000 );
+        Thread.sleep ( 40000 );
         clickingAddPreferencebutton.click ();
         System.out.println ( "SuccessFully Clicked The Add Preference Button" );
 

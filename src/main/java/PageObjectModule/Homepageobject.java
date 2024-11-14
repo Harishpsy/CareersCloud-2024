@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 public class Homepageobject {
 
     // clicking Preference Button
-    @FindBy(xpath = "//*[@class=\"preference-span\"]")
+    @FindBy(xpath = "//*[@name=\"selectedPreference\"]")
     public static WebElement clickingPreferenceButton;
 
     // Clicking The Railway Button

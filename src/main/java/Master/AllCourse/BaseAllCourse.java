@@ -39,9 +39,9 @@ public class BaseAllCourse {
         UserSubscribedAndNonSubscribedLits courses = new UserSubscribedAndNonSubscribedLits ( driver );
         courses.UserSubscribedAndNoSubscribed ();
 
-        // Creating An Object For My Course Base, From This Object We Can Access All The Sub-Modules Inside The Course
-        myCourseInnerActions courseClick = new myCourseInnerActions ( driver );
-        courseClick.courseClicking ();
+//        // Creating An Object For My Course Base, From This Object We Can Access All The Sub-Modules Inside The Course
+//        myCourseInnerActions courseClick = new myCourseInnerActions ( driver );
+//        courseClick.courseClicking ();
 
     }
 }

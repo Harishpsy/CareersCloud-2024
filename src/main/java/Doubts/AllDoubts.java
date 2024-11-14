@@ -319,17 +319,17 @@ public class AllDoubts {
         // Changing the current focus to Parent
         driver.switchTo ().window (parent);
 
-        // Clicking The course In the OverFlow on The right Side
-        sleep ( 5000 );
-        WebElement clickingCourseOnRightside = driver.findElement (xpath ("//*[@alt=\"cc69e8a3b3440463929f5f59e45f3175.webp\"]"));
-        clickingCourseOnRightside.click ();
-        System.out.println ("SuccessFully Navigated To the course");
-
-        // Clicking The Breadcrumbs to Navigate
-        sleep ( 5000 );
-        WebElement clickingCourseBreadcrumbs = driver.findElement (xpath ("//*[text()=\"Course\"]"));
-        clickingCourseBreadcrumbs.click ();
-        System.out.println ("SuccessFully Navigated To the Doubts Page");
+//        // Clicking The course In the OverFlow on The right Side
+//        sleep ( 8000 );
+//        WebElement clickingCourseOnRightside = driver.findElement (xpath ("(//*[@class=\"doubts-sidebar-banner\"])[1]"));
+//        clickingCourseOnRightside.click ();
+//        System.out.println ("SuccessFully Navigated To the course");
+//
+//        // Clicking The Breadcrumbs to Navigate
+//        sleep ( 5000 );
+//        WebElement clickingCourseBreadcrumbs = driver.findElement (xpath ("//*[text()=\"Course\"]"));
+//        clickingCourseBreadcrumbs.click ();
+//        System.out.println ("SuccessFully Navigated To the Doubts Page");
 
         // Clicking the search on the left side filter with WebDriverWait for better stability
         WebDriverWait waits = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );

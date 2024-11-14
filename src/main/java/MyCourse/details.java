@@ -55,6 +55,8 @@ public class details {
             detailsTab whatappchat = new detailsTab ( driver );
             whatappchat.whatsAppChat ();
 
+
+
         } catch (NoSuchElementException e) {
             // Handle a case when the "Details" tab is not found
             System.out.println ( "Details Page is not found in the Course List, skipping to the next module." );

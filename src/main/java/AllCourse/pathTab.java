@@ -86,6 +86,10 @@ public class pathTab extends path {
                             System.out.println ( "Sub Path Name Clicking: " + subPathName );
                             wait.until ( ExpectedConditions.elementToBeClickable ( currentSubElement ) ).click ();
 //                            System.out.println ( "Successfully clicked The Current sub element in the path" );
+
+                            // Exit the loop after the first click
+                            break;
+
                         } else {
                             System.out.println ( "Sub Path was not present" );
                         }
@@ -111,6 +115,10 @@ public class pathTab extends path {
                                     System.out.println ( "Sub-sub-Path Name Clicking: " + subsubPathName );
                                     wait.until ( ExpectedConditions.elementToBeClickable ( currentSubSubElement ) ).click ();
                                     System.out.println ( "Successfully clicked the current sub-sub element in the path." );
+
+                                    // Exit the loop after the first click
+                                    break;
+
                                 } else {
                                     // If the element is not displayed, print a message
                                     System.out.println ( "Element is not displayed, skipping to the next element." );
@@ -120,13 +128,16 @@ public class pathTab extends path {
                             // Handle the case where no elements are found
                             System.out.println ( "No elements found, skipping this step." );
                         }
-
+                        // Exit the loop after the first sub-path processing
+                        break;
                     }
+
                 } catch (TimeoutException e) {
                     // Handle the case where no elements are found
                     System.out.println ( "No elements found In The Sub Path, skipping this step." );
                 }
-
+                // Exit the main path loop after the first main path processing
+                break;
 //                // Perform the following actions if the element is displayed
 //                CoursePath patharticle = new CoursePath ( driver );
 //                patharticle.pathArticle ();

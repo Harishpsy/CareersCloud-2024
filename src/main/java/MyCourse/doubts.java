@@ -24,6 +24,10 @@ public class doubts {
     @Test
     public void doubtbase() throws InterruptedException, AWTException {
 
+        // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
+        myCourseModule courseclick = new myCourseModule ( driver );
+        courseclick.courseClicking ();
+
         try {
             // Verifying The Doubts' Sub-Module Was Displaying, if Display Perform The Below Action
             Thread.sleep(3000);

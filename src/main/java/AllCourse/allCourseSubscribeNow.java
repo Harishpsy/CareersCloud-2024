@@ -68,12 +68,14 @@ public class allCourseSubscribeNow {
                 Thread.sleep ( 5000 );
                 driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );// Implicit Wait we are using Here
                 WebElement clickingUseCoin = driver.findElement ( By.xpath ( "//*[@class=\"ant-checkbox ant-wave-target css-xu9wm8\"]" ) );
+                ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , clickingUseCoin );
                 clickingUseCoin.click ();
                 System.out.println ( "Successfully Clicked The Subscribe Now Button" );
 
                 // Entering Coupon Code
                 driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 5 ) );
                 WebElement enteringCouponCode = driver.findElement ( By.xpath ( "//input[@name=\"coupon_code\"]" ) );
+                ((JavascriptExecutor) driver).executeScript ( "arguments[0].scrollIntoView(true);" , enteringCouponCode );
                 enteringCouponCode.sendKeys ( "CR15" );
                 System.out.println ( "Successfully Entered Coupon Code" );
 
@@ -141,11 +143,9 @@ public class allCourseSubscribeNow {
                 } catch (NoSuchElementException e1) {
                     System.out.println ( "Breadcrumb link not found" );
                 }
-
             } else {
                 System.out.println ( "Both The Code Has Not Executed So Error In The Course Subscribe Page" );
             }
-
         } else {
             System.out.println ( "Subscribe Now Button Is Not Displayed In The All Course Page" );
         }

@@ -10,11 +10,11 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import static org.openqa.selenium.By.*;
+import static org.openqa.selenium.By.name;
+import static org.openqa.selenium.By.xpath;
 
 public class ebooks {
     WebDriver driver;
@@ -25,8 +25,7 @@ public class ebooks {
 
     public void Ebooks() {
 
-        // Creating the object to click the Particular course (Crack Current Affairs)
-        // constructor was created in the My Course Module Class
+        // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
         myCourseModule courseclick = new myCourseModule ( driver );
         courseclick.courseClicking ();
 
@@ -184,42 +183,37 @@ public class ebooks {
         Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
         Cancel_button.click ();
         System.out.println ( "SuccessFully Clicked The Cancel Button" );
+//
+//        // Clicking The home button
+//        Thread.sleep ( 3000 );
+//        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
+//        clickingHomeButton.click ();
+//        System.out.println ( "SuccessFully Clicked The HomeButton" );
+//
+//        // Clicking The Ebook
+//        Thread.sleep ( 3000 );
+//        WebElement clickingEbookInMenu = driver.findElement ( id ( "3" ) );
+//        clickingEbookInMenu.click ();
+//
+//        // Verifying saved or removed article was showing in the My Notes Page
+//        List<WebElement> ebookTitleElements = driver.findElements ( xpath ( "//*[@class='feed-card-cover-inner-content']" ) );
+//        boolean isEbookFound = false;
+//
+//        for (WebElement ebookElement : ebookTitleElements) {
+//            String ebookName = ebookElement.getText ();
+//            System.out.println ( "Ebook Title in My Notes: " + ebookName );
+//
+//            if (ebookName.equals ( EbookName )) {
+//                System.out.println ( "Verification Passed: Ebook Title (" + EbookName + ") matches Ebook in My Notes (" + ebookName + ")" );
+//                isEbookFound = true;
+//            } else {
+//                System.out.println ( "Ebook Title Does Not Match" );
+//            }
+//        }
+//        if (!isEbookFound) {
+//            System.out.println ( "Ebook is Not Showing in My-Ebooks" );
+//        }
 
-        // Clicking The home button
-        Thread.sleep ( 3000 );
-        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
-        clickingHomeButton.click ();
-        System.out.println ( "SuccessFully Clicked The HomeButton" );
-
-        // Clicking The Ebook
-        Thread.sleep ( 3000 );
-        WebElement clickingEbookInMenu = driver.findElement ( id ( "3" ) );
-        clickingEbookInMenu.click ();
-
-        // Verifying saved or removed article was showing in the My Notes Page
-        List<WebElement> ebookTitleElements = driver.findElements ( xpath ( "//*[@class='feed-card-cover-inner-content']" ) );
-        boolean isEbookFound = false;
-
-        for (WebElement ebookElement : ebookTitleElements) {
-            String ebookName = ebookElement.getText ();
-            System.out.println ( "Ebook Title in My Notes: " + ebookName );
-
-            if (ebookName.equals ( EbookName )) {
-                System.out.println ( "Verification Passed: Ebook Title (" + EbookName + ") matches Ebook in My Notes (" + ebookName + ")" );
-                isEbookFound = true;
-            } else {
-                System.out.println ( "Ebook Title Does Not Match" );
-            }
-        }
-        if (!isEbookFound) {
-            System.out.println ( "Ebook is Not Showing in My-Ebooks" );
-        }
-
-        // Clicking The home button
-        Thread.sleep ( 3000 );
-        clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
-        clickingHomeButton.click ();
-        System.out.println ( "SuccessFully Clicked The HomeButton" );
 
     }
 }

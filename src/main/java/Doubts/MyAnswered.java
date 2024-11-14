@@ -90,7 +90,7 @@ public class MyAnswered {
 
                     // Clicking The cancel Button In The Share Popup
                     Thread.sleep (5000);
-                    WebElement clickingCancelButtonInPopup = driver.findElement ( By.xpath ( "//*[text()='Cancel']" ) );
+                    WebElement clickingCancelButtonInPopup = driver.findElement ( By.xpath ( "(//*[text()='Cancel'])[2]" ) );
                     clickingCancelButtonInPopup.click ();
                     System.out.println ("Successfully CLicked The Cancel Button ");
 
@@ -120,7 +120,7 @@ public class MyAnswered {
 
                     //Clicking The close icon in the MyAnswer > User Doubt > Popup
                     Thread.sleep ( 3000 );
-                    WebElement clickingcloseicon = driver.findElement ( By.xpath ( "//div[@class=\"doubt-answer-btn\"]" ) );
+                    WebElement clickingcloseicon = driver.findElement ( By.xpath ( "(//div[@class=\"doubt-answer-btn\"])[2]" ) );
                     clickingcloseicon.click ();
 
                 } else {

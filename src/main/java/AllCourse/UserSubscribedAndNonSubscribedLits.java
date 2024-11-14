@@ -1,5 +1,6 @@
 package AllCourse;
 
+import Master.Base.CoreFunctionality;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
@@ -34,29 +35,13 @@ public class UserSubscribedAndNonSubscribedLits {
     }
     public void nonSubscribedCourseList() throws InterruptedException {
 
-        //Scrolling The Page
-        int numberoftimesscrollAllcourselistpage = 5;
-        for (int i = 0; i < numberoftimesscrollAllcourselistpage; i++) {
-            try {
-                Thread.sleep ( 3000 );
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
-                System.out.println ( "Successfully scroll The All Course List page " + (i + 1) + " time(s)." );
-            } catch (Exception scroll) {
-                System.out.println ( "Failed to Scroll The All Course List page : " + scroll.getMessage () );
-            }
-        }
+        // Scrolling The page In the ebook list page
+        CoreFunctionality scroll = new CoreFunctionality(driver);
+        scroll.Scroll();
 
-        //Clicking The Float Icon In The All Course List Page
-        try {
-            WebElement clickingFloatIcon = driver.findElement ( xpath ( "//button[@class=\"css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle\"]" ) );
-            if (clickingFloatIcon.isDisplayed ()) {
-                Thread.sleep ( 5000 );
-                clickingFloatIcon.click ();
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println ( "FloatIcon Button Is Not Displayed In The All Course List Page " );
-        }
+        // Clicking Float Icon
+        CoreFunctionality floatIcon = new CoreFunctionality(driver);
+        floatIcon.floatButton();
 
         // Getting the non-subscribed Course List
         List<WebElement> nonSubscribedCourseName = driver.findElements ( By.xpath ( "//*[@class=\"ant-typography all-courses-card-title css-xu9wm8\"]/following::*[@class=\"ant-typography all-courses-special-price css-xu9wm8\"]" ) );

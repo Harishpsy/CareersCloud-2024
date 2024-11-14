@@ -228,7 +228,7 @@ public class article {
         boolean articleFound = false;
         for (WebElement Article : articleMyNotes) {
             String articlenameInMyNotes = Article.getText ();
-//            System.out.println ( "Article Name In My Notes: " + articlenameInMyNotes );
+            System.out.println ( "Article Name In My Notes: " + articlenameInMyNotes );
 
             if (articleName.equals ( articlenameInMyNotes )) {
                 System.out.println ( "Verification Passed: Article Title (" + articleName + ") matches Article In My Notes (" + articlenameInMyNotes + ")" );

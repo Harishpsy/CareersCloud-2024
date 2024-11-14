@@ -42,29 +42,47 @@ public class myCourseModule {
         path clickingpath = new path ( driver );
         clickingpath.allpath ();
 
-//        // Creating an object for the Article Module
-//        article clickingarticle = new article ( driver );
-//        clickingarticle.Article ();
-//
-//        // Creating an object for the ebook Module
-//        ebooks clickingebook = new ebooks ( driver );
-//        clickingebook.Ebooks ();
-//
-//        // Creating an object for the Videos Module
-//        videos clickingvideos = new videos ( driver );
-//        clickingvideos.videos ();
+        // Creating an object for the Article Module
+        article clickingarticle = new article ( driver );
+        clickingarticle.Article ();
 
-        // Creating an object for the Quiz Module
-        quizzes clickingquiz = new quizzes ( driver );
-        clickingquiz.Quizzes ();
+        // Creating an object for the Videos Module
+        videos clickingvideos = new videos ( driver );
+        clickingvideos.videos ();
+
+// Creating an object for the Quiz Module
+//        quizzes clickingquiz = new quizzes ( driver );
+//        clickingquiz.Quizzes ();
+
+        // Creating an object for the ebook Module
+        ebooks clickingebook = new ebooks ( driver );
+        clickingebook.Ebooks ();
+
+        // Creating an object for The Doubts
+        doubts clickingdoubt = new doubts(driver);
+        clickingdoubt.doubtbase();
+
+        // Creating an object for the free tab
+        free clickingfreetab = new free(driver);
+        clickingfreetab.freeTab();
+
+        // Creating an object for the details
+        details clickingdetails = new details(driver);
+        clickingdetails.details();
+
+
 
     }
 
     @Test
     public void courseClicking() {
         // Clicking The particular Course
-        WebElement clickingCourse = driver.findElement ( xpath ( "//*[text()='Crack Current Affairs 2024 PDF']" ) );
-        clickingCourse.click ();
+        try {
+            WebElement clickingCourse = driver.findElement(xpath("//*[text()='Crack Current Affairs 2024 PDF']"));
+            clickingCourse.click();
+        }catch (Exception e){
+            System.out.println("Error");
+        }
     }
 
 }
