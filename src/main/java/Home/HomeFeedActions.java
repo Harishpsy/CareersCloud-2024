@@ -1,7 +1,9 @@
 package Home;
 
 import Master.Base.CoreFunctionality;
+import Master.MainObjects.BaseObjects;
 import PageObjectModule.Homepageobject;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -12,7 +14,7 @@ import java.util.Set;
 
 import static PageObjectModule.Homepageobject.*;
 
-public class HomeFeedActions {
+public class HomeFeedActions extends BaseObjects {
 
     WebDriver driver;
 
@@ -45,69 +47,83 @@ public class HomeFeedActions {
         // clicking Preference Button
         Thread.sleep ( 20000 );
         clickingPreferenceButton.click ();
+        testCase = extentReports.createTest ( "Clicked The Preference Button" , String.valueOf ( MediaEntityBuilder.createScreenCaptureFromPath ( "img.png" ).build () ) ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Railway Button
         Thread.sleep ( 10000 );
         clickingRailwayButton.click ();
+        testCase.createTest ( "Clicked The Railway Button" , String.valueOf ( MediaEntityBuilder.createScreenCaptureFromPath ( "img.png" ).build () ) );
         System.out.println ( "SuccessFully Clicked The Railway Button" );
 
         // clicking Preference Button
         Thread.sleep ( 5000 );
         clickingPreferenceButton.click ();
+        testCase = extentReports.createTest ( "Clicked The Preference Button" , String.valueOf ( MediaEntityBuilder.createScreenCaptureFromPath ( "img.png" ).build () ) ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Bank&Insurance Button
         Thread.sleep ( 5000 );
         clickingBankandInsuranceButton.click ();
+        testCase = extentReports.createTest ( " Clicked The Bank&Insurance Button " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Bank&Insurance Button" );
 
         // clicking Preference Button
         Thread.sleep ( 5000 );
         clickingPreferenceButton.click ();
+        testCase = extentReports.createTest ( " Clicked The Preference Button " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
-        Thread.sleep ( 40000 );
+        Thread.sleep ( 50000 );
         clickingAddPreferencebutton.click ();
+        testCase = extentReports.createTest ( " Clicked The Add Preference Button " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Add Preference Button" );
 
         //Scrolling Down Function
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
+        testCase = extentReports.createTest ( " Scrolling The Page " ).getExtent ();
 
         // clicking UPSC Button
         Thread.sleep ( 5000 );
         clickingUPSCButton.click ();
+        testCase = extentReports.createTest ( " Clicked The UPSC Button " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The UPSC Button" );
 
         // Clicking Save Preference
         Thread.sleep ( 5000 );
         clickingsavePreference.click ();
+        testCase = extentReports.createTest ( " Clicked The Save Preference Button " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Save Preference Button" );
 
         // clicking Preference Button
         Thread.sleep ( 10000 );
         clickingPreferenceButton.click ();
+        testCase = extentReports.createTest ( " Clicked The Preference Button " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Preference Button" );
 
         // Clicking The Add Preference
         Thread.sleep ( 10000 );
         clickingAddPreferencebutton.click ();
+        testCase = extentReports.createTest ( " Clicked The Add Preference " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Add Preference" );
 
         //Scrolling Down Function
         jse = (JavascriptExecutor) driver;
         jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
+        testCase = extentReports.createTest ( " Scrolling The Page " ).getExtent ();
 
         // clicking UPSC Button
         Thread.sleep ( 5000 );
         clickingUPSCButton.click ();
+        testCase = extentReports.createTest ( " Clicked The UPSC Button " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The UPSC Button" );
 
         // Clicking Save Preference
         Thread.sleep ( 3000 );
         clickingsavePreference.click ();
+        testCase = extentReports.createTest ( " Clicked The Save Preference " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Save Preference" );
 
         // Clicking Cancel Button In Profile
@@ -117,66 +133,79 @@ public class HomeFeedActions {
         // Clicking The Right arrow in the Home feed
         Thread.sleep ( 3000 );
         clickingRightArrow.click ();
+        testCase = extentReports.createTest ( " Clicked The Right arrow in the Home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         // Clicking The banners in the home feed
         Thread.sleep ( 5000 );
         clickingBannerInHomeFeed.click ();
+        testCase = extentReports.createTest ( " Clicked The banners in the home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The banners in the home feed" );
 
         // Clicking the course BreadCrumbs for coming back
         Thread.sleep ( 3000 );
         clickingCourseInBreadCrumbs.click ();
+        testCase = extentReports.createTest ( " Clicked The course BreadCrumbs " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The course BreadCrumbs" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep ( 7000 );
         clickingRightArrow.click ();
+        testCase = extentReports.createTest ( " Clicked The Right arrow in the Home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep ( 3000 );
         clickingRightArrow.click ();
+        testCase = extentReports.createTest ( " Clicked The Right arrow in the Home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         // Clicking The banners in the home feed
         Thread.sleep ( 3000 );
         clickingBannerInHomeFeed1.click ();
+        testCase = extentReports.createTest ( " Clicked The banners in the home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The banners in the home feed" );
 
         // Clicking the course BreadCrumbs for coming back
         Thread.sleep ( 3000 );
         clickingCourseInBreadCrumbs.click ();
+        testCase = extentReports.createTest ( " Clicked The course BreadCrumbs for coming back " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The course BreadCrumbs for coming back" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep ( 5000 );
         clickingRightArrow.click ();
+        testCase = extentReports.createTest ( " Clicked The Right arrow in the Home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep ( 3000 );
         clickingRightArrow.click ();
+        testCase = extentReports.createTest ( " Clicked The Right arrow in the Home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         //  Clicking The Right arrow in the Home feed
         Thread.sleep ( 3000 );
         clickingRightArrow.click ();
+        testCase = extentReports.createTest ( " Clicked The Right arrow in the Home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Right arrow in the Home feed" );
 
         // Clicking The banners in the home feed
         Thread.sleep ( 3000 );
         clickingBannerInHomeFeed2.click ();
+        testCase = extentReports.createTest ( " Clicked The banners in the home feed " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The banners in the home feed" );
 
         // Clicking The Close icon In The Course Banner Modal
         Thread.sleep ( 3000 );
         clickingCloseIcon.click ();
+        testCase = extentReports.createTest ( " Clicked Close icon In The Course Banner Modal " ).getExtent ();
         System.out.println ( "SuccessFully Clicked Close icon In The Course Banner Modal" );
 
         // Clcking The Google Play Button
         Thread.sleep ( 3000 );
         clickingGoooglePlayButton.click ();
+        testCase = extentReports.createTest ( " Clicked The Google Play Button " ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Google Play Button" );
 
         //Windows Handeling child to parent and parent to child
@@ -192,10 +221,12 @@ public class HomeFeedActions {
         // Scrolling the HomePage page
         CoreFunctionality scroll = new CoreFunctionality ( driver );
         scroll.Scroll ();
+        testCase = extentReports.createTest ( " Scrolled The page " ).getExtent ();
 
         // Clicking Float Icon
         CoreFunctionality floatButton = new CoreFunctionality ( driver );
         floatButton.floatButton ();
+        testCase = extentReports.createTest ( " Clicked The Float Button " ).getExtent ();
     }
 
 

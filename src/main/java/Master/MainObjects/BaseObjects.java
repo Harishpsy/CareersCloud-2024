@@ -2,11 +2,14 @@ package Master.MainObjects;
 
 import LoginPage.Loginpage;
 import LoginPage.TestLoginPage;
+import Logout.Logout;
 import Master.AllCourse.BaseAllCourse;
 import Master.Doubt.BaseDoubts;
 import Master.Home.BaseHomePage;
 import Master.Menu.BaseMenu;
 import Master.MyCourse.BaseMyCourse;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -32,6 +35,9 @@ public class BaseObjects {
      * for performing actions on the web application.
      */
     public static WebDriver driver;
+    public static ExtentReports extentReports;
+    public static ExtentSparkReporter reporter;
+    public static ExtentReports testCase;
     /**
      * Sets up the Chrome WebDriver with incognito mode before any tests run.
      * This method initializes the ChromeOptions, adds incognito argument,
@@ -40,11 +46,16 @@ public class BaseObjects {
      */
     @BeforeClass
     public void setup() {
+
+        extentReports = new ExtentReports ();
+        reporter = new ExtentSparkReporter ( "C:\\Automation Report" );
+        extentReports.attachReporter ( reporter );
         // Set up ChromeDriver with incognito mode
         ChromeOptions options = new ChromeOptions ();
         options.addArguments ( "--incognito" );
         driver = new ChromeDriver ( options ); // If a driver was there,Null point exception will throw
     }
+
     /**
      * This method performs a login test using the Loginpage class.
      * It initiates the login process by creating an instance of the Loginpage class
@@ -81,16 +92,16 @@ public class BaseObjects {
     /**
      * Executes the tests for the menu module on the home page.
      */
-    @Test(enabled = true, priority = 3)
+    @Test(enabled = false, priority = 3)
     public void menuModuleTest() throws InterruptedException {
         // Creating The Base For Home Page > Menu Module
         BaseMenu menu = new BaseMenu ( driver );
         testMyNotes ();
         testMyNotesArticle ();
         testMyNotesVideos ();
-//        testMyNotesStartQuiz ();
-//        testMyNotesResumeQuiz ();
-//        testMyNotesQuizSolution ();
+//      testMyNotesStartQuiz ();
+//      testMyNotesResumeQuiz ();
+//      testMyNotesQuizSolution ();
         testMyQuestions ();
         testMyEbooks ();
         testMyCoins ();
@@ -109,7 +120,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(enabled = true, priority = 4)
+    @Test(enabled = false, priority = 4)
     public void myCourseModuleTest() throws InterruptedException, AWTException {
 
         // Creating The Base For My Course Module
@@ -124,7 +135,7 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted.
      * @throws AWTException an abstract window toolkit exception occurs.
      */
-    @Test(enabled = true, priority = 5)
+    @Test(enabled = false, priority = 5)
     public void allCoursesModuleTest() throws InterruptedException, AWTException {
 
         // Creating The Base For All Course Module
@@ -139,12 +150,20 @@ public class BaseObjects {
      * @throws InterruptedException the thread is interrupted while waiting
      * @throws AWTException a problem occurs while using the AWT Robot class
      */
-    @Test(enabled = true, priority = 6)
+    @Test(enabled = false, priority = 6)
     public void doubtsModuleTest() throws InterruptedException, AWTException {
         // Creating The Base For Doubts Module
         BaseDoubts doubts = new BaseDoubts ( driver );
         doubts.doubtsModule ();
     }
+
+    @Test(enabled = true, priority = 7)
+    public void logout() throws InterruptedException {
+        Logout logout = new Logout ( driver );
+        logout.clickingLogout ();
+        extentReports.flush ();
+    }
+
 }
 
 

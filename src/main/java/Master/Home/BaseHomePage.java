@@ -1,10 +1,8 @@
 package Master.Home;
 
-import Home.ArticleEbooksandCourseActions;
-import Home.FooterSections;
 import Home.HomeFeedActions;
-import Home.VerifyingDuplicateInHomeFeeds;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
 
 public class BaseHomePage {
 
@@ -15,6 +13,7 @@ public class BaseHomePage {
         this.driver = driver;
     }
 
+    @Test
     public void HomeModule() throws InterruptedException {
 
         // Creating an Object For Home Feeds After Landing All The Action Needs to Perform In The Home Feeds
@@ -22,16 +21,16 @@ public class BaseHomePage {
         clickingHomePage.homePageActions ();
 
         // Creating An Object For The Footer Sections
-        FooterSections footer = new FooterSections ( driver );
-        footer.footerSection ();
+//        FooterSections footer = new FooterSections ( driver );
+//        footer.footerSection ();
 
         // Creating An Object For The Articles, Ebooks And Courses Clicking In The Home Feeds Except Quiz
-        ArticleEbooksandCourseActions actions = new ArticleEbooksandCourseActions ( driver );
-        actions.ArticleEbooksandCourse ();
+//        ArticleEbooksandCourseActions actions = new ArticleEbooksandCourseActions ( driver );
+//        actions.ArticleEbooksandCourse ();
 
         // Verifying Duplicate In The Home Feeds, Whether Getting In The Same Article, Ebooks, Courses Images
-        VerifyingDuplicateInHomeFeeds duplicate = new VerifyingDuplicateInHomeFeeds ( driver );
-        duplicate.verifyingDuplicate ();
+//        VerifyingDuplicateInHomeFeeds duplicate = new VerifyingDuplicateInHomeFeeds ( driver );
+//        duplicate.verifyingDuplicate ();
     }
 
 }

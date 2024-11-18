@@ -1,5 +1,6 @@
 package LoginPage;
 
+import Master.MainObjects.BaseObjects;
 import PageObjectModule.Loginpageobject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -13,7 +14,7 @@ import java.util.Set;
 
 import static PageObjectModule.Loginpageobject.*;
 
-public class Loginpage  {
+public class Loginpage extends BaseObjects {
     /**
      * The WebDriver instance used to interact with the web browser.
      * This variable is initialized via the Loginpage constructor and is utilized by various methods
@@ -45,6 +46,7 @@ public class Loginpage  {
 
         // Navigate to the URL and maximize the window
         driver.get ( "https://careerscloud.in" );
+        testCase = extentReports.createTest ( "Entered In To The WebSite" ).getExtent ();
         driver.manage ().window ().maximize ();
 
         // Clear cookies to avoid issues with corrupted data
@@ -59,6 +61,7 @@ public class Loginpage  {
         // Click the login button
         Thread.sleep ( 7000 );
         LoginButton.click ();
+        testCase = extentReports.createTest ( "Clicking The Login Button" ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Login Button" );
 
         // Handle window switching
@@ -66,8 +69,10 @@ public class Loginpage  {
 
         // Enter email ID and click next
         Thread.sleep ( 5000 );
+        testCase = extentReports.createTest ( "Entering The Mail ID" ).getExtent ();
         Entering_mailID.sendKeys ( "harishpsy12@gmail.com" );
         Nextbutton.click ();
+        testCase = extentReports.createTest ( "Clicked The Next Button" ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Next Button" );
 
         // Enter password and click next
@@ -77,7 +82,9 @@ public class Loginpage  {
         Thread.sleep ( 7000 );
         Continuebutton.click ();
         System.out.println ( "SuccessFully Clicked The Continue Button" );
+        testCase = extentReports.createTest ( "Clicked The Continue Button" ).getExtent ();
         switchToParentWindow ();
+
     }
 
     /**
@@ -121,8 +128,10 @@ public class Loginpage  {
         WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds (40));
         wait.until (ExpectedConditions.visibilityOf (passwordField));
         passwordField.sendKeys ("Harish@1998");
+        testCase = extentReports.createTest ( "Entered The Password" ).getExtent ();
         Thread.sleep (2000);
         Nextbutton.click ();
+        testCase = extentReports.createTest ( "Clicked The Next Button" ).getExtent ();
         System.out.println ( "SuccessFully Clicked The Next Button" );
     }
 }
