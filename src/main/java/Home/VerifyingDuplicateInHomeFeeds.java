@@ -1,3 +1,4 @@
+
 package Home;
 
 import org.openqa.selenium.WebDriver;
@@ -33,9 +34,9 @@ public class VerifyingDuplicateInHomeFeeds {
 
         // Verifying The list of Images In Home Page, any one of them was getting Duplicate or Not
 
-        // Finding All The elements From The Home Page components
+        // Finding All The elements From The Article > Home Page components
         List<WebElement> homePageImages = driver.findElements ( xpath ( "//*[@class=\"article-feed-image\"]" ) );
-        //  List<WebElement> homePageImages = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
+//      List<WebElement> homePageImages = driver.findElements ( xpath ( "//*[@class=\"article-feed-image\"]/preceding::*[@class=\"feed-card-cover-inner-content\"]" ) );
 
         // Create a set to store unique Article URLs
         Set<String> uniquehomePageImages = new HashSet<> ();
@@ -44,14 +45,14 @@ public class VerifyingDuplicateInHomeFeeds {
         // Iterate through the list of elements
         for (WebElement articleElementUrl : homePageImages) {
             String actualhomePageImages = articleElementUrl.getAttribute ( "src" );
-            //    String actualhomePageImages = articleElementUrl.getText ();
-//          System.out.println ( "Original Home Page Images URL : " + actualhomePageImages + "Count:" + uniqueshomePageImagescount);
+//                String actualhomePageImages = articleElementUrl.getText ();
+//          System.out.println ( "Original Article > Homepage Images URL : " + actualhomePageImages + "Count:" + uniqueshomePageImagescount);
             if (uniquehomePageImages.contains ( actualhomePageImages )) {
-                System.out.println ( "Duplicate Home Page Image found --> " + actualhomePageImages );
+                System.out.println ( "Duplicate Article Image found In HomePage--> " + actualhomePageImages );
             } else {
                 uniquehomePageImages.add ( actualhomePageImages );
                 uniqueshomePageImagescount++;
-//                System.out.println ( "Home Page Images URL Found: " + uniqueshomePageImages + " --> " + actualhomePageImages );
+//                System.out.println ( "Home Page Images URL Found: " + uniquehomePageImages + " --> " + actualhomePageImages );
 //                System.out.println ( "-------------------------------------------------------------------------" );
             }
         }
@@ -67,8 +68,9 @@ public class VerifyingDuplicateInHomeFeeds {
 
         // Verifying The ebooks Image Url In The Home Page any one of them was getting Duplicate or Not
 
-        // Finding All The elements From The Home Page components
-        List<WebElement> homePageEbookImages = driver.findElements ( xpath ( "//*[@class='ebook-cover-image']" ) );
+        // Finding All The elements From The Home Page > EBook components
+//        List<WebElement> homePageEbookImages = driver.findElements ( xpath ( "//*[@class='ebook-cover-image']" ) );
+        List<WebElement> homePageEbookImages = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]/following::*[@class=\"ebook-image\"]" ) );
 
         // Create a set to store unique Article URLs
         Set<String> uniquehomePageEbooksImages = new HashSet<> ();
@@ -77,7 +79,8 @@ public class VerifyingDuplicateInHomeFeeds {
         // Iterate through the list of elements
         for (WebElement EbooksElementUrl : homePageEbookImages) {
             String actualhomePageEbooksImages = EbooksElementUrl.getAttribute ( "src" );
-            //    System.out.println ( "Original Home Page Ebooks Images URL : " + actualhomePageEbooksImages );
+//            String actualhomePageEbooksImages = EbooksElementUrl.getText ();
+//                System.out.println ( "Original Home Page Ebooks Images URL : " + actualhomePageEbooksImages );
             if (uniquehomePageEbooksImages.contains ( actualhomePageEbooksImages )) {
                 System.out.println ( "Duplicate Home Page Ebook Image found --> " + actualhomePageEbooksImages );
             } else {

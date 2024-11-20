@@ -18,7 +18,7 @@ public class Homepageobject {
     public static WebElement clickingBankandInsuranceButton;
 
     // Clicking The Add Preference
-    @FindBy(xpath = "//a[text()=' Add Preference']")
+    @FindBy(xpath = "//*[text()=' Add Preference']")
     public static WebElement clickingAddPreferencebutton;
 
     // clicking UPSC Button

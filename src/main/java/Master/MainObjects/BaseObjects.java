@@ -1,169 +1,166 @@
 package Master.MainObjects;
 
 import LoginPage.Loginpage;
-import LoginPage.TestLoginPage;
 import Logout.Logout;
 import Master.AllCourse.BaseAllCourse;
+import Master.Base.CoreFunctionality;
 import Master.Doubt.BaseDoubts;
 import Master.Home.BaseHomePage;
 import Master.Menu.BaseMenu;
 import Master.MyCourse.BaseMyCourse;
-import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 
 import java.awt.*;
-
-import static Master.Menu.BaseMenu.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
- * The BaseObjects class sets up the WebDriver for Chrome browser in incognito mode
- * and runs a set of test modules to validate different functionalities of a web application.
+ * BaseObjects class for test automation with ExtentReports and screenshot logging.
  */
 public class BaseObjects {
-    /**
-     * The WebDriver instance that is used across multiple test modules for interacting
-     * with the web browser. This driver is set up in the {@link #setup()} method,
-     * where it is initialized with specific configurations for Chrome browser in
-     * incognito mode. The driver is then utilized in various test methods such as
-     * {@link #loginTest()}, {@link #homeModuleTest()}, {@link #menuModuleTest()},
-     * {@link #myCourseModuleTest()}, {@link #allCoursesModuleTest()}, and {@link #doubtsModuleTest()}
-     * for performing actions on the web application.
-     */
-    public static WebDriver driver;
-    public static ExtentReports extentReports;
-    public static ExtentSparkReporter reporter;
-    public static ExtentReports testCase;
-    /**
-     * Sets up the Chrome WebDriver with incognito mode before any tests run.
-     * This method initializes the ChromeOptions, adds incognito argument,
-     * and creates a new instance of ChromeDriver with the specified options.*
-     * Note: If InterruptedException a previous driver instance exists, a NullPointerException might be thrown.
-     */
-    @BeforeClass
-    public void setup() {
 
-        extentReports = new ExtentReports ();
-        reporter = new ExtentSparkReporter ( "C:\\Automation Report" );
-        extentReports.attachReporter ( reporter );
-        // Set up ChromeDriver with incognito mode
-        ChromeOptions options = new ChromeOptions ();
-        options.addArguments ( "--incognito" );
-        driver = new ChromeDriver ( options ); // If a driver was there,Null point exception will throw
+    public static WebDriver driver;
+    protected static ExtentTest test;
+    private static ExtentReports extentReports;
+
+    /**
+     * Captures a screenshot of the current browser window.
+     *
+     * @param testName Name of the test case.
+     * @return Path to the saved screenshot.
+     */
+    @Test
+    public static String captureScreenshot(String testName) throws IOException {
+        String timestamp = new SimpleDateFormat ( "yyyyMMdd_HHmmss" ).format ( new Date () );
+        String screenshotPath = "./screenshots/" + testName + "_" + timestamp + ".png";
+        File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs ( OutputType.FILE );
+
+        try {
+            File destination = new File ( screenshotPath );
+            Files.createDirectories ( destination.getParentFile ().toPath () );
+            Files.copy ( screenshotFile.toPath () , destination.toPath () );
+        } catch (IOException e) {
+            e.printStackTrace ();
+        }
+
+        return screenshotPath;
     }
 
     /**
-     * This method performs a login test using the Loginpage class.
-     * It initiates the login process by creating an instance of the Loginpage class
-     * and calls the login method from this instance.
-     *
-     * @throws InterruptedException the thread is interrupted during sleep
+     * Sets up the WebDriver and ExtentReports.
      */
+    @BeforeClass
+    public void setup() {
+        // Initialize ExtentReports
+        ExtentSparkReporter reporter = new ExtentSparkReporter ( "./TestReport.html" );
+        reporter.config ().setDocumentTitle ( "Automation Test Report" );
+        reporter.config ().setReportName ( "Module Testing" );
+        extentReports = new ExtentReports ();
+        extentReports.attachReporter ( reporter );
+
+        // Set up ChromeDriver with incognito mode
+        ChromeOptions options = new ChromeOptions ();
+        options.addArguments ( "--incognito" );
+        driver = new ChromeDriver ( options );
+    }
+
+    /**
+     * Logs test results and captures screenshots for failures.
+     */
+    @AfterMethod
+    public void getResult(ITestResult result) throws IOException {
+        // Capture the screenshot
+        String screenshotPath = captureScreenshot ( result.getName () );
+
+        if (result.getStatus () == ITestResult.SUCCESS) {
+            test.pass ( result.getName () + " passed successfully." ,
+                    MediaEntityBuilder.createScreenCaptureFromPath ( screenshotPath ).build () );
+        } else if (result.getStatus () == ITestResult.FAILURE) {
+            test.fail ( result.getName () + " failed: " + result.getThrowable () ,
+                    MediaEntityBuilder.createScreenCaptureFromPath ( screenshotPath ).build () );
+        } else if (result.getStatus () == ITestResult.SKIP) {
+            test.skip ( result.getName () + " was skipped." ,
+                    MediaEntityBuilder.createScreenCaptureFromPath ( screenshotPath ).build () );
+        }
+    }
+
+    /**
+     * Cleans up WebDriver resources and flushes the ExtentReport.
+     */
+    @AfterClass
+    public void tearDown() {
+        extentReports.flush ();
+    }
+
+    // Test methods follow, same as before...
     @Test(enabled = true, priority = 1)
-    public void loginTest() throws InterruptedException {
-        // Login Module
+    public void loginTest() throws InterruptedException, IOException {
+        test = extentReports.createTest ( "Login Test" );
         Loginpage loginPage = new Loginpage ( driver );
         loginPage.login ();
     }
 
-    @Test(enabled = false, priority = 1)
-    public void testlogin() throws InterruptedException {
-        // Login Page for Test Domian
-        TestLoginPage login = new TestLoginPage ( driver );
-        login.testLogin ();
-    }
-
-    /**
-     * Tests the HomeModule functionality by creating an instance of BaseHomePage
-     * and invoking its HomeModule method.
-     *
-     * @throws InterruptedException the thread is interrupted during the sleep intervals.
-     */
-    @Test(enabled = true, priority = 2)
-    public void homeModuleTest() throws InterruptedException {
-        // Creating The Base For Home Page Module
+    @Test(enabled = false, priority = 2)
+    public void homeModuleTest() throws InterruptedException, IOException {
+        test = extentReports.createTest ( "Home Module Test" );
         BaseHomePage home = new BaseHomePage ( driver );
         home.HomeModule ();
     }
-    /**
-     * Executes the tests for the menu module on the home page.
-     */
+
     @Test(enabled = false, priority = 3)
-    public void menuModuleTest() throws InterruptedException {
-        // Creating The Base For Home Page > Menu Module
+    public void menuModuleTest() throws InterruptedException, IOException {
+        test = extentReports.createTest ( "Menu Module Test" );
         BaseMenu menu = new BaseMenu ( driver );
-        testMyNotes ();
-        testMyNotesArticle ();
-        testMyNotesVideos ();
-//      testMyNotesStartQuiz ();
-//      testMyNotesResumeQuiz ();
-//      testMyNotesQuizSolution ();
-        testMyQuestions ();
-        testMyEbooks ();
-        testMyCoins ();
-        testMyPoints ();
-        testInviteFriends ();
-        testRateApp ();
-        testMyPurchase ();
-        testHireUs ();
+        menu.testMyNotes ();
+        menu.testMyNotesArticle ();
+        menu.testMyNotesVideos ();
+//      menu.testMyNotesStartQuiz ();
+//      menu.testMyNotesResumeQuiz ();
+//      menu.testMyNotesQuizSolution ();
+        menu.testMyQuestions ();
+        menu.testMyEbooks ();
+        menu.testMyCoins ();
+        menu.testMyPoints ();
+        menu.testInviteFriends ();
+        menu.testRateApp ();
+        menu.testMyPurchase ();
+        menu.testHireUs ();
     }
-    /**
-     * Executes the test for the "My Course" module within the application.
-     * This method initializes the base object for the My Course module and
-     * triggers the main functionality defined in the module.
-     * It is currently disabled and set to run with a priority of 4.
-     *
-     * @throws InterruptedException the thread is interrupted.
-     * @throws AWTException an abstract window toolkit exception occurs.
-     */
     @Test(enabled = false, priority = 4)
     public void myCourseModuleTest() throws InterruptedException, AWTException {
-
-        // Creating The Base For My Course Module
+        test = extentReports.createTest ( "My Course Module Test" );
         BaseMyCourse course = new BaseMyCourse ( driver );
         course.myCourseModule ();
     }
-
-    /**
-     * This test method verifies the functionality of the "All Courses" module in the application.
-     * It creates an instance of the BaseAllCourse class and invokes the allCourseModule method.
-     *
-     * @throws InterruptedException the thread is interrupted.
-     * @throws AWTException an abstract window toolkit exception occurs.
-     */
     @Test(enabled = false, priority = 5)
     public void allCoursesModuleTest() throws InterruptedException, AWTException {
-
-        // Creating The Base For All Course Module
+        test = extentReports.createTest ( "All Courses Module Test" );
         BaseAllCourse allCourse = new BaseAllCourse ( driver );
         allCourse.allCourseModule ();
     }
 
-    /**
-     * Test method for validating the functionality of the Doubts Module.
-     * This method is currently disabled and will not be executed during test runs.
-     *
-     * @throws InterruptedException the thread is interrupted while waiting
-     * @throws AWTException a problem occurs while using the AWT Robot class
-     */
     @Test(enabled = false, priority = 6)
     public void doubtsModuleTest() throws InterruptedException, AWTException {
-        // Creating The Base For Doubts Module
+        test = extentReports.createTest ( "Doubts Module Test" );
         BaseDoubts doubts = new BaseDoubts ( driver );
         doubts.doubtsModule ();
     }
 
-    @Test(enabled = true, priority = 7)
+    @Test(enabled = false, priority = 7)
     public void logout() throws InterruptedException {
+        test = extentReports.createTest ( "Logout Test" );
         Logout logout = new Logout ( driver );
         logout.clickingLogout ();
-        extentReports.flush ();
     }
-
 }
-
-

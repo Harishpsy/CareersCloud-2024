@@ -25,7 +25,6 @@ public class Logout extends BaseObjects {
         WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) ); // Adjust timeout as needed
         WebElement clickingProfile = wait.until ( ExpectedConditions.visibilityOfElementLocated ( By.xpath ( "//*[@class=\"ant-avatar ant-avatar-circle ant-avatar-image ant-dropdown-trigger image css-xu9wm8\"]" ) ) );
         clickingProfile.click ();
-        testCase.createTest ( "Clicked The Profile Button" );
         System.out.println ( "Successfully Clicked The Profile Button" );
 
         // Clicking The Logout Button
@@ -33,21 +32,18 @@ public class Logout extends BaseObjects {
         Thread.sleep ( 5000 );
         WebElement clickingLogoutButton = driver.findElement ( By.xpath ( "//*[text()='Logout']" ) );
         clickingLogoutButton.click ();
-        testCase.createTest ( "Clicked The Logout Button" );
         System.out.println ( "Successfully Clicked The Logout Button" );
 
         // Clicking The No Button In The Logout Popup
         Thread.sleep ( 5000 );
         WebElement clickingNo = driver.findElement ( By.xpath ( "//span[text()='No']" ) );
         clickingNo.click ();
-        testCase.createTest ( "Clicked The No Button" );
         System.out.println ( "Successfully Clicked The No Button In The Logout Popup" );
 
         Thread.sleep ( 20000 );
 //        wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) );
         clickingProfile = wait.until ( ExpectedConditions.visibilityOfElementLocated ( By.xpath ( "//*[@class=\"ant-avatar ant-avatar-circle ant-avatar-image ant-dropdown-trigger image css-xu9wm8\"]" ) ) );
         clickingProfile.click ();
-        testCase.createTest ( "Clicked The Profile Button Again To Logout The Website" );
         System.out.println ( "Successfully Clicked The Profile Button Again To Logout The Website" );
 
         // Clicking The Logout Button
@@ -55,14 +51,12 @@ public class Logout extends BaseObjects {
         Thread.sleep ( 5000 );
         clickingLogoutButton = driver.findElement ( By.xpath ( "//*[text()='Logout']" ) );
         clickingLogoutButton.click ();
-        testCase.createTest ( "Clicked The Logout Button Again" );
         System.out.println ( "Successfully Clicked The Logout Button" );
 
         // Clicking The Yes Button In The Logout Popup
         Thread.sleep ( 5000 );
         WebElement clickingYes = driver.findElement ( By.xpath ( "//*[text()='Yes']" ) );
         clickingYes.click ();
-        testCase.createTest ( "Clicked The Yes Button,Navigated to The Login Page" );
         System.out.println ( "Successfully Clicked The Yes Button,Navigated to The Login Page" );
 
     }
