@@ -1,11 +1,14 @@
 package Menu;
 
 import PageObjectModule.Mypointspageobject;
+import ScreenShot.ScreenShot;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static PageObjectModule.Mypointspageobject.*;
 
@@ -29,7 +32,7 @@ public class myPoints {
      * @throws InterruptedException if the thread is interrupted while sleeping.
      */
     @Test
-    public void MyPoints() throws InterruptedException {
+    public void MyPoints() throws InterruptedException, IOException {
 
         PageFactory.initElements ( driver , Mypointspageobject.class );
 
@@ -37,22 +40,26 @@ public class myPoints {
         Thread.sleep ( 5000 );
         clickingMyPoints.click ();
         System.out.println ( "Successfully Clicked My Points" );
+        ScreenShot.captureScreenshot ( "Clicked My Points" );
 
         // Clicking View Earn Points
         Thread.sleep ( 5000 );
         clickingViewEarnPoints.click ();
-        System.out.println ( "Successfully Clicked ViewEarnPoints " );
+        System.out.println ( "Successfully Clicked View Earn Points " );
+        ScreenShot.captureScreenshot ( "Clicked View Earn Points" );
 
         // Clicking The close Button
         Thread.sleep ( 5000 );
         clickingCloseIcon.click ();
-        System.out.println ( "Successfully Clicked CloseIcon" );
+        System.out.println ( "Successfully Clicked Close Icon" );
+        ScreenShot.captureScreenshot ( "Clicked Close Icon" );
 
         //Scrolling Down Function
         Thread.sleep ( 5000 );
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript ( "window.scrollTo(0,document.body.scrollHeight)" );
         System.out.println ( "Successfully Scroll The Page " );
+        ScreenShot.captureScreenshot ( "Scroll The Page Down" );
 
         // Clicking The Dropdown Menu
         Thread.sleep ( 5000 );
@@ -60,5 +67,6 @@ public class myPoints {
         actions.scrollToElement ( clickingDropDown ).perform ();
         clickingDropDown.click ();
         System.out.println ( "Successfully Clicked DropDown" );
+        ScreenShot.captureScreenshot ( "Clicked DropDown Menu" );
     }
 }

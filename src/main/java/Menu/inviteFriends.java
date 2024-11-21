@@ -1,9 +1,12 @@
 package Menu;
 
 import PageObjectModule.InviteFriendspageobject;
+import ScreenShot.ScreenShot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static PageObjectModule.InviteFriendspageobject.clickingHomeButton;
 import static PageObjectModule.InviteFriendspageobject.clickingInviteFriends;
@@ -24,7 +27,7 @@ public class inviteFriends {
      * @throws InterruptedException if the thread is interrupted while sleeping
      */
     @Test
-    public void InviteFriends() throws InterruptedException {
+    public void InviteFriends() throws InterruptedException, IOException {
 
         PageFactory.initElements ( driver , InviteFriendspageobject.class ); // Using (POM)
 
@@ -32,9 +35,11 @@ public class inviteFriends {
         Thread.sleep ( 3000 );
         clickingInviteFriends.click ();
         System.out.println ( "Invite Friends feature is still under developing process" );
+        ScreenShot.captureScreenshot ( "Clicked The Invite Friends" );
 
         // Clicking The Home Button
         Thread.sleep ( 5000 );
         clickingHomeButton.click ();
+        ScreenShot.captureScreenshot ( "Clicked The Home Button" );
     }
 }

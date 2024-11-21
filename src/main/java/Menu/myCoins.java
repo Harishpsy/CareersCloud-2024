@@ -1,11 +1,13 @@
 package Menu;
 
 import PageObjectModule.Mycoinpageobject;
+import ScreenShot.ScreenShot;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -36,7 +38,7 @@ public class myCoins {
      * @throws InterruptedException when a thread is interrupted during sleep.
      */
     @Test
-    public void MyCoins() throws InterruptedException {
+    public void MyCoins() throws InterruptedException, IOException {
 
         PageFactory.initElements ( driver , Mycoinpageobject.class );
 
@@ -50,11 +52,13 @@ public class myCoins {
                 Thread.sleep ( 5000 );
                 clickingCoinEarningText.click (); // clicking COin Earning Text
                 System.out.println ( "SucessFully clicked the clickingCoinEarningText 1 " );
+                ScreenShot.captureScreenshot ( "Clicked The Coin earning Text " );
 
             } else if (clickingMycoin.isDisplayed ()) {
                 System.out.println ( "SucessFully My coin is displayed 2" );
                 Thread.sleep ( 5000 );
                 clickingMycoin.click (); // Clicking The My Coin
+                ScreenShot.captureScreenshot ( "Clicked The My Coin " );
 
                 // Clicking My coin
                 if (clickingMycoin.isEnabled ()) {
@@ -62,6 +66,7 @@ public class myCoins {
                     Thread.sleep ( 5000 );
                     clickingCoinEarningText.click (); // Clicking The Coin Earning Text
                     System.out.println ( "Sucessfully Clicked the coin earning page" );
+                    ScreenShot.captureScreenshot ( "Clicked the coin earning page " );
 
                 } else {
                     System.out.println ( "Error occured " );
@@ -72,24 +77,28 @@ public class myCoins {
             // Clicking The close Button
             Thread.sleep ( 5000 );
             clickingCloseIcon.click ();
-            System.out.println ( "SucessFully clicked the clickingCloseIcon" );
+            System.out.println ( "SucessFully clicked the clicking Close Icon" );
+            ScreenShot.captureScreenshot ( "Clicked the Close Icon " );
 
             // Scrolling backward
             Thread.sleep ( 5000 );
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
             System.out.println ( "SucessFully page scroll" );
+            ScreenShot.captureScreenshot ( "Scrolling backward" );
 
             //Scrolling forward
             Thread.sleep ( 5000 );
             jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo( document.body.scrollHeight, 0)" );
             System.out.println ( "SucessFully page scroll" );
+            ScreenShot.captureScreenshot ( "Scrolling forward" );
 
             // clicking The Google Play Button
             Thread.sleep ( 5000 );
             clickingGooglePlayButton.click ();
-            System.out.println ( "SucessFully clicked clickingGooglePlayButton" );
+            System.out.println ( "SucessFully clicked Google Play Button" );
+            ScreenShot.captureScreenshot ( "clicked Google Play Button" );
 
             //Windows Handeling child to parent
             Thread.sleep ( 5000 );
@@ -106,11 +115,13 @@ public class myCoins {
             Thread.sleep ( 5000 );
             jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo( document.body.scrollHeight, 0)" );
+            ScreenShot.captureScreenshot ( "Scrolling forward" );
 
             // Click the home button
             Thread.sleep ( 2000 );
             clickingHomeButton.click ();
             System.out.println ( "Exiting if-else statement From The My Coin : Navigating To The Next Module" );
+            ScreenShot.captureScreenshot ( "Clicked The Home button" );
 
         } catch (NoSuchElementException e) {
 

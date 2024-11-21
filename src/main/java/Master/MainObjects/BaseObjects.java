@@ -118,7 +118,7 @@ public class BaseObjects {
         home.HomeModule ();
     }
 
-    @Test(enabled = false, priority = 3)
+    @Test(enabled = true, priority = 3)
     public void menuModuleTest() throws InterruptedException, IOException {
         test = extentReports.createTest ( "Menu Module Test" );
         BaseMenu menu = new BaseMenu ( driver );

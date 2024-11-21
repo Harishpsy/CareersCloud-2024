@@ -1,9 +1,11 @@
 package Menu;
 
+import ScreenShot.ScreenShot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -17,12 +19,13 @@ public class rateApp {
     }
 
     @Test
-    public void RateApp() throws InterruptedException {
+    public void RateApp() throws InterruptedException, IOException {
 
         // Clicking The Rate App
         Thread.sleep ( 3000 );
         WebElement clickingRateApp = driver.findElement ( xpath ( "//*[@id=\"7\"]" ) );
         clickingRateApp.click ();
+        ScreenShot.captureScreenshot ( "Clicked The Rate App" );
 
         //Windows Handeling child to parent
         Set<String> windows = driver.getWindowHandles ();

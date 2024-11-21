@@ -34,6 +34,7 @@ import static org.openqa.selenium.By.*;
 public class myNotes extends BaseObjects {
     static WebDriver driver;
 
+
     public myNotes(WebDriver driver) {
         this.driver = driver;
     }
@@ -484,42 +485,49 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 2000 );
             WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
             clickingShareButton.click ();
-            ScreenShot.captureScreenshot ( "Clicking The Share Button" );
+            ScreenShot.captureScreenshot ( "Clicked The Share Button" );
 
             // Clicking The Copy Link
             Thread.sleep ( 3000 );
             WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
             clickingCopyLink.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Copy Link" );
 
             // Clicking The cancel Button
             Thread.sleep ( 3000 );
             WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             clickingCancelButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel Button" );
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Three Dots" );
 
             // Clicking The Report Button
             Thread.sleep ( 3000 );
             WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
             clickingReportButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report Button" );
 
             // Click The Radio Button which present in second Position
             Thread.sleep ( 3000 );
             WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
             clickingRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Radio Button" );
 
             // Entering The Text Inside the Text Field
             Thread.sleep ( 3000 );
             WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
             enteringText.sendKeys ( "The content was good" );
+            ScreenShot.captureScreenshot ( "Entering The Comment In The Text Field" );
 
             // Clicking The cancel Button
             Thread.sleep ( 3000 );
             WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
             clickingCancel.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel Button " );
 
 //            // Clicking The report Button
 //
@@ -530,11 +538,13 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Three Dots" );
 
             // Clicking The Remove My Notes
             Thread.sleep ( 3000 );
             WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
             clickingRemoveMyNotes.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Remove My Notes" );
 
         } else {
             System.out.println ( "Both are was not executed for videos in my notes" );
@@ -556,7 +566,7 @@ public class myNotes extends BaseObjects {
      * 7. Switches between parent and child windows and resumes the quiz.
      * 8. Repeats certain interactions in the resumed quiz session.
      */
-    public void Startquiz() throws InterruptedException {
+    public void Startquiz() throws InterruptedException, IOException {
 
         // Check if elements are displayed and log the results
         Thread.sleep ( 5000 );
@@ -594,13 +604,14 @@ public class myNotes extends BaseObjects {
         if (noRecordfoundDisplayedInMyNotes) {
             clickingMyQuestion.click ();
             System.out.println ( "No records found message is displayed In My Notes, navigating to My Question page." );
+            ScreenShot.captureScreenshot ( "Clicked The My Question" );
         } else if (quizStartDisplayedInMyNotes) {
             Thread.sleep ( 5000 );
             clickingStartQuiz.click ();
             System.out.println ( "Successfully clicked the Start button in My Notes." );
+            ScreenShot.captureScreenshot ( "clicked the Start button in My Notes." );
 
             //Windows Handeling
-
             Set<String> windows = driver.getWindowHandles ();
             Iterator<String> it = windows.iterator ();
             String parent = it.next ();
@@ -613,6 +624,7 @@ public class myNotes extends BaseObjects {
             WebElement Close_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
             Close_icon.click ();
             System.out.println ( "SuccessFully Clicked The CloseIcon" );
+            ScreenShot.captureScreenshot ( "Clicked The Close Icon" );
 
             //Windows mazimize
 
@@ -626,19 +638,21 @@ public class myNotes extends BaseObjects {
             WebElement clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
             clickingTheInstructionIcon.click ();
             System.out.println ( "SuccessFully Clicked The InstructionIcon" );
+            ScreenShot.captureScreenshot ( "Clicked The Instruction Icon" );
 
             // Again Clicking the close icon in the quiz instruction
-
             Thread.sleep ( 3000 );
             WebElement againClose_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
             againClose_icon.click ();
             System.out.println ( "SuccessFully Clicked The Close_icon again " );
+            ScreenShot.captureScreenshot ( "Clicked The Close_icon again" );
 
             // Clicking The FullScreen Button
             Thread.sleep ( 3000 );
             WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
             clickingTheFullScreenButton.click ();
             System.out.println ( "SuccessFully Clicked The Full Screen Button " );
+            ScreenShot.captureScreenshot ( "Clicked The Full Screen Button" );
 
             // Clicking the BookMark-icon
             try {
@@ -646,6 +660,7 @@ public class myNotes extends BaseObjects {
                 if (bookmarkIcon.isDisplayed ()) {
                     bookmarkIcon.click ();
                     System.out.println ( "Successfully Clicked The Bookmark Icon" );
+                    ScreenShot.captureScreenshot ( "Clicked The Bookmark Icon" );
                 }
             } catch (NoSuchElementException e1) {
                 try {
@@ -653,6 +668,7 @@ public class myNotes extends BaseObjects {
                     if (bookmarkedIcon.isDisplayed ()) {
                         bookmarkedIcon.click ();
                         System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                        ScreenShot.captureScreenshot ( "Un-Clicked The Bookmark Icon" );
                     }
                 } catch (NoSuchElementException e2) {
                     System.out.println ( "Both The Code Has Not Executed" );
@@ -672,10 +688,12 @@ public class myNotes extends BaseObjects {
                 WebElement optionElement = driver.findElement ( By.xpath ( "//div[text()='" + option + "']" ) );
                 optionElement.click ();
                 System.out.println ( "Successfully Clicked The Option: " + option );
+                ScreenShot.captureScreenshot ( "Clicked The Option" );
 
                 Thread.sleep ( 3000 );
                 saveAndNextButton.click ();
                 System.out.println ( "Successfully Clicked The Save & Next Button" );
+                ScreenShot.captureScreenshot ( "Clicked The Save & Next Button" );
             }
 
             // Clicking options again after navigating back
@@ -684,53 +702,56 @@ public class myNotes extends BaseObjects {
                 WebElement optionElement = driver.findElement ( By.xpath ( "//div[text()='" + options[i] + "']" ) );
                 optionElement.click ();
                 System.out.println ( "Successfully Clicked The Option: " + options[i] );
+                ScreenShot.captureScreenshot ( "Clicked The Option" );
 
                 Thread.sleep ( 3000 );
                 WebElement numberOnRightSide = driver.findElement ( By.xpath ( "//Span[text()='" + (16 + i) + "']" ) );
                 numberOnRightSide.click ();
                 System.out.println ( "Successfully Clicked The Number: " + (16 + i) );
+                ScreenShot.captureScreenshot ( "Clicked The Number" );
             }
 
             // Clicking the Previous Button
             Thread.sleep ( 3000 );
             WebElement clickingThePreviousButton = driver.findElement ( By.xpath ( "//div[text()='Previous']" ) );
             clickingThePreviousButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Previous Button" );
 
             // Clicking The Pause Button
-
             Thread.sleep ( 3000 );
             WebElement clickingThePauseButton = driver.findElement ( xpath ( "//*[@class=\"pause-icon\"]" ) );
             clickingThePauseButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Pause Button" );
 
             // Clicking The Cancel Button In The Pause popup
-
             Thread.sleep ( 3000 );
             WebElement clickingCancelButtonInPopup = driver.findElement ( xpath ( "//*[text()=' Cancel ']" ) );
             clickingCancelButtonInPopup.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel Button In Popup" );
 
             // Again Clicking The Pause Button leaves the quiz
-
             Thread.sleep ( 3000 );
             clickingThePauseButton = driver.findElement ( xpath ( "//*[@class=\"pause-icon\"]" ) );
             clickingThePauseButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Pause Button" );
 
             // Clicking The Leave button In the Pause Popup
 
             Thread.sleep ( 3000 );
             WebElement clickingLeaveButtonInPopup = driver.findElement ( xpath ( "//span[text()=\" Leave \"]" ) );
             clickingLeaveButtonInPopup.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Leave Button In Popup" );
 
             // Changing The Child Windows To Parent Window
-
             driver.switchTo ().window ( parent );
 
             // Clicking The resume Button
             Thread.sleep ( 3000 );
             clickingResumequiz.click ();
             System.out.println ( "Successfully clicked the Resume button in My Notes." );
+            ScreenShot.captureScreenshot ( "clicked the Resume button in My Notes." );
 
             //Windows Handeling
-
             windows = driver.getWindowHandles ();
             it = windows.iterator ();
             parent = it.next ();
@@ -738,31 +759,29 @@ public class myNotes extends BaseObjects {
             driver.switchTo ().window ( child );
 
             //Windows mazimize
-
             new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
             driver.manage ().window ().maximize ();
 
             //Clicking the Instruction Button
-
             driver.manage ().timeouts ().implicitlyWait ( 30 , TimeUnit.SECONDS );
             clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
             clickingTheInstructionIcon.click ();
             System.out.println ( "Sucessfully clicked instruction icon" );
+            ScreenShot.captureScreenshot ( "Clicked instruction icon" );
 
             // Again Clicking the close icon in the quiz instruction
-
             Thread.sleep ( 3000 );
             againClose_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
             againClose_icon.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Again Close icon" );
 
             // Clicking The FullScreen Button
-
             Thread.sleep ( 2000 );
             clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
             clickingTheFullScreenButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Full Screen Button" );
 
             // Clicking the BookMark-icon
-
                 /*driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
                  WebElement bookMarkicon = driver.findElement(className ("bookmark-icon"));
                  bookMarkicon.click ();*/
@@ -779,10 +798,12 @@ public class myNotes extends BaseObjects {
                 WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + option + "']" ) );
                 optionElement.click ();
                 System.out.println ( "Successfully Clicked The Option: " + option );
+                ScreenShot.captureScreenshot ( "Clicked The Option" );
 
                 Thread.sleep ( 3000 );
                 saveAndNextButton.click ();
                 System.out.println ( "Successfully Clicked The Save & Next Button" );
+                ScreenShot.captureScreenshot ( "Clicked The Save & Next Button" );
             }
 
             // Clicking options again after navigating back
@@ -794,6 +815,7 @@ public class myNotes extends BaseObjects {
                     WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                     optionElement.click ();
                     System.out.println ( "Successfully clicked the option: " + options[i] );
+                    ScreenShot.captureScreenshot ( "clicked the option" );
 
                     Thread.sleep ( 3000 );
 
@@ -803,6 +825,7 @@ public class myNotes extends BaseObjects {
                         WebElement numberOnRightSide = numberOnRightSideList.get ( 0 );
                         numberOnRightSide.click ();
                         System.out.println ( "Successfully clicked the number and navigated to the next question: " + (16 + i) );
+                        ScreenShot.captureScreenshot ( "clicked the number and navigated to the next question" );
                     } else {
                         System.out.println ( "Number " + (16 + i) + " not found, skipping to the next iteration." );
                     }
@@ -818,92 +841,91 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 3000 );
             clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
             clickingThePreviousButton.click ();
+            ScreenShot.captureScreenshot ( "clicked the Previous Button" );
 
             // Clicking The Submit Button
-
             Thread.sleep ( 3000 );
             WebElement clickingSubmitButton = driver.findElement ( xpath ( "//span[text()=' Submit ']" ) );
             clickingSubmitButton.click ();
+            ScreenShot.captureScreenshot ( "clicked the Submit Button" );
 
             // Clicking the Cancel Button In the submit Popup
-
             Thread.sleep ( 1000 );
             WebElement clickingCancelButtonInThePopup = driver.findElement ( xpath ( "//span[text()=\"Cancel\"]" ) );
             clickingCancelButtonInThePopup.click ();
+            ScreenShot.captureScreenshot ( "clicked the Cancel Button In The Popup" );
 
             // Again Clicking The Submit Button
-
             Thread.sleep ( 3000 );
             clickingSubmitButton = driver.findElement ( xpath ( "//span[text()=' Submit ']" ) );
             clickingSubmitButton.click ();
+            ScreenShot.captureScreenshot ( "Again Clicked the Submit Button" );
 
             // Clicking The Submit Button In The Submit Popup
-
             Thread.sleep ( 1000 );
             clickingSubmitButton = driver.findElement ( xpath ( "//span[text()=\"Submit\"]" ) );
             clickingSubmitButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked the Submit Button" );
 
             // Switching Windows From Child To Parent
 
             driver.switchTo ().window ( parent );
 
             // Clicking The solution button
-
             Thread.sleep ( 2000 );
             clickingSolutionquiz.click ();
+            ScreenShot.captureScreenshot ( "Clicked the Solution Button" );
 
             // Scrolling and Clicking The Report Page
-
             Thread.sleep ( 3000 );
             WebElement scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
             Actions actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
-
+            ScreenShot.captureScreenshot ( "Clicked the Report Button" );
 
             // Click The Translation Error In The Report Popup
-
             Thread.sleep ( 3000 );
             WebElement clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked the Translation Error Radio Button" );
 
             // Clicking The Report Description button
-
             WebElement Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( "Entered The Report In The Text Field" );
 
             // Clicking The Cancel Button
-
             WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
             Cancel_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel button" );
 
             // Scrolling and Clicking The Report Page
-
             Thread.sleep ( 3000 );
             scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
             actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report button" );
 
             // Click The Translation Error In The Report Popup
-
             Thread.sleep ( 3000 );
             clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Translation Error Radio Button" );
 
             // Clicking The Report Description button
-
             Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( "Entered The Report In The Text Field" );
 
             // Click the report button
-
             Thread.sleep ( 3000 );
             WebElement Report_button = driver.findElement ( xpath ( "//span[text()='REPORT']" ) );
             Report_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report button" );
 
             // Clicking The ReattempButton
-
             Thread.sleep ( 10000 );
             //wait = new WebDriverWait (driver,30);
             WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) ); // Adjust the timeout as necessary
@@ -912,6 +934,7 @@ public class myNotes extends BaseObjects {
                 WebElement reattemptIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//div[@class='ant-switch-handle']" ) ) );
                 reattemptIcon.click ();
                 System.out.println ( "Successfully clicked the reattempt icon." );
+                ScreenShot.captureScreenshot ( "clicked the reattempt icon." );
             } catch (TimeoutException e) {
                 System.out.println ( "The reattempt icon was not clickable within the timeout period1." );
             } catch (NoSuchElementException e) {
@@ -931,10 +954,12 @@ public class myNotes extends BaseObjects {
                 WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + option + "']" ) );
                 optionElement.click ();
                 System.out.println ( "Successfully Clicked The Option: " + option );
+                ScreenShot.captureScreenshot ( "Clicked The Option." );
 
                 Thread.sleep ( 3000 );
                 saveAndNextButton.click ();
                 System.out.println ( "Successfully Clicked The Save & Next Button" );
+                ScreenShot.captureScreenshot ( "Clicked The Save & Next Button" );
             }
 
             // Clicking options again after navigating back
@@ -946,6 +971,7 @@ public class myNotes extends BaseObjects {
                     WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                     optionElement.click ();
                     System.out.println ( "Successfully clicked the option: " + options[i] );
+                    ScreenShot.captureScreenshot ( "Clicked the option" );
 
                     Thread.sleep ( 3000 );
 
@@ -955,6 +981,7 @@ public class myNotes extends BaseObjects {
                         WebElement numberOnRightSide = numberOnRightSideList.get ( 0 );
                         numberOnRightSide.click ();
                         System.out.println ( "Successfully clicked the number and navigated to the next question: " + (16 + i) );
+                        ScreenShot.captureScreenshot ( "Clicked the number and navigated to the next question" );
                     } else {
                         System.out.println ( "Number " + (16 + i) + " not found, skipping to the next iteration." );
                     }
@@ -970,32 +997,34 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 3000 );
             clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
             clickingThePreviousButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Previous Button" );
 
             // Scrolling The Solution Page
-
             Thread.sleep ( 1000 );
             scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
             actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
+            ScreenShot.captureScreenshot ( "Clicked The scroll To Report Icon" );
 
             // Click The Translation Error In The Report Popup
-
             Thread.sleep ( 3000 );
             clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Translation Error Radio Button" );
 
             //Entering the text inside the report text field In Solution Page
-
             Thread.sleep ( 3000 );
             Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( "Clicked The Translation Error Radio Button" );
 
             // Click the report button
 
             Thread.sleep ( 3000 );
             Report_button = driver.findElement ( xpath ( "//span[text()='REPORT']" ) );
             Report_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report button" );
 
                 /* // Clicking The Cancel Button
 
@@ -1003,29 +1032,29 @@ public class myNotes extends BaseObjects {
                 Cancel_button.click ();*/
 
             // Clicking The Share Icon In The Solution Page
-
             Thread.sleep ( 3000 );
             WebElement clickingTheShareIcon = driver.findElement ( xpath ( "//*[@alt=\"share\"]" ) );
             clickingTheShareIcon.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Share Icon" );
 
             //click the copy link in the share popup
-
             Thread.sleep ( 3000 );
             WebElement Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
             Copy_link.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Copy link" );
 
             //Clicking the cancel button in the in share popup
-
             WebDriverWait waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
             Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             Cancel_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel button" );
 
             // Clicking The ReattempButton
-
             Thread.sleep ( 10000 );
             // wait = new WebDriverWait (driver, Duration.ofSeconds (30));
             WebElement clickingReattemptButton = driver.findElement ( xpath ( "//div[@class=\"ant-switch-handle\"]" ) );
             clickingReattemptButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Reattempt Button" );
 
             wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) ); // Adjust the timeout as necessary
 
@@ -1033,6 +1062,7 @@ public class myNotes extends BaseObjects {
                 WebElement reattemptIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//div[@class='ant-switch-handle']" ) ) );
                 reattemptIcon.click ();
                 System.out.println ( "Successfully clicked the reattempt icon." );
+                ScreenShot.captureScreenshot ( "Clicked The Reattempt icon" );
             } catch (TimeoutException e) {
                 System.out.println ( "The reattempt icon was not clickable within the timeout period2." );
             } catch (NoSuchElementException e) {
@@ -1042,56 +1072,56 @@ public class myNotes extends BaseObjects {
             }
 
             //  Click the back arrow in the solution screen
-
             Thread.sleep ( 3000 );
             WebElement clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             clickingBackArrow.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Back Arrow" );
 
             // Clicking The solution button
-
             Thread.sleep ( 2000 );
             clickingSolutionquiz.click ();
+            ScreenShot.captureScreenshot ( "Clicked The solution button" );
 
             // Analysis was not working in site
             //  Click the back arrow in the solution screen
-
             Thread.sleep ( 30000 );
             clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             clickingBackArrow.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Back Arrow" );
 //
             // Clicking The Analysis Button In The MY Notes
-
             Thread.sleep ( 3000 );
             WebElement clickingAnalysisButton = driver.findElement ( xpath ( "//*[text()='Analysis']" ) );
             clickingAnalysisButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Analysis Button" );
 
             // Clicking The FullScreen Button
-
             Thread.sleep ( 3000 );
             clickingTheFullScreenButton = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-expand\"]" ) );
             clickingTheFullScreenButton.click ();
             System.out.println ( "Successfully Clicked The Analysis Icon In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Analysis Icon In Solution Screen" );
 
             // Exiting The FullScreen Button
-
             driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 10 ) );
             WebElement exitingTheFullScreenButton = driver.findElement ( className ( "anticon-compress" ) );
             exitingTheFullScreenButton.click ();
             System.out.println ( "Successfully Clicked The Full Screen Button In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Full Screen Button In Solution Screen" );
 
             // Clicking The share Icon
-
             Thread.sleep ( 3000 );
             clickingTheShareIcon = driver.findElement ( xpath ( "//*[@alt=\"share\"]" ) );
             clickingTheShareIcon.click ();
             System.out.println ( "Successfully Clicked The The Share Icon In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The The Share Icon In Solution Screen " );
 
             //click the copy link in the share popup
-
             Thread.sleep ( 3000 );
             Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
             Copy_link.click ();
             System.out.println ( "Successfully Clicked The Copy link In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Copy link In Solution Screen " );
 
             //Clicking the cancel button in the in share popup
 
@@ -1099,6 +1129,7 @@ public class myNotes extends BaseObjects {
             Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             Cancel_button.click ();
             System.out.println ( "Successfully Clicked The Cancel buttonIn Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Cancel buttonIn Solution Screen" );
 
             // Clicking Like/Unlike Button
 
@@ -1109,6 +1140,7 @@ public class myNotes extends BaseObjects {
                     if (likeButton.isDisplayed ()) {
                         likeButton.click ();
                         System.out.println ( "Successfully Clicked The Like Button" );
+                        ScreenShot.captureScreenshot ( "Clicked The Like Button" );
                     }
                 } catch (NoSuchElementException e) {
                     System.out.println ( "Like Button not found" );
@@ -1119,6 +1151,7 @@ public class myNotes extends BaseObjects {
                         if (unlikeButton.isDisplayed ()) {
                             unlikeButton.click ();
                             System.out.println ( "Successfully Clicked The Unlike Button" );
+                            ScreenShot.captureScreenshot ( "Clicked The Unlike Button" );
                         }
                     } catch (NoSuchElementException e2) {
                         System.out.println ( "Unlike Button not found" );
@@ -1133,13 +1166,14 @@ public class myNotes extends BaseObjects {
             WebElement clickingCommentIconInAnalysisPage = driver.findElement ( xpath ( "//*[@id=\"comments-icon\"]" ) );
             clickingCommentIconInAnalysisPage.click ();
             System.out.println ( "Successfully Clicked The Comment Icon In Analysis Page" );
+            ScreenShot.captureScreenshot ( "Clicked The Comment Icon In Analysis Page" );
 
             //Entering Comment In The TextField
-
             Thread.sleep ( 5000 );
             WebElement enteringTheCommentInTextField = driver.findElement ( xpath ( "//*[@name=\"comments1\"]" ) );
             enteringTheCommentInTextField.sendKeys ( "Checking The Comment Text Field" );
             System.out.println ( "Successfully Entered The Comments" );
+            ScreenShot.captureScreenshot ( "Entered The Comments" );
 
             // Clicking The Send Button In The Comment Text Field
 //
@@ -1153,101 +1187,110 @@ public class myNotes extends BaseObjects {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
             System.out.println ( "Successfully Scroll The Page" );
-
+            ScreenShot.captureScreenshot ( "Scroll The Page" );
 
             // Clicking The Reattempt Button Inside The analysis page
-
             Thread.sleep ( 2000 );
             WebElement clickingReattempButton = driver.findElement ( xpath ( "//span[text()=' Reattempt ']" ) );
             clickingReattempButton.click ();
             System.out.println ( "Successfully clicked Reattemp Button" );
+            ScreenShot.captureScreenshot ( "Clicked Reattemp Button" );
 
             //  Again Click the back arrow in the solution screen
-
             Thread.sleep ( 5000 );
             WebElement againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             againclickingBackArrow.click ();
             System.out.println ( "Successfully clicked Back Arrow" );
+            ScreenShot.captureScreenshot ( "Clicked Back Arrow" );
 
             // Clicking The Solution Button Inside The analysis page
-
             Thread.sleep ( 2000 );
             WebElement clickingSolutionButtonInAnalysis = driver.findElement ( xpath ( "//span[text()=' View Solution ']" ) );
             clickingSolutionButtonInAnalysis.click ();
             System.out.println ( "Successfully clicked Solution Button In Analysis" );
+            ScreenShot.captureScreenshot ( "Clicked Solution Button In Analysis" );
 
             //  Again Click the back arrow in the solution screen
-
             Thread.sleep ( 10000 );
             againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             againclickingBackArrow.click ();
-            System.out.println ( "Successfully clicked clicking Back Arrow" );
+            System.out.println ( "Successfully clicked Back Arrow" );
+            ScreenShot.captureScreenshot ( "Clicked Back Arrow" );
 
             // Scrolling The analysis page Forward
-
             Thread.sleep ( 5000 );
             jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
             System.out.println ( "Successfully Scroll The Page Down " );
+            ScreenShot.captureScreenshot ( "Scroll The Page Down" );
 
             // Scrolling The analysis page Backward
-
             Thread.sleep ( 5000 );
             jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
             System.out.println ( "Successfully Scroll The Backwards " );
+            ScreenShot.captureScreenshot ( " Scroll The Backwards" );
 
             // Clicking The Back To Quiz Breadcrumbs In The Analysis Page
-
             Thread.sleep ( 5000 );
             WebElement clickingBackToQuizBreadCrumbs = driver.findElement ( xpath ( "//span[text()='Back to Quiz']" ) );
             clickingBackToQuizBreadCrumbs.click ();
             System.out.println ( "Successfully Scroll The Back To Quiz Bread Crumbs " );
+            ScreenShot.captureScreenshot ( " Clicked The Back To Quiz Breadcrumbs In The Analysis Page" );
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );
             WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Three Dots" );
 
             // Click The Share Button
             Thread.sleep ( 2000 );
             WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
             clickingShareButton.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Share Button" );
 
             // Clicking The Copy Link
             Thread.sleep ( 3000 );
             WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
             clickingCopyLink.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Copy Link" );
 
             // Clicking The cancel Button
             Thread.sleep ( 3000 );
             WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             clickingCancelButton.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Cancel Button" );
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Three Dots" );
 
             // Clicking The Report Button
             Thread.sleep ( 3000 );
             WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
             clickingReportButton.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Report Button" );
 
             // Click The Radio Button which present in second Position
             Thread.sleep ( 3000 );
             WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
             clickingRadioButton.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Radio Button" );
 
             // Entering The Text Inside the Text Field
             Thread.sleep ( 3000 );
             WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
             enteringText.sendKeys ( "The content was good" );
+            ScreenShot.captureScreenshot ( " Entered The Text Iside The Text" );
 
             // Clicking The cancel Button
             Thread.sleep ( 3000 );
             WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
             clickingCancel.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel" );
 
 //            // Clicking The report Button
 //
@@ -1258,11 +1301,13 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Three Dots" );
 
             // Clicking The Remove My Notes
             Thread.sleep ( 3000 );
             WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
             clickingRemoveMyNotes.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Remove My Notes" );
 
         } else {
             System.out.println ( "No matching condition was found in the Start quiz My Notes." );
@@ -1276,7 +1321,7 @@ public class myNotes extends BaseObjects {
      *
      * @throws InterruptedException if any thread has interrupted the current thread while sleeping.
      */
-    public void resumequiz() throws InterruptedException {
+    public void resumequiz() throws InterruptedException, IOException {
         System.out.println ( "----------------------Resume Quiz---------------------------" );
         boolean noRecordfoundDisplayedInMyNotes = false;
         boolean quizresumeDisplayedInMyNotes = false;
@@ -1297,11 +1342,13 @@ public class myNotes extends BaseObjects {
 
         if (noRecordfoundDisplayedInMyNotes) {
             clickingMyQuestion.click ();
+            ScreenShot.captureScreenshot ( "Clicked The My-Question" );
         } else if (quizresumeDisplayedInMyNotes) {
 
             Thread.sleep ( 3000 );
             clickingResumequiz.click ();
             System.out.println ( "Successfully clicked the Resume button in My Notes." );
+            ScreenShot.captureScreenshot ( "Clicked The Resume quiz" );
 
             //Windows Handeling
 
@@ -1322,18 +1369,21 @@ public class myNotes extends BaseObjects {
             WebElement clickingTheInstructionIcon = driver.findElement ( xpath ( "//*[@alt=\"quiz_info\"]" ) );
             clickingTheInstructionIcon.click ();
             System.out.println ( "Sucessfully clicked instruction icon" );
+            ScreenShot.captureScreenshot ( "Clicked instruction icon" );
 
             // Again Clicking the close icon in the quiz instruction
 
             Thread.sleep ( 3000 );
             WebElement againClose_icon = driver.findElement ( xpath ( "//*[@class=\"ant-modal-close-x\"]" ) );
             againClose_icon.click ();
+            ScreenShot.captureScreenshot ( "Clicked Close icon" );
 
             // Clicking The FullScreen Button
 
             Thread.sleep ( 2000 );
             WebElement clickingTheFullScreenButton = driver.findElement ( className ( "anticon-expand" ) );
             clickingTheFullScreenButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Full Screen Button" );
 
             // Clicking the BookMark-icon
 
@@ -1353,10 +1403,12 @@ public class myNotes extends BaseObjects {
                 WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + option + "']" ) );
                 optionElement.click ();
                 System.out.println ( "Successfully Clicked The Option: " + option );
+                ScreenShot.captureScreenshot ( "Clicked The Option" );
 
                 Thread.sleep ( 3000 );
                 saveAndNextButton.click ();
                 System.out.println ( "Successfully Clicked The Save & Next Button" );
+                ScreenShot.captureScreenshot ( "Clicked The Save & Next Button" );
             }
 
             // Clicking options again after navigating back
@@ -1368,6 +1420,7 @@ public class myNotes extends BaseObjects {
                     WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                     optionElement.click ();
                     System.out.println ( "Successfully clicked the option: " + options[i] );
+                    ScreenShot.captureScreenshot ( "Clicked the option" );
 
                     Thread.sleep ( 3000 );
 
@@ -1377,6 +1430,7 @@ public class myNotes extends BaseObjects {
                         WebElement numberOnRightSide = numberOnRightSideList.get ( 0 );
                         numberOnRightSide.click ();
                         System.out.println ( "Successfully clicked the number and navigated to the next question: " + (16 + i) );
+                        ScreenShot.captureScreenshot ( "Clicked the number and navigated to the next question" );
                     } else {
                         System.out.println ( "Number " + (16 + i) + " not found, skipping to the next iteration." );
                     }
@@ -1392,39 +1446,41 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 3000 );
             WebElement clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
             clickingThePreviousButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Previous Button" );
 
             // Clicking The Submit Button
 
             Thread.sleep ( 3000 );
             WebElement clickingSubmitButton = driver.findElement ( xpath ( "//span[text()=' Submit ']" ) );
             clickingSubmitButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Submit Button" );
 
             // Clicking the Cancel Button In the submit Popup
-
             Thread.sleep ( 1000 );
             WebElement clickingCancelButtonInThePopup = driver.findElement ( xpath ( "//span[text()=\"Cancel\"]" ) );
             clickingCancelButtonInThePopup.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel Button In The Popup" );
 
             // Again Clicking The Submit Button
-
             Thread.sleep ( 3000 );
             clickingSubmitButton = driver.findElement ( xpath ( "//span[text()=' Submit ']" ) );
             clickingSubmitButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Submit Button" );
 
             // Clicking The Submit Button In The Submit Popup
-
             Thread.sleep ( 1000 );
             clickingSubmitButton = driver.findElement ( xpath ( "//span[text()=\"Submit\"]" ) );
             clickingSubmitButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Submit Button" );
 
             // Switching Windows From Child To Parent
 
             driver.switchTo ().window ( parent );
 
             // Clicking The solution button
-
             Thread.sleep ( 2000 );
             clickingSolutionquiz.click ();
+            ScreenShot.captureScreenshot ( "Clicked The solution button" );
 
             // Scrolling and Clicking The Report Page
 
@@ -1433,51 +1489,51 @@ public class myNotes extends BaseObjects {
             Actions actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
-
+            ScreenShot.captureScreenshot ( "Clicked The Report button" );
 
             // Click The Translation Error In The Report Popup
 
             Thread.sleep ( 3000 );
             WebElement clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Translation Error Radio Button" );
 
             // Clicking The Report Description button
-
             WebElement Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( "Enter The Text Inside The Report Text Field" );
 
             // Clicking The Cancel Button
-
             WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
             Cancel_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel button" );
 
             // Scrolling and Clicking The Report Page
-
             Thread.sleep ( 3000 );
             scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
             actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report button" );
 
             // Click The Translation Error In The Report Popup
-
             Thread.sleep ( 3000 );
             clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Translation Error Radio Button" );
 
             // Clicking The Report Description button
-
             Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( "Enter The Text Inside The Report Text Field" );
 
             // Click the report button
-
             Thread.sleep ( 3000 );
             WebElement Report_button = driver.findElement ( xpath ( "//span[text()='REPORT']" ) );
             Report_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report button" );
 
             // Clicking The ReattempButton
-
             Thread.sleep ( 10000 );
             //wait = new WebDriverWait (driver,30);
             WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) ); // Adjust the timeout as necessary
@@ -1486,6 +1542,7 @@ public class myNotes extends BaseObjects {
                 WebElement reattemptIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//div[@class='ant-switch-handle']" ) ) );
                 reattemptIcon.click ();
                 System.out.println ( "Successfully clicked the reattempt icon." );
+                ScreenShot.captureScreenshot ( "Clicked the reattempt icon" );
             } catch (TimeoutException e) {
                 System.out.println ( "The reattempt icon was not clickable within the timeout period1." );
             } catch (NoSuchElementException e) {
@@ -1505,10 +1562,12 @@ public class myNotes extends BaseObjects {
                 WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + option + "']" ) );
                 optionElement.click ();
                 System.out.println ( "Successfully Clicked The Option: " + option );
+                ScreenShot.captureScreenshot ( "Clicked The Option" );
 
                 Thread.sleep ( 3000 );
                 saveAndNextButton.click ();
                 System.out.println ( "Successfully Clicked The Save & Next Button" );
+                ScreenShot.captureScreenshot ( "Clicked The Save & Next Button" );
             }
 
             // Clicking options again after navigating back
@@ -1520,6 +1579,7 @@ public class myNotes extends BaseObjects {
                     WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                     optionElement.click ();
                     System.out.println ( "Successfully clicked the option: " + options[i] );
+                    ScreenShot.captureScreenshot ( "Clicked the option" );
 
                     Thread.sleep ( 3000 );
 
@@ -1529,6 +1589,7 @@ public class myNotes extends BaseObjects {
                         WebElement numberOnRightSide = numberOnRightSideList.get ( 0 );
                         numberOnRightSide.click ();
                         System.out.println ( "Successfully clicked the number and navigated to the next question: " + (16 + i) );
+                        ScreenShot.captureScreenshot ( "Clicked the number and navigated to the next question" );
                     } else {
                         System.out.println ( "Number " + (16 + i) + " not found, skipping to the next iteration." );
                     }
@@ -1544,32 +1605,33 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 3000 );
             clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
             clickingThePreviousButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Previous Button" );
 
-            // Scrolling The Solution Page
-
+            // Scrolling The Report Button
             Thread.sleep ( 1000 );
             scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
             actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report Button" );
 
             // Click The Translation Error In The Report Popup
-
             Thread.sleep ( 3000 );
             clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Translation Error Radio Button" );
 
             //Entering the text inside the report text field In Solution Page
-
             Thread.sleep ( 3000 );
             Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( " Entering The text In The Report Text Field" );
 
             // Click the report button
-
             Thread.sleep ( 3000 );
             Report_button = driver.findElement ( xpath ( "//span[text()='REPORT']" ) );
             Report_button.click ();
+            ScreenShot.captureScreenshot ( " Clicked The report Button " );
 
                 /* // Clicking The Cancel Button
 
@@ -1577,29 +1639,29 @@ public class myNotes extends BaseObjects {
                 Cancel_button.click ();*/
 
             // Clicking The Share Icon In The Solution Page
-
             Thread.sleep ( 3000 );
             WebElement clickingTheShareIcon = driver.findElement ( xpath ( "//*[@alt=\"share\"]" ) );
             clickingTheShareIcon.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Share Icon " );
 
             //click the copy link in the share popup
-
             Thread.sleep ( 3000 );
             WebElement Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
             Copy_link.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Copy link " );
 
             //Clicking the cancel button in the in share popup
-
             WebDriverWait waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
             Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             Cancel_button.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Cancel button " );
 
             // Clicking The ReattempButton
-
             Thread.sleep ( 10000 );
             // wait = new WebDriverWait (driver, Duration.ofSeconds (30));
             WebElement clickingReattemptButton = driver.findElement ( xpath ( "//div[@class=\"ant-switch-handle\"]" ) );
             clickingReattemptButton.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Reattempt Button" );
 
             wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) ); // Adjust the timeout as necessary
 
@@ -1607,6 +1669,7 @@ public class myNotes extends BaseObjects {
                 WebElement reattemptIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//div[@class='ant-switch-handle']" ) ) );
                 reattemptIcon.click ();
                 System.out.println ( "Successfully clicked the reattempt icon." );
+                ScreenShot.captureScreenshot ( " Clicked The Reattempt Icon" );
             } catch (TimeoutException e) {
                 System.out.println ( "The reattempt icon was not clickable within the timeout period2." );
             } catch (NoSuchElementException e) {
@@ -1616,66 +1679,66 @@ public class myNotes extends BaseObjects {
             }
 
             //  Click the back arrow in the solution screen
-
             Thread.sleep ( 3000 );
             WebElement clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             clickingBackArrow.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Back Arrow" );
 
             // Clicking The solution button
-
             Thread.sleep ( 2000 );
             clickingSolutionquiz.click ();
+            ScreenShot.captureScreenshot ( " Clicked The solution button" );
 
             // Analysis was not working in site
             //  Click the back arrow in the solution screen
-
             Thread.sleep ( 30000 );
             clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             clickingBackArrow.click ();
-//
-            // Clicking The Analysis Button In The MY Notes
+            ScreenShot.captureScreenshot ( " Clicked The Back Arrow" );
 
+            // Clicking The Analysis Button In The MY Notes
             Thread.sleep ( 3000 );
             WebElement clickingAnalysisButton = driver.findElement ( xpath ( "//*[text()='Analysis']" ) );
             clickingAnalysisButton.click ();
+            ScreenShot.captureScreenshot ( " Clicked The Analysis Button" );
 
             // Clicking The FullScreen Button
-
             Thread.sleep ( 3000 );
             clickingTheFullScreenButton = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-expand\"]" ) );
             clickingTheFullScreenButton.click ();
             System.out.println ( "Successfully Clicked The Analysis Icon In Solution Screen " );
+            ScreenShot.captureScreenshot ( " Clicked The FullScreen Button" );
+
 
             // Exiting The FullScreen Button
-
             driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 10 ) );
             WebElement exitingTheFullScreenButton = driver.findElement ( className ( "anticon-compress" ) );
             exitingTheFullScreenButton.click ();
             System.out.println ( "Successfully Clicked The Full Screen Button In Solution Screen " );
+            ScreenShot.captureScreenshot ( " Exit The FullScreen Button" );
 
             // Clicking The share Icon
-
             Thread.sleep ( 3000 );
             clickingTheShareIcon = driver.findElement ( xpath ( "//*[@alt=\"share\"]" ) );
             clickingTheShareIcon.click ();
             System.out.println ( "Successfully Clicked The The Share Icon In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The The Share Icon In Solution Screen" );
 
             //click the copy link in the share popup
-
             Thread.sleep ( 3000 );
             Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
             Copy_link.click ();
             System.out.println ( "Successfully Clicked The Copy link In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Copy link In Solution Screen" );
 
             //Clicking the cancel button in the in share popup
-
             new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
             Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             Cancel_button.click ();
             System.out.println ( "Successfully Clicked The Cancel buttonIn Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Cancel buttonIn Solution Screen" );
 
             // Clicking Like/Unlike Button
-
             try {
                 try {
                     // Locate the like button
@@ -1683,6 +1746,7 @@ public class myNotes extends BaseObjects {
                     if (likeButton.isDisplayed ()) {
                         likeButton.click ();
                         System.out.println ( "Successfully Clicked The Like Button" );
+                        ScreenShot.captureScreenshot ( "Clicked The Like Button" );
                     }
                 } catch (NoSuchElementException e) {
                     System.out.println ( "Like Button not found" );
@@ -1693,6 +1757,7 @@ public class myNotes extends BaseObjects {
                         if (unlikeButton.isDisplayed ()) {
                             unlikeButton.click ();
                             System.out.println ( "Successfully Clicked The Unlike Button" );
+                            ScreenShot.captureScreenshot ( "Clicked The Unlike Button" );
                         }
                     } catch (NoSuchElementException e2) {
                         System.out.println ( "Unlike Button not found" );
@@ -1707,6 +1772,7 @@ public class myNotes extends BaseObjects {
             WebElement clickingCommentIconInAnalysisPage = driver.findElement ( xpath ( "//*[@id=\"comments-icon\"]" ) );
             clickingCommentIconInAnalysisPage.click ();
             System.out.println ( "Successfully Clicked The Comment Icon In Analysis Page" );
+            ScreenShot.captureScreenshot ( "Clicked The Comment Icon In Analysis Page" );
 
             //Entering Comment In The TextField
 
@@ -1714,117 +1780,124 @@ public class myNotes extends BaseObjects {
             WebElement enteringTheCommentInTextField = driver.findElement ( xpath ( "//*[@name=\"comments1\"]" ) );
             enteringTheCommentInTextField.sendKeys ( "Checking The Comment Text Field" );
             System.out.println ( "Successfully Entered The Comments" );
+            ScreenShot.captureScreenshot ( "Entered The Comments In The Text Field" );
 
             // Clicking The Send Button In The Comment Text Field
-//
 //            Thread.sleep (2000);
 //            clickingSendButton = driver.findElement (className ("anticon-send"));
 //            clickingSendButton.click ();
 
             // Scrolling The analysis page Up
-
             Thread.sleep ( 3000 );
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
             System.out.println ( "Successfully Scroll The Page" );
-
+            ScreenShot.captureScreenshot ( "Scrolling The analysis page Up" );
 
             // Clicking The Reattempt Button Inside The analysis page
-
             Thread.sleep ( 2000 );
             WebElement clickingReattempButton = driver.findElement ( xpath ( "//span[text()=' Reattempt ']" ) );
             clickingReattempButton.click ();
             System.out.println ( "Successfully clicked Reattemp Button" );
+            ScreenShot.captureScreenshot ( "Clicked Reattemp Button" );
 
             //  Again Click the back arrow in the solution screen
-
             Thread.sleep ( 5000 );
             WebElement againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             againclickingBackArrow.click ();
             System.out.println ( "Successfully clicked Back Arrow" );
+            ScreenShot.captureScreenshot ( "Clicked Back Arrow" );
 
             // Clicking The Solution Button Inside The analysis page
-
             Thread.sleep ( 2000 );
             WebElement clickingSolutionButtonInAnalysis = driver.findElement ( xpath ( "//span[text()=' View Solution ']" ) );
             clickingSolutionButtonInAnalysis.click ();
             System.out.println ( "Successfully clicked Solution Button In Analysis" );
+            ScreenShot.captureScreenshot ( "Clicked Solution Button In Analysis" );
 
             //  Again Click the back arrow in the solution screen
-
             Thread.sleep ( 10000 );
             againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             againclickingBackArrow.click ();
             System.out.println ( "Successfully clicked clicking Back Arrow" );
+            ScreenShot.captureScreenshot ( "Clicked clicking Back Arrow" );
 
             // Scrolling The analysis page Forward
-
             Thread.sleep ( 5000 );
             jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
             System.out.println ( "Successfully Scroll The Page Down " );
+            ScreenShot.captureScreenshot ( "Clicked clicking Back Arrow" );
 
             // Scrolling The analysis page Backward
-
             Thread.sleep ( 5000 );
             jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
             System.out.println ( "Successfully Scroll The Backwards " );
+            ScreenShot.captureScreenshot ( "Scrolling The analysis page Backward" );
 
             // Clicking The Back To Quiz Breadcrumbs In The Analysis Page
-
             Thread.sleep ( 5000 );
             WebElement clickingBackToQuizBreadCrumbs = driver.findElement ( xpath ( "//span[text()='Back to Quiz']" ) );
             clickingBackToQuizBreadCrumbs.click ();
             System.out.println ( "Successfully Scroll The Back To Quiz Bread Crumbs " );
+            ScreenShot.captureScreenshot ( "Clicked The Back To Quiz Breadcrumbs In The Analysis Page" );
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );
             WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Three Dots" );
 
             // Click The Share Button
             Thread.sleep ( 2000 );
             WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
             clickingShareButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Share Button" );
 
             // Clicking The Copy Link
             Thread.sleep ( 3000 );
             WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
             clickingCopyLink.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Copy Link" );
 
             // Clicking The cancel Button
             Thread.sleep ( 3000 );
             WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             clickingCancelButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel Button" );
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Three Dots" );
 
             // Clicking The Report Button
             Thread.sleep ( 3000 );
             WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
             clickingReportButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report Button" );
 
             // Click The Radio Button which present in second Position
             Thread.sleep ( 3000 );
             WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
             clickingRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Radio Button" );
 
             // Entering The Text Inside the Text Field
             Thread.sleep ( 3000 );
             WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
             enteringText.sendKeys ( "The content was good" );
+            ScreenShot.captureScreenshot ( "Entered The Text Inside The Text Field" );
 
             // Clicking The cancel Button
             Thread.sleep ( 3000 );
             WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
             clickingCancel.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel Button" );
 
 //            // Clicking The report Button
-//
 //            WebElement clickingReport = driver.findElement (xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[2]" ));
 //            clickingReport.click ();
 
@@ -1832,11 +1905,13 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Three Dots" );
 
             // Clicking The Remove My Notes
             Thread.sleep ( 3000 );
             WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
             clickingRemoveMyNotes.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Remove My Notes" );
 
         } else {
             System.out.println ( "No matching condition was found in the Resume quiz My Notes." );
@@ -1876,7 +1951,7 @@ public class myNotes extends BaseObjects {
      * - Catches and handles `NoSuchElementException`, `TimeoutException`, and generic `Exception` to ensure smooth execution even if some web elements are not found or actionable
      * .
      */
-    public void solution() throws InterruptedException {
+    public void solution() throws InterruptedException, IOException {
         System.out.println ( "-----------------------Solutions---------------------------" );
         // Check if elements are displayed and log the results
         Thread.sleep ( 5000 );
@@ -1908,59 +1983,58 @@ public class myNotes extends BaseObjects {
 
             clickingSolutionquiz.click ();
             System.out.println ( "Successfully clicked the Solution button in My Notes." );
+            ScreenShot.captureScreenshot ( "clicked the Solution button in My Notes." );
 
             // Scrolling and Clicking The Report Page
-
             Thread.sleep ( 30000 );
             WebElement scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report\"]" ) );
             Actions actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
-
+            ScreenShot.captureScreenshot ( "clicked the Report button" );
 
             // Click The Translation Error In The Report Popup
-
             Thread.sleep ( 3000 );
             WebElement clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "clicked the Translation Error Radio Button" );
 
             // Clicking The Report Description button
-
             WebElement Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( "Entered the text In The Report Text Field" );
 
             // Clicking The Cancel Button
-
             WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
             Cancel_button.click ();
+            ScreenShot.captureScreenshot ( "clicked the Cancel button" );
 
             // Scrolling and Clicking The Report Page
-
             Thread.sleep ( 3000 );
             scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
             actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
+            ScreenShot.captureScreenshot ( "clicked the Report button" );
 
             // Click The Translation Error In The Report Popup
-
             Thread.sleep ( 3000 );
             clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "clicked the Translation Error Radio Button" );
 
             // Clicking The Report Description button
-
             Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( "Entered The text In The Report Text Field" );
 
             // Click the report button
-
             Thread.sleep ( 3000 );
             WebElement Report_button = driver.findElement ( xpath ( "//span[text()='REPORT']" ) );
             Report_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked the Report button" );
 
             // Clicking The ReattempButton
-
             Thread.sleep ( 10000 );
             //wait = new WebDriverWait (driver,30);
             WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 10 ) ); // Adjust the timeout as necessary
@@ -1969,6 +2043,7 @@ public class myNotes extends BaseObjects {
                 WebElement reattemptIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//div[@class='ant-switch-handle']" ) ) );
                 reattemptIcon.click ();
                 System.out.println ( "Successfully clicked the reattempt icon." );
+                ScreenShot.captureScreenshot ( "Clicked the reattempt icon" );
             } catch (TimeoutException e) {
                 System.out.println ( "The reattempt icon was not clickable within the timeout period3." );
             } catch (NoSuchElementException e) {
@@ -1989,6 +2064,7 @@ public class myNotes extends BaseObjects {
                 WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + option + "']" ) );
                 optionElement.click ();
                 System.out.println ( "Successfully Clicked The Option: " + option );
+                ScreenShot.captureScreenshot ( "Clicked The Option" );
 
                 Thread.sleep ( 3000 );
                 NextButton.click ();
@@ -2004,6 +2080,7 @@ public class myNotes extends BaseObjects {
                     WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                     optionElement.click ();
                     System.out.println ( "Successfully clicked the option: " + options[i] );
+                    ScreenShot.captureScreenshot ( "Clicked the option" );
 
                     Thread.sleep ( 3000 );
 
@@ -2013,6 +2090,7 @@ public class myNotes extends BaseObjects {
                         WebElement numberOnRightSide = numberOnRightSideList.get ( 0 );
                         numberOnRightSide.click ();
                         System.out.println ( "Successfully clicked the number and navigated to the next question: " + (16 + i) );
+                        ScreenShot.captureScreenshot ( "Clicked the number and navigated to the next question" );
                     } else {
                         System.out.println ( "Number " + (16 + i) + " not found, skipping to the next iteration." );
                     }
@@ -2028,63 +2106,64 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 3000 );
             WebElement clickingThePreviousButton = driver.findElement ( xpath ( "//div[text()='Previous']" ) );
             clickingThePreviousButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Previous Button" );
 
             // Scrolling The Solution Page
-
             Thread.sleep ( 1000 );
             scrollToReportIcon = driver.findElement ( xpath ( "//*[@class=\"report-image\"]" ) );
             actions = new Actions ( driver );
             actions.scrollToElement ( scrollToReportIcon ).perform ();
             scrollToReportIcon.click ();
+            ScreenShot.captureScreenshot ( "Scrolling The Solution Page" );
 
             // Click The Translation Error In The Report Popup
-
             Thread.sleep ( 3000 );
             clickingTranslationErrorRadioButton = driver.findElement ( xpath ( "//span[text()='Translations Error']" ) );
             clickingTranslationErrorRadioButton.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Translation Error Radio Button" );
 
             //Entering the text inside the report text field In Solution Page
-
             Thread.sleep ( 3000 );
             Enter_the_report = driver.findElement ( name ( "reportDescription" ) );
             Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+            ScreenShot.captureScreenshot ( "Entered The text In The Report Text Field" );
 
             // Click the report button
-
             Thread.sleep ( 3000 );
             Report_button = driver.findElement ( xpath ( "//span[text()='REPORT']" ) );
             Report_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Report button" );
 
             // Clicking The Cancel Button
-
             Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
             Cancel_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Cancel Button" );
 
             // Clicking The Share Icon In The Solution Page
-
             Thread.sleep ( 3000 );
             WebElement clickingTheShareIcon = driver.findElement ( xpath ( "//*[@alt=\"share\"]" ) );
             clickingTheShareIcon.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Share Icon In The Solution Page" );
 
             //click the copy link in the share popup
-
             Thread.sleep ( 3000 );
             WebElement Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
             Copy_link.click ();
+            ScreenShot.captureScreenshot ( "Clicked The copy link in the share popup" );
 
             //Clicking the cancel button in the in share popup
-
             WebDriverWait waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
             Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             Cancel_button.click ();
+            ScreenShot.captureScreenshot ( "Clicked The cancel button in the in share popup" );
 
             // Clicking The ReattempButton
-
             Thread.sleep ( 10000 );
             try {
                 WebElement reattemptIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class=\"ant-switch ant-switch-small css-xu9wm8 ant-switch-checked\"]" ) ) );
                 reattemptIcon.click ();
                 System.out.println ( "Successfully clicked the reattempt icon." );
+                ScreenShot.captureScreenshot ( "clicked the reattempt icon" );
             } catch (TimeoutException e) {
                 System.out.println ( "The reattempt icon was not clickable within the timeout period4." );
             } catch (NoSuchElementException e) {
@@ -2094,37 +2173,37 @@ public class myNotes extends BaseObjects {
             }
 
             //  Click the back arrow in the solution screen
-
             Thread.sleep ( 30000 );
             WebElement clickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             clickingBackArrow.click ();
+            ScreenShot.captureScreenshot ( "clicked the back arrow in the solution screen" );
 
             // Clicking The Analysis Button In The MY Notes
-
             Thread.sleep ( 3000 );
             WebElement clickingAnalysisButton = driver.findElement ( xpath ( "//*[text()='Analysis']" ) );
             clickingAnalysisButton.click ();
+            ScreenShot.captureScreenshot ( "clicked the Analysis Button In The MY Notes" );
 
             // Clicking The FullScreen Button
-
             Thread.sleep ( 3000 );
             WebElement clickingTheFullScreenButton = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-expand\"]" ) );
             clickingTheFullScreenButton.click ();
             System.out.println ( "Successfully Clicked The Analysis Icon In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Analysis Icon In Solution Screen" );
 
             // Exiting The FullScreen Button
-
             driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 10 ) );
             WebElement exitingTheFullScreenButton = driver.findElement ( className ( "anticon-compress" ) );
             exitingTheFullScreenButton.click ();
             System.out.println ( "Successfully Clicked The Full Screen Button In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Full Screen Button In Solution Screen" );
 
             // Clicking The share Icon
-
             Thread.sleep ( 3000 );
             clickingTheShareIcon = driver.findElement ( xpath ( "//*[@alt=\"share\"]" ) );
             clickingTheShareIcon.click ();
             System.out.println ( "Successfully Clicked The The Share Icon In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The The Share Icon In Solution Screen" );
 
             //click the copy link in the share popup
 
@@ -2132,6 +2211,7 @@ public class myNotes extends BaseObjects {
             Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
             Copy_link.click ();
             System.out.println ( "Successfully Clicked The Copy link In Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Copy link In Solution Screen" );
 
             //Clicking the cancel button in the in share popup
 
@@ -2139,6 +2219,7 @@ public class myNotes extends BaseObjects {
             Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             Cancel_button.click ();
             System.out.println ( "Successfully Clicked The Cancel buttonIn Solution Screen " );
+            ScreenShot.captureScreenshot ( "Clicked The Cancel buttonIn Solution Screen" );
 
             // Clicking Like/Unlike Button
 
@@ -2149,6 +2230,7 @@ public class myNotes extends BaseObjects {
                     if (likeButton.isDisplayed ()) {
                         likeButton.click ();
                         System.out.println ( "Successfully Clicked The Like Button" );
+                        ScreenShot.captureScreenshot ( "Clicked The Like Button" );
                     }
                 } catch (NoSuchElementException e) {
                     System.out.println ( "Like Button not found" );
@@ -2159,6 +2241,7 @@ public class myNotes extends BaseObjects {
                         if (unlikeButton.isDisplayed ()) {
                             unlikeButton.click ();
                             System.out.println ( "Successfully Clicked The Unlike Button" );
+                            ScreenShot.captureScreenshot ( "Clicked The Unlike Button" );
                         }
                     } catch (NoSuchElementException e2) {
                         System.out.println ( "Unlike Button not found" );
@@ -2173,13 +2256,14 @@ public class myNotes extends BaseObjects {
             WebElement clickingCommentIconInAnalysisPage = driver.findElement ( xpath ( "//*[@id=\"comments-icon\"]" ) );
             clickingCommentIconInAnalysisPage.click ();
             System.out.println ( "Successfully Clicked The Comment Icon In Analysis Page" );
+            ScreenShot.captureScreenshot ( "Clicked The Comment Icon In Analysis Page" );
 
             //Entering Comment In The TextField
-
             Thread.sleep ( 5000 );
             WebElement enteringTheCommentInTextField = driver.findElement ( xpath ( "//*[@name=\"comments1\"]" ) );
             enteringTheCommentInTextField.sendKeys ( "Checking The Comment Text Field" );
             System.out.println ( "Successfully Entered The Comments" );
+            ScreenShot.captureScreenshot ( "Enter The Comment In The Text Field" );
 
             // Clicking The Send Button In The Comment Text Field
 //
@@ -2188,26 +2272,25 @@ public class myNotes extends BaseObjects {
 //            clickingSendButton.click ();
 
             // Scrolling The analysis page Up
-
             Thread.sleep ( 3000 );
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
             System.out.println ( "Successfully Scroll The Page" );
-
+            ScreenShot.captureScreenshot ( "Scrolling The analysis page Up" );
 
             // Clicking The Reattempt Button Inside The analysis page
-
             Thread.sleep ( 2000 );
             WebElement clickingReattempButton = driver.findElement ( xpath ( "//span[text()=' Reattempt ']" ) );
             clickingReattempButton.click ();
             System.out.println ( "Successfully clicked Reattemp Button" );
+            ScreenShot.captureScreenshot ( "The Reattempt Button Inside The analysis page" );
 
             //  Again Click the back arrow in the solution screen
-
             Thread.sleep ( 5000 );
             WebElement againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             againclickingBackArrow.click ();
             System.out.println ( "Successfully clicked Back Arrow" );
+            ScreenShot.captureScreenshot ( "The Clicked Back Arrow" );
 
             // Clicking The Solution Button Inside The analysis page
 
@@ -2215,79 +2298,90 @@ public class myNotes extends BaseObjects {
             WebElement clickingSolutionButtonInAnalysis = driver.findElement ( xpath ( "//span[text()=' View Solution ']" ) );
             clickingSolutionButtonInAnalysis.click ();
             System.out.println ( "Successfully clicked Solution Button In Analysis" );
+            ScreenShot.captureScreenshot ( "The Clicked The Solution Button Inside The analysis page" );
 
             //  Again Click the back arrow in the solution screen
 
             Thread.sleep ( 10000 );
             againclickingBackArrow = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-arrow-left back-icon\"]" ) );
             againclickingBackArrow.click ();
-            System.out.println ( "Successfully clicked clicking Back Arrow" );
+            System.out.println ( "Successfully clicked Back Arrow" );
+            ScreenShot.captureScreenshot ( "The Clicked the back arrow in the solution screen" );
 
             // Scrolling The analysis page Forward
-
             Thread.sleep ( 5000 );
             jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(0, document.body.scrollHeight)" );
             System.out.println ( "Successfully Scroll The Page Down " );
+            ScreenShot.captureScreenshot ( "The Clicked analysis page Forward" );
 
             // Scrolling The analysis page Backward
-
             Thread.sleep ( 5000 );
             jse = (JavascriptExecutor) driver;
             jse.executeScript ( "window.scrollTo(document.body.scrollHeight,0)" );
             System.out.println ( "Successfully Scroll The Backwards " );
+            ScreenShot.captureScreenshot ( "The Clicked The analysis page Backward" );
 
             // Clicking The Back To Quiz Breadcrumbs In The Analysis Page
-
             Thread.sleep ( 5000 );
             WebElement clickingBackToQuizBreadCrumbs = driver.findElement ( xpath ( "//span[text()='Back to Quiz']" ) );
             clickingBackToQuizBreadCrumbs.click ();
             System.out.println ( "Successfully Scroll The Back To Quiz Bread Crumbs " );
+            ScreenShot.captureScreenshot ( "The Clicked Back To Quiz Breadcrumbs In The Analysis Page" );
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );
             WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "The Clicked the Three Dots in the Course Card" );
 
             // Click The Share Button
             Thread.sleep ( 2000 );
             WebElement clickingShareButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[2]" ) );
             clickingShareButton.click ();
+            ScreenShot.captureScreenshot ( "The Clicked the Share Button" );
 
             // Clicking The Copy Link
             Thread.sleep ( 3000 );
             WebElement clickingCopyLink = driver.findElement ( xpath ( "//*[text()='COPY LINK']" ) );
             clickingCopyLink.click ();
+            ScreenShot.captureScreenshot ( "The Clicked the Copy Link Button" );
 
             // Clicking The cancel Button
             Thread.sleep ( 3000 );
             WebElement clickingCancelButton = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
             clickingCancelButton.click ();
+            ScreenShot.captureScreenshot ( "The Clicked the Cancel Button" );
 
             // Clicking the three Dots in the CourseCard
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "The Clicked ThreeDots" );
 
             // Clicking The Report Button
             Thread.sleep ( 3000 );
             WebElement clickingReportButton = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[3]" ) );
             clickingReportButton.click ();
+            ScreenShot.captureScreenshot ( "The Clicked Report Button" );
 
             // Click The Radio Button which present in second Position
             Thread.sleep ( 3000 );
             WebElement clickingRadioButton = driver.findElement ( xpath ( "//*[@value=\"2\"]" ) );
             clickingRadioButton.click ();
+            ScreenShot.captureScreenshot ( "The Clicked Radio Button" );
 
             // Entering The Text Inside the Text Field
             Thread.sleep ( 3000 );
             WebElement enteringText = driver.findElement ( xpath ( "//*[@class=\"ant-input css-xu9wm8\"]" ) );
             enteringText.sendKeys ( "The content was good" );
+            ScreenShot.captureScreenshot ( "Entered The Text Inside The Comment" );
 
             // Clicking The cancel Button
             Thread.sleep ( 3000 );
             WebElement clickingCancel = driver.findElement ( xpath ( "(//*[@class=\"quiz-popup-modal-body-report-footer-buttons\"])[1]" ) );
             clickingCancel.click ();
+            ScreenShot.captureScreenshot ( "Clicked Cancel Button" );
 
 //            // Clicking The report Button
 //
@@ -2298,11 +2392,13 @@ public class myNotes extends BaseObjects {
             Thread.sleep ( 5000 );
             clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
             clickingThreeDots.click ();
+            ScreenShot.captureScreenshot ( "Clicked three Dots in the CourseCard" );
 
             // Clicking The Remove My Notes
             Thread.sleep ( 3000 );
             WebElement clickingRemoveMyNotes = driver.findElement ( xpath ( "(//span[@class=\"ant-dropdown-menu-title-content\"])[1]" ) );
             clickingRemoveMyNotes.click ();
+            ScreenShot.captureScreenshot ( "Clicked The Remove My Notes" );
 
         } else {
             System.out.println ( "No matching condition was found in the Solution quiz My Notes." );

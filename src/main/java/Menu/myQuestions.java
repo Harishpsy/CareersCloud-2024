@@ -2,6 +2,7 @@ package Menu;
 
 import Master.Base.CoreFunctionality;
 import PageObjectModule.Myquestionpageobject;
+import ScreenShot.ScreenShot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class myQuestions {
         this.driver = driver;
     }
 
-    public void Myquestion() throws InterruptedException {
+    public void Myquestion() throws InterruptedException, IOException {
 
         PageFactory.initElements ( driver , Myquestionpageobject.class );
 
@@ -31,6 +33,7 @@ public class myQuestions {
         Thread.sleep ( 5000 );
         clickingMyQuestion.click ();
         System.out.println ( "Succesfully Clicked The My Question" );
+        ScreenShot.captureScreenshot ( "Clicked The My Question" );
 
         try {
             // Check if noRecordFound element is displayed and log the result
@@ -47,6 +50,7 @@ public class myQuestions {
             if (noRecordFoundDisplayed) {
                 Thread.sleep ( 5000 );
                 clickingTheMyEbooks.click ();
+                ScreenShot.captureScreenshot ( "Clicked The My Ebooks" );
                 System.out.println ( "No records found message is displayed In My Questions, navigating to My Ebooks page." );
             } else if (clickingMyQuestion.isDisplayed ()) {
                 System.out.println ( "Entered In To If-else Statement" );
@@ -56,10 +60,12 @@ public class myQuestions {
                     // Scrolling The Page
                     CoreFunctionality scroll = new CoreFunctionality ( driver );
                     scroll.Scroll ();
+                    ScreenShot.captureScreenshot ( "Scrolling The Page" );
 
                     // Clicking The Float Button
                     CoreFunctionality floatbutton = new CoreFunctionality ( driver );
                     floatbutton.floatButton ();
+                    ScreenShot.captureScreenshot ( "Clicked The Float Button" );
 
                     System.out.println ( "Verifying Wheather There is duplicate Is Present Or Not" );
                     // Getting The List Of Question Present In My Question Feeds
@@ -70,11 +76,13 @@ public class myQuestions {
                     Thread.sleep ( 10000 );
                     clickBookMarkQuestion.click ();
                     System.out.println ( "SucessFully clicked the clicking My Question " );
+                    ScreenShot.captureScreenshot ( "Clicked the BookMarked Question" );
 
                 } else if (clickingMyQuestion.isDisplayed ()) {
 
                     Thread.sleep ( 5000 );
                     clickingMyQuestion.click ();
+                    ScreenShot.captureScreenshot ( "Clicked the My Question" );
 
                     // Clicking The Bookmarked Question
                     if (clickingMyQuestion.isEnabled ()) {
@@ -86,6 +94,7 @@ public class myQuestions {
                         // Clicking The Float Button
                         CoreFunctionality floatbutton = new CoreFunctionality ( driver );
                         floatbutton.floatButton ();
+                        ScreenShot.captureScreenshot ( "Clicked the Float Button" );
 
                         System.out.println ( "Verifying Wheather There is duplicate Is Present Or Not" );
                         // Getting The List Of Question Present In My Question Feeds
@@ -94,6 +103,7 @@ public class myQuestions {
 
                         Thread.sleep ( 5000 );
                         clickBookMarkQuestion.click ();
+                        ScreenShot.captureScreenshot ( "Clicked the Book Mark Question" );
                     } else {
                         System.out.println ( "Error occured " );
                     }
@@ -104,6 +114,7 @@ public class myQuestions {
                 // Clicking The Quiz BackButton
                 Thread.sleep ( 5000 );
                 quizBackButton.click ();
+                ScreenShot.captureScreenshot ( "Clicked the Back Button" );
 
 //                // Retrieve the list of elements matching the provided XPath
 //                Thread.sleep ( 3000 );
@@ -117,6 +128,7 @@ public class myQuestions {
                 // Click The BookMarked Question
                 Thread.sleep ( 5000 );
                 clickBookMarkQuestion.click ();
+                ScreenShot.captureScreenshot ( "Clicked the Book Mark Question" );
 
                 // Clicking the BookMark-icon
                 try {
@@ -126,6 +138,7 @@ public class myQuestions {
                         Thread.sleep ( 3000 );
                         bookmarkIcon.click ();
                         System.out.println ( "Successfully Clicked The Bookmark Icon" );
+                        ScreenShot.captureScreenshot ( "Clicked the Bookmark Icon" );
                     }
                 } catch (NoSuchElementException e1) {
                     try {
@@ -135,6 +148,7 @@ public class myQuestions {
                             Thread.sleep ( 3000 );
                             bookmarkedIcon.click ();
                             System.out.println ( "Successfully Un-Clicked The Bookmark Icon" );
+                            ScreenShot.captureScreenshot ( "Un-Clicked The Bookmark Icon" );
                         }
                     } catch (NoSuchElementException e2) {
                         System.out.println ( "Both The Code Has Not Executed" );
@@ -156,6 +170,7 @@ public class myQuestions {
                     WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + option + "']" ) );
                     optionElement.click ();
                     System.out.println ( "Successfully Clicked The Option: " + option );
+                    ScreenShot.captureScreenshot ( "Clicked The Option" );
 
                     //Clicking The Next Button
                     try {
@@ -163,6 +178,7 @@ public class myQuestions {
                         if (nextButton.isDisplayed ()) {
                             nextButton.click ();
                             System.out.println ( "Successfully clicked the Next button." );
+                            ScreenShot.captureScreenshot ( "clicked the Next button" );
                         } else {
                             System.out.println ( "Next button is not displayed." );
                         }
@@ -180,6 +196,7 @@ public class myQuestions {
                         WebElement optionElement = driver.findElement ( xpath ( "//div[text()='" + options[i] + "']" ) );
                         optionElement.click ();
                         System.out.println ( "Successfully clicked the option: " + options[i] );
+                        ScreenShot.captureScreenshot ( "clicked the option" );
 
                         Thread.sleep ( 3000 );
 
@@ -188,6 +205,7 @@ public class myQuestions {
                         if (!numberOnRightSideList.isEmpty ()) {
                             WebElement numberOnRightSide = numberOnRightSideList.get ( 0 );
                             numberOnRightSide.click ();
+                            ScreenShot.captureScreenshot ( "clicked the number On Right Side" );
                             System.out.println ( "Successfully clicked the number and navigated to the next question: " + (6 + i) );
                         } else {
                             System.out.println ( "Number " + (6 + i) + " not found, skipping to the next iteration." );
@@ -206,6 +224,7 @@ public class myQuestions {
                     if (clickingThePreviousButton.isDisplayed ()) {
                         clickingThePreviousButton.click ();
                         System.out.println ( "Successfully clicked the Previous button." );
+                        ScreenShot.captureScreenshot ( "Clicked the Previous button." );
                     } else {
                         System.out.println ( "Previous button is not displayed." );
                     }
@@ -216,29 +235,35 @@ public class myQuestions {
                 // Clicking The Share Icon In The MyQuestion
                 Thread.sleep ( 3000 );
                 clickingTheShareIcon.click ();
+                ScreenShot.captureScreenshot ( "Clicked the Share Icon In The MyQuestion." );
 
                 //click the copy link in the share popup
                 Thread.sleep ( 3000 );
                 WebElement Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
                 Copy_link.click ();
+                ScreenShot.captureScreenshot ( "Clicked the Copy_link" );
 
                 //Clicking the cancel button in the in share popup
                 WebDriverWait waitforCancelButtonclick = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) );
                 WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
                 Cancel_button.click ();
+                ScreenShot.captureScreenshot ( "Clicked the Cancel button" );
 
                 // Scrolling The My Question Page
                 Thread.sleep ( 1000 );
                 Actions actions = new Actions ( driver );
                 actions.scrollToElement ( scrollToReportIcon ).perform ();
                 scrollToReportIcon.click ();
+                ScreenShot.captureScreenshot ( "Clicked the scroll To Report Icon" );
 
                 // Click The Translation Error In The Report Popup
                 Thread.sleep ( 3000 );
                 clickingTranslationErrorRadioButton.click ();
+                ScreenShot.captureScreenshot ( "Clicked the Translation Error In The Report Popup" );
 
                 //Entering the text inside the report text field In Solution Page
                 Enter_the_report.sendKeys ( "Checking The text was Entering In The Report Text Field" );
+                ScreenShot.captureScreenshot ( "Enter The Text Insde the Report" );
 
                 // Click the report button
                 // Thread.sleep (3000);
@@ -246,10 +271,12 @@ public class myQuestions {
 
                 // Clicking The Cancel Button In The Report Popup
                 clickingCancelButtonInReport.click ();
+                ScreenShot.captureScreenshot ( "Clicked The Cancel Button In The Report Popup" );
 
                 // Clicking The Quiz BackButton
                 Thread.sleep ( 4000 );
                 quizBackButton.click ();
+                ScreenShot.captureScreenshot ( "Clicked The Quiz BackButton" );
 
                 // Verifying That The Unbookmared Question was showing In The List Page
                 Thread.sleep ( 3000 );
