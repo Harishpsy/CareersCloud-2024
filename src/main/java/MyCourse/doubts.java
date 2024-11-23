@@ -4,11 +4,13 @@ import Master.Base.CoreFunctionality;
 import Doubts.MyAnswered;
 import Doubts.Mydoubts;
 import Doubts.Myfollowed;
+import ScreenShot.ScreenShot;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +24,7 @@ public class doubts {
     }
 
     @Test
-    public void doubtbase() throws InterruptedException, AWTException {
+    public void doubtbase() throws InterruptedException, AWTException, IOException {
 
         // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
         myCourseModule courseclick = new myCourseModule ( driver );
@@ -66,7 +68,7 @@ public class doubts {
     }
 
     @Test
-    public void allDoubts() throws InterruptedException, AWTException {
+    public void allDoubts() throws InterruptedException, AWTException, IOException {
 
         try {
 
@@ -81,10 +83,12 @@ public class doubts {
                 // Scrolling The Quizzes List Page to verify data
                 CoreFunctionality scroll = new CoreFunctionality ( driver );
                 scroll.Scroll ();
+                ScreenShot.captureScreenshot ( "Scrolled The Page" );
 
                 // Clicking Float Icon
                 CoreFunctionality floatbutton = new CoreFunctionality ( driver );
                 floatbutton.floatButton ();
+                ScreenShot.captureScreenshot ( "Clicked The Float Button" );
 
                 try {
                     /* Clicking the image in the doubt if the image is not there then skip it */
@@ -95,41 +99,49 @@ public class doubts {
                     if (clickingDoubtImage != null) {
                         clickingDoubtImage.click ();
                         System.out.println ( "Successfully click the Doubt Image " );
+                        ScreenShot.captureScreenshot ( "Clicked The Doubt Image" );
 
                         // Clicking The Flip Button in the Y axis
                         Thread.sleep ( 5000 );
                         WebElement clickingFlipButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipY\"]" ) );
                         clickingFlipButton.click ();
+                        ScreenShot.captureScreenshot ( "Clicked The Flip Button in the Y axis" );
 
                         // Clicking The Flip Button in the X axis
                         Thread.sleep ( 5000 );
                         WebElement clickingFlipButtonXAxis = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-flipX\"]" ) );
                         clickingFlipButtonXAxis.click ();
+                        ScreenShot.captureScreenshot ( "Clicked The Flip Button in the X axis" );
 
                         // Clicking The Rotated Left Button In Doubt Image
                         Thread.sleep ( 5000 );
                         WebElement clickingRotateLeftButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateLeft\"]" ) );
                         clickingRotateLeftButton.click ();
+                        ScreenShot.captureScreenshot ( "Clicked The Rotated Left Button In Doubt Image" );
 
                         // Clicking The Rotated Right Button In Doubt Image
                         Thread.sleep ( 5000 );
                         WebElement clickingRotateRightButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-rotateRight\"]" ) );
                         clickingRotateRightButton.click ();
+                        ScreenShot.captureScreenshot ( "Clicked The Rotated Right Button In Doubt Image" );
 
                         // Clicking The ZoomIn Button
                         Thread.sleep ( 5000 );
                         WebElement clickingZoomInButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomIn\"]" ) );
                         clickingZoomInButton.click ();
+                        ScreenShot.captureScreenshot ( "Clicked The ZoomIn Button" );
 
                         // Click The Zoom Out Button
                         Thread.sleep ( 5000 );
                         WebElement clickingZoomOutButton = driver.findElement ( xpath ( "//*[@class=\"ant-image-preview-operations-operation ant-image-preview-operations-operation-zoomOut\"]" ) );
                         clickingZoomOutButton.click ();
+                        ScreenShot.captureScreenshot ( "Clicked The Zoom Out Button" );
 
                         // Clicking The Cancel Button
                         Thread.sleep ( 3000 );
                         WebElement clickingTheCancelButton = driver.findElement ( xpath ( "//button[@class=\"ant-image-preview-close\"]" ) );
                         clickingTheCancelButton.click ();
+                        ScreenShot.captureScreenshot ( "Clicked The Cancel Button" );
 
                     } else {
                         System.out.println ( "Doubt Image not found." );
@@ -177,9 +189,11 @@ public class doubts {
                 if (followIcon != null) {
                     followIcon.click ();
                     System.out.println ( "Successfully clicked Follow" );
+                    ScreenShot.captureScreenshot ( "Clicked The Follow Button" );
                 } else if (unfollowIcon != null) {
                     unfollowIcon.click ();
                     System.out.println ( "Successfully clicked Unfollow" );
+                    ScreenShot.captureScreenshot ( "Clicked The Unfollow Button" );
                 } else {
                     System.out.println ( "Could not find follow or unfollow icon element." );
                 }
@@ -188,6 +202,7 @@ public class doubts {
                 WebElement clickingAnswericon = driver.findElement ( id ( "comments-icon" ) );
                 clickingAnswericon.click ();
                 System.out.println ( "Successfully Clicked The Answer Icon" );
+                ScreenShot.captureScreenshot ( "Clicked The Answer Icon" );
                 try {
                     WebElement Enteringtext = driver.findElement ( id ( "teatx-area-id" ) );
                     if (Enteringtext.isDisplayed ()) {

@@ -8,6 +8,7 @@ import Master.Doubt.BaseDoubts;
 import Master.Home.BaseHomePage;
 import Master.Menu.BaseMenu;
 import Master.MyCourse.BaseMyCourse;
+import ScreenShot.ScreenShot;
 import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.OutputType;
@@ -40,6 +41,7 @@ public class BaseObjects {
      * @param testName Name of the test case.
      * @return Path to the saved screenshot.
      */
+
     @Test
     public static String captureScreenshot(String testName) throws IOException {
         String timestamp = new SimpleDateFormat ( "yyyyMMdd_HHmmss" ).format ( new Date () );
@@ -137,14 +139,15 @@ public class BaseObjects {
         menu.testMyPurchase ();
         menu.testHireUs ();
     }
-    @Test(enabled = false, priority = 4)
-    public void myCourseModuleTest() throws InterruptedException, AWTException {
+
+    @Test(enabled = true, priority = 4)
+    public void myCourseModuleTest() throws InterruptedException, AWTException, IOException {
         test = extentReports.createTest ( "My Course Module Test" );
         BaseMyCourse course = new BaseMyCourse ( driver );
         course.myCourseModule ();
     }
     @Test(enabled = false, priority = 5)
-    public void allCoursesModuleTest() throws InterruptedException, AWTException {
+    public void allCoursesModuleTest() throws InterruptedException, AWTException, IOException {
         test = extentReports.createTest ( "All Courses Module Test" );
         BaseAllCourse allCourse = new BaseAllCourse ( driver );
         allCourse.allCourseModule ();

@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 
 public class myCourseInnerActions extends BaseMyCourse {
@@ -18,7 +19,7 @@ public class myCourseInnerActions extends BaseMyCourse {
     }
 
     @Test
-    public void courseClicking() throws InterruptedException, AWTException {
+    public void courseClicking() throws InterruptedException, AWTException, IOException {
 
         /*Opening All The course In The Course List Page and click the back button or Course Breadcrumbs Making This InLoop Initial delay to allow the page to load fully*/
 

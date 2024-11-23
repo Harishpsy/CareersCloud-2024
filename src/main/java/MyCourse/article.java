@@ -1,6 +1,7 @@
 package MyCourse;
 
 import Master.Base.CoreFunctionality;
+import ScreenShot.ScreenShot;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.Set;
 
 import static org.openqa.selenium.By.*;
 
-public class article {
+public class article extends ScreenShot {
 
     WebDriver driver;
 
@@ -25,7 +27,7 @@ public class article {
     }
 
     @Test
-    public void Article() throws InterruptedException {
+    public void Article() throws InterruptedException, IOException {
 
         // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
         myCourseModule courseclick = new myCourseModule ( driver );
@@ -54,15 +56,17 @@ public class article {
     }
 
     @Test
-    public void articleActions() throws InterruptedException {
+    public void articleActions() throws InterruptedException, IOException {
 
         // Scrollingv The Page In The Article
         CoreFunctionality scroll = new CoreFunctionality ( driver );
         scroll.Scroll();
+        captureScreenshot ( "Clicked The Article In The Free Tab" );
 
 //        // Clicking Float Icon
 //        CoreFunctionality floatIcon = new CoreFunctionality ( driver );
 //        floatIcon.floatButton();
+//          captureScreenshot ( "Clicked The Float Button" );
 
         // Clicking Float Icon
         try {
@@ -71,6 +75,7 @@ public class article {
                 Thread.sleep ( 5000 );
                 clickingFloatIcons.click ();
                 System.out.println ( "Successfully Clicked The Float Icon" );
+                captureScreenshot ( "Clicked The Float Button" );
             } else {
                 System.out.println ( "Float Icon Is Not Displayed" );
             }
@@ -88,6 +93,7 @@ public class article {
         WebElement clickingViewButton = driver.findElement ( xpath ( "//*[@class=\"ant-btn css-xu9wm8 ant-btn-ghost ant-btn-block card-view-button\"]" ) );
         clickingViewButton.click ();
         System.out.println ( "Succesfully Clicked The View Article" );
+        captureScreenshot ( "Clicked The view Article" );
 
         // Getting The Article Name To Verify In My Notes
         Thread.sleep ( 5000 );
@@ -103,6 +109,7 @@ public class article {
             clickAction.click ();
             if (clickAction.getAttribute ( "class" ).contains ( "unlike" )) {
                 System.out.println ( "Un Liked Successfully" );
+                captureScreenshot ( "Clicked The like Or unlike button" );
             } else {
                 System.out.println ( "Liked Successfully" );
             }
@@ -112,17 +119,20 @@ public class article {
         Thread.sleep ( 5000 );
         WebElement clickingCommentIcon = driver.findElement ( id ( "comments-icon" ) );
         clickingCommentIcon.click ();
+        captureScreenshot ( "Clicked The Comment Icon" );
 
         // Entering The comments
         Thread.sleep ( 5000 );
         WebElement enteringComments = driver.findElement ( name ( "comments1" ) );
         enteringComments.sendKeys ( "Thanks For the update" );
         System.out.println ( "Comment Added Sucessfully" );
+        captureScreenshot ( "Entered The Comment In The Text Field" );
 
         // Clicking The send Button
 //        Thread.sleep (3000);
 //        WebElement clickingSendButton = driver.findElement (xpath ("//*[@class=\"anticon anticon-send\"]"));
 //        clickingSendButton.click ();
+//        captureScreenshot ( "Entered The Comment In The Text Field" );
 
         // Clicking Float Icon
         try {
@@ -137,6 +147,7 @@ public class article {
                 clickingFloatIcon = wait.until ( ExpectedConditions.elementToBeClickable ( xpath ( "//*[@class='css-xu9wm8 ant-float-btn ant-float-btn-default ant-float-btn-circle']" ) ) );
                 clickingFloatIcon.click ();
                 System.out.println ( "Float Icon clicked successfully." );
+                captureScreenshot ( "Clicked The Float Icon" );
             }
         } catch (Exception e) {
             System.out.println ( "FloatIcon Button is not displayed." );
@@ -146,17 +157,20 @@ public class article {
         Thread.sleep ( 3000 );
         WebElement clickingshareicon = driver.findElement ( xpath ( "//*[@class=\"share\"]" ) );
         clickingshareicon.click ();
+        captureScreenshot ( "Clicked The Share Icon" );
 
         //click the copy link in the share popup
         Thread.sleep ( 3000 );
         WebElement Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
         Copy_link.click ();
+        captureScreenshot ( "Clicked The Copy link in the Share popup" );
 
         //Clicking the cancel button in the in share popup
         Thread.sleep ( 3000 );
         WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
         Cancel_button.click ();
         System.out.println ( "Clicked cancel button" );
+        captureScreenshot ( "Clicked The Cancel Button" );
 
         // Verifying the Recent article in the webpage
         List<WebElement> recentArticle = driver.findElements ( xpath ( "//*[@class=\"ant-list-items\"]/child::*" ) );
@@ -186,16 +200,18 @@ public class article {
         // Assert that the number of unique URLs is equal to the number of elements
         Assert.assertEquals ( uniquerecentArticlelCount , uniquerecentArticleUrls.size () );
 
-        // Click the BackButton In The Article
+        // Click the Back Button In The Article
         Thread.sleep ( 10000 );
         WebElement clickingBackButton = driver.findElement ( xpath ( "//*[@class=\"ant-breadcrumb-link\"]" ) );
         clickingBackButton.click ();
         System.out.println ( "Navigated To Article List Page" );
+        captureScreenshot ( "Clicked The Back Button In The Article" );
 
         // Clicking the three Dots in the CourseCard
         Thread.sleep ( 5000 );
         WebElement clickingThreeDots = driver.findElement ( xpath ( "//*[@class=\"anticon anticon-more\"]" ) );
         clickingThreeDots.click ();
+        captureScreenshot ( "Clicked The Three Dots in the CourseCard" );
 
         // Clicking The save My Notes or Remove my notes
         Thread.sleep ( 5000 );
@@ -205,6 +221,7 @@ public class article {
             clickMyNote.click ();
             if (clickMyNote.getText ().contains ( "Remove My  Notes" )) {
                 System.out.println ( "Successfully -  Remove - Article" );
+                captureScreenshot ( "Clicked The Save My Notes or Remove my notes" );
             } else {
                 System.out.println ( "Successfully -  saved - Article" );
             }
@@ -215,12 +232,14 @@ public class article {
         WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
         clickingHomeButton.click ();
         System.out.println ( "SuccessFully Clicked The HomeButton" );
+        captureScreenshot ( "Clicked The Home Button" );
 
         // Clicking The MyNotes
         Thread.sleep ( 5000 );
         WebElement clickingMyNotes = driver.findElement ( xpath ( "//*[@id=\"1\"]" ) );
         clickingMyNotes.click ();
         System.out.println ( "SuccessFully Clicked The My-Notes" );
+        captureScreenshot ( "Clicked The My-Notes" );
 
         // Verifying saved or removed article was showing in the My Notes Page
         List<WebElement> articleMyNotes = driver.findElements ( xpath ( "//*[@class=\"feed-card-cover-inner-content\"]" ) );
@@ -247,7 +266,7 @@ public class article {
         clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
         clickingHomeButton.click ();
         System.out.println ( "SuccessFully Clicked The HomeButton" );
-
+        captureScreenshot ( "Clicked The Home Button" );
     }
 }
 

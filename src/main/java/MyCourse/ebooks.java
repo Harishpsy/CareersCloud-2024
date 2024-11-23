@@ -1,6 +1,7 @@
 package MyCourse;
 
 import Master.Base.CoreFunctionality;
+import ScreenShot.ScreenShot;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -16,18 +18,19 @@ import java.util.Set;
 import static org.openqa.selenium.By.name;
 import static org.openqa.selenium.By.xpath;
 
-public class ebooks {
+public class ebooks extends ScreenShot {
     WebDriver driver;
 
     public ebooks(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void Ebooks() {
+    public void Ebooks() throws IOException {
 
         // Creating the object to click the Particular course (Crack Current Affairs) constructor was created in the My Course Module Class
         myCourseModule courseclick = new myCourseModule ( driver );
         courseclick.courseClicking ();
+        captureScreenshot ( "Clicked The Crack Current Affairs" );
 
         // Verifying The Ebooks Sub-Module Was Displaying, if Display Perform The Below Action
         try {
@@ -39,6 +42,7 @@ public class ebooks {
                 clickingEbooksTab = driver.findElement ( xpath ( "//*[text()='Ebooks']" ) );
                 clickingEbooksTab.click ();
                 System.out.println ( "Successfully Clicked The Ebooks Tab, And Performing The action In The List Page" );
+                captureScreenshot ( "Clicked The Ebooks Tab, And Performing The action In The List Page" );
             } else {
                 System.out.println ( "Both The Code Has Not Executed In The Course Ebooks Tab" );
             }
@@ -53,7 +57,7 @@ public class ebooks {
     }
 
     @Test
-    public void ebookActions() throws InterruptedException {
+    public void ebookActions() throws InterruptedException, IOException {
 
         // Scrolling The page In the ebook list page
         CoreFunctionality scroll = new CoreFunctionality ( driver );
@@ -63,6 +67,7 @@ public class ebooks {
         CoreFunctionality floatIcon = new CoreFunctionality ( driver );
         floatIcon.floatButton ();
         System.out.println ( "Verifying Whether Duplicate Was Present,Wait For Few Seconds" );
+        captureScreenshot ( "Clicked The Ebooks Tab, And Performing The action In The List Page" );
 
         // Verifying Weather There is Duplicate was find in the Ebooks or not
         CoreFunctionality duplicatefinding = new CoreFunctionality ( driver );
@@ -73,6 +78,7 @@ public class ebooks {
         WebElement clickingViewButton = driver.findElement ( xpath ( "//*[@class=\"image2\"]/following::*[text()='VIEW >']" ) );
         clickingViewButton.click ();
         System.out.println ("SuccessFully Clicked The view Button");
+        captureScreenshot ( "Clicked The Ebooks Tab, And Performing The action In The List Page" );
 
         // Getting The Clicked Ebook Name
         Thread.sleep ( 5000 );
@@ -97,6 +103,7 @@ public class ebooks {
         WebElement clickingViewButtonInEbook = driver.findElement (xpath ("//span[text()='View']"));
         clickingViewButtonInEbook.click ();
         System.out.println ("SuccessFully Clicked The View Button In Ebook ");
+        captureScreenshot ( "Clicked The View Button In Ebook" );
 
         //Windows Handeling child to parent
         Thread.sleep (5000);
@@ -113,11 +120,13 @@ public class ebooks {
         WebElement clickingBackButton = driver.findElement (xpath ("//span[text()='Back']"));
         clickingBackButton.click ();
         System.out.println ("SuccessFully Clicked The BackButton ");
+        captureScreenshot ( "Clicked The Back Button" );
 
         // Clicking The Three dots
         Thread.sleep ( 3000 );
         WebElement Threedots = driver.findElement ( xpath ( "(//*[@class=\"ant-dropdown-trigger\"])[2]" ) );
         Threedots.click ();
+        captureScreenshot ( "Clicked The Three dots" );
 
         // Clicking The save My Notes OR Remove My Notes
         WebDriverWait wait = new WebDriverWait ( driver , Duration.ofSeconds ( 30 ) ); // 30 seconds timeout
@@ -127,6 +136,7 @@ public class ebooks {
             WebElement saveMyEbookElement = wait.until ( ExpectedConditions.visibilityOfElementLocated ( xpath ( "(//*[@class=\"ant-dropdown-menu-title-content\"])[1]" ) ) );
             if (saveMyEbookElement.isDisplayed ()) {
                 saveMyEbookElement.click ();
+                captureScreenshot ( "Save My Notes OR Remove My Notes" );
             }
         } catch (NoSuchElementException | TimeoutException e) {
             System.out.println ( "Save Or Remove My Ebook is not displayed." );
@@ -136,38 +146,45 @@ public class ebooks {
         Thread.sleep ( 3000 );
         Threedots = driver.findElement ( xpath ( "(//*[@class=\"ant-dropdown-trigger\"])[2]" ) );
         Threedots.click ();
+        captureScreenshot ( "Clicked The Three dots" );
 
         /* Clicking the share icon in My Ebook */
         Thread.sleep ( 3000 );
         WebElement Share_icon = driver.findElement ( xpath ( "//span[text()='Share']" ) );
         Share_icon.click ();
+        captureScreenshot ( "Clicked The Share icon in My Ebook" );
 
-        //click the copy link in the share popup
+        //click the Copy link in the share popup
         Thread.sleep ( 3000 );
         WebElement Copy_link = driver.findElement ( xpath ( "//span[text()='COPY LINK']" ) );
         Copy_link.click ();
+        captureScreenshot ( "Clicked The Copy link in the share popup" );
 
         //Clicking the cancel button in the in share popup
         driver.manage ().timeouts ().implicitlyWait ( Duration.ofSeconds ( 30 ) );
         WebElement Cancel_button = driver.findElement ( xpath ( "//span[text()='Cancel']" ) );
         Cancel_button.click ();
+        captureScreenshot ( "Clicked The cancel button in the in share popup" );
 
         // Again Click the three dots in the My Ebook
         Thread.sleep ( 3000 );
         WebElement Three_dots = driver.findElement ( xpath ( "(//*[@class=\"ant-dropdown-trigger\"])[2]" ) );
         Three_dots.click ();
+        captureScreenshot ( "Clicked The three dots in the My Ebook" );
 
         //clicking the report icon
         Thread.sleep ( 3000 );
         WebElement Report_icon = driver.findElement ( xpath ( "//span[text()='Report']" ) );
         Report_icon.click ();
         System.out.println ( "SuccessFully Clicked The Report icon" );
+        captureScreenshot ( "Clicked The Report icon" );
 
         //Click the wrong information radio button
         Thread.sleep ( 3000 );
         WebElement Wronginformationradiobutton = driver.findElement ( xpath ( "//span[text()='Wrong Information']" ) );
         Wronginformationradiobutton.click ();
         System.out.println ( "SuccessFully Clicked The Wrong information radio button" );
+        captureScreenshot ( "Clicked The Wrong information radio button" );
 
         //Entering the text inside the report text field
         WebElement Enterthereport = driver.findElement ( name ( "reportDescription" ) );
@@ -183,17 +200,20 @@ public class ebooks {
         Cancel_button = driver.findElement ( xpath ( "//span[text()='CANCEL']" ) );
         Cancel_button.click ();
         System.out.println ( "SuccessFully Clicked The Cancel Button" );
+        captureScreenshot ( "Clicked The Cancel Button" );
 //
 //        // Clicking The home button
 //        Thread.sleep ( 3000 );
 //        WebElement clickingHomeButton = driver.findElement ( xpath ( "//*[text()='Home']" ) );
 //        clickingHomeButton.click ();
 //        System.out.println ( "SuccessFully Clicked The HomeButton" );
+//        captureScreenshot ( "Clicked The Home Button");
 //
 //        // Clicking The Ebook
 //        Thread.sleep ( 3000 );
 //        WebElement clickingEbookInMenu = driver.findElement ( id ( "3" ) );
 //        clickingEbookInMenu.click ();
+//        captureScreenshot ( "Clicked The Ebook");
 //
 //        // Verifying saved or removed article was showing in the My Notes Page
 //        List<WebElement> ebookTitleElements = driver.findElements ( xpath ( "//*[@class='feed-card-cover-inner-content']" ) );

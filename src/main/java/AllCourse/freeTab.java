@@ -6,6 +6,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.IOException;
+
 public class freeTab {
     WebDriver driver;
 
@@ -13,7 +15,7 @@ public class freeTab {
         this.driver = driver;
     }
 
-    public void free() throws InterruptedException {
+    public void free() throws InterruptedException, IOException {
 
         // Clicking Free Tab In the all course list page
         try {

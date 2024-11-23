@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class BaseMyCourse extends BaseObjects {
 
@@ -21,7 +22,7 @@ public class BaseMyCourse extends BaseObjects {
     }
 
     @Test
-    public void myCourseModule() throws InterruptedException, AWTException {
+    public void myCourseModule() throws InterruptedException, AWTException, IOException {
 
         /* Clicking My Course Module In The Header Section */
         myCourseModule Mycourse = new myCourseModule ( driver );
@@ -46,7 +47,7 @@ public class BaseMyCourse extends BaseObjects {
     }
 
     @Test(enabled = true)
-    public void article() throws InterruptedException {
+    public void article() throws InterruptedException, IOException {
         /* Creating An Object For The Article Sub Module, Performing The Actions */
         article article = new article ( driver );
         article.Article ();
@@ -63,28 +64,28 @@ public class BaseMyCourse extends BaseObjects {
 //        quizzes quizzes = new quizzes ( driver );
 //        quizzes.Quizzes ();
 @Test(enabled = true)
-public void ebooks() {
+public void ebooks() throws IOException {
         /* Creating An Object For The Ebooks Sub Module, Performing The Actions */
         ebooks ebooks = new ebooks ( driver );
         ebooks.Ebooks ();
     }
 
     @Test(enabled = true)
-    public void doubtbase() throws InterruptedException, AWTException {
+    public void doubtbase() throws InterruptedException, AWTException, IOException {
         /* Creating An Object For The Doubts Sub Module, Performing The Actions */
         doubts doubtPage = new doubts ( driver );
         doubtPage.doubtbase ();
     }
 
     @Test(enabled = true)
-    public void freetab() throws InterruptedException {
+    public void freetab() throws InterruptedException, IOException {
         /* Creating An Object For The Free Sub Module, Performing The Actions */
         free freetab = new free ( driver );
         freetab.freeTab ();
     }
 
     @Test(enabled = true)
-    public void details() throws InterruptedException, AWTException {
+    public void details() throws InterruptedException, AWTException, IOException {
         /* Creating An Object For The Article, Performing The Actions */
         details detailsPage = new details ( driver );
         detailsPage.details ();

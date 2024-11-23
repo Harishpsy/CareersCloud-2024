@@ -3,11 +3,11 @@ package Master.AllCourse;
 import AllCourse.UserSubscribedAndNonSubscribedLits;
 import AllCourse.allCourseModule;
 import MyCourse.filters;
-import MyCourse.myCourseInnerActions;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class BaseAllCourse {
 
@@ -19,7 +19,7 @@ public class BaseAllCourse {
     }
 
     @Test(enabled = true)
-    public void allCourseModule() throws InterruptedException, AWTException {
+    public void allCourseModule() throws InterruptedException, AWTException, IOException {
 
         // Creating An Object For The All Course Module We Can Access Through This Class,
         // This is using For Click The All Course Modules Only

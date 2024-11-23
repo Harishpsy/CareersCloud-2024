@@ -26,4 +26,9 @@ public class ScreenShot extends BaseObjects {
 
         return screenshotPath;
     }
+
+    protected void captureScreenShot(String actionName) throws IOException {
+        ScreenShot.captureScreenshot ( actionName );
+    }
+
 }
